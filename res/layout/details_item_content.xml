@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+	    <CheckBox
+	        android:id="@+id/chkbox_details_item"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:gravity="center_vertical"
+	        android:text="@string/empty_string"
+	        android:textAppearance="@style/DefaultTextStyle"
+	        android:clickable="false" />
+		
+	    <Spinner
+	        android:id="@+id/spn_details_key"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:spinnerMode="dialog" />
+	    
+        <EditText
+            android:id="@+id/etx_details_key"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:enabled="false"
+	        android:inputType="text"
+	        android:singleLine="true"
+		    android:hint="@string/empty_string"
+		    android:textAppearance="@style/DefaultTextStyle"
+		    android:minEms="5"
+		    android:maxEms="10" />
+		
+	    <Spinner
+	        android:id="@+id/spn_details_value_prefix_1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:spinnerMode="dialog" />
+	    
+        <EditText
+            android:id="@+id/etx_details_value_prefix_1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:enabled="false"
+	        android:inputType="text"
+	        android:singleLine="true"
+		    android:hint="@string/empty_string"
+		    android:textAppearance="@style/DefaultTextStyle"
+		    android:minEms="5"
+		    android:maxEms="10" />
+		
+	    <Spinner
+	        android:id="@+id/spn_details_value_prefix_2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:spinnerMode="dialog" />
+	    
+        <EditText
+            android:id="@+id/etx_details_value_prefix_2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:enabled="false"
+	        android:inputType="text"
+	        android:singleLine="true"
+		    android:hint="@string/empty_string"
+		    android:textAppearance="@style/DefaultTextStyle"
+		    android:minEms="5"
+		    android:maxEms="10" />
+		
+	    <Spinner
+	        android:id="@+id/spn_details_value"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:spinnerMode="dialog" />
+	    
+        <EditText
+            android:id="@+id/etx_details_value_short_texts"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:enabled="false"
+	        android:inputType="text"
+	        android:singleLine="true"
+		    android:hint="@string/empty_string"
+		    android:textAppearance="@style/DefaultTextStyle"
+		    android:minEms="5"
+		    android:maxEms="10" />
+		
+	    <Spinner
+	        android:id="@+id/spn_details_value_suffix_1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:spinnerMode="dialog" />
+	    
+        <EditText
+            android:id="@+id/etx_details_value_suffix_1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:enabled="false"
+	        android:inputType="text"
+	        android:singleLine="true"
+		    android:hint="@string/empty_string"
+		    android:textAppearance="@style/DefaultTextStyle"
+		    android:minEms="5"
+		    android:maxEms="10" />
+		
+	    <Spinner
+	        android:id="@+id/spn_details_value_suffix_2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:spinnerMode="dialog" />
+	    
+        <EditText
+            android:id="@+id/etx_details_value_suffix_2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:enabled="false"
+	        android:inputType="text"
+	        android:singleLine="true"
+		    android:hint="@string/empty_string"
+		    android:textAppearance="@style/DefaultTextStyle"
+		    android:minEms="5"
+		    android:maxEms="10" />
+    
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        
+        <EditText
+            android:id="@+id/etx_details_value_long_texts"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:enabled="false"
+	        android:gravity="top"
+	        android:inputType="textMultiLine"
+	        android:autoLink="all"
+		    android:hint="@string/empty_string"
+	        android:minLines="1"
+	        android:maxLines="10"
+	        android:scrollbars="vertical" />
+        
+    </LinearLayout>
+
+</LinearLayout>

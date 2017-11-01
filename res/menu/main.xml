@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.project.communicationmonitor.MainActivity" >
+
+    <item
+        android:id="@+id/menu_copyright"
+        android:orderInCategory="100"
+        android:title="@string/copyright"/>
+
+    <item
+        android:id="@+id/menu_version_log"
+        android:orderInCategory="101"
+        android:title="@string/version_log"/>
+
+</menu>

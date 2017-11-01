@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.project.tcm_quick_search_notes"
+    android:versionCode="1"
+    android:versionName="V0.00.01" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="false"
+        android:background="@android:color/holo_blue_bright"
+        android:fitsSystemWindows="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:configChanges="screenSize|keyboardHidden|orientation"
+            android:launchMode="singleInstance"
+            android:screenOrientation="sensor" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/about_this_app"
+            android:configChanges="screenSize|keyboardHidden|orientation"
+            android:launchMode="singleInstance"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="sensor" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.project.tcm_quick_search_notes.MainActivity" />
+        </activity>
+        <activity
+            android:name=".QueryEntryActivity"
+            android:label="@string/query_result"
+            android:configChanges="screenSize|keyboardHidden|orientation"
+            android:launchMode="singleInstance"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="sensor"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.project.tcm_quick_search_notes.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ReadWriteItemDetailsActivity"
+            android:label="@string/app_name"
+            android:configChanges="screenSize|keyboardHidden|orientation"
+            android:launchMode="singleInstance"
+            android:screenOrientation="sensor" >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.project.tcm_quick_search_notes.QueryEntryActivity" >
+
+    <item
+        android:id="@+id/menu_query"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/query"/>
+
+    <item
+        android:id="@+id/menu_export"
+        android:orderInCategory="101"
+        android:showAsAction="always"
+        android:title="@string/export"/>
+
+</menu>

@@ -1,0 +1,1565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+
+    An example of adding a string-array item:
+
+    <string-array name="name_of_new_item">
+        <item>@string/name_of_new_item</item>
+        <item>@string/cht_name_of_new_item</item>
+        <item>@string/en_name_of_new_item</item>
+    </string-array>
+
+     -->
+
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+         Punctuation items
+
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+    <string-array name="full_stop">
+        <item>@string/full_stop</item>
+        <item>@string/cht_full_stop</item>
+        <item>@string/en_full_stop</item>
+    </string-array>
+    
+    <string-array name="comma">
+        <item>@string/comma</item>
+        <item>@string/cht_comma</item>
+        <item>@string/en_comma</item>
+    </string-array>
+    
+    <string-array name="semicolon">
+        <item>@string/semicolon</item>
+        <item>@string/cht_semicolon</item>
+        <item>@string/en_semicolon</item>
+    </string-array>
+    
+    <string-array name="exclamatory_point">
+        <item>@string/exclamatory_point</item>
+        <item>@string/cht_exclamatory_point</item>
+        <item>@string/en_exclamatory_point</item>
+    </string-array>
+    
+    <string-array name="question_mark">
+        <item>@string/question_mark</item>
+        <item>@string/cht_question_mark</item>
+        <item>@string/en_question_mark</item>
+    </string-array>
+    
+    <string-array name="colon">
+        <item>@string/colon</item>
+        <item>@string/cht_colon</item>
+        <item>@string/en_colon</item>
+    </string-array>
+    
+    <string-array name="ellipsis">
+        <item>@string/ellipsis</item>
+        <item>@string/cht_ellipsis</item>
+        <item>@string/en_ellipsis</item>
+    </string-array>
+
+
+
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+         Character items
+
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+    <string-array name="hello_world">
+        <item>@string/hello_world</item>
+        <item>@string/cht_hello_world</item>
+        <item>@string/en_hello_world</item>
+    </string-array>
+    
+    <string-array name="settings">
+        <item>@string/settings</item>
+        <item>@string/cht_settings</item>
+        <item>@string/en_settings</item>
+    </string-array>
+    
+    <string-array name="help">
+        <item>@string/help</item>
+        <item>@string/cht_help</item>
+        <item>@string/en_help</item>
+    </string-array>
+    
+    <string-array name="terms_of_note">
+        <item>@string/terms_of_note</item>
+        <item>@string/cht_terms_of_note</item>
+        <item>@string/en_terms_of_note</item>
+    </string-array>
+    
+    <string-array name="about">
+        <item>@string/about</item>
+        <item>@string/cht_about</item>
+        <item>@string/en_about</item>
+    </string-array>
+    
+    <string-array name="about_this_app">
+        <item>@string/about_this_app</item>
+        <item>@string/cht_about_this_app</item>
+        <item>@string/en_about_this_app</item>
+    </string-array>
+    
+    <string-array name="copyright">
+        <item>@string/copyright</item>
+        <item>@string/cht_copyright</item>
+        <item>@string/en_copyright</item>
+    </string-array>
+    
+    <string-array name="version_log">
+        <item>@string/version_log</item>
+        <item>@string/cht_version_log</item>
+        <item>@string/en_version_log</item>
+    </string-array>
+    
+    <string-array name="exit">
+        <item>@string/exit</item>
+        <item>@string/cht_exit</item>
+        <item>@string/en_exit</item>
+    </string-array>
+    
+    <string-array name="name">
+        <item>@string/name</item>
+        <item>@string/cht_name</item>
+        <item>@string/en_name</item>
+    </string-array>
+    
+    <string-array name="alias">
+        <item>@string/alias</item>
+        <item>@string/cht_alias</item>
+        <item>@string/en_alias</item>
+    </string-array>
+
+    <string-array name="app_name_key">
+        <item>@string/app_name_key</item>
+        <item>@string/cht_app_name_key</item>
+        <item>@string/en_app_name_key</item>
+    </string-array>
+    
+    <string-array name="author">
+        <item>@string/author</item>
+        <item>@string/cht_author</item>
+        <item>@string/en_author</item>
+    </string-array>
+    
+    <string-array name="app_version">
+        <item>@string/app_version</item>
+        <item>@string/cht_app_version</item>
+        <item>@string/en_app_version</item>
+    </string-array>
+    
+    <string-array name="usage">
+        <item>@string/usage</item>
+        <item>@string/cht_usage</item>
+        <item>@string/en_usage</item>
+    </string-array>
+    
+    <string-array name="remarks">
+        <item>@string/remarks</item>
+        <item>@string/cht_remarks</item>
+        <item>@string/en_remarks</item>
+    </string-array>
+    
+    <string-array name="save">
+        <item>@string/save</item>
+        <item>@string/cht_save</item>
+        <item>@string/en_save</item>
+    </string-array>
+    
+    <string-array name="yes">
+        <item>@string/yes</item>
+        <item>@string/cht_yes</item>
+        <item>@string/en_yes</item>
+    </string-array>
+    
+    <string-array name="no">
+        <item>@string/no</item>
+        <item>@string/cht_no</item>
+        <item>@string/en_no</item>
+    </string-array>
+    
+    <string-array name="confirm">
+        <item>@string/confirm</item>
+        <item>@string/cht_confirm</item>
+        <item>@string/en_confirm</item>
+    </string-array>
+    
+    <string-array name="ok">
+        <item>@string/ok</item>
+        <item>@string/cht_ok</item>
+        <item>@string/en_ok</item>
+    </string-array>
+    
+    <string-array name="cancal">
+        <item>@string/cancal</item>
+        <item>@string/cht_cancal</item>
+        <item>@string/en_cancal</item>
+    </string-array>
+    
+    <string-array name="agree">
+        <item>@string/agree</item>
+        <item>@string/cht_agree</item>
+        <item>@string/en_agree</item>
+    </string-array>
+    
+    <string-array name="not_agree">
+        <item>@string/not_agree</item>
+        <item>@string/cht_not_agree</item>
+        <item>@string/en_not_agree</item>
+    </string-array>
+    
+    <string-array name="confirm_selecttions">
+        <item>@string/confirm_selecttions</item>
+        <item>@string/cht_confirm_selecttions</item>
+        <item>@string/en_confirm_selecttions</item>
+    </string-array>
+    
+    <string-array name="cancel_selections">
+        <item>@string/cancel_selections</item>
+        <item>@string/cht_cancel_selections</item>
+        <item>@string/en_cancel_selections</item>
+    </string-array>
+    
+    <string-array name="redo">
+        <item>@string/redo</item>
+        <item>@string/cht_redo</item>
+        <item>@string/en_redo</item>
+    </string-array>
+    
+    <string-array name="undo">
+        <item>@string/undo</item>
+        <item>@string/cht_undo</item>
+        <item>@string/en_undo</item>
+    </string-array>
+    
+    <string-array name="query">
+        <item>@string/query</item>
+        <item>@string/cht_query</item>
+        <item>@string/en_query</item>
+    </string-array>
+    
+    <string-array name="query_result">
+        <item>@string/query_result</item>
+        <item>@string/cht_query_result</item>
+        <item>@string/en_query_result</item>
+    </string-array>
+    
+    <string-array name="search">
+        <item>@string/search</item>
+        <item>@string/cht_search</item>
+        <item>@string/en_search</item>
+    </string-array>
+    
+    <string-array name="search_result">
+        <item>@string/search_result</item>
+        <item>@string/cht_search_result</item>
+        <item>@string/en_search_result</item>
+    </string-array>
+    
+    <string-array name="not_found">
+        <item>@string/not_found</item>
+        <item>@string/cht_not_found</item>
+        <item>@string/en_not_found</item>
+    </string-array>
+    
+    <string-array name="can_not_find">
+        <item>@string/can_not_find</item>
+        <item>@string/cht_can_not_find</item>
+        <item>@string/en_can_not_find</item>
+    </string-array>
+    
+    <string-array name="none">
+        <item>@string/none</item>
+        <item>@string/cht_none</item>
+        <item>@string/en_none</item>
+    </string-array>
+    
+    <string-array name="unknown">
+        <item>@string/unknown</item>
+        <item>@string/cht_unknown</item>
+        <item>@string/en_unknown</item>
+    </string-array>
+    
+    <string-array name="undefined">
+        <item>@string/undefined</item>
+        <item>@string/cht_undefined</item>
+        <item>@string/en_undefined</item>
+    </string-array>
+    
+    <string-array name="customized">
+        <item>@string/customized</item>
+        <item>@string/cht_customized</item>
+        <item>@string/en_customized</item>
+    </string-array>
+    
+    <string-array name="quantity">
+        <item>@string/quantity</item>
+        <item>@string/cht_quantity</item>
+        <item>@string/en_quantity</item>
+    </string-array>
+    
+    <string-array name="add">
+        <item>@string/add</item>
+        <item>@string/cht_add</item>
+        <item>@string/en_add</item>
+    </string-array>
+    
+    <string-array name="delete">
+        <item>@string/delete</item>
+        <item>@string/cht_delete</item>
+        <item>@string/en_delete</item>
+    </string-array>
+    
+    <string-array name="select">
+        <item>@string/select</item>
+        <item>@string/cht_select</item>
+        <item>@string/en_select</item>
+    </string-array>
+    
+    <string-array name="please_select">
+        <item>@string/please_select</item>
+        <item>@string/cht_please_select</item>
+        <item>@string/en_please_select</item>
+    </string-array>
+    
+    <string-array name="please_select_or_customize">
+        <item>@string/please_select_or_customize</item>
+        <item>@string/cht_please_select_or_customize</item>
+        <item>@string/en_please_select_or_customize</item>
+    </string-array>
+    
+    <string-array name="edit">
+        <item>@string/edit</item>
+        <item>@string/cht_edit</item>
+        <item>@string/en_edit</item>
+    </string-array>
+    
+    <string-array name="action_import">
+        <item>@string/chs_import</item>
+        <item>@string/cht_import</item>
+        <item>@string/en_import</item>
+    </string-array>
+    
+    <string-array name="input">
+        <item>@string/input</item>
+        <item>@string/cht_input</item>
+        <item>@string/en_input</item>
+    </string-array>
+    
+    <string-array name="export">
+        <item>@string/export</item>
+        <item>@string/cht_export</item>
+        <item>@string/en_export</item>
+    </string-array>
+    
+    <string-array name="output">
+        <item>@string/output</item>
+        <item>@string/cht_output</item>
+        <item>@string/en_output</item>
+    </string-array>
+    
+    <string-array name="sys_app">
+        <item>@string/sys_app</item>
+        <item>@string/cht_sys_app</item>
+        <item>@string/en_sys_app</item>
+    </string-array>
+    
+    <string-array name="user_app">
+        <item>@string/user_app</item>
+        <item>@string/cht_user_app</item>
+        <item>@string/en_user_app</item>
+    </string-array>
+    
+    <string-array name="function_not_implemented">
+        <item>@string/function_not_implemented</item>
+        <item>@string/cht_function_not_implemented</item>
+        <item>@string/en_function_not_implemented</item>
+    </string-array>
+    
+    <string-array name="to_be_supplemented">
+        <item>@string/to_be_supplemented</item>
+        <item>@string/cht_to_be_supplemented</item>
+        <item>@string/en_to_be_supplemented</item>
+    </string-array>
+    
+    <string-array name="please_look_forward_to_it">
+        <item>@string/please_look_forward_to_it</item>
+        <item>@string/cht_please_look_forward_to_it</item>
+        <item>@string/en_please_look_forward_to_it</item>
+    </string-array>
+    
+    <string-array name="apply_to_current">
+        <item>@string/apply_to_current</item>
+        <item>@string/cht_apply_to_current</item>
+        <item>@string/en_apply_to_current</item>
+    </string-array>
+    
+    <string-array name="apply_to_all">
+        <item>@string/apply_to_all</item>
+        <item>@string/cht_apply_to_all</item>
+        <item>@string/en_apply_to_all</item>
+    </string-array>
+    
+    <string-array name="not_limited">
+        <item>@string/not_limited</item>
+        <item>@string/cht_not_limited</item>
+        <item>@string/en_not_limited</item>
+    </string-array>
+    
+    <string-array name="match_mode">
+        <item>@string/match_mode</item>
+        <item>@string/cht_match_mode</item>
+        <item>@string/en_match_mode</item>
+    </string-array>
+    
+    <string-array name="white_list_mode">
+        <item>@string/white_list_mode</item>
+        <item>@string/cht_white_list_mode</item>
+        <item>@string/en_white_list_mode</item>
+    </string-array>
+    
+    <string-array name="config_whilte_list">
+        <item>@string/config_whilte_list</item>
+        <item>@string/cht_config_whilte_list</item>
+        <item>@string/en_config_whilte_list</item>
+    </string-array>
+    
+    <string-array name="black_list_mode">
+        <item>@string/black_list_mode</item>
+        <item>@string/cht_black_list_mode</item>
+        <item>@string/en_black_list_mode</item>
+    </string-array>
+    
+    <string-array name="config_black_list">
+        <item>@string/config_black_list</item>
+        <item>@string/cht_config_black_list</item>
+        <item>@string/en_config_black_list</item>
+    </string-array>
+    
+    <string-array name="collision_handling">
+        <item>@string/collision_handling</item>
+        <item>@string/cht_collision_handling</item>
+        <item>@string/en_collision_handling</item>
+    </string-array>
+    
+    <string-array name="white_list_first">
+        <item>@string/white_list_first</item>
+        <item>@string/cht_white_list_first</item>
+        <item>@string/en_white_list_first</item>
+    </string-array>
+    
+    <string-array name="black_list_first">
+        <item>@string/black_list_first</item>
+        <item>@string/cht_black_list_first</item>
+        <item>@string/en_black_list_first</item>
+    </string-array>
+    
+    <string-array name="config_details">
+        <item>@string/config_details</item>
+        <item>@string/cht_config_details</item>
+        <item>@string/en_config_details</item>
+    </string-array>
+    
+    <string-array name="config_successful">
+        <item>@string/config_successful</item>
+        <item>@string/cht_config_successful</item>
+        <item>@string/en_config_successful</item>
+    </string-array>
+    
+    <string-array name="match_keywords">
+        <item>@string/match_keywords</item>
+        <item>@string/cht_match_keywords</item>
+        <item>@string/en_match_keywords</item>
+    </string-array>
+    
+    <string-array name="db_error">
+        <item>@string/db_error</item>
+        <item>@string/cht_db_error</item>
+        <item>@string/en_db_error</item>
+    </string-array>
+    
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         Customized items should be put below!
+         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      -->
+    
+    <string-array name="app_name">
+        <item>@string/app_name</item>
+        <item>@string/cht_app_name</item>
+        <item>@string/en_app_name</item>
+    </string-array>
+    
+    <string-array name="author_info">
+        <item>@string/author_info</item>
+        <item>@string/cht_author_info</item>
+        <item>@string/en_author_info</item>
+    </string-array>
+    
+    <string-array name="copyright_info">
+        <item>@string/copyright_info</item>
+        <item>@string/cht_copyright_info</item>
+        <item>@string/en_copyright_info</item>
+    </string-array>
+    
+    <string-array name="level_words">
+        <item>微</item>
+        <item>巨</item>
+        <item>甚</item>
+        <item>峻</item>
+        <item>猛</item>
+        <item>缓</item>
+        <item>急</item>
+        <item>轻</item>
+        <item>重</item>
+        <item>大</item>
+        <item>小</item>
+        <item>粗</item>
+        <item>细</item>
+    </string-array>
+
+    <string-array name="medicine_natures">
+        <item>寒</item>
+        <item>热</item>
+        <item>温</item>
+        <item>凉</item>
+        <item>平</item>
+    </string-array>
+
+    <string-array name="medicine_tastes">
+        <item>辛</item>
+        <item>甘</item>
+        <item>酸</item>
+        <item>苦</item>
+        <item>咸</item>
+        <item>淡</item>
+        <item>涩</item>
+    </string-array>
+
+    <string-array name="channel_tropism">
+        <item>（手少阴）心</item>
+        <item>（手太阳）小肠</item>
+        <item>（足厥阴）肝</item>
+        <item>（足少阳）胆</item>
+        <item>（足太阴）脾</item>
+        <item>（足阳明）胃</item>
+        <item>（手太阴）肺</item>
+        <item>（手阳明）大肠</item>
+        <item>（足少阴）肾</item>
+        <item>（足太阳）膀胱</item>
+        <item>（手厥阴）心包</item>
+        <item>（手少阳）三焦</item>
+    </string-array>
+    
+    <string-array name="zang_fu_viscera">
+        <item>心</item>
+        <item>小肠</item>
+        <item>肝</item>
+        <item>胆</item>
+        <item>脾</item>
+        <item>胃</item>
+        <item>肺</item>
+        <item>大肠</item>
+        <item>肾</item>
+        <item>膀胱</item>
+        <item>心包</item>
+        <item>三焦</item>
+    </string-array>
+    
+    <string-array name="life_fundamentals">
+        <item>气</item>
+        <item>血</item>
+        <item>津液</item>
+        <item>精</item>
+        <item>神</item>
+    </string-array>
+
+    <string-array name="motion_forms">
+        <item>升</item>
+        <item>降</item>
+        <item>浮</item>
+        <item>沉</item>
+        <item>出</item>
+        <item>入</item>
+    </string-array>
+    
+    <string-array name="action_verbs">
+        <item>补</item>
+        <item>滋补</item>
+        <item>滋养</item>
+        <item>滋</item>
+        <item>养</item>
+        <item>益</item>
+        <item>强</item>
+        <item>壮</item>
+        <item>强壮</item>
+        <item>固</item>
+        <item>温</item>
+        <item>下</item>
+        <item>和</item>
+        <item>吐</item>
+        <item>清</item>
+        <item>消</item>
+        <item>入</item>
+        <item>归</item>
+        <item>走</item>
+        <item>生</item>
+    </string-array>
+
+    <string-array name="processing_methods">
+        <item>生</item>
+        <item>熟</item>
+        <item>炒</item>
+        <item>焦</item>
+        <item>炭</item>
+        <item>炮</item>
+        <item>爁</item>
+        <item>炙</item>
+        <item>煿</item>
+        <item>煅</item>
+        <item>炼</item>
+        <item>制</item>
+        <item>淬</item>
+        <item>煅淬</item>
+        <item>煨</item>
+        <item>潬</item>
+        <item>燀</item>
+        <item>炖</item>
+        <item>蒸</item>
+        <item>酵</item>
+        <item>（水）飞</item>
+        <item>伏</item>
+        <item>镑</item>
+        <item>樧</item>
+        <item>曝</item>
+    </string-array>
+
+    <string-array name="medicine_units">
+        <item>克</item>
+        <item>千克</item>
+        <item>只</item>
+        <item>个</item>
+        <item>颗</item>
+        <item>粒</item>
+        <item>枚</item>
+        <item>块</item>
+        <item>片</item>
+        <item>段</item>
+        <item>付</item>
+        <item>剂</item>
+        <item>包</item>
+        <item>份</item>
+        <item>钱</item>
+        <item>两</item>
+        <item>斤</item>
+        <item>吨</item>
+        <item>叶</item>
+        <item>把</item>
+        <item>碗</item>
+        <item>壶</item>
+    </string-array>
+
+    <string-array name="medicine_roles">
+        <item>（君）主药</item>
+        <item>（臣）辅药</item>
+        <item>佐药_佐助药</item>
+        <item>佐药_佐制药</item>
+        <item>佐药_反佐药</item>
+        <item>使药_引经药</item>
+        <item>使药_调和药</item>
+    </string-array>
+
+    <string-array name="dosage_forms">
+        <item>汤</item>
+        <item>饮</item>
+        <item>酒</item>
+        <item>茶</item>
+        <item>露</item>
+        <item>丸</item>
+        <item>散</item>
+        <item>膏</item>
+        <item>丹</item>
+        <item>片</item>
+        <item>锭</item>
+        <item>胶</item>
+        <item>糕</item>
+        <item>线</item>
+        <item>曲</item>
+        <item>条</item>
+        <item>洗</item>
+        <item>熏</item>
+        <item>棒</item>
+        <item>钉</item>
+        <item>灸</item>
+        <item>熨</item>
+        <item>糊</item>
+    </string-array>
+
+    <string-array name="methods_of_taking_medicine">
+        <item>温服</item>
+        <item>热服</item>
+        <item>冷服</item>
+        <item>餐前服</item>
+        <item>餐后服</item>
+        <item>餐间服</item>
+        <item>空腹服</item>
+        <item>睡前服</item>
+        <item>隔夜服</item>
+        <item>冲服</item>
+        <item>顿服</item>
+        <item>频服</item>
+        <item>分服</item>
+    </string-array>
+
+    <string-array name="nature_of_symptom">
+        <item>气虚</item>
+        <item>阳虚</item>
+        <item>血虚</item>
+        <item>阴虚</item>
+        <item>血淤</item>
+        <item>血热</item>
+        <item>表寒</item>
+        <item>表热</item>
+        <item>表虚</item>
+        <item>表实</item>
+        <item>里寒</item>
+        <item>里热</item>
+        <item>里虚</item>
+        <item>里实</item>
+        <item>半表半里</item>
+        <item>表里俱寒</item>
+        <item>表里俱热</item>
+        <item>表热里寒</item>
+        <item>表寒里热</item>
+        <item>表里俱实</item>
+        <item>表里俱虚</item>
+        <item>表虚里实</item>
+        <item>表实里虚</item>
+        <item>实寒</item>
+        <item>虚寒</item>
+        <item>实热</item>
+        <item>虚热</item>
+        <item>上热下寒</item>
+        <item>上寒下热</item>
+        <item>真寒假热</item>
+        <item>真热假寒</item>
+        <item>真实假虚</item>
+        <item>真虚假实</item>
+        <item>亡阴</item>
+        <item>亡阳</item>
+    </string-array>
+
+    <string-array name="medicine_effects">
+        <item>疏肝解郁</item>
+        <item>疏肝利胆</item>
+        <item>滋补肝肾</item>
+        <item>宁心安神</item>
+        <item>清热解毒</item>
+        <item>活血化瘀</item>
+    </string-array>
+
+    <string-array name="medicine_actions_and_indications">
+        <item>风寒感冒</item>
+        <item>风热感冒</item>
+        <item>肝肾阴虚</item>
+        <item>心血亏虚</item>
+    </string-array>
+    
+    <string-array name="medicine_categories">
+        <item>补益药</item>
+        <item>理气药</item>
+        <item>活血化瘀药</item>
+        <item>发散药</item>
+        <item>泻利药</item>
+        <item>温热药</item>
+        <item>寒凉药</item>
+        <item>其他药</item>
+    </string-array>
+    
+    <string-array name="prescription_categories">
+        <item>补益剂</item>
+        <item>补气、补血、气血双补、补阴、补阳</item>
+        <item>理气剂</item>
+        <item>行气、降气</item>
+        <item>理血剂</item>
+        <item>活血祛瘀、止血</item>
+        <item>解表剂</item>
+        <item>辛温解表、辛凉解表、扶正解表</item>
+        <item>泻下剂</item>
+        <item>寒下、温下、润下、逐水、攻补兼施</item>
+        <item>温里回阳</item>
+        <item>温中祛寒、回阳救逆、温经散寒</item>
+        <item>清热</item>
+        <item>清气分热、清营凉血、清热解毒、清脏腑热、清热祛暑、清虚热</item>
+        <item>祛湿</item>
+        <item>芳香化湿、清热祛湿、利水渗湿、温化水湿、祛风胜湿</item>
+        <item>润燥</item>
+        <item>轻宣外燥、滋润内燥</item>
+        <item>和解</item>
+        <item>和解少阳、调和肝脾、其它</item>
+        <item>表里双解</item>
+        <item>解表攻/清/温里</item>
+        <item>消导</item>
+        <item>消食导滞、消痞化积</item>
+        <item>固涩</item>
+        <item>敛汗固表、涩精止遗、涩肠固脱、固崩止带</item>
+        <item>安神</item>
+        <item>重镇安神、滋养安神</item>
+        <item>开窍</item>
+        <item>凉开、温开</item>
+        <item>驱虫</item>
+        <item>驱虫</item>
+        <item>治风</item>
+        <item>疏散外风、平熄内风</item>
+        <item>祛痰</item>
+        <item>燥湿/祛寒/清热/治风化痰</item>
+        <item>涌吐</item>
+        <item>涌吐</item>
+    </string-array>
+    
+    <string-array name="sql_args_make_test_data">
+        <item>名称1</item>
+        <item>备注1</item>
+    </string-array>
+    
+    <string-array name="sql_args_query_test_data">
+        <item>10</item>
+    </string-array>
+    
+    <string-array name="sql_args_add_reference_material">
+        <item>实用中医基础学</item>
+        <item>1</item>
+        <item>李德新</item>
+        <item>李德新</item>
+        <item>辽宁科学技术出版社</item>
+        <item>1985/12</item>
+        <item>最基础的中医理论入门书籍，内容非常全面、易读，可作为中医药入门的启蒙教材。</item>
+        
+        <item>用药心得十讲</item>
+        <item>3</item>
+        <item>焦树德</item>
+        <item>焦树德</item>
+        <item>人民卫生出版社</item>
+        <item>2004/8</item>
+        <item>名老中医多年的行医用药心得体会，理论与示例相结合、文字与表格相结合，值得经常阅读、查询。</item>
+        
+        <item>方剂心得十讲</item>
+        <item>2</item>
+        <item>焦树德</item>
+        <item>焦树德、闫小萍</item>
+        <item>人民卫生出版社</item>
+        <item>2004/6</item>
+        <item>《用药心得十讲》的姐妹篇，主讲方剂，建议配套阅读。</item>
+        
+        <item>中医处方指南</item>
+        <item>2</item>
+        <item>朱玉祥</item>
+        <item>朱玉祥</item>
+        <item>金盾出版社</item>
+        <item>1996/12</item>
+        <item>
+            方剂数量非常丰富，书中重点介绍基础方，类方则以表格形式作对比说明，对学习者可起触类旁通的启发作用。
+            此外，书后还列举随症加减用药、常用药对、常用缺药代用药、常用中成药，对使用者在实践中有很大的帮助。
+        </item>
+        
+        <item>中医名方鉴别运用</item>
+        <item>1</item>
+        <item>段苦寒</item>
+        <item>段苦寒</item>
+        <item>天津科学技术出版社</item>
+        <item>1987/9</item>
+        <item>书如其名，对作用类似的方剂进行鉴别、剖析，有助于读者融会贯通，更易掌握更多数量的方剂。</item>
+        
+        <item>方剂学问难</item>
+        <item>1</item>
+        <item>巴坤杰</item>
+        <item>巴坤杰</item>
+        <item>安徽科学技术出版社</item>
+        <item>1986/1</item>
+        <item>
+            书名的“难”普通话应读第四声，意为“发难、提问”，故书中每一章节即为一问。
+            书中前三分之一主要站在一般的角度来对方剂的学习和运用进行描述，余下内容
+            则以一些具体的方剂对某些问题进行举例说明。本书对各阶段的学习者和使用者
+            均有一定的点拨作用。
+        </item>
+        
+        <item>汤头歌诀白话精解</item>
+        <item>1</item>
+        <item>[清代]汪昂</item>
+        <item>李振东</item>
+        <item>天津科学技术出版社</item>
+        <item>2009/6</item>
+        <item>
+            本书是众多对清代老中医汪昂的《汤头歌诀》所作的白话注解的书籍的其中一个版本。
+            书中大部分篇幅用于列举汤头歌诀、经脉歌诀的原内容，以及对汤头的组成、用法、
+            功效、主治、药理分析，或者对经脉歌诀的含义，进行比较详细的介绍，这部分内容
+            适合以分析的角度去学习。书的后小半则将前述歌诀重新作一次总录，仅有歌诀内容
+            而无注解，这部分内容主要是便于背诵。书的最后则是一些用在古方中的药草
+            的辑录，可作为拓展阅读。总的来说，书中有不少歌诀还算朗朗上口，对学习方剂有
+            一定的助记作用，而白话注解亦简明扼要，有一定水平。
+        </item>
+    </string-array>
+    
+    <string-array name="sql_args_make_frequently_used_medicines">
+        <item>人参</item>
+        <item>1</item>
+        <item>党参</item>
+        <item>1</item>
+        <item>黄芪</item>
+        <item>1</item>
+        <item>白术</item>
+        <item>1</item>
+        <item>山药</item>
+        <item>1</item>
+        <item>黄精</item>
+        <item>1</item>
+        <item>白扁豆</item>
+        <item>1</item>
+        <item>大枣</item>
+        <item>1</item>
+        <item>甘草</item>
+        <item>1</item>
+        <item>熟地黄</item>
+        <item>1</item>
+        <item>当归</item>
+        <item>1</item>
+        <item>白芍</item>
+        <item>1</item>
+        <item>阿胶</item>
+        <item>1</item>
+        <item>紫河车</item>
+        <item>1</item>
+        <item>何首乌</item>
+        <item>1</item>
+        <item>龟板</item>
+        <item>1</item>
+        <item>鳖甲</item>
+        <item>1</item>
+        <item>山茱萸</item>
+        <item>1</item>
+        <item>枸杞子</item>
+        <item>1</item>
+        <item>沙参</item>
+        <item>1</item>
+        <item>元参</item>
+        <item>1</item>
+        <item>麦冬</item>
+        <item>1</item>
+        <item>天冬</item>
+        <item>1</item>
+        <item>石斛</item>
+        <item>1</item>
+        <item>玉竹</item>
+        <item>1</item>
+        <item>百合</item>
+        <item>1</item>
+        <item>女贞子</item>
+        <item>1</item>
+        <item>旱莲草</item>
+        <item>1</item>
+        <item>桑椹</item>
+        <item>1</item>
+        <item>潼蒺藜</item>
+        <item>1</item>
+        <item>黑芝麻</item>
+        <item>1</item>
+        <item>牛膝</item>
+        <item>1</item>
+        <item>土牛膝</item>
+        <item>1</item>
+        <item>鹿茸</item>
+        <item>1</item>
+        <item>鹿角</item>
+        <item>1</item>
+        <item>鹿角胶</item>
+        <item>1</item>
+        <item>鹿角霜</item>
+        <item>1</item>
+        <item>肉苁蓉</item>
+        <item>1</item>
+        <item>巴戟天</item>
+        <item>1</item>
+        <item>淫羊藿</item>
+        <item>1</item>
+        <item>补骨脂</item>
+        <item>1</item>
+        <item>益智仁</item>
+        <item>1</item>
+        <item>仙茅</item>
+        <item>1</item>
+        <item>菟丝子</item>
+        <item>1</item>
+        <item>杜仲</item>
+        <item>1</item>
+        <item>续断</item>
+        <item>1</item>
+        <item>狗脊</item>
+        <item>1</item>
+        <item>蛇床子</item>
+        <item>1</item>
+        <item>阳起石</item>
+        <item>1</item>
+        <item>韭菜子</item>
+        <item>1</item>
+        <item>酸枣仁</item>
+        <item>1</item>
+        <item>柏子仁</item>
+        <item>1</item>
+        <item>远志</item>
+        <item>1</item>
+        <item>夜交藤</item>
+        <item>1</item>
+        <item>珍珠母</item>
+        <item>1</item>
+        <item>朱砂</item>
+        <item>1</item>
+        <item>琥珀</item>
+        <item>1</item>
+        <item>磁石</item>
+        <item>1</item>
+        <item>龙骨</item>
+        <item>1</item>
+        <item>龙齿</item>
+        <item>1</item>
+        <item>牡蛎</item>
+        <item>1</item>
+        <item>浮小麦</item>
+        <item>1</item>
+        <item>麻黄根</item>
+        <item>1</item>
+        <item>金樱子</item>
+        <item>1</item>
+        <item>莲子</item>
+        <item>1</item>
+        <item>海螵蛸</item>
+        <item>1</item>
+        <item>瓦楞子</item>
+        <item>1</item>
+        <item>赤石脂</item>
+        <item>1</item>
+        <item>白石脂</item>
+        <item>1</item>
+        <item>禹余粮</item>
+        <item>1</item>
+        <item>乌梅</item>
+        <item>1</item>
+        <item>诃子</item>
+        <item>1</item>
+        <item>肉豆蔻</item>
+        <item>1</item>
+        <item>桑螵蛸</item>
+        <item>1</item>
+        <item>复盆子</item>
+        <item>1</item>
+        <item>五味子</item>
+        <item>1</item>
+        <item>白果</item>
+        <item>1</item>
+
+        <item>陈皮</item>
+        <item>2</item>
+        <item>橘红</item>
+        <item>2</item>
+        <item>青皮</item>
+        <item>2</item>
+        <item>枳实</item>
+        <item>2</item>
+        <item>枳壳</item>
+        <item>2</item>
+        <item>沉香</item>
+        <item>2</item>
+        <item>檀香</item>
+        <item>2</item>
+        <item>柿蒂</item>
+        <item>2</item>
+        <item>旋复花</item>
+        <item>2</item>
+        <item>莱菔子</item>
+        <item>2</item>
+        <item>薤白</item>
+        <item>2</item>
+        <item>苏子</item>
+        <item>2</item>
+        <item>草豆蔻</item>
+        <item>2</item>
+        <item>红豆蔻</item>
+        <item>2</item>
+        <item>砂仁</item>
+        <item>2</item>
+        <item>白豆蔻</item>
+        <item>2</item>
+        <item>荔枝核</item>
+        <item>2</item>
+        <item>川楝子</item>
+        <item>2</item>
+        <item>香附</item>
+        <item>2</item>
+        <item>木香</item>
+        <item>2</item>
+        <item>厚朴</item>
+        <item>2</item>
+        <item>乌药</item>
+        <item>2</item>
+        <item>槟榔</item>
+        <item>2</item>
+        <item>香橼</item>
+        <item>2</item>
+        <item>佛手（花）</item>
+        <item>2</item>
+
+        <item>川芎</item>
+        <item>3</item>
+        <item>丹参</item>
+        <item>3</item>
+        <item>元胡</item>
+        <item>3</item>
+        <item>姜黄</item>
+        <item>3</item>
+        <item>郁金</item>
+        <item>3</item>
+        <item>莪术</item>
+        <item>3</item>
+        <item>三棱</item>
+        <item>3</item>
+        <item>乳香</item>
+        <item>3</item>
+        <item>没药</item>
+        <item>3</item>
+        <item>红花</item>
+        <item>3</item>
+        <item>桃仁</item>
+        <item>3</item>
+        <item>五灵脂</item>
+        <item>3</item>
+        <item>蒲黄</item>
+        <item>3</item>
+        <item>穿山甲</item>
+        <item>3</item>
+        <item>王不留</item>
+        <item>3</item>
+        <item>泽兰</item>
+        <item>3</item>
+        <item>益母草</item>
+        <item>3</item>
+        <item>骨碎补</item>
+        <item>3</item>
+        <item>刘寄奴</item>
+        <item>3</item>
+        <item>苏木</item>
+        <item>3</item>
+        <item>茜草</item>
+        <item>3</item>
+        <item>赤芍</item>
+        <item>3</item>
+        <item>血竭</item>
+        <item>3</item>
+        <item>水蛭</item>
+        <item>3</item>
+        <item>虻虫</item>
+        <item>3</item>
+        <item>䗪虫</item>
+        <item>3</item>
+
+        <item>麻黄</item>
+        <item>4</item>
+        <item>桂枝</item>
+        <item>4</item>
+        <item>荆芥</item>
+        <item>4</item>
+        <item>防风</item>
+        <item>4</item>
+        <item>紫苏</item>
+        <item>4</item>
+        <item>羌活</item>
+        <item>4</item>
+        <item>独活</item>
+        <item>4</item>
+        <item>白芷</item>
+        <item>4</item>
+        <item>藁本</item>
+        <item>4</item>
+        <item>细辛</item>
+        <item>4</item>
+        <item>辛荑</item>
+        <item>4</item>
+        <item>苍耳子</item>
+        <item>4</item>
+        <item>香薷</item>
+        <item>4</item>
+        <item>生姜</item>
+        <item>4</item>
+        <item>薄荷</item>
+        <item>4</item>
+        <item>菊花</item>
+        <item>4</item>
+        <item>牛蒡子</item>
+        <item>4</item>
+        <item>蔓荆子</item>
+        <item>4</item>
+        <item>浮萍</item>
+        <item>4</item>
+        <item>蝉蜕</item>
+        <item>4</item>
+        <item>柴胡</item>
+        <item>4</item>
+
+        <item>大黄</item>
+        <item>5</item>
+        <item>芒硝</item>
+        <item>5</item>
+        <item>番泻叶</item>
+        <item>5</item>
+        <item>芦荟</item>
+        <item>5</item>
+        <item>巴豆</item>
+        <item>5</item>
+        <item>火麻仁</item>
+        <item>5</item>
+        <item>郁李仁</item>
+        <item>5</item>
+        <item>蜂蜜</item>
+        <item>5</item>
+        <item>木通</item>
+        <item>5</item>
+        <item>通草</item>
+        <item>5</item>
+        <item>茯苓</item>
+        <item>5</item>
+        <item>猪苓</item>
+        <item>5</item>
+        <item>泽泻</item>
+        <item>5</item>
+        <item>车前子</item>
+        <item>5</item>
+        <item>滑石</item>
+        <item>5</item>
+        <item>石韦</item>
+        <item>5</item>
+        <item>萹蓄</item>
+        <item>5</item>
+        <item>瞿麦</item>
+        <item>5</item>
+        <item>海金沙</item>
+        <item>5</item>
+        <item>金钱草</item>
+        <item>5</item>
+        <item>冬葵子</item>
+        <item>5</item>
+        <item>薏米</item>
+        <item>5</item>
+        <item>防己</item>
+        <item>5</item>
+        <item>木瓜</item>
+        <item>5</item>
+        <item>五加皮</item>
+        <item>5</item>
+        <item>冬瓜皮</item>
+        <item>5</item>
+        <item>冬瓜子</item>
+        <item>5</item>
+        <item>茵陈</item>
+        <item>5</item>
+        <item>玉米须</item>
+        <item>5</item>
+        <item>抽葫芦</item>
+        <item>5</item>
+        <item>甘遂</item>
+        <item>5</item>
+        <item>大戟</item>
+        <item>5</item>
+        <item>芫花</item>
+        <item>5</item>
+        <item>商陆</item>
+        <item>5</item>
+        <item>牵牛子</item>
+        <item>5</item>
+
+        <item>附子</item>
+        <item>6</item>
+        <item>肉桂</item>
+        <item>6</item>
+        <item>干姜</item>
+        <item>6</item>
+        <item>炮姜</item>
+        <item>6</item>
+        <item>吴茱萸</item>
+        <item>6</item>
+        <item>川椒</item>
+        <item>6</item>
+        <item>小茴香</item>
+        <item>6</item>
+        <item>丁香</item>
+        <item>6</item>
+        <item>高良姜</item>
+        <item>6</item>
+        <item>艾叶</item>
+        <item>6</item>
+        <item>胡芦巴</item>
+        <item>6</item>
+        <item>半夏</item>
+        <item>6</item>
+        <item>天南星</item>
+        <item>6</item>
+        <item>胆南星</item>
+        <item>6</item>
+        <item>白芥子</item>
+        <item>6</item>
+        <item>皂角</item>
+        <item>6</item>
+        <item>皂刺</item>
+        <item>6</item>
+        <item>白附子</item>
+        <item>6</item>
+        <item>硫磺</item>
+        <item>6</item>
+        <item>乌头</item>
+        <item>6</item>
+
+        <item>石膏</item>
+        <item>7</item>
+        <item>黄连</item>
+        <item>7</item>
+        <item>黄芩</item>
+        <item>7</item>
+        <item>栀子</item>
+        <item>7</item>
+        <item>黄柏</item>
+        <item>7</item>
+        <item>生地黄</item>
+        <item>7</item>
+        <item>犀角</item>
+        <item>7</item>
+        <item>广角</item>
+        <item>7</item>
+        <item>水牛角</item>
+        <item>7</item>
+        <item>羚羊角</item>
+        <item>7</item>
+        <item>知母</item>
+        <item>7</item>
+        <item>大青叶</item>
+        <item>7</item>
+        <item>青黛</item>
+        <item>7</item>
+        <item>板蓝根</item>
+        <item>7</item>
+        <item>山豆根</item>
+        <item>7</item>
+        <item>锦灯笼</item>
+        <item>7</item>
+        <item>射干</item>
+        <item>7</item>
+        <item>金银花</item>
+        <item>7</item>
+        <item>连翘</item>
+        <item>7</item>
+        <item>蒲公英</item>
+        <item>7</item>
+        <item>地丁</item>
+        <item>7</item>
+        <item>龙胆草</item>
+        <item>7</item>
+        <item>苦参</item>
+        <item>7</item>
+        <item>胡黄连</item>
+        <item>7</item>
+        <item>芦根</item>
+        <item>7</item>
+        <item>竹叶</item>
+        <item>7</item>
+        <item>天花粉</item>
+        <item>7</item>
+        <item>败酱草</item>
+        <item>7</item>
+        <item>马勃</item>
+        <item>7</item>
+        <item>蚤休</item>
+        <item>7</item>
+        <item>鸦胆子</item>
+        <item>7</item>
+        <item>漏芦</item>
+        <item>7</item>
+        <item>夏枯草</item>
+        <item>7</item>
+        <item>草决明</item>
+        <item>7</item>
+        <item>青葙子</item>
+        <item>7</item>
+        <item>密蒙花</item>
+        <item>7</item>
+        <item>夜明砂</item>
+        <item>7</item>
+        <item>丹皮</item>
+        <item>7</item>
+        <item>地骨皮</item>
+        <item>7</item>
+        <item>紫草</item>
+        <item>7</item>
+        <item>银柴胡</item>
+        <item>7</item>
+        <item>白薇</item>
+        <item>7</item>
+        <item>青蒿</item>
+        <item>7</item>
+        <item>白头翁</item>
+        <item>7</item>
+        <item>秦皮</item>
+        <item>7</item>
+        <item>白鲜皮</item>
+        <item>7</item>
+        <item>瓜蒌</item>
+        <item>7</item>
+        <item>葶苈子</item>
+        <item>7</item>
+        <item>天竺黄</item>
+        <item>7</item>
+        <item>竹茹</item>
+        <item>7</item>
+        <item>竹沥</item>
+        <item>7</item>
+        <item>昆布</item>
+        <item>7</item>
+        <item>海藻</item>
+        <item>7</item>
+        <item>代赭石</item>
+        <item>7</item>
+        <item>石决明</item>
+        <item>7</item>
+
+        <item>杏仁</item>
+        <item>8</item>
+        <item>桔梗</item>
+        <item>8</item>
+        <item>白前</item>
+        <item>8</item>
+        <item>贝母</item>
+        <item>8</item>
+        <item>紫苑</item>
+        <item>8</item>
+        <item>款冬花</item>
+        <item>8</item>
+        <item>百部</item>
+        <item>8</item>
+        <item>马兜铃</item>
+        <item>8</item>
+        <item>桑白皮</item>
+        <item>8</item>
+        <item>枇杷叶</item>
+        <item>8</item>
+        <item>威灵仙</item>
+        <item>8</item>
+        <item>秦艽</item>
+        <item>8</item>
+        <item>豨莶草</item>
+        <item>8</item>
+        <item>海风藤</item>
+        <item>8</item>
+        <item>络石藤</item>
+        <item>8</item>
+        <item>海桐皮</item>
+        <item>8</item>
+        <item>千年健</item>
+        <item>8</item>
+        <item>老鹳草</item>
+        <item>8</item>
+        <item>伸筋草</item>
+        <item>8</item>
+        <item>透骨草</item>
+        <item>8</item>
+        <item>追地风</item>
+        <item>8</item>
+        <item>桑枝</item>
+        <item>8</item>
+        <item>松节</item>
+        <item>8</item>
+        <item>丝瓜络</item>
+        <item>8</item>
+        <item>白花蛇</item>
+        <item>8</item>
+        <item>白僵蚕</item>
+        <item>8</item>
+        <item>全蝎</item>
+        <item>8</item>
+        <item>蜈蚣</item>
+        <item>8</item>
+        <item>地龙</item>
+        <item>8</item>
+        <item>白蒺藜</item>
+        <item>8</item>
+        <item>天麻</item>
+        <item>8</item>
+        <item>钩藤</item>
+        <item>8</item>
+        <item>大蓟</item>
+        <item>8</item>
+        <item>小蓟</item>
+        <item>8</item>
+        <item>地榆</item>
+        <item>8</item>
+        <item>侧柏叶</item>
+        <item>8</item>
+        <item>白茅根</item>
+        <item>8</item>
+        <item>棕榈炭</item>
+        <item>8</item>
+        <item>三七</item>
+        <item>8</item>
+        <item>白芨</item>
+        <item>8</item>
+        <item>仙鹤草</item>
+        <item>8</item>
+        <item>藕节</item>
+        <item>8</item>
+        <item>菖蒲</item>
+        <item>8</item>
+        <item>麝香</item>
+        <item>8</item>
+        <item>冰片</item>
+        <item>8</item>
+        <item>神曲</item>
+        <item>8</item>
+        <item>麦芽</item>
+        <item>8</item>
+        <item>山楂</item>
+        <item>8</item>
+        <item>鸡内金</item>
+        <item>8</item>
+        <item>常山</item>
+        <item>8</item>
+        <item>草果</item>
+        <item>8</item>
+        <item>使君子</item>
+        <item>8</item>
+        <item>苦楝根皮</item>
+        <item>8</item>
+        <item>芜荑</item>
+        <item>8</item>
+        <item>鹤虱</item>
+        <item>8</item>
+        <item>雷丸</item>
+        <item>8</item>
+        <item>紫硇砂</item>
+        <item>8</item>
+        <item>山慈菇</item>
+        <item>8</item>
+        <item>半枝莲</item>
+        <item>8</item>
+        <item>白花蛇舌草</item>
+        <item>8</item>
+    </string-array>
+    
+    <string-array name="sql_args_make_frequently_used_prescriptions">
+        <item>四君子汤</item>
+        <item>1</item>
+        <item>四物汤</item>
+        <item>1</item>
+        <item>八珍汤</item>
+        <item>1</item>
+        <item>十全大补汤</item>
+        <item>1</item>
+    </string-array>
+
+</resources>

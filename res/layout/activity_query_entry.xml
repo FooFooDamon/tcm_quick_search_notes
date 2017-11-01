@@ -1,0 +1,117 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context="com.project.tcm_quick_search_notes.QueryEntryActivity" >
+
+    <ScrollView
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" >
+	    
+	    <RelativeLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content" >
+		
+		    <TextView
+		        android:id="@+id/txv_name"
+		        android:layout_width="wrap_content"
+		        android:layout_height="match_parent"
+		        android:layout_marginTop="@dimen/activity_vertical_margin"
+		        android:layout_marginStart="@dimen/activity_horizontal_margin"
+		        android:text="@string/name"
+		        android:textAppearance="@style/DefaultTextStyle" />
+		    
+		    <Button
+		        android:id="@+id/btn_add_medication"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBaseline="@+id/txv_name"
+		        android:layout_alignParentEnd="true"
+		        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+		        android:background="@drawable/default_button_style"
+		        android:text="@string/add_medicine"
+		        android:textColor="#ffcacaca"
+		        android:textSize="14sp" />
+		
+		    <EditText
+		        android:id="@+id/etx_name"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBaseline="@+id/txv_name"
+		        android:layout_toEndOf="@+id/txv_name"
+		        android:layout_marginStart="@dimen/activity_horizontal_margin"
+		        android:layout_toStartOf="@+id/btn_add_medication"
+		        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+		        android:ems="25"
+		        android:inputType="text"
+		        android:hint="@string/hint_null_for_querying_all"
+		        android:textColor="#ffcacaca"
+		        android:textAppearance="@style/DefaultTextStyle" />
+		
+		    <TextView
+		        android:id="@+id/txv_category"
+		        android:layout_width="wrap_content"
+		        android:layout_height="match_parent"
+		        android:layout_alignStart="@+id/txv_name"
+		        android:layout_below="@+id/txv_name"
+		        android:layout_marginTop="40dp"
+		        android:text="@string/category"
+		        android:textAppearance="@style/DefaultTextStyle" />
+		    
+		    <Button
+		        android:id="@+id/btn_add_category"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBaseline="@+id/txv_category"
+		        android:layout_alignEnd="@+id/btn_add_medication"
+		        android:background="@drawable/default_button_style"
+		        android:text="@string/add_category"
+		        android:textColor="#ffcacaca"
+		        android:textSize="14sp" />
+		
+		    <Spinner
+		        android:id="@+id/spn_category"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBaseline="@+id/txv_category"
+		        android:layout_toEndOf="@+id/txv_category"
+		        android:layout_marginStart="@dimen/activity_horizontal_margin"
+		        android:layout_toStartOf="@+id/btn_add_category"
+		        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+		        android:spinnerMode="dropdown" />
+		    
+		    <ImageView
+		        android:id="@+id/query_page_divider"
+		        android:contentDescription="@string/empty_string"
+		        android:layout_width="match_parent"
+		        android:layout_height="10dp"
+		        android:layout_below="@+id/txv_category"
+		        android:layout_marginTop="50dp"
+		        android:background="#88b27e50" >
+		    </ImageView>
+		
+		</RelativeLayout>
+		
+	</ScrollView>
+    
+    <ScrollView
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" >
+	
+	    <com.android_assistant.EnhancedListView
+	        android:id="@+id/lsv_query_items"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginStart="@dimen/activity_horizontal_margin"
+	        android:layout_marginEnd="@dimen/activity_horizontal_margin" >
+	    </com.android_assistant.EnhancedListView>
+	
+	</ScrollView>
+
+</LinearLayout>
