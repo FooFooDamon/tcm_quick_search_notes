@@ -38,6 +38,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,6 +49,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -158,7 +161,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
 	
 	private static final int CHKBOX_VISIBLE = 1;
 	private static final int CHKBOX_CLICKABLE = 2;
-	private static final int CHKBOX_SELECTED = 8;
+	private static final int CHKBOX_SELECTED = 4;
+	
+	private Menu gMenu = null;
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -202,6 +207,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.read_write_item_details, menu);
+		gMenu = menu;
 		return true;
 	}
 
@@ -210,11 +216,115 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
+		int id = item.getItemId();		
+		int[][] detailResIds = getDetailItemResourceIds();
 		
-		if (id == R.id.action_settings) {
+		if (R.id.menu_edit == id) {
+			item.setVisible(false);
+			gMenu.findItem(R.id.menu_save).setVisible(true);
+			gMenu.findItem(R.id.menu_cancel).setVisible(true);
+			
+			for (int i = 0; i < detailResIds.length; ++i) {
+				if (detailContentIsNotUsed(i))
+					continue;
+				
+				ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
+				DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
+				DetailContentTemplate template = mDetailContentTemplates[i];
+				
+				for (int j = 0; j < contentsAdapter.getCount(); ++j) {
+					DetailContentData contentData = (DetailContentData) contentsAdapter.getItem(j);
+					
+					if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
+						contentData.checkBoxFlags |= CHKBOX_CLICKABLE;
+						//contentsAdapter.update(i, lsvContents);
+					}
+					
+					contentData.spinnersEnabled = true;
+					contentData.editTextsEnabled = true;
+				}
+				contentsAdapter.notifyDataSetChanged();
+			}
+			
 			return true;
 		}
+		else if (R.id.menu_save == id) {
+			item.setVisible(false);
+			gMenu.findItem(R.id.menu_cancel).setVisible(false);
+			gMenu.findItem(R.id.menu_edit).setVisible(true);
+			
+			ArrayList<String> updateArgs = new ArrayList<String>();
+			View convertView = null;
+			DetailContentAdapter.ViewHolder viewHolder = null;
+			
+			for (int i = 0; i < detailResIds.length; ++i) {
+				if (detailContentIsNotUsed(i))
+					continue;
+				
+				ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
+				DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
+				DetailContentTemplate template = mDetailContentTemplates[i];
+				
+				if (MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL == i || detailContentIsSimple(i)) {
+					convertView = contentsAdapter.getView(0, null/*convertView*/, null);
+					viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
+					updateArgs.add(viewHolder.etxValueLong.getText().toString());
+				}
+				
+				for (int j = 0; j < contentsAdapter.getCount(); ++j) {
+					DetailContentData contentData = (DetailContentData) contentsAdapter.getItem(j);
+					
+					if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
+						contentData.checkBoxFlags &= (~CHKBOX_CLICKABLE);
+						//contentsAdapter.update(i, lsvContents);
+					}
+					
+					contentData.spinnersEnabled = false;
+					contentData.editTextsEnabled = false;
+				}
+				contentsAdapter.notifyDataSetChanged();
+			}
+			
+			updateArgs.add(getIntent().getStringExtra("id"));
+			
+			DbHelper dbHelper = new DbHelper(this);
+			
+			dbHelper.tmpUpdateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
+			
+			this.finish();
+		}
+		else if (R.id.menu_cancel == id) {
+			item.setVisible(false);
+			gMenu.findItem(R.id.menu_save).setVisible(false);
+			gMenu.findItem(R.id.menu_edit).setVisible(true);
+			
+			for (int i = 0; i < detailResIds.length; ++i) {
+				if (detailContentIsNotUsed(i))
+					continue;
+				
+				ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
+				DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
+				DetailContentTemplate template = mDetailContentTemplates[i];
+				
+				for (int j = 0; j < contentsAdapter.getCount(); ++j) {
+					DetailContentData contentData = (DetailContentData) contentsAdapter.getItem(j);
+					
+					if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
+						contentData.checkBoxFlags &= (~CHKBOX_CLICKABLE);
+						//contentsAdapter.update(i, lsvContents);
+					}
+					
+					contentData.spinnersEnabled = false;
+					contentData.editTextsEnabled = false;
+				}
+				contentsAdapter.notifyDataSetChanged();
+			}
+			
+			// TODO: ...
+		}
+		else
+			;
+		
 		return super.onOptionsItemSelected(item);
 	}
 	
@@ -222,6 +332,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		int[][] detailItemResIds = getDetailItemResourceIds();
 		
 		for (int i = 0; i < detailItemResIds.length; ++i) {
+			if (detailContentIsNotUsed(i))
+				continue;
+			
 			ArrayList<String> titleList = new ArrayList<String>();
 			ListView lsvTitle = (ListView) findViewById(detailItemResIds[i][1]);
 			DetailTitleAdapter titleAdapter = new DetailTitleAdapter(this, titleList);
@@ -236,6 +349,8 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		return (MEDICINE_COLUMN_INDEX_NAME == contentIndex
 			|| MEDICINE_COLUMN_INDEX_ALIASES == contentIndex
 			//|| MEDICINE_COLUMN_INDEX_CATEGORY == contentIndex
+			|| MEDICINE_COLUMN_INDEX_EFFECTS == contentIndex
+			|| MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS == contentIndex
 			|| MEDICINE_COLUMN_INDEX_DETAILS == contentIndex
 			|| MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS == contentIndex
 			|| MEDICINE_COLUMN_INDEX_COMMON_PARTNERS == contentIndex
@@ -249,6 +364,8 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		return (MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_NAME].equals(contentName)
 			|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_ALIASES].equals(contentName)
 			//|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CATEGORY].equals(contentName)
+			|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_EFFECTS].equals(contentName)
+			|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS].equals(contentName)
 			|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_DETAILS].equals(contentName)
 			|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS].equals(contentName)
 			|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_COMMON_PARTNERS].equals(contentName)
@@ -256,6 +373,10 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE].equals(contentName)
 			|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS].equals(contentName)
 			|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_REMARKS].equals(contentName));
+	}
+	
+	private boolean detailContentIsNotUsed(int contentIndex) {
+		return (MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION == contentIndex);
 	}
 	
 	private int[][] getDetailItemResourceIds() {
@@ -407,7 +528,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					new String[] { null, null, null, null, null, null, null } )
 			},
 
-			{ // TODO: /////////////////////////////
+			{
 				new DetailContentData(MEDICINE_COLUMN_INDEX_TASTES, 0,
 					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
 					new int[]{ 0, 0, 0, 1, 0, 0 },
@@ -570,7 +691,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
 					new int[]{ 0, 0, 0, 0, 0, 0 },
 					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, getString(R.string.hint_input_extra_contents_if_necessary) } )
+					new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_EFFECTS]) } )
 			},
 
 			{
@@ -578,7 +699,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
 					new int[]{ 0, 0, 0, 0, 0, 0 },
 					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, getString(R.string.hint_input_extra_contents_if_necessary) } )
+					new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS]) } )
 			},
 
 			{
@@ -632,9 +753,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			{
 				new DetailContentData(MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL, 0,
 					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 0, 0, 0 },
+					new int[]{ 0, 0, 0, 2, 0, 0 },
 					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, getString(R.string.reference_material_contents_example) } )
+					new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL]) } )
 			},
 
 			{
@@ -647,6 +768,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		};
 		
 		for (int i = 0; i < MEDICINE_COLUMNS.length; ++i) {
+			if (detailContentIsNotUsed(i))
+				continue;
+			
 			ArrayList<DetailContentData> contentsList = new ArrayList<DetailContentData>();
 			DetailContentAdapter contentsAdapter = new DetailContentAdapter(this, contentsList);
 			ListView lsvContents = (ListView) findViewById(detailItemResIds[i][2]);
@@ -733,16 +857,22 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		public int checkBoxFlags;
 		public HashMap<String, Integer> selectedSpinnerPositions;
 		public HashMap<String, String> editTextContents;
+		public boolean spinnersEnabled;
+		public boolean editTextsEnabled;
 		
 		public DetailContentData() {
 			selectedSpinnerPositions = new HashMap<String, Integer>();
 			editTextContents = new HashMap<String, String>();
+			spinnersEnabled = false;
+			editTextsEnabled = false;
 		}
 		
 		public DetailContentData(int medicineColumnIndex, int checkBoxFlags,
 			int[] selectedSpinnerPositions, String[] editTextContents) {
 			this.medicineColumnIndex = medicineColumnIndex;
 			this.checkBoxFlags = checkBoxFlags;
+			this.spinnersEnabled = false;
+			this.editTextsEnabled = false;
 			this.selectedSpinnerPositions = new HashMap<String, Integer>();
 			for (int i = 0; i < DETAIL_CONTENT_SPINNER_NAMES.length; ++i) {
 				this.selectedSpinnerPositions.put(DETAIL_CONTENT_SPINNER_NAMES[i],
@@ -796,6 +926,17 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		public long getItemId(int position) {
 			return position;
 		}
+		
+		// TODO: Not finished, DO NOT use it !
+		public void update(int position, ListView listView) {
+			int firstVisiblePos = listView.getFirstVisiblePosition();
+			View view = listView.getChildAt(position/* - firstVisiblePos*/);
+			ViewHolder holder = (ViewHolder)view.getTag();
+			DetailContentData item = mItemList.get(position);
+			
+			holder.checkBox = (CheckBox) view.findViewById(R.id.chkbox_details_item);
+			holder.checkBox.setChecked(0 != (item.checkBoxFlags & CHKBOX_SELECTED));
+		}
 
 		@Override
 		public View getView(final int position, View convertView,
@@ -804,7 +945,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			ViewHolder holder = null;
 
 			if (convertView == null) {
-				convertView = mInflater.inflate(R.layout.details_item_content, null);
+				convertView = mInflater.inflate(R.layout.details_item_content, parent, false);
 				holder = createViewHolder(convertView);
 				convertView.setTag(holder);
 			}
@@ -841,8 +982,8 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			return holder;
 		}
 		
-		private void setViewHolder(ViewHolder holder, int position) {
-			DetailContentData item = mItemList.get(position);
+		private void setViewHolder(final ViewHolder holder, final int position) {
+			final DetailContentData item = mItemList.get(position);
 			
 			if (null == item)
 				return;
@@ -868,10 +1009,32 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			
 			// case 1: for simple contents
 			if (detailContentIsSimple(item.medicineColumnIndex)) {
+				holder.medicineColumnIndex = item.medicineColumnIndex;
 				holder.checkBox.setVisibility(TextView.GONE);
 				
+				holder.etxValueLong.setEnabled(item.editTextsEnabled);
 				holder.etxValueLong.setText(item.editTextContents.get("etxValueLong"));
 				com.android_assistant.TextView.setDefaultTextShadow(holder.etxValueLong);
+				holder.etxValueLong.addTextChangedListener(new TextWatcher() {
+					
+					@Override
+					public void onTextChanged(CharSequence s, int start, int before, int count) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void beforeTextChanged(CharSequence s, int start, int count,
+							int after) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void afterTextChanged(Editable s) {
+						mItemList.get(position).editTextContents.put("etxValueLong", s.toString());
+					}
+				});
 				
 				for (int i = 0; i < holderSpinners.length; ++i) {
 					holderSpinners[i].setVisibility(TextView.GONE);
@@ -888,11 +1051,25 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			
 			DetailContentTemplate template = mMapDetailContentTemplates.get(
 				MEDICINE_COLUMNS[item.medicineColumnIndex]);
+			
+			holder.medicineColumnIndex = item.medicineColumnIndex;
 
 			holder.checkBox.setVisibility((0 != (template.checkBoxFlags & CHKBOX_VISIBLE))
 				? TextView.VISIBLE : TextView.GONE);
-			holder.checkBox.setClickable(true);
+			holder.checkBox.setClickable(0 != (item.checkBoxFlags & CHKBOX_CLICKABLE));
 			holder.checkBox.setChecked(0 != (item.checkBoxFlags & CHKBOX_SELECTED));
+			holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView,
+						boolean isChecked) {
+					if (isChecked)
+						item.checkBoxFlags |= CHKBOX_SELECTED;
+					else
+						item.checkBoxFlags &= (~CHKBOX_SELECTED);
+				}
+				
+			});
 			
 			for (int i = 0; i < holderSpinners.length; ++i) {
 				String spinnerName = DETAIL_CONTENT_SPINNER_NAMES[i];
@@ -906,10 +1083,11 @@ public class ReadWriteItemDetailsActivity extends Activity {
 				holderSpinners[i].setAdapter(new ArrayAdapter<String>(mContext,
 					R.drawable.default_spinner_text, spinnerItems));
 				holderSpinners[i].setSelection(item.selectedSpinnerPositions.get(spinnerName));
+				holderSpinners[i].setEnabled(item.spinnersEnabled);
 			}
 			
 			for (int i = 0; i < holderEditTexts.length; ++i) {
-				String editTextName = DETAIL_CONTENT_EDIT_TEXT_NAMES[i];
+				final String editTextName = DETAIL_CONTENT_EDIT_TEXT_NAMES[i];
 				String editTextValue = template.mapDefaultEditTextValues.get(editTextName);
 				
 				if (null == editTextValue) {
@@ -917,12 +1095,34 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					continue;
 				}
 				
+				holderEditTexts[i].setEnabled(item.editTextsEnabled);
 				holderEditTexts[i].setText(item.editTextContents.get(editTextName));
 				com.android_assistant.TextView.setDefaultTextShadow(holderEditTexts[i]);
+				holderEditTexts[i].addTextChangedListener(new TextWatcher() {
+					
+					@Override
+					public void onTextChanged(CharSequence s, int start, int before, int count) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void beforeTextChanged(CharSequence s, int start, int count,
+							int after) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void afterTextChanged(Editable s) {
+						mItemList.get(position).editTextContents.put(editTextName, s.toString());
+					}
+				});
 			}
 		}
 
 		private class ViewHolder {
+			int medicineColumnIndex;
 			CheckBox checkBox;
 			Spinner spnKey;
 			EditText etxKey;

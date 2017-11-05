@@ -141,8 +141,10 @@
 	        android:inputType="textMultiLine"
 	        android:autoLink="all"
 		    android:hint="@string/empty_string"
+		    android:textAppearance="@style/DefaultTextStyle"
+		    android:textColor="#ffcacaca"
 	        android:minLines="1"
-	        android:maxLines="10"
+	        android:maxLines="50"
 	        android:scrollbars="vertical" />
         
     </LinearLayout>

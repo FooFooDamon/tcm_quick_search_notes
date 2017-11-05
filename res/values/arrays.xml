@@ -517,8 +517,6 @@
         <item>重</item>
         <item>大</item>
         <item>小</item>
-        <item>粗</item>
-        <item>细</item>
     </string-array>
 
     <string-array name="medicine_natures">
@@ -598,9 +596,9 @@
         <item>强壮</item>
         <item>固</item>
         <item>温</item>
+        <item>凉</item>
         <item>下</item>
         <item>和</item>
-        <item>吐</item>
         <item>清</item>
         <item>消</item>
         <item>入</item>
@@ -665,11 +663,11 @@
     <string-array name="medicine_roles">
         <item>（君）主药</item>
         <item>（臣）辅药</item>
-        <item>佐药_佐助药</item>
-        <item>佐药_佐制药</item>
-        <item>佐药_反佐药</item>
-        <item>使药_引经药</item>
-        <item>使药_调和药</item>
+        <item>佐药_佐助</item>
+        <item>佐药_佐制</item>
+        <item>佐药_反佐</item>
+        <item>使药_引经</item>
+        <item>使药_调和</item>
     </string-array>
 
     <string-array name="dosage_forms">

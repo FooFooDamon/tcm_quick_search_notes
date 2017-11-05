@@ -387,6 +387,9 @@
     </string>
     
     <string name="version_log_contents">
+        ---- V0.00.03 2017/11/05\n
+        完成单味药物的主要字段修改功能，界面为文本框的字段可修改，为
+        下拉框的字段暂不能修改，新增功能亦暂未实现。\n\n
         ---- V0.00.02 2017/11/01\n
         完成主页、单味药物条目查询、单药物明细查询（能展示整个明细
         页面，内容则仅支持部分字段）。\n\n
@@ -626,6 +629,17 @@
 		from medicine_items
 		where mid = ?
     </string>
+    
+    <string name="tmp_sql_update_medicine_item_by_id">
+        update `medicine_items`
+		set `name` = ?, `alias` = ?,
+		    `effects` = ?, `actions_and_indications` = ?,
+			`details` = ?, `common_prescriptions` = ?,
+			`common_partners` = ?, `similar_medicines` = ?,
+			`dosage_reference` = ?, `contraindications` = ?,
+			`reference_material` = ?, `remarks` = ?
+		where `mid` = ?
+    </string>
 	
     <string name="sql_create_prescription_categories_table">
         CREATE TABLE `prescription_categories` (
@@ -653,7 +667,16 @@
 			`pid`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 			`name`	TEXT NOT NULL UNIQUE,
 			`alias`	TEXT,
-			`category`	INTEGER NOT NULL
+			`category`	INTEGER NOT NULL,
+			`effects`	TEXT,
+			`actions_and_indications`	TEXT,
+			`composition`	TEXT,
+			`decoction`	TEXT,
+			`method_of_taking_medicine`	TEXT,
+			`contraindications`	TEXT,
+			`relative_prescriptions`	TEXT,
+			`reference_material`	TEXT,
+			`remarks`	TEXT
 		)
     </string>
     

@@ -260,6 +260,15 @@ public class DbHelper {
 			"rid", mContext.getString(R.string.customized));
 	}
 	
+	public void tmpUpdateMedicineItem(String[] bindArgs) {
+		SQLiteDatabase db = openOrCreate();
+		String sql = mContext.getString(R.string.tmp_sql_update_medicine_item_by_id);
+		
+		db.execSQL(sql, bindArgs);
+		
+		db.close();
+	}
+	
 	// NOTE: This method should be used to tables with a small quantity of data!
 	private String[] queryAllNames(String table, String primaryId, String firstItem) {
 		String sql = "select name from `"
