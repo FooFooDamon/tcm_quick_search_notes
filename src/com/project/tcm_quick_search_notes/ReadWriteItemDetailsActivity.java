@@ -45,6 +45,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -140,6 +142,21 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		"etxValueLong"
 	};
 	
+	private static final int ITEM_COLUMN_INDEX_CHKBOX = 0;
+	private static final int ITEM_COLUMN_INDEX_SPN_KEY = 1;
+	private static final int ITEM_COLUMN_INDEX_ETX_KEY = 2;
+	private static final int ITEM_COLUMN_INDEX_SPN_VALUE_PREFIX_1 = 3;
+	private static final int ITEM_COLUMN_INDEX_ETX_VALUE_PREFIX_1 = 4;
+	private static final int ITEM_COLUMN_INDEX_SPN_VALUE_PREFIX_2 = 5;
+	private static final int ITEM_COLUMN_INDEX_ETX_VALUE_PREFIX_2 = 6;
+	private static final int ITEM_COLUMN_INDEX_SPN_VALUE = 7;
+	private static final int ITEM_COLUMN_INDEX_ETX_VALUE_SHORT = 8;
+	private static final int ITEM_COLUMN_INDEX_SPN_VALUE_SUFFIX_1 = 9;
+	private static final int ITEM_COLUMN_INDEX_ETX_VALUE_SUFFIX_1 = 10;
+	private static final int ITEM_COLUMN_INDEX_SPN_VALUE_SUFFIX_2 = 11;
+	private static final int ITEM_COLUMN_INDEX_ETX_VALUE_SUFFIX_2 = 12;
+	private static final int ITEM_COLUMN_INDEX_ETX_VALUE_LONG = 13;
+	
 	private static final String[] DETAIL_CONTENT_SPINNER_NAMES = {
 		"spnKey",
 		"spnValuePrefix_1",
@@ -163,7 +180,13 @@ public class ReadWriteItemDetailsActivity extends Activity {
 	private static final int CHKBOX_CLICKABLE = 2;
 	private static final int CHKBOX_SELECTED = 4;
 	
+	private static final String ITEM_READ_ONLY = "read-only";
+	private static final String SPACE = " ";
+	
 	private Menu gMenu = null;
+	
+	private DbHelper mDbHelper = null;
+	private HashMap<String, String> mDetailContentFromDb = null;
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -181,10 +204,12 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		setTitle(getString(R.string.main_item_medicine));
 		Hint.longToast(this, primaryId);
 		
-		DbHelper dbHelper = new DbHelper(this);
-		HashMap<String, String> details = dbHelper.queryMedicineDetails(primaryId);
+		mDbHelper = new DbHelper(this);
+		mDbHelper.openOrCreate();
 		
-		if (null == details) {
+		mDetailContentFromDb = mDbHelper.queryMedicineDetails(primaryId);
+		
+		if (null == mDetailContentFromDb) {
 			Hint.alert(this, getString(R.string.db_error),
 				getString(R.string.not_found) + ": " + "id = " + primaryId,
 				new OnClickListener() {
@@ -202,6 +227,14 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		fillDetailTitles();
 		fillDetailContents();
 	}
+	
+	@Override
+	public void onDestroy() {
+		if (null != mDbHelper)
+			mDbHelper.close();
+		
+		super.onDestroy();
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -216,9 +249,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();		
+		int id = item.getItemId();
 		int[][] detailResIds = getDetailItemResourceIds();
-		
+
 		if (R.id.menu_edit == id) {
 			item.setVisible(false);
 			gMenu.findItem(R.id.menu_save).setVisible(true);
@@ -237,7 +270,6 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					
 					if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
 						contentData.checkBoxFlags |= CHKBOX_CLICKABLE;
-						//contentsAdapter.update(i, lsvContents);
 					}
 					
 					contentData.spinnersEnabled = true;
@@ -270,13 +302,22 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
 					updateArgs.add(viewHolder.etxValueLong.getText().toString());
 				}
+				else if (MEDICINE_COLUMN_INDEX_CATEGORY == i) {
+					convertView = contentsAdapter.getView(0, null, null);
+					viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
+					updateArgs.add(String.valueOf(viewHolder.spnValue.getSelectedItemPosition()));
+				}
+				else {
+					String fieldValue = serializeToDatabaseField(contentsAdapter.getItemList());
+					
+					updateArgs.add(fieldValue);
+				}
 				
 				for (int j = 0; j < contentsAdapter.getCount(); ++j) {
 					DetailContentData contentData = (DetailContentData) contentsAdapter.getItem(j);
 					
 					if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
 						contentData.checkBoxFlags &= (~CHKBOX_CLICKABLE);
-						//contentsAdapter.update(i, lsvContents);
 					}
 					
 					contentData.spinnersEnabled = false;
@@ -287,9 +328,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			
 			updateArgs.add(getIntent().getStringExtra("id"));
 			
-			DbHelper dbHelper = new DbHelper(this);
-			
-			dbHelper.tmpUpdateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
+			mDbHelper.updateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
 			
 			this.finish();
 		}
@@ -311,7 +350,8 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					
 					if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
 						contentData.checkBoxFlags &= (~CHKBOX_CLICKABLE);
-						//contentsAdapter.update(i, lsvContents);
+						/*if (0 != (contentData.checkBoxFlags & CHKBOX_SELECTED))
+							Hint.alert(this, MEDICINE_COLUMNS[contentData.medicineColumnIndex], String.valueOf(j));*/
 					}
 					
 					contentData.spinnersEnabled = false;
@@ -326,6 +366,140 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			;
 		
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private DetailContentData[] parseFromDataseField(final String dbValue,
+		int expectedMinResultCount, boolean resultCountIsFixed) {
+		String _dbValue = (null != dbValue) ? dbValue : SPACE;
+		
+		String[] items = _dbValue.split(QueryEntryActivity.ITEM_DELIM);
+		ArrayList<String> itemList = new ArrayList<String>();
+		
+		if (expectedMinResultCount < 1)
+			expectedMinResultCount = 1;
+		
+		if (resultCountIsFixed) {
+			for (int i = 0; i < expectedMinResultCount; ++i) {
+				itemList.add(null);
+			}
+		}
+		else {
+			int count = 0;
+			
+			if (null == items)
+				count = expectedMinResultCount;
+			else
+				count = (items.length > expectedMinResultCount) ? items.length : expectedMinResultCount;
+			
+			for (int i = 0; i < count; ++i) {
+				itemList.add(null);
+			}
+		}
+		
+		if (null != items) {
+			int countWithValue = (items.length <= itemList.size()) ? items.length : itemList.size();
+			
+			for (int i = 0; i < countWithValue; ++i) {
+				itemList.set(i, items[i]);
+			}
+		}
+		
+		return parseFromDataseField(itemList.toArray(new String[itemList.size()]));
+	}
+	
+	private DetailContentData[] parseFromDataseField(final String[] dbValueArray) {
+		ArrayList<DetailContentData> dataList = new ArrayList<DetailContentData>();
+		
+		for (int i = 0; i < dbValueArray.length; ++i) {
+			dataList.add(parseFromDataseField(dbValueArray[i]));
+		}
+		
+		return dataList.toArray(new DetailContentData[dataList.size()]);
+	}
+	
+	private DetailContentData parseFromDataseField(final String dbValue) {
+		DetailContentData result = new DetailContentData();
+		String[] fieldValues = (null != dbValue) ? dbValue.split(QueryEntryActivity.FIELD_DELIM) : null;		
+		int fieldCount = (null != fieldValues) ? fieldValues.length : 0;
+		
+		final String[] FIELD_NAMES = DETAIL_CONTENT_FIELDS;
+		final int EXPECTED_FIELD_COUNT = FIELD_NAMES.length;
+		
+		if (0 == fieldCount) {
+			result.checkBoxFlags &= (~CHKBOX_SELECTED);
+			
+			for (int i = 1; i < EXPECTED_FIELD_COUNT - 1; ++i) {
+				boolean isSpinner = (1 == i % 2);
+				
+				if (isSpinner)
+					result.selectedSpinnerPositions.put(FIELD_NAMES[i], 0);
+				else
+					result.editTextContents.put(FIELD_NAMES[i], SPACE);
+			}
+			
+			result.editTextContents.put(FIELD_NAMES[EXPECTED_FIELD_COUNT - 1], SPACE);
+			
+			return result;
+		}
+		
+		if (0 != (com.android_assistant.Integer.parseInt(fieldValues[0], 10, 0) & CHKBOX_SELECTED))
+			result.checkBoxFlags |= CHKBOX_SELECTED;
+		else
+			result.checkBoxFlags &= (~CHKBOX_SELECTED);
+		
+		for (int i = 1; i < fieldCount - 1; ++i) {
+			if (i >= EXPECTED_FIELD_COUNT)
+				break;
+			
+			boolean isSpinner = (1 == i % 2);
+			
+			if (isSpinner)
+				result.selectedSpinnerPositions.put(FIELD_NAMES[i], com.android_assistant.Integer.parseInt(fieldValues[i], 10, 0));
+			else
+				result.editTextContents.put(FIELD_NAMES[i], fieldValues[i]);
+		}
+		
+		if (fieldCount >= EXPECTED_FIELD_COUNT)
+			result.editTextContents.put(FIELD_NAMES[EXPECTED_FIELD_COUNT - 1], fieldValues[EXPECTED_FIELD_COUNT - 1]);
+		
+		return result;
+	}
+	
+	private String serializeToDatabaseField(final List<DetailContentData> input) {
+		StringBuilder result = new StringBuilder();
+		
+		for (int i = 0; i < input.size(); ++i) {
+			result.append(serializeToDatabaseField(input.get(i)));
+			result.append(QueryEntryActivity.ITEM_DELIM);
+		}
+		
+		return result.toString();
+	}
+	
+	private String serializeToDatabaseField(final DetailContentData input) {
+		StringBuilder result = new StringBuilder();
+		
+		final String[] FIELD_NAMES = DETAIL_CONTENT_FIELDS;
+		
+		result.append(input.checkBoxFlags);
+		result.append(QueryEntryActivity.FIELD_DELIM);
+		
+		for (int i = 1; i < FIELD_NAMES.length - 1; ++i) {
+			boolean isSpinner = (1 == i % 2);
+			String value = null;
+			
+			if (isSpinner)
+				value = String.valueOf(input.selectedSpinnerPositions.get(FIELD_NAMES[i]));
+			else
+				value = input.editTextContents.get(FIELD_NAMES[i]);
+			
+			result.append((null == value || 0 == value.length()) ? SPACE : value);
+			result.append(QueryEntryActivity.FIELD_DELIM);
+		}
+		
+		result.append(input.editTextContents.get(FIELD_NAMES[FIELD_NAMES.length - 1]));
+		
+		return result.toString();
 	}
 	
 	private void fillDetailTitles() {
@@ -417,11 +591,11 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			map.put(MEDICINE_COLUMNS[i], array[i]);
 		}
 		
-		DbHelper dbHelper = new DbHelper(this);
+		DbHelper dbHelper = mDbHelper;
 		String spaceString = getString(R.string.space);
 		String unknownString = getString(R.string.unknown);
 		String hintPleaseSelect = getString(R.string.please_select);
-		String hintPleaseSelectOrCustomize = getString(R.string.please_select_or_customize);
+		//String hintPleaseSelectOrCustomize = getString(R.string.please_select_or_customize);
 		String[] levelWords = dbHelper.queryAttributeNames(R.string.attr_table_prefix_level_word,
 			spaceString);		
 
@@ -443,13 +617,13 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
 			{ null, null, null, dbHelper.queryMedicineCategories(unknownString), null, null },
 			{ null, null, levelWords, dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_nature, hintPleaseSelect), null, null },
-			{ null, null, levelWords, dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_taste, hintPleaseSelect), null, null },
-			{ null, null, null, dbHelper.queryAttributeNames(R.string.attr_table_prefix_channel_tropism, hintPleaseSelect), null, null },
-			{ null, null, dbHelper.queryAttributeNames(R.string.attr_table_prefix_action_verb, hintPleaseSelect), dbHelper.queryAttributeNames(R.string.attr_table_prefix_life_fundamental, hintPleaseSelect), null, null },
-			{ null, null, null, dbHelper.queryAttributeNames(R.string.attr_table_prefix_motion_form, hintPleaseSelect), null, null },
-			{ null, null, null, dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_effect, hintPleaseSelectOrCustomize), null, null },
-			{ null, null, null, dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_action_and_indication, hintPleaseSelectOrCustomize), null, null },
-			{ null, null, null, dbHelper.queryReferenceMaterialNames(), null, null }
+			{ null, null, levelWords, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_taste, ITEM_READ_ONLY), null, null },
+			{ null, null, null, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_channel_tropism, ITEM_READ_ONLY), null, null },
+			{ null, null, dbHelper.queryAttributeNames(R.string.attr_table_prefix_action_verb, hintPleaseSelect), /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_life_fundamental, ITEM_READ_ONLY), null, null },
+			{ null, null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_motion_form, hintPleaseSelect)*/, null, null },
+			{ null, null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_effect, hintPleaseSelectOrCustomize)*/, null, null },
+			{ null, null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_action_and_indication, hintPleaseSelectOrCustomize)*/, null, null },
+			{ null, null, null, null/*dbHelper.queryReferenceMaterialNames()*/, null, null }
 		};
 		
 		String[] editTextNames = DETAIL_CONTENT_EDIT_TEXT_NAMES;
@@ -457,9 +631,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
 			{ null, null, null, null, null, null, null },
 			{ null, null, null, null, null, null, null },
-			{ null, null, null, null, null, null, null },
-			{ null, null, null, null, null, null, null },
-			{ null, null, null, null, null, null, null },
+			{ null, null, null, null/*ITEM_READ_ONLY*/, null, null, null },
+			{ null, null, null, null/*ITEM_READ_ONLY*/, null, null, null },
+			{ null, null, null, null/*ITEM_READ_ONLY*/, null, null, null },
 			{ null, null, null, null, null, null, null },
 			{ null, null, null, null, null, null, getString(R.string.hint_input_extra_contents_if_necessary) },
 			{ null, null, null, null, null, null, getString(R.string.hint_input_extra_contents_if_necessary) },
@@ -486,10 +660,52 @@ public class ReadWriteItemDetailsActivity extends Activity {
 	}
 	
 	private void fillDetailContents() {
-		DbHelper dbHelper = new DbHelper(this);
-		HashMap<String, String> mapDetails = dbHelper.queryMedicineDetails(
-			getIntent().getStringExtra("id"));
+		HashMap<String, String> mapDetails = mDetailContentFromDb;
 		int[][] detailItemResIds = getDetailItemResourceIds();
+		//String hintPleaseSelect = getString(R.string.please_select);
+		String[] tastes = mDbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_taste, null);
+		String[] channelTropism = mDbHelper.queryAttributeNames(R.string.attr_table_prefix_channel_tropism, null);
+		String[] lifeFundamental = mDbHelper.queryAttributeNames(R.string.attr_table_prefix_life_fundamental, null);
+		String referenceMaterial = mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL]);
+		String SPN_VALUE_SHORT = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_SPN_VALUE];
+		String ETX_VALUE_SHORT = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_SHORT];
+		
+		if (null == referenceMaterial || 0 == referenceMaterial.length())
+			referenceMaterial = getString(R.string.reference_material_contents_example);
+		
+		DetailContentData[] natureData = parseFromDataseField(
+			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_NATURE]), 1, true);
+		
+		DetailContentData[] tastesData = parseFromDataseField(
+			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_TASTES]), tastes.length, true);
+		
+		DetailContentData[] channelTropismData = parseFromDataseField(
+			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM]), channelTropism.length, true);
+		
+		DetailContentData[] lifeFundamentalData = parseFromDataseField(
+			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS]), lifeFundamental.length, true);
+		
+		for (int i = 0; i < natureData.length; ++i) {
+			natureData[i].medicineColumnIndex = MEDICINE_COLUMN_INDEX_NATURE;
+		}
+		
+		for (int i = 0; i < tastesData.length; ++i) {
+			tastesData[i].medicineColumnIndex = MEDICINE_COLUMN_INDEX_TASTES;
+			tastesData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
+			tastesData[i].editTextContents.put(ETX_VALUE_SHORT, tastes[i]);
+		}
+		
+		for (int i = 0; i < channelTropismData.length; ++i) {
+			channelTropismData[i].medicineColumnIndex = MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM;
+			channelTropismData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
+			channelTropismData[i].editTextContents.put(ETX_VALUE_SHORT, channelTropism[i]);
+		}
+		
+		for (int i = 0; i < lifeFundamentalData.length; ++i) {
+			lifeFundamentalData[i].medicineColumnIndex = MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS;
+			lifeFundamentalData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
+			lifeFundamentalData[i].editTextContents.put(ETX_VALUE_SHORT, lifeFundamental[i]);
+		}
 		
 		DetailContentData[][] contentData = {
 			// medicineColumnIndex, checkBoxFlags,
@@ -520,163 +736,13 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					new String[] { null, null, null, null, null, null, null } )
 			},
 
-			{
-				new DetailContentData(MEDICINE_COLUMN_INDEX_NATURE, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 0, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } )
-			},
+			natureData,
 
-			{
-				new DetailContentData(MEDICINE_COLUMN_INDEX_TASTES, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 1, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_TASTES, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 2, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_TASTES, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 3, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_TASTES, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 4, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_TASTES, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 5, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_TASTES, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 6, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_TASTES, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 7, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } )
-			},
+			tastesData,
 
-			{
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 1, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 2, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 3, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 4, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 5, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 6, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 7, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 8, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 9, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 10, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 11, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 12, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } )
-			},
+			channelTropismData,
 
-			{
-				new DetailContentData(MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 1, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 2, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 3, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 4, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } ),
-					
-				new DetailContentData(MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, 0,
-					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 5, 0, 0 },
-					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, null } )
-			},
+			lifeFundamentalData,
 
 			{
 				new DetailContentData(MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION, 0,
@@ -753,9 +819,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			{
 				new DetailContentData(MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL, 0,
 					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-					new int[]{ 0, 0, 0, 2, 0, 0 },
+					new int[]{ 0, 0, 0, 0, 0, 0 },
 					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-					new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL]) } )
+					new String[] { null, null, null, null, null, null, referenceMaterial } )
 			},
 
 			{
@@ -916,6 +982,10 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		public int getCount() {
 			return mItemList.size();
 		}
+		
+		public List<DetailContentData> getItemList() {
+			return mItemList;
+		}
 
 		@Override
 		public Object getItem(int position) {
@@ -925,17 +995,6 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		@Override
 		public long getItemId(int position) {
 			return position;
-		}
-		
-		// TODO: Not finished, DO NOT use it !
-		public void update(int position, ListView listView) {
-			int firstVisiblePos = listView.getFirstVisiblePosition();
-			View view = listView.getChildAt(position/* - firstVisiblePos*/);
-			ViewHolder holder = (ViewHolder)view.getTag();
-			DetailContentData item = mItemList.get(position);
-			
-			holder.checkBox = (CheckBox) view.findViewById(R.id.chkbox_details_item);
-			holder.checkBox.setChecked(0 != (item.checkBoxFlags & CHKBOX_SELECTED));
 		}
 
 		@Override
@@ -1007,6 +1066,27 @@ public class ReadWriteItemDetailsActivity extends Activity {
 				holder.etxValueLong
 			};
 			
+			/*holder.etxValueLong.addTextChangedListener(new TextWatcher() {
+				
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count,
+						int after) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void afterTextChanged(Editable s) {
+					mItemList.get(position).editTextContents.put("etxValueLong", s.toString());
+				}
+			});*/
+			
 			// case 1: for simple contents
 			if (detailContentIsSimple(item.medicineColumnIndex)) {
 				holder.medicineColumnIndex = item.medicineColumnIndex;
@@ -1063,6 +1143,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
 				@Override
 				public void onCheckedChanged(CompoundButton buttonView,
 						boolean isChecked) {
+					if (!buttonView.isPressed())
+						return;
+					
 					if (isChecked)
 						item.checkBoxFlags |= CHKBOX_SELECTED;
 					else
@@ -1072,7 +1155,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			});
 			
 			for (int i = 0; i < holderSpinners.length; ++i) {
-				String spinnerName = DETAIL_CONTENT_SPINNER_NAMES[i];
+				final String spinnerName = DETAIL_CONTENT_SPINNER_NAMES[i];
 				String[] spinnerItems = template.mapSpinnerItems.get(spinnerName);
 				
 				if (null == spinnerItems) {
@@ -1082,8 +1165,22 @@ public class ReadWriteItemDetailsActivity extends Activity {
 				
 				holderSpinners[i].setAdapter(new ArrayAdapter<String>(mContext,
 					R.drawable.default_spinner_text, spinnerItems));
-				holderSpinners[i].setSelection(item.selectedSpinnerPositions.get(spinnerName));
-				holderSpinners[i].setEnabled(item.spinnersEnabled);
+				Integer selectedPosition = item.selectedSpinnerPositions.get(spinnerName);
+				holderSpinners[i].setSelection((null != selectedPosition) ? selectedPosition : 0);
+				holderSpinners[i].setEnabled(ITEM_READ_ONLY != spinnerItems[0] && item.spinnersEnabled);
+				holderSpinners[i].setOnItemSelectedListener(new OnItemSelectedListener() {
+
+					@Override
+					public void onItemSelected(AdapterView<?> adapter, View view,
+							int position, long id) {
+						item.selectedSpinnerPositions.put(spinnerName, position);
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> adapter) {
+						;
+					}
+				});
 			}
 			
 			for (int i = 0; i < holderEditTexts.length; ++i) {
@@ -1095,7 +1192,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					continue;
 				}
 				
-				holderEditTexts[i].setEnabled(item.editTextsEnabled);
+				holderEditTexts[i].setEnabled(!editTextValue.equals(ITEM_READ_ONLY) && item.editTextsEnabled);
 				holderEditTexts[i].setText(item.editTextContents.get(editTextName));
 				com.android_assistant.TextView.setDefaultTextShadow(holderEditTexts[i]);
 				holderEditTexts[i].addTextChangedListener(new TextWatcher() {
@@ -1115,7 +1212,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					
 					@Override
 					public void afterTextChanged(Editable s) {
-						mItemList.get(position).editTextContents.put(editTextName, s.toString());
+						/*mItemList.get(position)*/item.editTextContents.put(editTextName, s.toString());
 					}
 				});
 			}

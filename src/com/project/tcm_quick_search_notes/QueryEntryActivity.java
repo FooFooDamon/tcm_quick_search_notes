@@ -41,11 +41,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -62,8 +64,10 @@ public class QueryEntryActivity extends Activity
 	public static final int OP_TYPE_MEDICINE = 0;
 	public static final int OP_TYPE_PRESCRIPTION = 1;
 	
-	public static final String FIELD_DELIM = "\t";
+	public static final String FIELD_DELIM = "\b";
 	public static final String ITEM_DELIM = "\f";
+	
+	private DbHelper mDbHelper = null;
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -73,10 +77,47 @@ public class QueryEntryActivity extends Activity
 		getActionBar().setBackgroundDrawable(
 				getResources().getDrawable(R.drawable.default_action_bar_style));
 		
+		mDbHelper = new DbHelper(this);
+		mDbHelper.openOrCreate();
+		
 		if (Version.SDK <= Version.getDeprecatedVersionUpperBound())
 			doExtraJobsForLowerVersions();
 		
 		fillCategorySpinner();
+		
+		Button btnAddMedication = (Button) findViewById(R.id.btn_add_medication);
+		
+		btnAddMedication.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String sqlCheckMedicine = getString(R.string.sql_query_medicine_items_by_name);
+				String newMedicine = getString(R.string.new_medicine);
+				String[] sqlArgs = (new String[]{ "%" + newMedicine + "%" });
+				SQLiteDatabase db = mDbHelper.getDatabase();
+				Cursor c = db.rawQuery(sqlCheckMedicine, sqlArgs);
+				
+				if (c.moveToNext()) {
+					Hint.alert(QueryEntryActivity.this, R.string.alert_reusing_medicine_title, R.string.alert_reusing_medicine_contents);
+					c.close();
+					return;
+				}
+				c.close();
+				
+				String sqlAddMedicine = getString(R.string.sql_make_medicine_items_data);
+				
+				db.execSQL(sqlAddMedicine, new String[] { newMedicine, String.valueOf(0) });
+				Hint.alert(QueryEntryActivity.this, R.string.hint_adding_medicine_successfully, R.string.hint_after_adding_medicine);
+			}
+		});
+	}
+	
+	@Override
+	public void onDestroy() {
+		if (null != mDbHelper)
+			mDbHelper.close();
+		
+		super.onDestroy();
 	}
 
 	@Override
@@ -109,10 +150,9 @@ public class QueryEntryActivity extends Activity
 	}
 	
 	private void fillCategorySpinner() {
-		DbHelper dbHelper = new DbHelper(this);
 		Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
 		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
-			R.drawable.default_spinner_text, dbHelper.queryMedicineCategories(getString(R.string.not_limited)));
+			R.drawable.default_spinner_text, mDbHelper.queryMedicineCategories(getString(R.string.not_limited)));
 		
 		spnCategory.setAdapter(spinnerAdapter);
 		//((TextView)spnCategory).setLineSpacing(0, 1); // compile error
@@ -127,8 +167,6 @@ public class QueryEntryActivity extends Activity
 	
 	private void queryMedicationItems() {
 		ArrayList<MedicationBrief> itemList = new ArrayList<MedicationBrief>();
-		DbHelper dbHelper = new DbHelper(this);
-		SQLiteDatabase db = dbHelper.openOrCreate();
 		EditText etxName = (EditText) findViewById(R.id.etx_name);
 		String medicineName = etxName.getText().toString();
 		Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
@@ -148,7 +186,7 @@ public class QueryEntryActivity extends Activity
 			: ((medicineName.length() > 0)
 				? (new String[]{ "%" + medicineName + "%" })
 				: null);
-		Cursor c = db.rawQuery(sql, sqlArgs);
+		Cursor c = mDbHelper.getDatabase().rawQuery(sql, sqlArgs);
 		
 		//Hint.longToast(this, sql);
 		while (c.moveToNext()) {
@@ -156,7 +194,6 @@ public class QueryEntryActivity extends Activity
 				c.getString(c.getColumnIndex("name"))));
 		}
 		c.close();
-		db.close();
 		
 		int resultCount = itemList.size();
 		

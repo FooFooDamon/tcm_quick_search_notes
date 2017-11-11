@@ -42,6 +42,7 @@ import com.android_assistant.Hint;
 public class DbHelper {
 	private Context mContext = null;
 	private String mDbDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+	private SQLiteDatabase mDbInstance = null;
 	
 	public DbHelper(Context context) {
 		if (null == context)
@@ -64,13 +65,24 @@ public class DbHelper {
 		mDbDir = dbDirectory;
 	}
 	
-	public SQLiteDatabase openOrCreate() {
-		return com.android_assistant.DbHelper.openOrCreate(getDatabaseDirectory(),
-				getDatabaseName());
+	public void openOrCreate() {
+		if (null == mDbInstance) {
+			mDbInstance = com.android_assistant.DbHelper.openOrCreate(getDatabaseDirectory(),
+					getDatabaseName());
+		}
 	}
 	
-	public void close(SQLiteDatabase db) {
-		com.android_assistant.DbHelper.close(db);
+	// TODO: finalize() { close(); }
+	
+	public void close() {
+		com.android_assistant.DbHelper.close(mDbInstance);
+	}
+	
+	public SQLiteDatabase getDatabase() {		
+		if (null == mDbInstance)
+			openOrCreate();
+		
+		return mDbInstance;
 	}
 	
 	public String getDatabaseName() {
@@ -161,8 +173,7 @@ public class DbHelper {
 	
 	public String[] queryMedicineCategories(String firstItem) {
 		String sql = mContext.getString(R.string.sql_query_medicine_category_names);
-		SQLiteDatabase db = openOrCreate();
-		Cursor c = db.rawQuery(sql, null);
+		Cursor c = getDatabase().rawQuery(sql, null);
 		ArrayList<String> results = new ArrayList<String>();
 		
 		if (null != firstItem)
@@ -171,7 +182,6 @@ public class DbHelper {
 			results.add(c.getString(c.getColumnIndex("name")));
 		}
 		c.close();
-		db.close();
 		
 		if (0 == results.size())
 			return null;
@@ -180,14 +190,12 @@ public class DbHelper {
 	}
 	
 	public HashMap<String, String> queryMedicineDetails(String mid) {
-		SQLiteDatabase db = openOrCreate();
-		Cursor c = db.rawQuery(mContext.getString(R.string.sql_query_medicine_details_by_id),
+		Cursor c = getDatabase().rawQuery(mContext.getString(R.string.sql_query_medicine_details_by_id),
 			new String[] { mid });
 		HashMap<String, String> results = new HashMap<String, String>();
 		
 		if (!c.moveToNext()) {
 			c.close();
-			db.close();
 			
 			return null;
 		}
@@ -215,42 +223,11 @@ public class DbHelper {
 		}
 		
 		c.close();
-		db.close();
 		
 		return results;
 	}
 	
-	public String[] queryAttributeNames(int attrPrefixResId, String firstItem) {
-		/*String firstItem = null;
-		
-		switch (attrPrefixResId) {
-		case R.string.attr_table_prefix_medicine_nature:
-		case R.string.attr_table_prefix_medicine_taste:
-		case R.string.attr_table_prefix_channel_tropism:
-		case R.string.attr_table_prefix_zang_fu_viscera:
-		case R.string.attr_table_prefix_life_fundamental:
-		case R.string.attr_table_prefix_motion_form:
-		case R.string.attr_table_prefix_medicine_role:
-			firstItem = mContext.getString(R.string.please_select);
-			break;
-			
-		case R.string.attr_table_prefix_action_verb:
-		case R.string.attr_table_prefix_level_word:
-		case R.string.attr_table_prefix_medicine_effect:
-		case R.string.attr_table_prefix_medicine_action_and_indication:
-		case R.string.attr_table_prefix_dosage_form:
-		case R.string.attr_table_prefix_medicine_unit:
-		case R.string.attr_table_prefix_method_of_taking_medicine:
-		case R.string.attr_table_prefix_nature_of_symptom:
-		case R.string.attr_table_prefix_processing_method:
-			firstItem = mContext.getString(R.string.customized);
-			break;
-			
-		default:
-			firstItem = mContext.getString(R.string.unknown);
-			break;
-		}*/
-		
+	public String[] queryAttributeNames(int attrPrefixResId, String firstItem) {		
 		return queryAllNames(mContext.getString(attrPrefixResId) + "_definitions",
 			"aid", firstItem);
 	}
@@ -260,13 +237,11 @@ public class DbHelper {
 			"rid", mContext.getString(R.string.customized));
 	}
 	
-	public void tmpUpdateMedicineItem(String[] bindArgs) {
-		SQLiteDatabase db = openOrCreate();
-		String sql = mContext.getString(R.string.tmp_sql_update_medicine_item_by_id);
+	public void updateMedicineItem(String[] bindArgs) {
+		SQLiteDatabase db = getDatabase();
+		String sql = mContext.getString(R.string.sql_update_medicine_item_by_id);
 		
 		db.execSQL(sql, bindArgs);
-		
-		db.close();
 	}
 	
 	// NOTE: This method should be used to tables with a small quantity of data!
@@ -274,8 +249,7 @@ public class DbHelper {
 		String sql = "select name from `"
 			+ table + "`"
 			+ " order by " + primaryId + " asc";
-		SQLiteDatabase db = openOrCreate();
-		Cursor c = db.rawQuery(sql, null);
+		Cursor c = getDatabase().rawQuery(sql, null);
 		ArrayList<String> results = new ArrayList<String>();
 		
 		if (null != firstItem)
@@ -284,7 +258,6 @@ public class DbHelper {
 			results.add(c.getString(c.getColumnIndex("name")));
 		}
 		c.close();
-		db.close();
 		
 		if (0 == results.size())
 			return null;
@@ -309,11 +282,7 @@ public class DbHelper {
 	}
 	
 	private void createTable(String createSql) {
-		SQLiteDatabase db = openOrCreate();
-		
-		db.execSQL(createSql);
-		
-		db.close();
+		getDatabase().execSQL(createSql);
 	}
 	
 	private void createTable(int createSqlResId) {
@@ -341,7 +310,7 @@ public class DbHelper {
 				return;
 			}
 			
-			SQLiteDatabase db = openOrCreate();
+			SQLiteDatabase db = getDatabase();
 			String args[] = new String[bindArgsCount];
 			
 			if (!enablesTransaction) {
@@ -371,17 +340,12 @@ public class DbHelper {
 				throw e;
 			} finally {
 				db.endTransaction();
-				db.close();
 			}
 			
 			return;
 		}
-
-		SQLiteDatabase db = openOrCreate();
 		
-		db.execSQL(sqlString);
-		
-		db.close();
+		getDatabase().execSQL(sqlString);
 	}
 	
 	private void makePresetData(int sqlStringResId, int valuesArrayResId,
@@ -392,8 +356,7 @@ public class DbHelper {
 	}
 	
 	public void showTestData() {
-		SQLiteDatabase db = openOrCreate();
-		Cursor c = db.rawQuery(mContext.getResources().getString(R.string.sql_query_test_data),
+		Cursor c = getDatabase().rawQuery(mContext.getResources().getString(R.string.sql_query_test_data),
 			mContext.getResources().getStringArray(R.array.sql_args_query_test_data));
 		
 		while (c.moveToNext()) {
@@ -404,6 +367,5 @@ public class DbHelper {
 			Hint.shortToast(mContext, String.valueOf(id) + " | " + name + " | " + remarks);
 		}
 		c.close();
-		db.close();
 	}
 }

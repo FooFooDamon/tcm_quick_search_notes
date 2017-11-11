@@ -387,11 +387,14 @@
     </string>
     
     <string name="version_log_contents">
+        ---- V0.00.04 2017/11/11\n
+        1、单味药物明细编辑页面的勾选框可勾选，下拉框可选择。\n
+        2、简单地实现了药物的新增功能。\n\n
         ---- V0.00.03 2017/11/05\n
-        完成单味药物的主要字段修改功能，界面为文本框的字段可修改，为
+        完成单味药物的主要字段修改功能，界面为文本框的字段可修改，但
         下拉框的字段暂不能修改，新增功能亦暂未实现。\n\n
         ---- V0.00.02 2017/11/01\n
-        完成主页、单味药物条目查询、单药物明细查询（能展示整个明细
+        完成主页、单味药物条目查询、单味药物明细查询（能展示整个明细
         页面，内容则仅支持部分字段）。\n\n
         ---- V0.00.01 2017/10/18\n
         项目启动。
@@ -420,6 +423,20 @@
     <string name="medicine">药物</string>
     <string name="main_item_medicine">（单味）药物查询</string>
     <string name="add_medicine">新增药物</string>
+    <string name="new_medicine">新药物</string>
+    <string name="hint_adding_medicine_successfully">新增药物成功</string>
+    <string name="hint_after_adding_medicine">
+        已成功添加新药物，请在名称栏输入“新药物”、种类栏选择“不限”
+        进行查询并编辑详细的药物信息。
+    </string>
+    <string name="alert_reusing_medicine_title">
+        已存在未使用的新药物信息
+    </string>
+    <string name="alert_reusing_medicine_contents">
+        数据库已存在一个“新药物”，可在名称栏输入“新药物”、种类栏
+        选择“不限”查询出该药物详细页面，对其进行重命名，并补全
+        其余信息。
+    </string>
     
     <string name="prescription">方剂</string>
     <string name="main_item_prescription">（组合）方剂查询</string>
@@ -498,7 +515,7 @@
     
     <string name="reference_material">参考资料</string>
     <string name="reference_material_table">reference_material</string>
-    <string name="reference_material_contents_example">例如第X页第X章第X节第X段</string>
+    <string name="reference_material_contents_example">例如《XX书》第X页第X章第X节第X段</string>
     
     <string name="hint_input_extra_contents_if_necessary">如有必要，请输入补充内容</string>
     
@@ -596,24 +613,28 @@
     <string name="sql_query_all_medicine_items" formatted="false">
         select mid, name
         from medicine_items
+        order by mid asc
     </string>
     
     <string name="sql_query_medicine_items_by_name" formatted="false">
         select mid, name
         from medicine_items
         where name || ifnull(alias, \'\') like ?
+        order by mid asc
     </string>
     
     <string name="sql_query_medicine_items_by_category">
         select mid, name
         from medicine_items
         where category = ?
+        order by mid asc
     </string>
     
     <string name="sql_query_medicine_items_by_name_and_category" formatted="false">
         select mid, name
         from medicine_items
         where name || ifnull(alias, \'\') like ? and category = ?
+        order by mid asc
     </string>
     
     <string name="sql_query_medicine_details_by_id">
@@ -630,9 +651,12 @@
 		where mid = ?
     </string>
     
-    <string name="tmp_sql_update_medicine_item_by_id">
+    <string name="sql_update_medicine_item_by_id">
         update `medicine_items`
 		set `name` = ?, `alias` = ?,
+			`category` = ?, `nature` = ?,
+			`tastes` = ?, `channel_tropism` = ?,
+		    `relations_with_life_fundamentals` = ?,
 		    `effects` = ?, `actions_and_indications` = ?,
 			`details` = ?, `common_prescriptions` = ?,
 			`common_partners` = ?, `similar_medicines` = ?,
@@ -689,24 +713,28 @@
     <string name="sql_query_all_prescription_items" formatted="false">
         select pid, name
         from prescription_items
+        order by pid asc
     </string>
     
     <string name="sql_query_prescription_items_by_name" formatted="false">
         select pid, name
         from prescription_items
         where name || ifnull(alias, \'\') like ?
+        order by pid asc
     </string>
     
     <string name="sql_query_prescription_items_by_category">
         select pid, name
         from prescription_items
         where category = ?
+        order by pid asc
     </string>
     
     <string name="sql_query_prescription_items_by_name_and_category" formatted="false">
         select pid, name
         from prescription_items
         where name || ifnull(alias, \'\') like ? and category = ?
+        order by pid asc
     </string>
 
 </resources>
