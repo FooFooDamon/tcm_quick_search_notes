@@ -33,6 +33,7 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -130,6 +131,13 @@ public class MainActivity extends Activity
 		DbHelper dbHelper = new DbHelper(this);
 		
 		dbHelper.precheck();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		NotificationManager notificationManager = (NotificationManager) this.getSystemService(NOTIFICATION_SERVICE);
+		
+		notificationManager.cancel(0);
 	}
 
 	@Override

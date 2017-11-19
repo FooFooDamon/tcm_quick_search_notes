@@ -28,13 +28,11 @@
             android:id="@+id/etx_details_key"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:enabled="false"
 	        android:inputType="text"
 	        android:singleLine="true"
 		    android:hint="@string/empty_string"
 		    android:textAppearance="@style/DefaultTextStyle"
-		    android:minEms="5"
-		    android:maxEms="10" />
+		    android:minEms="1" />
 		
 	    <Spinner
 	        android:id="@+id/spn_details_value_prefix_1"
@@ -46,13 +44,11 @@
             android:id="@+id/etx_details_value_prefix_1"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:enabled="false"
 	        android:inputType="text"
 	        android:singleLine="true"
 		    android:hint="@string/empty_string"
 		    android:textAppearance="@style/DefaultTextStyle"
-		    android:minEms="5"
-		    android:maxEms="10" />
+		    android:minEms="1" />
 		
 	    <Spinner
 	        android:id="@+id/spn_details_value_prefix_2"
@@ -64,13 +60,11 @@
             android:id="@+id/etx_details_value_prefix_2"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:enabled="false"
 	        android:inputType="text"
 	        android:singleLine="true"
 		    android:hint="@string/empty_string"
 		    android:textAppearance="@style/DefaultTextStyle"
-		    android:minEms="5"
-		    android:maxEms="10" />
+		    android:minEms="1" />
 		
 	    <Spinner
 	        android:id="@+id/spn_details_value"
@@ -82,13 +76,11 @@
             android:id="@+id/etx_details_value_short_texts"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:enabled="false"
 	        android:inputType="text"
 	        android:singleLine="true"
 		    android:hint="@string/empty_string"
 		    android:textAppearance="@style/DefaultTextStyle"
-		    android:minEms="5"
-		    android:maxEms="10" />
+		    android:minEms="1" />
 		
 	    <Spinner
 	        android:id="@+id/spn_details_value_suffix_1"
@@ -100,13 +92,11 @@
             android:id="@+id/etx_details_value_suffix_1"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:enabled="false"
 	        android:inputType="text"
 	        android:singleLine="true"
 		    android:hint="@string/empty_string"
 		    android:textAppearance="@style/DefaultTextStyle"
-		    android:minEms="5"
-		    android:maxEms="10" />
+		    android:minEms="1" />
 		
 	    <Spinner
 	        android:id="@+id/spn_details_value_suffix_2"
@@ -118,13 +108,11 @@
             android:id="@+id/etx_details_value_suffix_2"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:enabled="false"
 	        android:inputType="text"
 	        android:singleLine="true"
 		    android:hint="@string/empty_string"
 		    android:textAppearance="@style/DefaultTextStyle"
-		    android:minEms="5"
-		    android:maxEms="10" />
+		    android:minEms="1" />
     
     </LinearLayout>
     
@@ -136,7 +124,6 @@
             android:id="@+id/etx_details_value_long_texts"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:enabled="false"
 	        android:gravity="top"
 	        android:inputType="textMultiLine"
 	        android:autoLink="all"
@@ -144,7 +131,6 @@
 		    android:textAppearance="@style/DefaultTextStyle"
 		    android:textColor="#ffcacaca"
 	        android:minLines="1"
-	        android:maxLines="50"
 	        android:scrollbars="vertical" />
         
     </LinearLayout>

@@ -387,6 +387,11 @@
     </string>
     
     <string name="version_log_contents">
+        ---- V0.01.00 2017/11/19\n
+        1、修复药物重名时程序崩溃的缺陷。\n
+        2、修复文本框换行时丢失焦点的缺陷。\n
+        3、药性、药味、归经、参考资料改为可动态增删条目。\n
+        至此，单味药物的查询及编辑功能已全部完成。方剂及其余功能正在开发中。\n\n
         ---- V0.00.04 2017/11/11\n
         1、单味药物明细编辑页面的勾选框可勾选，下拉框可选择。\n
         2、简单地实现了药物的新增功能。\n\n
@@ -438,12 +443,20 @@
         其余信息。
     </string>
     
+    <string name="alert_failed_to_update">更新信息出错</string>
+    <string name="alert_checking_input">
+        请检查输入的信息是否有效，或与现有信息冲突（例如名称相同等）。
+    </string>
+    
     <string name="prescription">方剂</string>
     <string name="main_item_prescription">（组合）方剂查询</string>
     <string name="add_prescription">新增方剂</string>
     
     <string name="category">种类</string>
     <string name="add_category">新增种类</string>
+    
+    <string name="add_content_item">新增内容条目</string>
+    <string name="clear_content_items">清空内容条目</string>
     
     <string name="hint_input_name">请输入药名/方剂名</string>
     <string name="hint_null_for_querying_all">不填则全查</string>
@@ -473,6 +486,7 @@
     
     <string name="attr_table_prefix_life_fundamental">life_fundamental</string>
     <string name="life_fundamental">气血津液精神</string>
+    <string name="life_fundamental_diplay_name">有利于</string>
     
     <string name="attr_table_prefix_motion_form">motion_form</string>
     <string name="motion_form">药力作用运动形式</string>

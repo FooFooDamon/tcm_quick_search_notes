@@ -37,13 +37,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -61,6 +64,8 @@ import android.widget.TextView;
 import com.android_assistant.Hint;
 
 public class ReadWriteItemDetailsActivity extends Activity {
+	
+	private static String[] mMedicinePageItems = null;
 	
 	private static final String[] MEDICINE_COLUMNS = {
 		"name",
@@ -187,6 +192,8 @@ public class ReadWriteItemDetailsActivity extends Activity {
 	
 	private DbHelper mDbHelper = null;
 	private HashMap<String, String> mDetailContentFromDb = null;
+	
+	private boolean mEditable = false;
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -221,8 +228,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 				});
 		}
 		
-		// fillDetailTitleTemplates();
-		fillDetailContentTemplates();
+		fillDetailContentTemplates(); // MUST be executed FIRST!!!
 		
 		fillDetailTitles();
 		fillDetailContents();
@@ -256,34 +262,13 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			item.setVisible(false);
 			gMenu.findItem(R.id.menu_save).setVisible(true);
 			gMenu.findItem(R.id.menu_cancel).setVisible(true);
-			
-			for (int i = 0; i < detailResIds.length; ++i) {
-				if (detailContentIsNotUsed(i))
-					continue;
-				
-				ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
-				DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
-				DetailContentTemplate template = mDetailContentTemplates[i];
-				
-				for (int j = 0; j < contentsAdapter.getCount(); ++j) {
-					DetailContentData contentData = (DetailContentData) contentsAdapter.getItem(j);
-					
-					if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
-						contentData.checkBoxFlags |= CHKBOX_CLICKABLE;
-					}
-					
-					contentData.spinnersEnabled = true;
-					contentData.editTextsEnabled = true;
-				}
-				contentsAdapter.notifyDataSetChanged();
-			}
-			
-			return true;
+			switchEditStatus(true);
 		}
 		else if (R.id.menu_save == id) {
 			item.setVisible(false);
 			gMenu.findItem(R.id.menu_cancel).setVisible(false);
 			gMenu.findItem(R.id.menu_edit).setVisible(true);
+			switchEditStatus(false);
 			
 			ArrayList<String> updateArgs = new ArrayList<String>();
 			View convertView = null;
@@ -295,15 +280,14 @@ public class ReadWriteItemDetailsActivity extends Activity {
 				
 				ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
 				DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
-				DetailContentTemplate template = mDetailContentTemplates[i];
 				
-				if (MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL == i || detailContentIsSimple(i)) {
-					convertView = contentsAdapter.getView(0, null/*convertView*/, null);
+				if (detailContentIsSimple(i)) {
+					convertView = contentsAdapter.getView(0, null, null);
 					viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
 					updateArgs.add(viewHolder.etxValueLong.getText().toString());
 				}
 				else if (MEDICINE_COLUMN_INDEX_CATEGORY == i) {
-					convertView = contentsAdapter.getView(0, null, null);
+					convertView = contentsAdapter.getView(0, null/*convertView*/, null);
 					viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
 					updateArgs.add(String.valueOf(viewHolder.spnValue.getSelectedItemPosition()));
 				}
@@ -312,55 +296,23 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					
 					updateArgs.add(fieldValue);
 				}
-				
-				for (int j = 0; j < contentsAdapter.getCount(); ++j) {
-					DetailContentData contentData = (DetailContentData) contentsAdapter.getItem(j);
-					
-					if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
-						contentData.checkBoxFlags &= (~CHKBOX_CLICKABLE);
-					}
-					
-					contentData.spinnersEnabled = false;
-					contentData.editTextsEnabled = false;
-				}
-				contentsAdapter.notifyDataSetChanged();
 			}
 			
 			updateArgs.add(getIntent().getStringExtra("id"));
 			
-			mDbHelper.updateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
-			
-			this.finish();
+			try {
+				mDbHelper.updateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
+				this.finish();
+			} catch(SQLException e) {
+				Hint.alert(this, getString(R.string.alert_failed_to_update),
+					getString(R.string.alert_checking_input) + e.getMessage());
+			}
 		}
 		else if (R.id.menu_cancel == id) {
 			item.setVisible(false);
 			gMenu.findItem(R.id.menu_save).setVisible(false);
 			gMenu.findItem(R.id.menu_edit).setVisible(true);
-			
-			for (int i = 0; i < detailResIds.length; ++i) {
-				if (detailContentIsNotUsed(i))
-					continue;
-				
-				ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
-				DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
-				DetailContentTemplate template = mDetailContentTemplates[i];
-				
-				for (int j = 0; j < contentsAdapter.getCount(); ++j) {
-					DetailContentData contentData = (DetailContentData) contentsAdapter.getItem(j);
-					
-					if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
-						contentData.checkBoxFlags &= (~CHKBOX_CLICKABLE);
-						/*if (0 != (contentData.checkBoxFlags & CHKBOX_SELECTED))
-							Hint.alert(this, MEDICINE_COLUMNS[contentData.medicineColumnIndex], String.valueOf(j));*/
-					}
-					
-					contentData.spinnersEnabled = false;
-					contentData.editTextsEnabled = false;
-				}
-				contentsAdapter.notifyDataSetChanged();
-			}
-			
-			// TODO: ...
+			switchEditStatus(false);
 		}
 		else
 			;
@@ -368,7 +320,42 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	private DetailContentData[] parseFromDataseField(final String dbValue,
+	private void switchEditStatus(boolean editable) {
+		int[][] detailResIds = getDetailItemResourceIds();
+		
+		mEditable = editable;
+		
+		for (int i = 0; i < detailResIds.length; ++i) {
+			if (detailContentIsNotUsed(i))
+				continue;
+			
+			ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
+			DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
+			DetailContentTemplate template = mDetailContentTemplates[i];
+			
+			for (int j = 0; j < contentsAdapter.getCount(); ++j) {
+				DetailContentData contentData = (DetailContentData) contentsAdapter.getItem(j);
+				
+				if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
+					if (editable)
+						contentData.checkBoxFlags |= CHKBOX_CLICKABLE;
+					else
+						contentData.checkBoxFlags &= (~CHKBOX_CLICKABLE);
+				}
+				
+				contentData.spinnersEnabled = editable;
+				contentData.editTextsEnabled = editable;
+			}
+			contentsAdapter.notifyDataSetChanged();
+			
+			ListView lsvTitle = (ListView)findViewById(detailResIds[i][1]);
+			DetailTitleAdapter titleAdapter = (DetailTitleAdapter)lsvTitle.getAdapter();
+			
+			titleAdapter.notifyDataSetChanged();
+		}
+	}
+	
+	private DetailContentData[] parseFromDataseField(final String dbValue, int pageItemIndex,
 		int expectedMinResultCount, boolean resultCountIsFixed) {
 		String _dbValue = (null != dbValue) ? dbValue : SPACE;
 		
@@ -404,21 +391,21 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			}
 		}
 		
-		return parseFromDataseField(itemList.toArray(new String[itemList.size()]));
+		return parseFromDataseField(itemList.toArray(new String[itemList.size()]), pageItemIndex);
 	}
 	
-	private DetailContentData[] parseFromDataseField(final String[] dbValueArray) {
+	private DetailContentData[] parseFromDataseField(final String[] dbValueArray, int pageItemIndex) {
 		ArrayList<DetailContentData> dataList = new ArrayList<DetailContentData>();
 		
 		for (int i = 0; i < dbValueArray.length; ++i) {
-			dataList.add(parseFromDataseField(dbValueArray[i]));
+			dataList.add(parseFromDataseField(dbValueArray[i], pageItemIndex));
 		}
 		
 		return dataList.toArray(new DetailContentData[dataList.size()]);
 	}
 	
-	private DetailContentData parseFromDataseField(final String dbValue) {
-		DetailContentData result = new DetailContentData();
+	private DetailContentData parseFromDataseField(final String dbValue, int pageItemIndex) {
+		DetailContentData result = new DetailContentData(pageItemIndex);
 		String[] fieldValues = (null != dbValue) ? dbValue.split(QueryEntryActivity.FIELD_DELIM) : null;		
 		int fieldCount = (null != fieldValues) ? fieldValues.length : 0;
 		
@@ -509,11 +496,11 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			if (detailContentIsNotUsed(i))
 				continue;
 			
-			ArrayList<String> titleList = new ArrayList<String>();
+			ArrayList<DetailTitleData> titleList = new ArrayList<>();
 			ListView lsvTitle = (ListView) findViewById(detailItemResIds[i][1]);
 			DetailTitleAdapter titleAdapter = new DetailTitleAdapter(this, titleList);
 			
-			titleList.add(getString(detailItemResIds[i][0]));
+			titleList.add(new DetailTitleData(i, getString(detailItemResIds[i][0])));
 			
 			lsvTitle.setAdapter(titleAdapter);
 		}
@@ -561,7 +548,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			{ R.string.medicine_nature, R.id.lsv_title_medicine_nature, R.id.lsv_content_medicine_nature },
 			{ R.string.medicine_taste, R.id.lsv_title_medicine_tastes, R.id.lsv_content_medicine_tastes },
 			{ R.string.channel_tropism, R.id.lsv_title_channel_tropism, R.id.lsv_content_channel_tropism },
-			{ R.string.life_fundamental, R.id.lsv_title_relations_with_life_fundamentals, R.id.lsv_content_relations_with_life_fundamentals },
+			{ R.string.life_fundamental_diplay_name, R.id.lsv_title_relations_with_life_fundamentals, R.id.lsv_content_relations_with_life_fundamentals },
 			{ R.string.motion_form, R.id.lsv_title_motion_form, R.id.lsv_content_motion_form },
 			{ R.string.medicine_effect, R.id.lsv_title_medicine_effects, R.id.lsv_content_medicine_effects },
 			{ R.string.medicine_action_and_indication, R.id.lsv_title_medicine_actions_and_indications, R.id.lsv_content_medicine_actions_and_indications },
@@ -578,6 +565,20 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		return RES_IDS;
 	}
 	
+	private String[] getPageItems() {
+		if (null == mMedicinePageItems) {
+			int[][] detailItemResIds = getDetailItemResourceIds();
+			
+			mMedicinePageItems = new String[detailItemResIds.length];
+			
+			for (int i = 0; i < mMedicinePageItems.length; ++i) {
+				mMedicinePageItems[i] = getString(detailItemResIds[i][0]);
+			}
+		}
+		
+		return mMedicinePageItems;
+	}
+	
 	private void fillDetailContentTemplates() {
 		// Simple items, including name, aliases, category, details, common_prescriptions,
 		// common_partners, similar_medicines, dosage_reference, contraindications
@@ -592,23 +593,21 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		}
 		
 		DbHelper dbHelper = mDbHelper;
-		String spaceString = getString(R.string.space);
 		String unknownString = getString(R.string.unknown);
 		String hintPleaseSelect = getString(R.string.please_select);
 		//String hintPleaseSelectOrCustomize = getString(R.string.please_select_or_customize);
-		String[] levelWords = dbHelper.queryAttributeNames(R.string.attr_table_prefix_level_word,
-			spaceString);		
+		String[] levelWords = dbHelper.queryAttributeNames(R.string.attr_table_prefix_level_word, SPACE);		
 
 		int[][] integers = {
 			// column index, isFixed, minRecords, checkBoxFlags
 			{ MEDICINE_COLUMN_INDEX_CATEGORY, 1, 1, 0 },
-			{ MEDICINE_COLUMN_INDEX_NATURE, 1, 1, 0 },
-			{ MEDICINE_COLUMN_INDEX_TASTES, 1, 7, CHKBOX_VISIBLE | CHKBOX_CLICKABLE },
-			{ MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 1, 12, CHKBOX_VISIBLE | CHKBOX_CLICKABLE },
+			{ MEDICINE_COLUMN_INDEX_NATURE, 0, 1, 0 },
+			{ MEDICINE_COLUMN_INDEX_TASTES, 0, 1, 0 },
+			{ MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0, 1, 0 },
 			{ MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, 1, 5, CHKBOX_VISIBLE | CHKBOX_CLICKABLE },
 			{ MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION, 1, 6, 0 },
-			{ MEDICINE_COLUMN_INDEX_EFFECTS, 0, 1, 0 },
-			{ MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS, 0, 1, 0 },
+			{ MEDICINE_COLUMN_INDEX_EFFECTS, 1, 1, 0 },
+			{ MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS, 1, 1, 0 },
 			{ MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL, 0, 1, 0 }
 		};
 		
@@ -616,14 +615,14 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		String[][][] spinnerItems = {
 			// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
 			{ null, null, null, dbHelper.queryMedicineCategories(unknownString), null, null },
-			{ null, null, levelWords, dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_nature, hintPleaseSelect), null, null },
-			{ null, null, levelWords, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_taste, ITEM_READ_ONLY), null, null },
-			{ null, null, null, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_channel_tropism, ITEM_READ_ONLY), null, null },
-			{ null, null, dbHelper.queryAttributeNames(R.string.attr_table_prefix_action_verb, hintPleaseSelect), /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_life_fundamental, ITEM_READ_ONLY), null, null },
+			{ null, dbHelper.queryAttributeNames(R.string.attr_table_prefix_processing_method, SPACE), levelWords, dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_nature, hintPleaseSelect), null, null },
+			{ null, null, levelWords, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_taste, hintPleaseSelect/*ITEM_READ_ONLY*/), null, null },
+			{ null, null, null, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_channel_tropism, hintPleaseSelect/*ITEM_READ_ONLY*/), null, null },
+			{ null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_action_verb, SPACE)*/, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_life_fundamental, ITEM_READ_ONLY), null, null },
 			{ null, null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_motion_form, hintPleaseSelect)*/, null, null },
 			{ null, null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_effect, hintPleaseSelectOrCustomize)*/, null, null },
 			{ null, null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_action_and_indication, hintPleaseSelectOrCustomize)*/, null, null },
-			{ null, null, null, null/*dbHelper.queryReferenceMaterialNames()*/, null, null }
+			{ null, null, null, /*null*/dbHelper.queryReferenceMaterialNames(), null, null }
 		};
 		
 		String[] editTextNames = DETAIL_CONTENT_EDIT_TEXT_NAMES;
@@ -663,48 +662,44 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		HashMap<String, String> mapDetails = mDetailContentFromDb;
 		int[][] detailItemResIds = getDetailItemResourceIds();
 		//String hintPleaseSelect = getString(R.string.please_select);
-		String[] tastes = mDbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_taste, null);
-		String[] channelTropism = mDbHelper.queryAttributeNames(R.string.attr_table_prefix_channel_tropism, null);
 		String[] lifeFundamental = mDbHelper.queryAttributeNames(R.string.attr_table_prefix_life_fundamental, null);
 		String referenceMaterial = mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL]);
 		String SPN_VALUE_SHORT = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_SPN_VALUE];
 		String ETX_VALUE_SHORT = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_SHORT];
+		String ETX_VALUE_LONG = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_LONG];
 		
-		if (null == referenceMaterial || 0 == referenceMaterial.length())
-			referenceMaterial = getString(R.string.reference_material_contents_example);
+		/*if (null == referenceMaterial || 0 == referenceMaterial.length())
+			referenceMaterial = getString(R.string.reference_material_contents_example);*/
 		
 		DetailContentData[] natureData = parseFromDataseField(
-			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_NATURE]), 1, true);
+			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_NATURE]),
+			MEDICINE_COLUMN_INDEX_NATURE, 1, false);
 		
 		DetailContentData[] tastesData = parseFromDataseField(
-			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_TASTES]), tastes.length, true);
+			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_TASTES]),
+			MEDICINE_COLUMN_INDEX_TASTES, 1, false);
 		
 		DetailContentData[] channelTropismData = parseFromDataseField(
-			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM]), channelTropism.length, true);
+			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM]),
+			MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 1, false);
 		
 		DetailContentData[] lifeFundamentalData = parseFromDataseField(
-			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS]), lifeFundamental.length, true);
+			mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS]),
+			MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, lifeFundamental.length, true);
 		
-		for (int i = 0; i < natureData.length; ++i) {
-			natureData[i].medicineColumnIndex = MEDICINE_COLUMN_INDEX_NATURE;
-		}
-		
-		for (int i = 0; i < tastesData.length; ++i) {
-			tastesData[i].medicineColumnIndex = MEDICINE_COLUMN_INDEX_TASTES;
-			tastesData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
-			tastesData[i].editTextContents.put(ETX_VALUE_SHORT, tastes[i]);
-		}
-		
-		for (int i = 0; i < channelTropismData.length; ++i) {
-			channelTropismData[i].medicineColumnIndex = MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM;
-			channelTropismData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
-			channelTropismData[i].editTextContents.put(ETX_VALUE_SHORT, channelTropism[i]);
-		}
+		DetailContentData[] referenceMaterialData = parseFromDataseField(referenceMaterial,
+			MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL, 1, false);
 		
 		for (int i = 0; i < lifeFundamentalData.length; ++i) {
-			lifeFundamentalData[i].medicineColumnIndex = MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS;
 			lifeFundamentalData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
 			lifeFundamentalData[i].editTextContents.put(ETX_VALUE_SHORT, lifeFundamental[i]);
+		}
+		
+		for (int i = 0; i < referenceMaterialData.length; ++i) {
+			//referenceMaterialData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
+			String _etxValueLong = referenceMaterialData[i].editTextContents.get(ETX_VALUE_LONG);
+			if (null == _etxValueLong || 0 == _etxValueLong.length())
+				referenceMaterialData[i].editTextContents.put(ETX_VALUE_LONG, getString(R.string.reference_material_contents_example));
 		}
 		
 		DetailContentData[][] contentData = {
@@ -816,13 +811,13 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS]) } )
 			},
 
-			{
+			/*{
 				new DetailContentData(MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL, 0,
 					// spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
 					new int[]{ 0, 0, 0, 0, 0, 0 },
 					// etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
 					new String[] { null, null, null, null, null, null, referenceMaterial } )
-			},
+			}*/referenceMaterialData,
 
 			{
 				new DetailContentData(MEDICINE_COLUMN_INDEX_REMARKS, 0,
@@ -849,27 +844,37 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		}
 	}
 	
+	private class DetailTitleData {
+		public final int medicineColumnIndex;
+		public final String name;
+		
+		public DetailTitleData(int medicineColumnIndex, String name) {
+			this.medicineColumnIndex = medicineColumnIndex;
+			this.name = name;
+		}
+	}
+	
 	private class DetailTitleAdapter extends BaseAdapter {
 
-		private final Context context;
-		private final List<String> itemList;
-		private final LayoutInflater inflater;
+		private final Context mContext;
+		private final List<DetailTitleData> mItemList;
+		private final LayoutInflater mInflater;
 
-		public DetailTitleAdapter(Context context, List<String> itemList) {
+		public DetailTitleAdapter(Context context, List<DetailTitleData> itemList) {
 			super();
-			this.itemList = itemList;
-			this.context = context;
-			inflater = LayoutInflater.from(context);
+			this.mItemList = itemList;
+			this.mContext = context;
+			mInflater = LayoutInflater.from(context);
 		}
 
 		@Override
 		public int getCount() {
-			return itemList.size();
+			return mItemList.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			return itemList.get(position);
+			return mItemList.get(position);
 		}
 
 		@Override
@@ -883,7 +888,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 
 			if (convertView == null) {
 				holder = new ViewHolder();
-				convertView = inflater.inflate(R.layout.details_item_title, null);
+				convertView = mInflater.inflate(R.layout.details_item_title, null);
 				holder.name = (TextView) convertView.findViewById(R.id.txv_details_title);
 				holder.iconAdd = (ImageView) convertView.findViewById(R.id.imgv_add_details_icon);
 				holder.iconDelete = (ImageView) convertView.findViewById(R.id.imgv_delete_details_icon);
@@ -895,16 +900,69 @@ public class ReadWriteItemDetailsActivity extends Activity {
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			String item = itemList.get(position);
+			final DetailTitleData item = mItemList.get(position);
 			
-			holder.name.setText(item);
+			holder.name.setText(item.name);
 			com.android_assistant.TextView.setDefaultTextShadow(holder.name);
 			
-			/*holder.iconAdd.setVisibility(TextView.VISIBLE);
-			holder.iconDelete.setVisibility(TextView.VISIBLE);
-			
-			holder.btnConfirm.setVisibility(TextView.VISIBLE);
-			holder.btnCancel.setVisibility(TextView.VISIBLE);*/
+			if (!mDetailContentTemplates[item.medicineColumnIndex].isFixed) {
+				final int itemIndex = item.medicineColumnIndex;
+				final String[] pageItems = getPageItems();
+				final int[][] detailItemResIds = getDetailItemResourceIds();
+				final ListView lsvContents = (ListView) findViewById(detailItemResIds[itemIndex][2]);
+				final DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
+				final List<DetailContentData> contentItemList = contentsAdapter.getItemList();
+				
+				holder.iconAdd.setVisibility(mEditable ? TextView.VISIBLE : TextView.GONE);
+				holder.iconAdd.setClickable(mEditable);
+				holder.iconAdd.setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						Hint.alert(mContext, getString(R.string.add_content_item), "要为[" + pageItems[itemIndex] + "]新增条目吗？",
+							new DialogInterface.OnClickListener() {
+							
+								@Override
+								public void onClick(DialogInterface dialog, int which) {								
+									contentItemList.add(new DetailContentData(itemIndex));
+									DetailContentData contentData = contentItemList.get(contentItemList.size() - 1);
+									contentData.checkBoxFlags |= CHKBOX_CLICKABLE;								
+									contentData.spinnersEnabled = true;
+									contentData.editTextsEnabled = true;
+									contentsAdapter.notifyDataSetChanged();
+								}
+							}, null);
+					}
+				});
+				
+				holder.iconDelete.setVisibility(mEditable ? TextView.VISIBLE : TextView.GONE);
+				holder.iconDelete.setClickable(mEditable);
+				holder.iconDelete.setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						Hint.alert(mContext, getString(R.string.clear_content_items), "要清空[" + pageItems[itemIndex] + "]所有的条目吗？",
+							new DialogInterface.OnClickListener() {
+							
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									for (int i = contentItemList.size() - 1; i >= 0; --i) {
+										contentItemList.remove(i);
+									}
+									contentItemList.add(new DetailContentData(itemIndex));
+									DetailContentData contentData = contentItemList.get(contentItemList.size() - 1);
+									contentData.checkBoxFlags |= CHKBOX_CLICKABLE;								
+									contentData.spinnersEnabled = true;
+									contentData.editTextsEnabled = true;
+									contentsAdapter.notifyDataSetChanged();
+								}
+							}, null);
+					}
+				});
+				
+				/*holder.btnConfirm.setVisibility(TextView.VISIBLE);
+				holder.btnCancel.setVisibility(TextView.VISIBLE);*/
+			}
 
 			return convertView;
 		}
@@ -919,14 +977,15 @@ public class ReadWriteItemDetailsActivity extends Activity {
 	}
 	
 	private class DetailContentData {
-		public int medicineColumnIndex;
+		public final int medicineColumnIndex;
 		public int checkBoxFlags;
 		public HashMap<String, Integer> selectedSpinnerPositions;
 		public HashMap<String, String> editTextContents;
 		public boolean spinnersEnabled;
 		public boolean editTextsEnabled;
 		
-		public DetailContentData() {
+		public DetailContentData(int medicineColumnIndex) {
+			this.medicineColumnIndex = medicineColumnIndex;
 			selectedSpinnerPositions = new HashMap<String, Integer>();
 			editTextContents = new HashMap<String, String>();
 			spinnersEnabled = false;
@@ -960,6 +1019,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		public HashMap<String, String> mapDefaultEditTextValues;
 		
 		public DetailContentTemplate() {
+			isFixed = true;
+			minRecords = 1;
+			checkBoxFlags = 0;
 			mapSpinnerItems = new HashMap<String, String[]>();
 			mapDefaultEditTextValues = new HashMap<String, String>();
 		}
@@ -970,6 +1032,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		private final Context mContext;
 		private final List<DetailContentData> mItemList;
 		private final LayoutInflater mInflater;
+		private int mEtxTouchPosition = -1;
 
 		public DetailContentAdapter(Context context, List<DetailContentData> itemList) {
 			super();
@@ -998,7 +1061,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		}
 
 		@Override
-		public View getView(final int position, View convertView,
+		public View getView(int position, View convertView,
 				ViewGroup parent) {
 
 			ViewHolder holder = null;
@@ -1010,6 +1073,20 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			}
 			else {
 				holder = (ViewHolder) convertView.getTag();
+			}
+			
+			SmarterTextWatcher[] textWatchers = {
+				holder.watcherEtxKey,
+				holder.watcherEtxValuePrefix_1,
+				holder.watcherEtxValuePrefix_2,
+				holder.watcherEtxValueShort,
+				holder.watcherEtxValueSuffix_1,
+				holder.watcherEtxValueSuffix_2,
+				holder.watcherEtxValueLong
+			};
+			
+			for (int i = 0; i < textWatchers.length; ++i) {
+				textWatchers[i].updatePosition(position);
 			}
 
 			setViewHolder(holder, position);
@@ -1026,26 +1103,36 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			holder.checkBox = (CheckBox) convertView.findViewById(R.id.chkbox_details_item);
 			holder.spnKey = (Spinner) convertView.findViewById(R.id.spn_details_key);
 			holder.etxKey = (EditText) convertView.findViewById(R.id.etx_details_key);
+			holder.watcherEtxKey = new SmarterTextWatcher(DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_KEY]);
 			holder.spnValuePrefix_1 = (Spinner) convertView.findViewById(R.id.spn_details_value_prefix_1);
 			holder.etxValuePrefix_1 = (EditText) convertView.findViewById(R.id.etx_details_value_prefix_1);
+			holder.watcherEtxValuePrefix_1 = new SmarterTextWatcher(DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_PREFIX_1]);
 			holder.spnValuePrefix_2 = (Spinner) convertView.findViewById(R.id.spn_details_value_prefix_2);
 			holder.etxValuePrefix_2 = (EditText) convertView.findViewById(R.id.etx_details_value_prefix_2);
+			holder.watcherEtxValuePrefix_2 = new SmarterTextWatcher(DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_PREFIX_2]);
 			holder.spnValue = (Spinner) convertView.findViewById(R.id.spn_details_value);
 			holder.etxValueShort = (EditText) convertView.findViewById(R.id.etx_details_value_short_texts);
+			holder.watcherEtxValueShort = new SmarterTextWatcher(DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_SHORT]);
 			holder.spnValueSuffix_1 = (Spinner) convertView.findViewById(R.id.spn_details_value_suffix_1);
 			holder.etxValueSuffix_1 = (EditText) convertView.findViewById(R.id.etx_details_value_suffix_1);
+			holder.watcherEtxValueSuffix_1 = new SmarterTextWatcher(DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_SUFFIX_1]);
 			holder.spnValueSuffix_2 = (Spinner) convertView.findViewById(R.id.spn_details_value_suffix_2);
 			holder.etxValueSuffix_2 = (EditText) convertView.findViewById(R.id.etx_details_value_suffix_2);
+			holder.watcherEtxValueSuffix_2 = new SmarterTextWatcher(DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_SUFFIX_2]);
 			holder.etxValueLong = (EditText) convertView.findViewById(R.id.etx_details_value_long_texts);
+			holder.watcherEtxValueLong = new SmarterTextWatcher(DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_LONG]);
 			
 			return holder;
 		}
 		
-		private void setViewHolder(final ViewHolder holder, final int position) {
+		private void setViewHolder(final ViewHolder holder, int position) {
 			final DetailContentData item = mItemList.get(position);
 			
 			if (null == item)
 				return;
+		
+			DetailContentTemplate template = mMapDetailContentTemplates.get(
+				MEDICINE_COLUMNS[item.medicineColumnIndex]);
 			
 			Spinner[] holderSpinners = {
 				holder.spnKey,
@@ -1066,59 +1153,79 @@ public class ReadWriteItemDetailsActivity extends Activity {
 				holder.etxValueLong
 			};
 			
-			/*holder.etxValueLong.addTextChangedListener(new TextWatcher() {
-				
-				@Override
-				public void onTextChanged(CharSequence s, int start, int before, int count) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void beforeTextChanged(CharSequence s, int start, int count,
-						int after) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void afterTextChanged(Editable s) {
-					mItemList.get(position).editTextContents.put("etxValueLong", s.toString());
-				}
-			});*/
+			SmarterTextWatcher[] textWatchers = {
+				holder.watcherEtxKey,
+				holder.watcherEtxValuePrefix_1,
+				holder.watcherEtxValuePrefix_2,
+				holder.watcherEtxValueShort,
+				holder.watcherEtxValueSuffix_1,
+				holder.watcherEtxValueSuffix_2,
+				holder.watcherEtxValueLong
+			};
 			
-			// case 1: for simple contents
-			if (detailContentIsSimple(item.medicineColumnIndex)) {
-				holder.medicineColumnIndex = item.medicineColumnIndex;
-				holder.checkBox.setVisibility(TextView.GONE);
+			boolean isSimpleContent = detailContentIsSimple(item.medicineColumnIndex);
+			
+			for (int i = 0; i < holderEditTexts.length; ++i) {
+				final String editTextName = DETAIL_CONTENT_EDIT_TEXT_NAMES[i];
+				String templateTextValue = template.mapDefaultEditTextValues.get(editTextName);
 				
-				holder.etxValueLong.setEnabled(item.editTextsEnabled);
-				holder.etxValueLong.setText(item.editTextContents.get("etxValueLong"));
-				com.android_assistant.TextView.setDefaultTextShadow(holder.etxValueLong);
-				holder.etxValueLong.addTextChangedListener(new TextWatcher() {
+				/*if (null != templateTextValue)
+					holderEditTexts[i].setEnabled(item.editTextsEnabled && !templateTextValue.equals(ITEM_READ_ONLY));
+				else
+					holderEditTexts[i].setEnabled(true);*/
+				holderEditTexts[i].setClickable(true);
+				holderEditTexts[i].setOnClickListener(new View.OnClickListener() {
 					
 					@Override
-					public void onTextChanged(CharSequence s, int start, int before, int count) {
-						// TODO Auto-generated method stub
+					public void onClick(View v) {
+						if (item.editTextsEnabled)
+							return;
 						
-					}
-					
-					@Override
-					public void beforeTextChanged(CharSequence s, int start, int count,
-							int after) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-					@Override
-					public void afterTextChanged(Editable s) {
-						mItemList.get(position).editTextContents.put("etxValueLong", s.toString());
+						//Hint.alert(mContext, "Debug", ((EditText)v).getText().toString()); // TODO: more operations in future...
 					}
 				});
+				holderEditTexts[i].setFocusable(item.editTextsEnabled);
+				//holderEditTexts[i].setCursorVisible(item.editTextsEnabled);
+				holderEditTexts[i].setFocusableInTouchMode(item.editTextsEnabled);
+				if (item.editTextsEnabled)
+					holderEditTexts[i].requestFocus();
+				holderEditTexts[i].setText(item.editTextContents.get(editTextName));
+				com.android_assistant.TextView.setDefaultTextShadow(holderEditTexts[i]);
+				/////////////////// begin: deals with the EditText focus problem ///////////////////
+				holderEditTexts[i].setOnTouchListener(new OnTouchListener() {
+					
+					@Override
+					public boolean onTouch(View v, MotionEvent event) {
+						// WARNING: DO NOT define position as final and mEtxTouchPosition = position;
+						mEtxTouchPosition = (int)v.getTag();
+						
+						return false;
+					}
+				});
+				holderEditTexts[i].setTag(position);
+				if (mEtxTouchPosition == position) {
+					holderEditTexts[i].requestFocus();
+					holderEditTexts[i].setSelection(holderEditTexts[i].getText().length());
+				}
+				else {
+					holderEditTexts[i].clearFocus();
+				}
+				/////////////////// end: deals with the EditText focus problem ///////////////////
+				holderEditTexts[i].addTextChangedListener(textWatchers[i]);
+				
+				if (null == templateTextValue && !isSimpleContent)
+					holderEditTexts[i].setVisibility(TextView.GONE);
+			}
+			
+			// case 1: for simple contents
+			if (isSimpleContent) {
+				//holder.medicineColumnIndex = item.medicineColumnIndex;
+				holder.checkBox.setVisibility(TextView.GONE);
 				
 				for (int i = 0; i < holderSpinners.length; ++i) {
 					holderSpinners[i].setVisibility(TextView.GONE);
 					
+					// Hides all EditTexts excepts etxValueLong.
 					holderEditTexts[i].setVisibility(TextView.GONE);
 				}
 				
@@ -1129,10 +1236,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			 * case 2: for complicated contents
 			 */
 			
-			DetailContentTemplate template = mMapDetailContentTemplates.get(
-				MEDICINE_COLUMNS[item.medicineColumnIndex]);
-			
-			holder.medicineColumnIndex = item.medicineColumnIndex;
+			//holder.medicineColumnIndex = item.medicineColumnIndex;
 
 			holder.checkBox.setVisibility((0 != (template.checkBoxFlags & CHKBOX_VISIBLE))
 				? TextView.VISIBLE : TextView.GONE);
@@ -1182,58 +1286,61 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					}
 				});
 			}
-			
-			for (int i = 0; i < holderEditTexts.length; ++i) {
-				final String editTextName = DETAIL_CONTENT_EDIT_TEXT_NAMES[i];
-				String editTextValue = template.mapDefaultEditTextValues.get(editTextName);
-				
-				if (null == editTextValue) {
-					holderEditTexts[i].setVisibility(TextView.GONE);
-					continue;
-				}
-				
-				holderEditTexts[i].setEnabled(!editTextValue.equals(ITEM_READ_ONLY) && item.editTextsEnabled);
-				holderEditTexts[i].setText(item.editTextContents.get(editTextName));
-				com.android_assistant.TextView.setDefaultTextShadow(holderEditTexts[i]);
-				holderEditTexts[i].addTextChangedListener(new TextWatcher() {
-					
-					@Override
-					public void onTextChanged(CharSequence s, int start, int before, int count) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-					@Override
-					public void beforeTextChanged(CharSequence s, int start, int count,
-							int after) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-					@Override
-					public void afterTextChanged(Editable s) {
-						/*mItemList.get(position)*/item.editTextContents.put(editTextName, s.toString());
-					}
-				});
-			}
 		}
 
 		private class ViewHolder {
-			int medicineColumnIndex;
+			//int medicineColumnIndex;
 			CheckBox checkBox;
 			Spinner spnKey;
 			EditText etxKey;
+			SmarterTextWatcher watcherEtxKey;
 			Spinner spnValuePrefix_1;
 			EditText etxValuePrefix_1;
+			SmarterTextWatcher watcherEtxValuePrefix_1;
 			Spinner spnValuePrefix_2;
 			EditText etxValuePrefix_2;
+			SmarterTextWatcher watcherEtxValuePrefix_2;
 			Spinner spnValue;
 			EditText etxValueShort;
+			SmarterTextWatcher watcherEtxValueShort;
 			Spinner spnValueSuffix_1;
 			EditText etxValueSuffix_1;
+			SmarterTextWatcher watcherEtxValueSuffix_1;
 			Spinner spnValueSuffix_2;
 			EditText etxValueSuffix_2;
+			SmarterTextWatcher watcherEtxValueSuffix_2;
 			EditText etxValueLong;
+			SmarterTextWatcher watcherEtxValueLong;
+		}
+		
+		private class SmarterTextWatcher implements TextWatcher {
+			private int mPosition;
+			private final String mTargetEditTextName;
+			
+			public SmarterTextWatcher(String targetEditTextName) {
+				mTargetEditTextName = targetEditTextName;
+			}
+			
+			public void updatePosition(int position) {
+				mPosition = position;
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				mItemList.get(mPosition).editTextContents.put(mTargetEditTextName, s.toString());
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				;
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				;
+			}
 		}
 	}
 }
