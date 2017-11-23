@@ -102,7 +102,7 @@ public class DbHelper {
 		mDbDir = dir;
 	}
 	
-	public void precheck() {
+	public void precheck() throws Exception {
 		String dbPath = getDatabaseDirectory() + "/" + getDatabaseName();
 		File dbFile = new File(dbPath);
 		boolean dbExits = dbFile.exists();
@@ -119,12 +119,12 @@ public class DbHelper {
 			+ "\n" + dbPath);
 	}
 	
-	public void prepareTestData() {
+	public void prepareTestData() throws Exception {
 		createTable(R.string.sql_create_test_table);
 		makePresetData(R.string.sql_make_test_data, R.array.sql_args_make_test_data, 2, true);
 	}
 	
-	public void prepareMedicineData() {
+	public void prepareMedicineData() throws Exception {
 		createTable(R.string.sql_create_medicine_categories_table);
 		makePresetData(R.string.sql_make_medicine_categories_data,
 			R.array.medicine_categories, 1, true);
@@ -274,7 +274,7 @@ public class DbHelper {
 		createTable(sql);
 	}
 	
-	private void makeAttributeData(String attributeName, int valuesArrayResId) {
+	private void makeAttributeData(String attributeName, int valuesArrayResId) throws Exception {
 		String sql = "insert into `" + attributeName + "_definitions`(name)"
 			+ " values(?)";
 		
@@ -290,7 +290,7 @@ public class DbHelper {
 	}
 	
 	private void makePresetData(String sqlString, int valuesArrayResId,
-		int bindArgsCount, boolean enablesTransaction) {
+		int bindArgsCount, boolean enablesTransaction) throws Exception {
 		String dbError = mContext.getResources().getString(R.string.db_error);
 		
 		if (valuesArrayResId > 0) {
@@ -349,7 +349,7 @@ public class DbHelper {
 	}
 	
 	private void makePresetData(int sqlStringResId, int valuesArrayResId,
-		int bindArgsCount, boolean enablesTransaction) {
+		int bindArgsCount, boolean enablesTransaction) throws Exception {
 		String sql = mContext.getResources().getString(sqlStringResId);
 		
 		makePresetData(sql, valuesArrayResId, bindArgsCount, enablesTransaction);

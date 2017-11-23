@@ -209,7 +209,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 		//String name = intent.getStringExtra("name");
 		
 		setTitle(getString(R.string.main_item_medicine));
-		Hint.longToast(this, primaryId);
+		//Hint.longToast(this, primaryId);
 		
 		mDbHelper = new DbHelper(this);
 		mDbHelper.openOrCreate();
@@ -302,7 +302,15 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			
 			try {
 				mDbHelper.updateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
-				this.finish();
+				
+				Hint.alert(this, R.string.save_successfully, R.string.asking_after_save_operation,
+					new OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								ReadWriteItemDetailsActivity.this.finish();
+							}
+					}, null);
 			} catch(SQLException e) {
 				Hint.alert(this, getString(R.string.alert_failed_to_update),
 					getString(R.string.alert_checking_input) + e.getMessage());
@@ -496,7 +504,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 			if (detailContentIsNotUsed(i))
 				continue;
 			
-			ArrayList<DetailTitleData> titleList = new ArrayList<>();
+			ArrayList<DetailTitleData> titleList = new ArrayList<DetailTitleData>();
 			ListView lsvTitle = (ListView) findViewById(detailItemResIds[i][1]);
 			DetailTitleAdapter titleAdapter = new DetailTitleAdapter(this, titleList);
 			
@@ -1185,7 +1193,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					}
 				});
 				holderEditTexts[i].setFocusable(item.editTextsEnabled);
-				//holderEditTexts[i].setCursorVisible(item.editTextsEnabled);
+				holderEditTexts[i].setCursorVisible(item.editTextsEnabled);
 				holderEditTexts[i].setFocusableInTouchMode(item.editTextsEnabled);
 				if (item.editTextsEnabled)
 					holderEditTexts[i].requestFocus();
@@ -1197,7 +1205,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 					@Override
 					public boolean onTouch(View v, MotionEvent event) {
 						// WARNING: DO NOT define position as final and mEtxTouchPosition = position;
-						mEtxTouchPosition = (int)v.getTag();
+						mEtxTouchPosition = (java.lang.Integer)v.getTag();
 						
 						return false;
 					}
@@ -1206,9 +1214,11 @@ public class ReadWriteItemDetailsActivity extends Activity {
 				if (mEtxTouchPosition == position) {
 					holderEditTexts[i].requestFocus();
 					holderEditTexts[i].setSelection(holderEditTexts[i].getText().length());
+					holderEditTexts[i].setCursorVisible(item.editTextsEnabled);
 				}
 				else {
 					holderEditTexts[i].clearFocus();
+					//holderEditTexts[i].setCursorVisible(false); // TODO: does not work as expected
 				}
 				/////////////////// end: deals with the EditText focus problem ///////////////////
 				holderEditTexts[i].addTextChangedListener(textWatchers[i]);

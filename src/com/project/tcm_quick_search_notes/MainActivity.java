@@ -33,7 +33,6 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -130,14 +129,39 @@ public class MainActivity extends Activity
 		
 		DbHelper dbHelper = new DbHelper(this);
 		
-		dbHelper.precheck();
+		try {
+			dbHelper.precheck();
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.finish();
+		}
 	}
 	
 	@Override
 	protected void onDestroy() {
-		NotificationManager notificationManager = (NotificationManager) this.getSystemService(NOTIFICATION_SERVICE);
-		
-		notificationManager.cancel(0);
+		App.cancelNotification(this);
+		super.onDestroy();
+	}
+	
+	@Override
+	protected void onPause() {
+		if (App.isInBackground(this)/*0 != (getIntent().getFlags() & Intent.FLAG_FROM_BACKGROUND)*/) {
+			String appName = App.getAppName(this);
+
+			App.displayNotification(this, appName, getString(R.string.click_to_restore),
+				appName + getString(R.string.running_in_background), R.drawable.ic_launcher);
+		}
+		super.onPause();
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		/*if (0 != (getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)) {
+			finish();
+			return;
+		}*/
+		App.cancelNotification(this);
 	}
 
 	@Override

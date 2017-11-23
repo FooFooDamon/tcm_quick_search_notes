@@ -170,6 +170,18 @@
         <item>@string/en_save</item>
     </string-array>
     
+    <string-array name="save_successfully">
+        <item>@string/save_successfully</item>
+        <item>@string/cht_save_successfully</item>
+        <item>@string/en_save_successfully</item>
+    </string-array>
+    
+    <string-array name="save_failed">
+        <item>@string/save_failed</item>
+        <item>@string/cht_save_failed</item>
+        <item>@string/en_save_failed</item>
+    </string-array>
+    
     <string-array name="yes">
         <item>@string/yes</item>
         <item>@string/cht_yes</item>

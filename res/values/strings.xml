@@ -123,6 +123,14 @@
     <string name="cht_save">保存</string>
     <string name="en_save">Save</string>
     
+    <string name="save_successfully">保存成功</string>
+    <string name="cht_save_successfully">保存成功</string>
+    <string name="en_save_successfully">Saved Successfully</string>
+    
+    <string name="save_failed">保存失败</string>
+    <string name="cht_save_failed">保存失敗</string>
+    <string name="en_save_failed">Saved Unsuccessfully</string>
+    
     <string name="yes">是</string>
     <string name="cht_yes">是</string>
     <string name="en_yes">Yes</string>
@@ -387,6 +395,8 @@
     </string>
     
     <string name="version_log_contents">
+        ---- V0.01.01 2017/11/23\n
+        1、若干小优化：标题栏通知消息显示及取消、药物页面文本框焦点显示等。\n\n
         ---- V0.01.00 2017/11/19\n
         1、修复药物重名时程序崩溃的缺陷。\n
         2、修复文本框换行时丢失焦点的缺陷。\n
@@ -447,6 +457,14 @@
     <string name="alert_checking_input">
         请检查输入的信息是否有效，或与现有信息冲突（例如名称相同等）。
     </string>
+    
+    <string name="asking_after_save_operation">
+        数据已提交并保存成功，是否退出当前页面？退出请点击
+        “确定”，继续留在当前页面请点击“取消”。
+    </string>
+    
+    <string name="click_to_restore">点击可恢复</string>
+    <string name="running_in_background">后台运行中</string>
     
     <string name="prescription">方剂</string>
     <string name="main_item_prescription">（组合）方剂查询</string>
