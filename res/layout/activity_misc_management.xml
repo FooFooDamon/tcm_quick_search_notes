@@ -9,7 +9,7 @@
     android:paddingTop="0dp"
     android:paddingBottom="0dp"
     android:orientation="vertical"
-    tools:context="com.project.tcm_quick_search_notes.MainActivity" >
+    tools:context="com.project.tcm_quick_search_notes.MiscManagementActivity" >
 
 	<ScrollView
 	    android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         android:background="#ffb27e50">
 	
 		<LinearLayout
-		    android:id="@+id/llayout_main_page"
+		    android:id="@+id/llayout_misc_page"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:orientation="vertical" >
@@ -28,38 +28,9 @@
 		        android:layout_height="25dp"
 		        android:background="#88b27e50" >
 		    </ImageView>
-		    <!-- backup: android:background="#88ca8f5b" -->
 		
 		    <com.android_assistant.EnhancedListView
-		        android:id="@+id/lsv_medication_group"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:paddingStart="@dimen/activity_horizontal_margin"
-		        android:paddingEnd="@dimen/activity_horizontal_margin" >
-		    </com.android_assistant.EnhancedListView>
-		    
-		    <ImageView
-		        android:contentDescription="@string/empty_string"
-		        android:layout_width="match_parent"
-		        android:layout_height="15dp" >
-		    </ImageView>
-		
-		    <com.android_assistant.EnhancedListView
-		        android:id="@+id/lsv_help_group"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:paddingStart="@dimen/activity_horizontal_margin"
-		        android:paddingEnd="@dimen/activity_horizontal_margin" >
-		    </com.android_assistant.EnhancedListView>
-		    
-		    <ImageView
-		        android:contentDescription="@string/empty_string"
-		        android:layout_width="match_parent"
-		        android:layout_height="15dp" >
-		    </ImageView>
-		
-		    <com.android_assistant.EnhancedListView
-		        android:id="@+id/lsv_exit_group"
+		        android:id="@+id/lsv_all_in_one_group"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:paddingStart="@dimen/activity_horizontal_margin"

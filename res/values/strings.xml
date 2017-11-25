@@ -338,6 +338,10 @@
     <string name="db_error">数据库操作错误</string>
     <string name="cht_db_error">數據庫操作錯誤</string>
     <string name="en_db_error">Database Error</string>
+    
+    <string name="data_init_error">数据初始化失败</string>
+    <string name="cht_data_init_error">數據初始化失敗</string>
+    <string name="en_data_init_error">Data Initialization Error</string>
 
     <!--
          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -395,6 +399,8 @@
     </string>
     
     <string name="version_log_contents">
+        ---- V0.01.02 2017/11/25\n
+        1、增加杂项管理功能，用于编辑次要信息（具体操作未实现）。\n\n
         ---- V0.01.01 2017/11/23\n
         1、若干小优化：标题栏通知消息显示及取消、药物页面文本框焦点显示等。\n\n
         ---- V0.01.00 2017/11/19\n
@@ -470,8 +476,14 @@
     <string name="main_item_prescription">（组合）方剂查询</string>
     <string name="add_prescription">新增方剂</string>
     
+    <string name="main_item_misc_management">杂项管理</string>
+    
     <string name="category">种类</string>
     <string name="add_category">新增种类</string>
+    <string name="medicine_category">药物种类</string>
+    <string name="add_medicine_category">新增药物种类</string>
+    <string name="prescription_category">方剂种类</string>
+    <string name="add_prescription_category">新增方剂种类</string>
     
     <string name="add_content_item">新增内容条目</string>
     <string name="clear_content_items">清空内容条目</string>

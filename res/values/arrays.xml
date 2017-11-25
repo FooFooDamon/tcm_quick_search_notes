@@ -494,6 +494,12 @@
         <item>@string/en_db_error</item>
     </string-array>
     
+    <string-array name="data_init_error">
+        <item>@string/data_init_error</item>
+        <item>@string/cht_data_init_error</item>
+        <item>@string/en_data_init_error</item>
+    </string-array>
+    
     <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
          Customized items should be put below!
          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

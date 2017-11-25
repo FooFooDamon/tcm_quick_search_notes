@@ -199,7 +199,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_read_write_item_details);
+		setContentView(R.layout.activity_medicine_item_details);
 		getActionBar().setBackgroundDrawable(
 				getResources().getDrawable(R.drawable.default_action_bar_style));
 		

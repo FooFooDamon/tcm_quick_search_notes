@@ -34,6 +34,8 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -61,6 +63,7 @@ public class MainActivity extends Activity
 	
 	private static final int LIST_ITEM_POS_MEDICINE = 0;
 	private static final int LIST_ITEM_POS_PRESCRIPTION = 1;
+	private static final int LIST_ITEM_POS_MISC_MANAGEMENT = 2;
 	
 	private static final int LIST_ITEM_POS_SETTINGS = 0;
 	private static final int LIST_ITEM_POS_ABOUT = 1;
@@ -88,7 +91,10 @@ public class MainActivity extends Activity
 				MEDICATION_STRINGS[LIST_ITEM_POS_MEDICINE]),
 				
 			new MainPageItem(getResources().getDrawable(R.drawable.ic_prescription),
-				MEDICATION_STRINGS[LIST_ITEM_POS_PRESCRIPTION])
+				MEDICATION_STRINGS[LIST_ITEM_POS_PRESCRIPTION]),
+				
+			new MainPageItem(getResources().getDrawable(R.drawable.ic_misc),
+				MEDICATION_STRINGS[LIST_ITEM_POS_MISC_MANAGEMENT])
 		};
 		
 		inflateMainPageListView(MEDICATION_ITEMS, R.id.lsv_medication_group);
@@ -118,22 +124,18 @@ public class MainActivity extends Activity
 		
 		inflateMainPageListView(EXIT_ITEMS, R.id.lsv_exit_group);
 		
-		// Enable it when using color gradient.
-		/*ListView bottomPaddingsListView = (ListView) findViewById(R.id.lsv_bottom_paddings);
-		ArrayAdapter<String> bottomPaddingsAdapter = new ArrayAdapter<String>(this,
-			R.drawable.default_text_style, new String[]{"\n\n"});
-
-		bottomPaddingsListView.setAdapter(bottomPaddingsAdapter);
-		bottomPaddingsListView.setBackground(
-			getResources().getDrawable(R.drawable.bottom_paddings));*/
-		
 		DbHelper dbHelper = new DbHelper(this);
 		
 		try {
 			dbHelper.precheck();
 		} catch (Exception e) {
-			e.printStackTrace();
-			this.finish();
+			Hint.alert(this, getString(R.string.data_init_error), e.getMessage(), new OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					MainActivity.this.finish();
+				}
+			});
 		}
 	}
 	
@@ -220,6 +222,8 @@ public class MainActivity extends Activity
 					getString(R.string.please_look_forward_to_it));
 				// startActivity(new Intent(this, SettingsActivity.class));
 			}
+			else if (LIST_ITEM_POS_MISC_MANAGEMENT == pos)
+				startActivity(new Intent(this, MiscManagementActivity.class));
 			else
 				Hint.shortToast(this, String.valueOf(pos) + ": Unknown " + item.name);
 			
@@ -259,7 +263,8 @@ public class MainActivity extends Activity
 	private final String[] getMedicationItems() {
 		final String[] MEDICATION_ITEMS = {
 			getString(R.string.main_item_medicine),
-			getString(R.string.main_item_prescription)
+			getString(R.string.main_item_prescription),
+			getString(R.string.main_item_misc_management)
 		};
 		
 		return MEDICATION_ITEMS;
@@ -316,25 +321,25 @@ public class MainActivity extends Activity
 	
 	private class MainPageItemAdapter extends BaseAdapter {
 
-		private final Context context;
-		private final List<MainPageItem> itemList;
-		private final LayoutInflater inflater;
+		private final Context mContext;
+		private final List<MainPageItem> mItemList;
+		private final LayoutInflater mInflater;
 
 		public MainPageItemAdapter(Context context, List<MainPageItem> itemList) {
 			super();
-			this.itemList = itemList;
-			this.context = context;
-			inflater = LayoutInflater.from(context);
+			this.mItemList = itemList;
+			this.mContext = context;
+			mInflater = LayoutInflater.from(context);
 		}
 
 		@Override
 		public int getCount() {
-			return itemList.size();
+			return mItemList.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			return itemList.get(position);
+			return mItemList.get(position);
 		}
 
 		@Override
@@ -350,7 +355,7 @@ public class MainActivity extends Activity
 
 			if (convertView == null) {
 				holder = new ViewHolder();
-				convertView = inflater.inflate(R.layout.main_page_item, null);
+				convertView = mInflater.inflate(R.layout.main_page_item, null);
 				holder.icon = (ImageView) convertView.findViewById(R.id.imgv_main_page_item);
 				holder.name = (TextView) convertView.findViewById(R.id.txv_main_page_item);
 				convertView.setTag(holder);
@@ -359,7 +364,7 @@ public class MainActivity extends Activity
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			MainPageItem item = itemList.get(position);
+			MainPageItem item = mItemList.get(position);
 
 			holder.icon.setImageDrawable(item.icon);
 			holder.name.setText(item.name);
