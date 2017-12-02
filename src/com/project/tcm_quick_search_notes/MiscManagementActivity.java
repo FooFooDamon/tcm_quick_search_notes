@@ -53,164 +53,164 @@ import android.widget.TextView;
 import com.android_assistant.Hint;
 
 public class MiscManagementActivity extends Activity
-	implements OnItemClickListener {
-	
-	private static final int LIST_ITEM_POS_LEVEL_WORD = 0;
-	private static final int LIST_ITEM_POS_PROCESSING_METHOD = 1;
-	private static final int LIST_ITEM_POS_UNIT = 2;
-	private static final int LIST_ITEM_POS_DOSAGE_FORM = 3;
-	private static final int LIST_ITEM_POS_METHOD_OF_TAKING_MEDICINE = 4;
-	private static final int LIST_ITEM_POS_REFERENCE_MATERIAL = 5;
+    implements OnItemClickListener {
 
-	@SuppressLint("NewApi")
-	@SuppressWarnings("deprecation")
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_misc_management);
-		getActionBar().setBackgroundDrawable(
-			getResources().getDrawable(R.drawable.default_action_bar_style));
-		
-		LinearLayout pageLayout = (LinearLayout) findViewById(R.id.llayout_misc_page);
-		
-		pageLayout.setBackgroundColor(android.graphics.Color.parseColor("#88b27e50"));
-		
-		final Drawable ICON = getResources().getDrawable(R.drawable.ic_blue_arrow);
-		final MiscPageItem[] MISC_ITEMS = {
-			new MiscPageItem(ICON, getString(R.string.medicine_category)),
-			new MiscPageItem(ICON, getString(R.string.prescription_category)),
-			new MiscPageItem(ICON, getString(R.string.level_word)),
-			new MiscPageItem(ICON, getString(R.string.processing_method)),
-			new MiscPageItem(ICON, getString(R.string.medicine_unit)),
-			new MiscPageItem(ICON, getString(R.string.dosage_form)),
-			new MiscPageItem(ICON, getString(R.string.method_of_taking_medicine)),
-			new MiscPageItem(ICON, getString(R.string.reference_material))
-		};
-		List<MiscPageItem> itemList = new ArrayList<MiscPageItem>();
-		
-		for (MiscPageItem item : MISC_ITEMS)
-		{
-			itemList.add(item);
-		}
-		
-		MiscPageItemAdapter adapter = new MiscPageItemAdapter(this, itemList);
-		ListView listView = (ListView) findViewById(R.id.lsv_all_in_one_group);
+    private static final int LIST_ITEM_POS_LEVEL_WORD = 0;
+    private static final int LIST_ITEM_POS_PROCESSING_METHOD = 1;
+    private static final int LIST_ITEM_POS_UNIT = 2;
+    private static final int LIST_ITEM_POS_DOSAGE_FORM = 3;
+    private static final int LIST_ITEM_POS_METHOD_OF_TAKING_MEDICINE = 4;
+    private static final int LIST_ITEM_POS_REFERENCE_MATERIAL = 5;
 
-		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(this);
-		listView.setBackground(getResources().getDrawable(R.drawable.background));
-	}
+    @SuppressLint("NewApi")
+    @SuppressWarnings("deprecation")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_misc_management);
+        getActionBar().setBackgroundDrawable(
+            getResources().getDrawable(R.drawable.default_action_bar_style));
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.xx, menu); // none so far
-		return true;
-	}
+        LinearLayout pageLayout = (LinearLayout) findViewById(R.id.llayout_misc_page);
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		//int id = item.getItemId();
-		
-		// none so far
+        pageLayout.setBackgroundColor(android.graphics.Color.parseColor("#88b27e50"));
 
-		return super.onOptionsItemSelected(item);
-	}
+        final Drawable ICON = getResources().getDrawable(R.drawable.ic_blue_arrow);
+        final MiscPageItem[] MISC_ITEMS = {
+            new MiscPageItem(ICON, getString(R.string.medicine_category)),
+            new MiscPageItem(ICON, getString(R.string.prescription_category)),
+            new MiscPageItem(ICON, getString(R.string.level_word)),
+            new MiscPageItem(ICON, getString(R.string.processing_method)),
+            new MiscPageItem(ICON, getString(R.string.medicine_unit)),
+            new MiscPageItem(ICON, getString(R.string.dosage_form)),
+            new MiscPageItem(ICON, getString(R.string.method_of_taking_medicine)),
+            new MiscPageItem(ICON, getString(R.string.reference_material))
+        };
+        List<MiscPageItem> itemList = new ArrayList<MiscPageItem>();
 
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-	}
+        for (MiscPageItem item : MISC_ITEMS)
+        {
+            itemList.add(item);
+        }
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-		ListView listView = (ListView) parent;
-		MiscPageItem item = (MiscPageItem) listView.getItemAtPosition(pos);
-		
-		if (LIST_ITEM_POS_REFERENCE_MATERIAL == pos) {
-			//startActivity(new Intent(this, QueryEntryActivity.class));
-			Hint.shortToast(this, String.valueOf(pos) + ": TODO: " + item.name);
-		}
-		else {
-			Hint.shortToast(this, String.valueOf(pos) + ": TODO: " + item.name);
-		}
-		
-		return;
-	}
-	
-	private class MiscPageItem {
-		public Drawable icon;
-		public String name;
+        MiscPageItemAdapter adapter = new MiscPageItemAdapter(this, itemList);
+        ListView listView = (ListView) findViewById(R.id.lsv_all_in_one_group);
 
-		public MiscPageItem() {
-		}
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
+        listView.setBackground(getResources().getDrawable(R.drawable.background));
+    }
 
-		public MiscPageItem(Drawable icon, String name) {
-			this.icon = icon;
-			this.name = name;
-		}
-	}
-	
-	private class MiscPageItemAdapter extends BaseAdapter {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        //getMenuInflater().inflate(R.menu.xx, menu); // none so far
+        return true;
+    }
 
-		private final Context mContext;
-		private final List<MiscPageItem> mItemList;
-		private final LayoutInflater mInflater;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        //int id = item.getItemId();
 
-		public MiscPageItemAdapter(Context context, List<MiscPageItem> itemList) {
-			super();
-			this.mItemList = itemList;
-			this.mContext = context;
-			mInflater = LayoutInflater.from(context);
-		}
+        // none so far
 
-		@Override
-		public int getCount() {
-			return mItemList.size();
-		}
+        return super.onOptionsItemSelected(item);
+    }
 
-		@Override
-		public Object getItem(int position) {
-			return mItemList.get(position);
-		}
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 
-		@Override
-		public long getItemId(int position) {
-			return position;
-		}
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+        ListView listView = (ListView) parent;
+        MiscPageItem item = (MiscPageItem) listView.getItemAtPosition(pos);
 
-		@Override
-		public View getView(final int position, View convertView,
-				ViewGroup parent) {
+        if (LIST_ITEM_POS_REFERENCE_MATERIAL == pos) {
+            //startActivity(new Intent(this, QueryEntryActivity.class)); // TODO: mIntent = new xxx();
+            Hint.shortToast(this, String.valueOf(pos) + ": TODO: " + item.name);
+        }
+        else {
+            Hint.shortToast(this, String.valueOf(pos) + ": TODO: " + item.name);
+        }
 
-			ViewHolder holder = null;
+        return;
+    }
 
-			if (convertView == null) {
-				holder = new ViewHolder();
-				convertView = mInflater.inflate(R.layout.main_page_item, null);
-				holder.icon = (ImageView) convertView.findViewById(R.id.imgv_main_page_item);
-				holder.name = (TextView) convertView.findViewById(R.id.txv_main_page_item);
-				convertView.setTag(holder);
-			}
-			else {
-				holder = (ViewHolder) convertView.getTag();
-			}
+    private class MiscPageItem {
+        public Drawable icon;
+        public String name;
 
-			MiscPageItem item = mItemList.get(position);
+        public MiscPageItem() {
+        }
 
-			holder.icon.setImageDrawable(item.icon);
-			holder.name.setText(item.name);
-			com.android_assistant.TextView.setDefaultTextShadow(holder.name);
+        public MiscPageItem(Drawable icon, String name) {
+            this.icon = icon;
+            this.name = name;
+        }
+    }
 
-			return convertView;
-		}
+    private class MiscPageItemAdapter extends BaseAdapter {
 
-		private class ViewHolder {
-			ImageView icon;
-			TextView name;
-		}
-	}
+        private final Context mContext;
+        private final List<MiscPageItem> mItemList;
+        private final LayoutInflater mInflater;
+
+        public MiscPageItemAdapter(Context context, List<MiscPageItem> itemList) {
+            super();
+            this.mItemList = itemList;
+            this.mContext = context;
+            mInflater = LayoutInflater.from(context);
+        }
+
+        @Override
+        public int getCount() {
+            return mItemList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return mItemList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(final int position, View convertView,
+                ViewGroup parent) {
+
+            ViewHolder holder = null;
+
+            if (convertView == null) {
+                holder = new ViewHolder();
+                convertView = mInflater.inflate(R.layout.main_page_item, null);
+                holder.icon = (ImageView) convertView.findViewById(R.id.imgv_main_page_item);
+                holder.name = (TextView) convertView.findViewById(R.id.txv_main_page_item);
+                convertView.setTag(holder);
+            }
+            else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            MiscPageItem item = mItemList.get(position);
+
+            holder.icon.setImageDrawable(item.icon);
+            holder.name.setText(item.name);
+            com.android_assistant.TextView.setDefaultTextShadow(holder.name);
+
+            return convertView;
+        }
+
+        private class ViewHolder {
+            ImageView icon;
+            TextView name;
+        }
+    }
 }

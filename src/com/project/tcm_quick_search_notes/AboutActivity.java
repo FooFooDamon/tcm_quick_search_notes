@@ -40,53 +40,53 @@ import com.android_assistant.ResourceExports;
 
 public class AboutActivity extends Activity {
 
-	@SuppressWarnings("deprecation")
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_about);
-		getActionBar().setBackgroundDrawable(
-			getResources().getDrawable(R.drawable.default_action_bar_style));
+    @SuppressWarnings("deprecation")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_about);
+        getActionBar().setBackgroundDrawable(
+            getResources().getDrawable(R.drawable.default_action_bar_style));
 
-		final String COLON = ResourceExports.getString(this, R.array.colon);
-		final String APP_NAME_KEY = ResourceExports.getString(this, R.array.app_name_key);
-		final String APP_NAME = ResourceExports.getString(this, R.array.app_name);
-		final String APP_VERSION = ResourceExports.getString(this, R.array.app_version);
-		final String APP_AUTHOR = ResourceExports.getString(this, R.array.author);
-		final String AUTHOR_INFO = ResourceExports.getString(this, R.array.author_info);
-		final String USAGE = ResourceExports.getString(this, R.array.usage);
-		final String USAGE_INFO = getString(R.string.usage_contents);
-		final String REMARKS = ResourceExports.getString(this, R.array.remarks);
-		final String REMARKS_INFO = getString(R.string.remarks_contents);
-		final String LINE_DELIMITER = "";// "----------------------";
-		final String[] ABOUT_ITEMS = {
-			APP_NAME_KEY + COLON + APP_NAME,
-			LINE_DELIMITER,
-			APP_VERSION + COLON + App.getAppVersionString(this),
-			LINE_DELIMITER,
-			APP_AUTHOR + COLON + AUTHOR_INFO,
-			LINE_DELIMITER,
-			USAGE + COLON + USAGE_INFO,
-			LINE_DELIMITER,
-			REMARKS + COLON + REMARKS_INFO
-		};
-		ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
-				R.drawable.default_text_style, ABOUT_ITEMS);
-		ListView listView = (ListView) findViewById(R.id.lsv_about_items);
+        final String COLON = ResourceExports.getString(this, R.array.colon);
+        final String APP_NAME_KEY = ResourceExports.getString(this, R.array.app_name_key);
+        final String APP_NAME = ResourceExports.getString(this, R.array.app_name);
+        final String APP_VERSION = ResourceExports.getString(this, R.array.app_version);
+        final String APP_AUTHOR = ResourceExports.getString(this, R.array.author);
+        final String AUTHOR_INFO = ResourceExports.getString(this, R.array.author_info);
+        final String USAGE = ResourceExports.getString(this, R.array.usage);
+        final String USAGE_INFO = getString(R.string.usage_contents);
+        final String REMARKS = ResourceExports.getString(this, R.array.remarks);
+        final String REMARKS_INFO = getString(R.string.remarks_contents);
+        final String LINE_DELIMITER = "";// "----------------------";
+        final String[] ABOUT_ITEMS = {
+            APP_NAME_KEY + COLON + APP_NAME,
+            LINE_DELIMITER,
+            APP_VERSION + COLON + App.getAppVersionString(this),
+            LINE_DELIMITER,
+            APP_AUTHOR + COLON + AUTHOR_INFO,
+            LINE_DELIMITER,
+            USAGE + COLON + USAGE_INFO,
+            LINE_DELIMITER,
+            REMARKS + COLON + REMARKS_INFO
+        };
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
+                R.drawable.default_text_style, ABOUT_ITEMS);
+        ListView listView = (ListView) findViewById(R.id.lsv_about_items);
 
-		listView.setAdapter(itemsAdapter);
-		listView.setClickable(false);
-	}
+        listView.setAdapter(itemsAdapter);
+        listView.setClickable(false);
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		// getMenuInflater().inflate(R.menu.about, menu); // not needed
-		return true;
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        // getMenuInflater().inflate(R.menu.about, menu); // not needed
+        return true;
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return super.onOptionsItemSelected(item);
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 }

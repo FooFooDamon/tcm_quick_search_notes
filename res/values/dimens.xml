@@ -1,5 +1,5 @@
 <resources>
-    
+
     <dimen name="default_icon_width">36dp</dimen>
     <dimen name="default_icon_height">36dp</dimen>
 

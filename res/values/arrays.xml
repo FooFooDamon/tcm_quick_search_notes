@@ -23,37 +23,37 @@
         <item>@string/cht_full_stop</item>
         <item>@string/en_full_stop</item>
     </string-array>
-    
+
     <string-array name="comma">
         <item>@string/comma</item>
         <item>@string/cht_comma</item>
         <item>@string/en_comma</item>
     </string-array>
-    
+
     <string-array name="semicolon">
         <item>@string/semicolon</item>
         <item>@string/cht_semicolon</item>
         <item>@string/en_semicolon</item>
     </string-array>
-    
+
     <string-array name="exclamatory_point">
         <item>@string/exclamatory_point</item>
         <item>@string/cht_exclamatory_point</item>
         <item>@string/en_exclamatory_point</item>
     </string-array>
-    
+
     <string-array name="question_mark">
         <item>@string/question_mark</item>
         <item>@string/cht_question_mark</item>
         <item>@string/en_question_mark</item>
     </string-array>
-    
+
     <string-array name="colon">
         <item>@string/colon</item>
         <item>@string/cht_colon</item>
         <item>@string/en_colon</item>
     </string-array>
-    
+
     <string-array name="ellipsis">
         <item>@string/ellipsis</item>
         <item>@string/cht_ellipsis</item>
@@ -73,61 +73,61 @@
         <item>@string/cht_hello_world</item>
         <item>@string/en_hello_world</item>
     </string-array>
-    
+
     <string-array name="settings">
         <item>@string/settings</item>
         <item>@string/cht_settings</item>
         <item>@string/en_settings</item>
     </string-array>
-    
+
     <string-array name="help">
         <item>@string/help</item>
         <item>@string/cht_help</item>
         <item>@string/en_help</item>
     </string-array>
-    
+
     <string-array name="terms_of_note">
         <item>@string/terms_of_note</item>
         <item>@string/cht_terms_of_note</item>
         <item>@string/en_terms_of_note</item>
     </string-array>
-    
+
     <string-array name="about">
         <item>@string/about</item>
         <item>@string/cht_about</item>
         <item>@string/en_about</item>
     </string-array>
-    
+
     <string-array name="about_this_app">
         <item>@string/about_this_app</item>
         <item>@string/cht_about_this_app</item>
         <item>@string/en_about_this_app</item>
     </string-array>
-    
+
     <string-array name="copyright">
         <item>@string/copyright</item>
         <item>@string/cht_copyright</item>
         <item>@string/en_copyright</item>
     </string-array>
-    
+
     <string-array name="version_log">
         <item>@string/version_log</item>
         <item>@string/cht_version_log</item>
         <item>@string/en_version_log</item>
     </string-array>
-    
+
     <string-array name="exit">
         <item>@string/exit</item>
         <item>@string/cht_exit</item>
         <item>@string/en_exit</item>
     </string-array>
-    
+
     <string-array name="name">
         <item>@string/name</item>
         <item>@string/cht_name</item>
         <item>@string/en_name</item>
     </string-array>
-    
+
     <string-array name="alias">
         <item>@string/alias</item>
         <item>@string/cht_alias</item>
@@ -139,390 +139,396 @@
         <item>@string/cht_app_name_key</item>
         <item>@string/en_app_name_key</item>
     </string-array>
-    
+
     <string-array name="author">
         <item>@string/author</item>
         <item>@string/cht_author</item>
         <item>@string/en_author</item>
     </string-array>
-    
+
     <string-array name="app_version">
         <item>@string/app_version</item>
         <item>@string/cht_app_version</item>
         <item>@string/en_app_version</item>
     </string-array>
-    
+
     <string-array name="usage">
         <item>@string/usage</item>
         <item>@string/cht_usage</item>
         <item>@string/en_usage</item>
     </string-array>
-    
+
     <string-array name="remarks">
         <item>@string/remarks</item>
         <item>@string/cht_remarks</item>
         <item>@string/en_remarks</item>
     </string-array>
-    
+
     <string-array name="save">
         <item>@string/save</item>
         <item>@string/cht_save</item>
         <item>@string/en_save</item>
     </string-array>
-    
+
     <string-array name="save_successfully">
         <item>@string/save_successfully</item>
         <item>@string/cht_save_successfully</item>
         <item>@string/en_save_successfully</item>
     </string-array>
-    
+
     <string-array name="save_failed">
         <item>@string/save_failed</item>
         <item>@string/cht_save_failed</item>
         <item>@string/en_save_failed</item>
     </string-array>
-    
+
+    <string-array name="refresh">
+        <item>@string/refresh</item>
+        <item>@string/cht_refresh</item>
+        <item>@string/en_refresh</item>
+    </string-array>
+
     <string-array name="yes">
         <item>@string/yes</item>
         <item>@string/cht_yes</item>
         <item>@string/en_yes</item>
     </string-array>
-    
+
     <string-array name="no">
         <item>@string/no</item>
         <item>@string/cht_no</item>
         <item>@string/en_no</item>
     </string-array>
-    
+
     <string-array name="confirm">
         <item>@string/confirm</item>
         <item>@string/cht_confirm</item>
         <item>@string/en_confirm</item>
     </string-array>
-    
+
     <string-array name="ok">
         <item>@string/ok</item>
         <item>@string/cht_ok</item>
         <item>@string/en_ok</item>
     </string-array>
-    
+
     <string-array name="cancal">
         <item>@string/cancal</item>
         <item>@string/cht_cancal</item>
         <item>@string/en_cancal</item>
     </string-array>
-    
+
     <string-array name="agree">
         <item>@string/agree</item>
         <item>@string/cht_agree</item>
         <item>@string/en_agree</item>
     </string-array>
-    
+
     <string-array name="not_agree">
         <item>@string/not_agree</item>
         <item>@string/cht_not_agree</item>
         <item>@string/en_not_agree</item>
     </string-array>
-    
+
     <string-array name="confirm_selecttions">
         <item>@string/confirm_selecttions</item>
         <item>@string/cht_confirm_selecttions</item>
         <item>@string/en_confirm_selecttions</item>
     </string-array>
-    
+
     <string-array name="cancel_selections">
         <item>@string/cancel_selections</item>
         <item>@string/cht_cancel_selections</item>
         <item>@string/en_cancel_selections</item>
     </string-array>
-    
+
     <string-array name="redo">
         <item>@string/redo</item>
         <item>@string/cht_redo</item>
         <item>@string/en_redo</item>
     </string-array>
-    
+
     <string-array name="undo">
         <item>@string/undo</item>
         <item>@string/cht_undo</item>
         <item>@string/en_undo</item>
     </string-array>
-    
+
     <string-array name="query">
         <item>@string/query</item>
         <item>@string/cht_query</item>
         <item>@string/en_query</item>
     </string-array>
-    
+
     <string-array name="query_result">
         <item>@string/query_result</item>
         <item>@string/cht_query_result</item>
         <item>@string/en_query_result</item>
     </string-array>
-    
+
     <string-array name="search">
         <item>@string/search</item>
         <item>@string/cht_search</item>
         <item>@string/en_search</item>
     </string-array>
-    
+
     <string-array name="search_result">
         <item>@string/search_result</item>
         <item>@string/cht_search_result</item>
         <item>@string/en_search_result</item>
     </string-array>
-    
+
     <string-array name="not_found">
         <item>@string/not_found</item>
         <item>@string/cht_not_found</item>
         <item>@string/en_not_found</item>
     </string-array>
-    
+
     <string-array name="can_not_find">
         <item>@string/can_not_find</item>
         <item>@string/cht_can_not_find</item>
         <item>@string/en_can_not_find</item>
     </string-array>
-    
+
     <string-array name="none">
         <item>@string/none</item>
         <item>@string/cht_none</item>
         <item>@string/en_none</item>
     </string-array>
-    
+
     <string-array name="unknown">
         <item>@string/unknown</item>
         <item>@string/cht_unknown</item>
         <item>@string/en_unknown</item>
     </string-array>
-    
+
     <string-array name="undefined">
         <item>@string/undefined</item>
         <item>@string/cht_undefined</item>
         <item>@string/en_undefined</item>
     </string-array>
-    
+
     <string-array name="customized">
         <item>@string/customized</item>
         <item>@string/cht_customized</item>
         <item>@string/en_customized</item>
     </string-array>
-    
+
     <string-array name="quantity">
         <item>@string/quantity</item>
         <item>@string/cht_quantity</item>
         <item>@string/en_quantity</item>
     </string-array>
-    
+
     <string-array name="add">
         <item>@string/add</item>
         <item>@string/cht_add</item>
         <item>@string/en_add</item>
     </string-array>
-    
+
     <string-array name="delete">
         <item>@string/delete</item>
         <item>@string/cht_delete</item>
         <item>@string/en_delete</item>
     </string-array>
-    
+
     <string-array name="select">
         <item>@string/select</item>
         <item>@string/cht_select</item>
         <item>@string/en_select</item>
     </string-array>
-    
+
     <string-array name="please_select">
         <item>@string/please_select</item>
         <item>@string/cht_please_select</item>
         <item>@string/en_please_select</item>
     </string-array>
-    
+
     <string-array name="please_select_or_customize">
         <item>@string/please_select_or_customize</item>
         <item>@string/cht_please_select_or_customize</item>
         <item>@string/en_please_select_or_customize</item>
     </string-array>
-    
+
     <string-array name="edit">
         <item>@string/edit</item>
         <item>@string/cht_edit</item>
         <item>@string/en_edit</item>
     </string-array>
-    
+
     <string-array name="action_import">
         <item>@string/chs_import</item>
         <item>@string/cht_import</item>
         <item>@string/en_import</item>
     </string-array>
-    
+
     <string-array name="input">
         <item>@string/input</item>
         <item>@string/cht_input</item>
         <item>@string/en_input</item>
     </string-array>
-    
+
     <string-array name="export">
         <item>@string/export</item>
         <item>@string/cht_export</item>
         <item>@string/en_export</item>
     </string-array>
-    
+
     <string-array name="output">
         <item>@string/output</item>
         <item>@string/cht_output</item>
         <item>@string/en_output</item>
     </string-array>
-    
+
     <string-array name="sys_app">
         <item>@string/sys_app</item>
         <item>@string/cht_sys_app</item>
         <item>@string/en_sys_app</item>
     </string-array>
-    
+
     <string-array name="user_app">
         <item>@string/user_app</item>
         <item>@string/cht_user_app</item>
         <item>@string/en_user_app</item>
     </string-array>
-    
+
     <string-array name="function_not_implemented">
         <item>@string/function_not_implemented</item>
         <item>@string/cht_function_not_implemented</item>
         <item>@string/en_function_not_implemented</item>
     </string-array>
-    
+
     <string-array name="to_be_supplemented">
         <item>@string/to_be_supplemented</item>
         <item>@string/cht_to_be_supplemented</item>
         <item>@string/en_to_be_supplemented</item>
     </string-array>
-    
+
     <string-array name="please_look_forward_to_it">
         <item>@string/please_look_forward_to_it</item>
         <item>@string/cht_please_look_forward_to_it</item>
         <item>@string/en_please_look_forward_to_it</item>
     </string-array>
-    
+
     <string-array name="apply_to_current">
         <item>@string/apply_to_current</item>
         <item>@string/cht_apply_to_current</item>
         <item>@string/en_apply_to_current</item>
     </string-array>
-    
+
     <string-array name="apply_to_all">
         <item>@string/apply_to_all</item>
         <item>@string/cht_apply_to_all</item>
         <item>@string/en_apply_to_all</item>
     </string-array>
-    
+
     <string-array name="not_limited">
         <item>@string/not_limited</item>
         <item>@string/cht_not_limited</item>
         <item>@string/en_not_limited</item>
     </string-array>
-    
+
     <string-array name="match_mode">
         <item>@string/match_mode</item>
         <item>@string/cht_match_mode</item>
         <item>@string/en_match_mode</item>
     </string-array>
-    
+
     <string-array name="white_list_mode">
         <item>@string/white_list_mode</item>
         <item>@string/cht_white_list_mode</item>
         <item>@string/en_white_list_mode</item>
     </string-array>
-    
+
     <string-array name="config_whilte_list">
         <item>@string/config_whilte_list</item>
         <item>@string/cht_config_whilte_list</item>
         <item>@string/en_config_whilte_list</item>
     </string-array>
-    
+
     <string-array name="black_list_mode">
         <item>@string/black_list_mode</item>
         <item>@string/cht_black_list_mode</item>
         <item>@string/en_black_list_mode</item>
     </string-array>
-    
+
     <string-array name="config_black_list">
         <item>@string/config_black_list</item>
         <item>@string/cht_config_black_list</item>
         <item>@string/en_config_black_list</item>
     </string-array>
-    
+
     <string-array name="collision_handling">
         <item>@string/collision_handling</item>
         <item>@string/cht_collision_handling</item>
         <item>@string/en_collision_handling</item>
     </string-array>
-    
+
     <string-array name="white_list_first">
         <item>@string/white_list_first</item>
         <item>@string/cht_white_list_first</item>
         <item>@string/en_white_list_first</item>
     </string-array>
-    
+
     <string-array name="black_list_first">
         <item>@string/black_list_first</item>
         <item>@string/cht_black_list_first</item>
         <item>@string/en_black_list_first</item>
     </string-array>
-    
+
     <string-array name="config_details">
         <item>@string/config_details</item>
         <item>@string/cht_config_details</item>
         <item>@string/en_config_details</item>
     </string-array>
-    
+
     <string-array name="config_successful">
         <item>@string/config_successful</item>
         <item>@string/cht_config_successful</item>
         <item>@string/en_config_successful</item>
     </string-array>
-    
+
     <string-array name="match_keywords">
         <item>@string/match_keywords</item>
         <item>@string/cht_match_keywords</item>
         <item>@string/en_match_keywords</item>
     </string-array>
-    
+
     <string-array name="db_error">
         <item>@string/db_error</item>
         <item>@string/cht_db_error</item>
         <item>@string/en_db_error</item>
     </string-array>
-    
+
     <string-array name="data_init_error">
         <item>@string/data_init_error</item>
         <item>@string/cht_data_init_error</item>
         <item>@string/en_data_init_error</item>
     </string-array>
-    
+
     <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
          Customized items should be put below!
          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       -->
-    
+
     <string-array name="app_name">
         <item>@string/app_name</item>
         <item>@string/cht_app_name</item>
         <item>@string/en_app_name</item>
     </string-array>
-    
+
     <string-array name="author_info">
         <item>@string/author_info</item>
         <item>@string/cht_author_info</item>
         <item>@string/en_author_info</item>
     </string-array>
-    
+
     <string-array name="copyright_info">
         <item>@string/copyright_info</item>
         <item>@string/cht_copyright_info</item>
         <item>@string/en_copyright_info</item>
     </string-array>
-    
+
     <string-array name="level_words">
         <item>微</item>
         <item>巨</item>
@@ -569,7 +575,7 @@
         <item>（手厥阴）心包</item>
         <item>（手少阳）三焦</item>
     </string-array>
-    
+
     <string-array name="zang_fu_viscera">
         <item>心</item>
         <item>小肠</item>
@@ -584,7 +590,7 @@
         <item>心包</item>
         <item>三焦</item>
     </string-array>
-    
+
     <string-array name="life_fundamentals">
         <item>气</item>
         <item>血</item>
@@ -601,7 +607,7 @@
         <item>出</item>
         <item>入</item>
     </string-array>
-    
+
     <string-array name="action_verbs">
         <item>补</item>
         <item>滋补</item>
@@ -783,7 +789,7 @@
         <item>肝肾阴虚</item>
         <item>心血亏虚</item>
     </string-array>
-    
+
     <string-array name="medicine_categories">
         <item>补益药</item>
         <item>理气药</item>
@@ -794,7 +800,7 @@
         <item>寒凉药</item>
         <item>其他药</item>
     </string-array>
-    
+
     <string-array name="prescription_categories">
         <item>补益剂</item>
         <item>补气、补血、气血双补、补阴、补阳</item>
@@ -835,16 +841,16 @@
         <item>涌吐</item>
         <item>涌吐</item>
     </string-array>
-    
+
     <string-array name="sql_args_make_test_data">
         <item>名称1</item>
         <item>备注1</item>
     </string-array>
-    
+
     <string-array name="sql_args_query_test_data">
         <item>10</item>
     </string-array>
-    
+
     <string-array name="sql_args_add_reference_material">
         <item>实用中医基础学</item>
         <item>1</item>
@@ -853,7 +859,7 @@
         <item>辽宁科学技术出版社</item>
         <item>1985/12</item>
         <item>最基础的中医理论入门书籍，内容非常全面、易读，可作为中医药入门的启蒙教材。</item>
-        
+
         <item>用药心得十讲</item>
         <item>3</item>
         <item>焦树德</item>
@@ -861,7 +867,7 @@
         <item>人民卫生出版社</item>
         <item>2004/8</item>
         <item>名老中医多年的行医用药心得体会，理论与示例相结合、文字与表格相结合，值得经常阅读、查询。</item>
-        
+
         <item>方剂心得十讲</item>
         <item>2</item>
         <item>焦树德</item>
@@ -869,7 +875,7 @@
         <item>人民卫生出版社</item>
         <item>2004/6</item>
         <item>《用药心得十讲》的姐妹篇，主讲方剂，建议配套阅读。</item>
-        
+
         <item>中医处方指南</item>
         <item>2</item>
         <item>朱玉祥</item>
@@ -880,7 +886,7 @@
             方剂数量非常丰富，书中重点介绍基础方，类方则以表格形式作对比说明，对学习者可起触类旁通的启发作用。
             此外，书后还列举随症加减用药、常用药对、常用缺药代用药、常用中成药，对使用者在实践中有很大的帮助。
         </item>
-        
+
         <item>中医名方鉴别运用</item>
         <item>1</item>
         <item>段苦寒</item>
@@ -888,7 +894,7 @@
         <item>天津科学技术出版社</item>
         <item>1987/9</item>
         <item>书如其名，对作用类似的方剂进行鉴别、剖析，有助于读者融会贯通，更易掌握更多数量的方剂。</item>
-        
+
         <item>方剂学问难</item>
         <item>1</item>
         <item>巴坤杰</item>
@@ -901,7 +907,7 @@
             则以一些具体的方剂对某些问题进行举例说明。本书对各阶段的学习者和使用者
             均有一定的点拨作用。
         </item>
-        
+
         <item>汤头歌诀白话精解</item>
         <item>1</item>
         <item>[清代]汪昂</item>
@@ -917,7 +923,7 @@
             的辑录，可作为拓展阅读。总的来说，书中有不少歌诀还算朗朗上口，对学习方剂有
             一定的助记作用，而白话注解亦简明扼要，有一定水平。
         </item>
-        
+
         <item>食物与治病</item>
         <item>第二版/修订本</item>
         <item>张嘉俊</item>
@@ -931,7 +937,7 @@
             治疗单方验方和药膳食谱。
         </item>
     </string-array>
-    
+
     <string-array name="sql_args_make_frequently_used_medicines">
         <item>人参</item>
         <item>1</item>
@@ -1427,8 +1433,6 @@
         <item>7</item>
         <item>紫草</item>
         <item>7</item>
-        <item>银柴胡</item>
-        <item>7</item>
         <item>白薇</item>
         <item>7</item>
         <item>青蒿</item>
@@ -1579,7 +1583,7 @@
         <item>白花蛇舌草</item>
         <item>8</item>
     </string-array>
-    
+
     <string-array name="sql_args_make_frequently_used_prescriptions">
         <item>四君子汤</item>
         <item>1</item>

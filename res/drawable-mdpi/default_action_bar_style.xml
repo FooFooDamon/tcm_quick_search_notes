@@ -3,14 +3,14 @@
 
     <!--<gradient
         android:startColor="#ff04e1fb"
-		android:centerColor="#ff186be7"
-		android:endColor="#ff04e1fb"
-		android:angle="90"
-	/>-->
+        android:centerColor="#ff186be7"
+        android:endColor="#ff04e1fb"
+        android:angle="90"
+    />-->
     <gradient
         android:startColor="#ff0745b7"
-		android:endColor="#ff02b1cb"
-		android:angle="90"
-	/>
+        android:endColor="#ff02b1cb"
+        android:angle="90"
+    />
 
 </shape>
