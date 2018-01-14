@@ -227,6 +227,10 @@
     <string name="cht_add">添加</string>
     <string name="en_add">Add</string>
 
+    <string name="add_new">新增</string>
+    <string name="cht_add_new">新增</string>
+    <string name="en_add_new">New</string>
+
     <string name="delete">删除</string>
     <string name="cht_delete">刪除</string>
     <string name="en_delete">Delete</string>
@@ -401,7 +405,7 @@
         低版本、小屏手机运行该软件可能有界面错乱的现象，请尽量避免
         使用此类手机。\n\n
         6、因目前安卓应用程序是基于Java语言开发，故内存消耗比较大，
-        若在较短的一段时间内编辑大量的内容，可能会导致内存消耗里增长
+        若在较短的一段时间内编辑大量的内容，可能会导致内存消耗量增长
         较快，增长到一定量的时候该软件可能会卡顿或退出（不会影响已经
         保存好的数据），目前尚未对该问题进行优化，用户若碰到这种问题，
         可每次编辑一定条数的内容（例如2、30条），先退出软件以让系统
@@ -409,6 +413,8 @@
     </string>
 
     <string name="version_log_contents">
+        ---- V0.02.01 2018/01/14\n
+        1、增加方剂和杂项管理的列表查询（未支持详细内容查询及修改）。\n\n
         ---- V0.01.03 2017/12/02\n
         1、稍微优化内存使用。\n
         2、在用户点击新增药物按钮时增加一个询问弹窗，防止用户误触而
@@ -499,15 +505,35 @@
     <string name="prescription">方剂</string>
     <string name="main_item_prescription">（组合）方剂查询</string>
     <string name="add_prescription">新增方剂</string>
+    <string name="new_prescription">新方剂</string>
+    <string name="hint_adding_prescription_successfully">新增方剂成功</string>
+    <string name="hint_after_adding_prescription">
+        已成功添加新方剂，请在名称栏输入“新方剂”、种类栏选择“不限”
+        进行查询并编辑详细的药物信息。
+    </string>
+    <string name="alert_reusing_prescription_title">
+        已存在未使用的新方剂信息
+    </string>
+    <string name="alert_reusing_prescription_contents">
+        数据库已存在一个“新方剂”，可在名称栏输入“新方剂”、种类栏
+        选择“不限”查询出该药物详细页面，对其进行重命名，并补全
+        其余信息。
+    </string>
+    <string name="asking_before_adding_prescription">
+        确定要新增方剂吗？
+    </string>
 
     <string name="main_item_misc_management">杂项管理</string>
 
     <string name="category">种类</string>
     <string name="add_category">新增种类</string>
+    <string name="new_category">新种类</string>
     <string name="medicine_category">药物种类</string>
     <string name="add_medicine_category">新增药物种类</string>
+    <string name="new_medicine_category">新药物种类</string>
     <string name="prescription_category">方剂种类</string>
     <string name="add_prescription_category">新增方剂种类</string>
+    <string name="new_prescription_category">新方剂种类</string>
 
     <string name="add_content_item">新增内容条目</string>
     <string name="clear_content_items">清空内容条目</string>
@@ -516,7 +542,7 @@
     <string name="hint_null_for_querying_all">不填则全查</string>
 
     <string name="hint_add_when_not_found">
-        找不到所指定的药物或方剂，请确认输入是否有误，或通过对应的
+        找不到所指定的条目，请确认输入是否有误，或通过对应的
         新增菜单/按钮进行新增。
     </string>
 
@@ -525,6 +551,7 @@
 
     <string name="attr_table_prefix_level_word">level_word</string>
     <string name="level_word">程度（修饰词）</string>
+    <string name="new_level_word">新程度（修饰词）</string>
 
     <string name="attr_table_prefix_medicine_nature">medicine_nature</string>
     <string name="medicine_nature">药性</string>
@@ -547,18 +574,22 @@
 
     <string name="attr_table_prefix_processing_method">processing_method</string>
     <string name="processing_method">炮制方法</string>
+    <string name="new_processing_method">新炮制方法</string>
 
     <string name="attr_table_prefix_medicine_unit">medicine_unit</string>
     <string name="medicine_unit">单位</string>
+    <string name="new_medicine_unit">新单位</string>
 
     <string name="attr_table_prefix_medicine_role">medicine_role</string>
     <string name="medicine_role">药物角色</string>
 
     <string name="attr_table_prefix_dosage_form">dosage_form</string>
     <string name="dosage_form">剂型</string>
+    <string name="new_dosage_form">新剂型</string>
 
     <string name="attr_table_prefix_method_of_taking_medicine">method_of_taking_medicine</string>
     <string name="method_of_taking_medicine">服法</string>
+    <string name="new_method_of_taking_medicine">新服法</string>
 
     <string name="attr_table_prefix_nature_of_symptom">nature_of_symptom</string>
     <string name="nature_of_symptom">症状性质</string>
@@ -582,6 +613,7 @@
     <string name="contraindications">禁忌</string>
 
     <string name="reference_material">参考资料</string>
+    <string name="new_reference_material">新参考资料</string>
     <string name="reference_material_table">reference_material</string>
     <string name="reference_material_contents_example">例如《XX书》第X页第X章第X节第X段</string>
 
@@ -642,9 +674,22 @@
         values(?)
     </string>
 
-    <string name="sql_query_medicine_category_names">
+    <string name="sql_query_all_medicine_category_names">
         select name
         from medicine_categories
+        order by cid asc
+    </string>
+
+    <string name="sql_query_all_medicine_categories">
+        select cid, name
+        from medicine_categories
+        order by cid asc
+    </string>
+
+    <string name="sql_query_medicine_categories_by_name" formatted="false">
+        select cid, name
+        from medicine_categories
+        where name || ifnull(alias, \'\') like ?
         order by cid asc
     </string>
 
@@ -748,7 +793,7 @@
         values(?, ?)
     </string>
 
-    <string name="sql_query_prescription_category_names">
+    <string name="sql_query_all_prescription_category_names">
         select name
         from prescription_categories
         order by cid asc

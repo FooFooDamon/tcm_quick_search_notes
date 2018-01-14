@@ -326,6 +326,12 @@
         <item>@string/en_add</item>
     </string-array>
 
+    <string-array name="add_new">
+        <item>@string/add_new</item>
+        <item>@string/cht_add_new</item>
+        <item>@string/en_add_new</item>
+    </string-array>
+
     <string-array name="delete">
         <item>@string/delete</item>
         <item>@string/cht_delete</item>

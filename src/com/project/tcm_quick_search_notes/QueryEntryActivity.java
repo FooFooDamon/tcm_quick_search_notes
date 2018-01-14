@@ -62,18 +62,12 @@ import com.android_assistant.Version;
 public class QueryEntryActivity extends Activity
     implements OnItemClickListener {
 
-    public static final int OP_TYPE_MEDICINE = 0;
-    public static final int OP_TYPE_PRESCRIPTION = 1;
-
-    public static final String FIELD_DELIM = "\b";
-    public static final String ITEM_DELIM = "\f";
-
     private DbHelper mDbHelper = null;
 
-    private Intent mIntent = null;
+    private Intent mNextIntent = null;
 
     private View.OnClickListener mOnAddButtonClicked = null;
-    private DialogInterface.OnClickListener mAddMedicineAction = null;
+    private DialogInterface.OnClickListener mAddItemAction = null;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -87,12 +81,35 @@ public class QueryEntryActivity extends Activity
 
         if (Version.SDK <= Version.getDeprecatedVersionUpperBound())
             doExtraJobsForLowerVersions();
+        
+        Intent prevIntent = getIntent();
+        int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
 
-        fillCategorySpinner();
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType
+        	|| TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
+        	TextView txvCategory = (TextView)findViewById(R.id.txv_category);
+        	Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
+        	Button btnCategory = (Button)findViewById(R.id.btn_add_category);
+        	
+        	txvCategory.setVisibility(TextView.VISIBLE);
+        	spnCategory.setVisibility(TextView.VISIBLE);
+        	btnCategory.setVisibility(TextView.INVISIBLE);
+        	fillCategorySpinner(opType);
+        	
+        	if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType)
+        		setTitle(getString(R.string.main_item_medicine));
+        	else
+        		setTitle(getString(R.string.main_item_prescription));
+        }
+        else {
+        	int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+        	
+        	setTitle(MiscManagementActivity.getItemNameByPosition(miscItemPos));
+        }
 
-        Button btnAddMedication = (Button) findViewById(R.id.btn_add_medication);
+        Button btnAddItem = (Button) findViewById(R.id.btn_add_item);
 
-        btnAddMedication.setOnClickListener(mOnAddButtonClicked);
+        btnAddItem.setOnClickListener(mOnAddButtonClicked);
     }
 
     @Override
@@ -118,7 +135,7 @@ public class QueryEntryActivity extends Activity
         int id = item.getItemId();
 
         if (id == R.id.menu_query) {
-            queryMedicationItems();
+            queryItems();
         }
 
         return super.onOptionsItemSelected(item);
@@ -132,40 +149,92 @@ public class QueryEntryActivity extends Activity
             (TextView) findViewById(R.id.txv_category));
     }
 
-    private void fillCategorySpinner() {
+    private void fillCategorySpinner(int opType) {
+    	if (TcmCommon.OP_TYPE_VALUE_MEDICINE != opType
+        	&& TcmCommon.OP_TYPE_VALUE_PRESCRIPTION != opType)
+    		return;
+    	
+    	String[] categoryItems = (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType)
+    		? mDbHelper.queryMedicineCategories(getString(R.string.not_limited))
+    		: mDbHelper.queryPrescriptionCategories(getString(R.string.not_limited));
         Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
-            R.drawable.default_spinner_text, mDbHelper.queryMedicineCategories(getString(R.string.not_limited)));
+            R.drawable.default_spinner_text, categoryItems);
 
         spnCategory.setAdapter(spinnerAdapter);
     }
 
-    private void queryMedicationItems() {
-        ArrayList<MedicationBrief> itemList = new ArrayList<MedicationBrief>();
+    private void queryItems() {
+    	Intent prevIntent = getIntent();
+        int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+        ArrayList<ItemBrief> itemList = new ArrayList<ItemBrief>();
         EditText etxName = (EditText) findViewById(R.id.etx_name);
-        String medicineName = etxName.getText().toString();
+        String itemName = etxName.getText().toString();
         Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
         int selectedCategoryPos = spnCategory.getSelectedItemPosition();
-        int sqlResId = (selectedCategoryPos > 0)
-            ? ((medicineName.length() > 0)
-                ? R.string.sql_query_medicine_items_by_name_and_category
-                : R.string.sql_query_medicine_items_by_category)
-            : ((medicineName.length() > 0)
-                ? R.string.sql_query_medicine_items_by_name
-                : R.string.sql_query_all_medicine_items);
-        String sql = getString(sqlResId);
-        String[] sqlArgs = (selectedCategoryPos > 0)
-            ? ((medicineName.length() > 0)
-                ? (new String[]{ "%" + medicineName + "%", String.valueOf(selectedCategoryPos)})
-                : (new String[]{ String.valueOf(selectedCategoryPos) }) )
-            : ((medicineName.length() > 0)
-                ? (new String[]{ "%" + medicineName + "%" })
-                : null);
+        int sqlResId = 0;
+        String sql = null;
+        String[] sqlArgs = null;
+        String primaryKey = null;
+        
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType) {
+        	sqlResId = (selectedCategoryPos > 0)
+                ? ((itemName.length() > 0)
+                    ? R.string.sql_query_medicine_items_by_name_and_category
+                    : R.string.sql_query_medicine_items_by_category)
+                : ((itemName.length() > 0)
+                    ? R.string.sql_query_medicine_items_by_name
+                    : R.string.sql_query_all_medicine_items);
+            sql = getString(sqlResId);
+            sqlArgs = (selectedCategoryPos > 0)
+                ? ((itemName.length() > 0)
+                    ? (new String[]{ "%" + itemName + "%", String.valueOf(selectedCategoryPos)})
+                    : (new String[]{ String.valueOf(selectedCategoryPos) }) )
+                : ((itemName.length() > 0)
+                    ? (new String[]{ "%" + itemName + "%" })
+                    : null);
+            primaryKey = "mid";
+        }
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
+        	sqlResId = (selectedCategoryPos > 0)
+                ? ((itemName.length() > 0)
+                    ? R.string.sql_query_prescription_items_by_name_and_category
+                    : R.string.sql_query_prescription_items_by_category)
+                : ((itemName.length() > 0)
+                    ? R.string.sql_query_prescription_items_by_name
+                    : R.string.sql_query_all_prescription_items);
+            sql = getString(sqlResId);
+            sqlArgs = (selectedCategoryPos > 0)
+                ? ((itemName.length() > 0)
+                    ? (new String[]{ "%" + itemName + "%", String.valueOf(selectedCategoryPos)})
+                    : (new String[]{ String.valueOf(selectedCategoryPos) }) )
+                : ((itemName.length() > 0)
+                    ? (new String[]{ "%" + itemName + "%" })
+                    : null);
+            primaryKey = "pid";
+        }
+        else {
+        	int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+    		String tableName = MiscManagementActivity.getTableNameByPosition(miscItemPos);
+    		
+    		primaryKey = MiscManagementActivity.getPrimaryKeyByPosition(miscItemPos);
+        	sql = (itemName.length() > 0)
+                ? ("select " + primaryKey + ", name"
+			        + " from " + tableName
+			        + " where name like ?"
+			        + " order by " + primaryKey + " asc")
+                : ("select " + primaryKey + ", name"
+			        + " from " + tableName
+			        + " order by " + primaryKey + " asc");
+            sqlArgs = (itemName.length() > 0)
+                ? (new String[]{ "%" + itemName + "%" })
+                : null;
+        }
+        
         Cursor c = mDbHelper.getDatabase().rawQuery(sql, sqlArgs);
 
-        //Hint.longToast(this, sql);
         while (c.moveToNext()) {
-            itemList.add(new MedicationBrief(String.valueOf(c.getInt(c.getColumnIndex("mid"))),
+            itemList.add(new ItemBrief(String.valueOf(c.getInt(c.getColumnIndex(primaryKey))),
                 c.getString(c.getColumnIndex("name"))));
         }
         c.close();
@@ -173,39 +242,38 @@ public class QueryEntryActivity extends Activity
         int resultCount = itemList.size();
 
         if (resultCount <= 0)
-            Hint.alert(this, getString(R.string.medicine) + " " + getString(R.string.not_found),
-                getString(R.string.hint_add_when_not_found));
+            Hint.alert(this, R.string.not_found, R.string.hint_add_when_not_found);
 
         Hint.shortToast(this, ResourceExports.getString(this, R.array.query_result)
             + ResourceExports.getString(this, R.array.quantity)
             + ": " + resultCount);
 
         ListView lsvQueryResult = (ListView) findViewById(R.id.lsv_query_items);
-        MedicationBriefAdapter adapter = new MedicationBriefAdapter(this, itemList);
+        ItemBriefAdapter adapter = new ItemBriefAdapter(this, itemList);
 
         lsvQueryResult.setAdapter(adapter);
         lsvQueryResult.setOnItemClickListener(this);
     }
 
-    private class MedicationBrief {
+    private class ItemBrief {
         public String id;
         public String name;
 
-        public MedicationBrief() {}
+        public ItemBrief() {}
 
-        public MedicationBrief(String id, String name) {
+        public ItemBrief(String id, String name) {
             this.id = id;
             this.name = name;
         }
     }
 
-    private class MedicationBriefAdapter extends BaseAdapter {
+    private class ItemBriefAdapter extends BaseAdapter {
 
         private final Context mContext;
-        private final List<MedicationBrief> mItemList;
+        private final List<ItemBrief> mItemList;
         private final LayoutInflater mInflater;
 
-        public MedicationBriefAdapter(Context context, List<MedicationBrief> itemList) {
+        public ItemBriefAdapter(Context context, List<ItemBrief> itemList) {
             super();
             this.mItemList = itemList;
             this.mContext = context;
@@ -245,7 +313,7 @@ public class QueryEntryActivity extends Activity
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            MedicationBrief item = mItemList.get(position);
+            ItemBrief item = mItemList.get(position);
 
             holder.checkBox.setVisibility(TextView.GONE);
 
@@ -270,54 +338,112 @@ public class QueryEntryActivity extends Activity
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+        Intent prevIntent = getIntent();
+        int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+        
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE != opType) {
+        	Hint.alert(this, R.string.function_not_implemented, R.string.please_look_forward_to_it);
+        	return;
+        }
+        
         ListView listView = (ListView) parent;
-        MedicationBrief item = (MedicationBrief) listView.getItemAtPosition(pos);
+        ItemBrief item = (ItemBrief) listView.getItemAtPosition(pos);
 
-        mIntent.putExtra("op_type", OP_TYPE_MEDICINE);
-        mIntent.putExtra("id", item.id);
-        mIntent.putExtra("name", item.name);
-        startActivity(mIntent);
+        mNextIntent.putExtra(TcmCommon.OP_TYPE_KEY, opType);
+        mNextIntent.putExtra(TcmCommon.ID_KEY, item.id);
+        mNextIntent.putExtra(TcmCommon.NAME_KEY, item.name);
+        startActivity(mNextIntent);
     }
 
     private void initResources() {
-        if (null == mIntent)
-            mIntent = new Intent(this, ReadWriteItemDetailsActivity.class);
+        if (null == mNextIntent)
+            mNextIntent = new Intent(this, ReadWriteItemDetailsActivity.class);
 
         if (null == mDbHelper) {
             mDbHelper = new DbHelper(this);
             mDbHelper.openOrCreate();
         }
 
-        if (null == mAddMedicineAction) {
-            mAddMedicineAction = new DialogInterface.OnClickListener() {
+        if (null == mAddItemAction) {
+        	mAddItemAction = new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String sqlCheckMedicine = getString(R.string.sql_query_medicine_items_by_name);
-                    String newMedicine = getString(R.string.new_medicine);
-                    String[] sqlArgs = (new String[]{ newMedicine });
+                	Intent prevIntent = getIntent();
+                	int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+                    String sqlCheckItem = null;
+                    String sqlAddItem = null;
+                    String newItem = null;
+                    String hintReusingItemTitle = null;
+                    String hintReusingItemContents = null;
+                    String hintAddingItemSuccessfully = null;
+                    String hintAfterAddingItem = null;
+                    
+                    if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType) {
+                    	sqlCheckItem = getString(R.string.sql_query_medicine_items_by_name);
+                    	sqlAddItem = getString(R.string.sql_make_medicine_items_data);
+                    	newItem = getString(R.string.new_medicine);
+                    	hintReusingItemTitle = getString(R.string.alert_reusing_medicine_title);
+                    	hintReusingItemContents = getString(R.string.alert_reusing_medicine_contents);
+                    	hintAddingItemSuccessfully = getString(R.string.hint_adding_medicine_successfully);
+                    	hintAfterAddingItem = getString(R.string.hint_after_adding_medicine);
+                    }
+                	else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
+                		sqlCheckItem = getString(R.string.sql_query_prescription_items_by_name);
+                		sqlAddItem = getString(R.string.sql_make_prescription_items_data);
+                		newItem = getString(R.string.new_prescription);
+                		hintReusingItemTitle = getString(R.string.alert_reusing_prescription_title);
+                		hintReusingItemContents = getString(R.string.alert_reusing_prescription_contents);
+                		hintAddingItemSuccessfully = getString(R.string.hint_adding_prescription_successfully);
+                		hintAfterAddingItem = getString(R.string.hint_after_adding_prescription);
+                	}
+                	else {
+                		int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+                		String miscItemName = MiscManagementActivity.getItemNameByPosition(miscItemPos);
+                		String primaryKey = MiscManagementActivity.getPrimaryKeyByPosition(miscItemPos);
+                		String tableName = MiscManagementActivity.getTableNameByPosition(miscItemPos);
+                		
+                		sqlCheckItem = "select " + primaryKey +", name"
+					        + " from " + tableName
+					        + " where name like ?"
+					        + " order by " + primaryKey + " asc";
+                		sqlAddItem = "insert into " + tableName + "(name)"
+					        + " values(?)";
+                		newItem = "新" + miscItemName;
+                		hintReusingItemTitle = "已存在未使用的" + newItem + "信息";
+                		hintReusingItemContents = "数据库已存在一个“" + newItem + "”，"
+                			+ "可在名称栏输入“" + newItem + "”查询出该" + miscItemName + "详细页面，"
+                			+ "对其进行重命名，并补全其余信息。";
+                		hintAddingItemSuccessfully = "新增" + miscItemName + "成功";
+                		hintAfterAddingItem = "已成功添加" + newItem
+                			+ "，请在名称栏输入“" + newItem +"”进行查询并编辑详细的药物信息。";
+                	}
+                    
+                    String[] sqlArgs = (new String[]{ newItem });
                     SQLiteDatabase db = mDbHelper.getDatabase();
-                    Cursor c = db.rawQuery(sqlCheckMedicine, sqlArgs);
+                    Cursor c = db.rawQuery(sqlCheckItem, sqlArgs);
 
                     if (c.moveToNext()) {
-                        Hint.alert(QueryEntryActivity.this, R.string.alert_reusing_medicine_title, R.string.alert_reusing_medicine_contents);
+                        Hint.alert(QueryEntryActivity.this, hintReusingItemTitle, hintReusingItemContents);
                         c.close();
                         return;
                     }
                     c.close();
 
-                    String sqlAddMedicine = getString(R.string.sql_make_medicine_items_data);
                     int categorySpinnerPos = 0;
+                    String[] sqlArgsOfAddingItem = (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType || TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
+                    	? (new String[] { newItem, String.valueOf(categorySpinnerPos) })
+                    	: (new String[] { newItem });
 
-                    db.execSQL(sqlAddMedicine, new String[] { newMedicine, String.valueOf(categorySpinnerPos) });
-                    Hint.alert(QueryEntryActivity.this, R.string.hint_adding_medicine_successfully, R.string.hint_after_adding_medicine);
+                    db.execSQL(sqlAddItem, sqlArgsOfAddingItem);
+                    Hint.alert(QueryEntryActivity.this, hintAddingItemSuccessfully, hintAfterAddingItem);
 
                     EditText etxName = (EditText) findViewById(R.id.etx_name);
                     Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
 
-                    etxName.setText(newMedicine);
+                    etxName.setText(newItem);
                     spnCategory.setSelection(categorySpinnerPos);
-                    queryMedicationItems();
+                    queryItems();
                 }
             };
         }
@@ -327,8 +453,22 @@ public class QueryEntryActivity extends Activity
 
                 @Override
                 public void onClick(View v) {
-                    Hint.alert(QueryEntryActivity.this, R.string.asking_before_adding_medicine, R.string.confirm_or_cancel_guide,
-                        mAddMedicineAction, null);
+                	Intent prevIntent = getIntent();
+                	int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+                	String hint = null;
+                	
+                	if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType)
+                		hint = getString(R.string.asking_before_adding_medicine);
+                	else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
+                		hint = getString(R.string.asking_before_adding_prescription);
+                	else {
+                		int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+                		
+                		hint = "确定要新增" + MiscManagementActivity.getItemNameByPosition(miscItemPos) + "吗？";
+                	}
+                	
+                    Hint.alert(QueryEntryActivity.this, hint, R.string.confirm_or_cancel_guide,
+                    	mAddItemAction, null);
                 }
             };
         }

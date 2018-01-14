@@ -206,9 +206,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
             getResources().getDrawable(R.drawable.default_action_bar_style));
 
         Intent intent = getIntent();
-        int opType = intent.getIntExtra("op_type", QueryEntryActivity.OP_TYPE_MEDICINE);
-        String primaryId = intent.getStringExtra("id");
-        //String name = intent.getStringExtra("name");
+        int opType = intent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+        String primaryId = intent.getStringExtra(TcmCommon.ID_KEY);
+        //String name = intent.getStringExtra(TcmCommon.NAME_KEY);
 
         setTitle(getString(R.string.main_item_medicine));
         //Hint.longToast(this, primaryId);
@@ -288,7 +288,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 }
             }
 
-            updateArgs.add(getIntent().getStringExtra("id"));
+            updateArgs.add(getIntent().getStringExtra(TcmCommon.ID_KEY));
 
             try {
                 mDbHelper.updateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
@@ -366,7 +366,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
         int expectedMinResultCount, boolean resultCountIsFixed) {
         String _dbValue = (null != dbValue) ? dbValue : SPACE;
 
-        String[] items = _dbValue.split(QueryEntryActivity.ITEM_DELIM);
+        String[] items = _dbValue.split(TcmCommon.ITEM_DELIM);
         ArrayList<String> itemList = new ArrayList<String>();
 
         if (expectedMinResultCount < 1)
@@ -413,7 +413,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 
     private DetailContentData parseFromDataseField(final String dbValue, int pageItemIndex) {
         DetailContentData result = new DetailContentData(pageItemIndex);
-        String[] fieldValues = (null != dbValue) ? dbValue.split(QueryEntryActivity.FIELD_DELIM) : null;
+        String[] fieldValues = (null != dbValue) ? dbValue.split(TcmCommon.FIELD_DELIM) : null;
         int fieldCount = (null != fieldValues) ? fieldValues.length : 0;
 
         final String[] FIELD_NAMES = DETAIL_CONTENT_FIELDS;
@@ -464,7 +464,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 
         for (int i = 0; i < input.size(); ++i) {
             result.append(serializeToDatabaseField(input.get(i)));
-            result.append(QueryEntryActivity.ITEM_DELIM);
+            result.append(TcmCommon.ITEM_DELIM);
         }
 
         return result.toString();
@@ -476,7 +476,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
         final String[] FIELD_NAMES = DETAIL_CONTENT_FIELDS;
 
         result.append(input.checkBoxFlags);
-        result.append(QueryEntryActivity.FIELD_DELIM);
+        result.append(TcmCommon.FIELD_DELIM);
 
         for (int i = 1; i < FIELD_NAMES.length - 1; ++i) {
             boolean isSpinner = (1 == i % 2);
@@ -488,7 +488,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 value = input.editTextContents.get(FIELD_NAMES[i]);
 
             result.append((null == value || 0 == value.length()) ? SPACE : value);
-            result.append(QueryEntryActivity.FIELD_DELIM);
+            result.append(TcmCommon.FIELD_DELIM);
         }
 
         result.append(input.editTextContents.get(FIELD_NAMES[FIELD_NAMES.length - 1]));

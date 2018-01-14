@@ -172,7 +172,25 @@ public class DbHelper {
     }
 
     public String[] queryMedicineCategories(String firstItem) {
-        String sql = mContext.getString(R.string.sql_query_medicine_category_names);
+        String sql = mContext.getString(R.string.sql_query_all_medicine_category_names);
+        Cursor c = getDatabase().rawQuery(sql, null);
+        ArrayList<String> results = new ArrayList<String>();
+
+        if (null != firstItem)
+            results.add(firstItem);
+        while (c.moveToNext()) {
+            results.add(c.getString(c.getColumnIndex("name")));
+        }
+        c.close();
+
+        if (0 == results.size())
+            return null;
+
+        return results.toArray(new String[results.size()]);
+    }
+
+    public String[] queryPrescriptionCategories(String firstItem) {
+        String sql = mContext.getString(R.string.sql_query_all_prescription_category_names);
         Cursor c = getDatabase().rawQuery(sql, null);
         ArrayList<String> results = new ArrayList<String>();
 

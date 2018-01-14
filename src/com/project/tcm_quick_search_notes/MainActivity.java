@@ -219,12 +219,15 @@ public class MainActivity extends Activity
         MainPageItem item = (MainPageItem) listView.getItemAtPosition(pos);
 
         if (listView == findViewById(R.id.lsv_medication_group)) {
-            if (LIST_ITEM_POS_MEDICINE == pos)
+            if (LIST_ITEM_POS_MEDICINE == pos) {
+            	mIntentQueryEntry.putExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
                 startActivity(mIntentQueryEntry);
+            }
             else if (LIST_ITEM_POS_PRESCRIPTION == pos) {
-                Hint.alert(this, ResourceExports.getString(this, R.array.function_not_implemented),
-                    getString(R.string.please_look_forward_to_it));
-                // startActivity(mIntentQueryEntry);
+                /*Hint.alert(this, ResourceExports.getString(this, R.array.function_not_implemented),
+                    getString(R.string.please_look_forward_to_it));*/
+                mIntentQueryEntry.putExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_PRESCRIPTION);
+                startActivity(mIntentQueryEntry);
             }
             else if (LIST_ITEM_POS_MISC_MANAGEMENT == pos)
                 startActivity(mIntentMiscManagement);
