@@ -51,77 +51,75 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android_assistant.Hint;
-
 public class MiscManagementActivity extends Activity
     implements OnItemClickListener {
 
-	public static final int LIST_ITEM_POS_MEDICINE_CATEGORY = 0;
-	public static final int LIST_ITEM_POS_PRESCRIPTION_CATEGORY = 1;
+    public static final int LIST_ITEM_POS_MEDICINE_CATEGORY = 0;
+    public static final int LIST_ITEM_POS_PRESCRIPTION_CATEGORY = 1;
     public static final int LIST_ITEM_POS_LEVEL_WORD = 2;
     public static final int LIST_ITEM_POS_PROCESSING_METHOD = 3;
     public static final int LIST_ITEM_POS_UNIT = 4;
     public static final int LIST_ITEM_POS_DOSAGE_FORM = 5;
     public static final int LIST_ITEM_POS_METHOD_OF_TAKING_MEDICINE = 6;
     public static final int LIST_ITEM_POS_REFERENCE_MATERIAL = 7;
-    
+
     private Intent mIntentQueryEntry = null;
-    
+
     public static String getItemNameByPosition(int position) {
-    	if (position < LIST_ITEM_POS_MEDICINE_CATEGORY || position > LIST_ITEM_POS_REFERENCE_MATERIAL) {
-    		return "Unknown Misc Item, pos: " + String.valueOf(position);
-    	}
-    	
-    	final String[] names = {
-    		"药物种类",
-    		"方剂种类",
-    		"程度（修饰词）",
-    		"炮制方法",
-    		"单位",
-    		"剂型",
-    		"服法",
-    		"参考资料"
-    	};
-    	
-    	return names[position];
+        if (position < LIST_ITEM_POS_MEDICINE_CATEGORY || position > LIST_ITEM_POS_REFERENCE_MATERIAL) {
+            return "Unknown Misc Item, pos: " + String.valueOf(position);
+        }
+
+        final String[] names = {
+            "药物种类",
+            "方剂种类",
+            "程度（修饰词）",
+            "炮制方法",
+            "单位",
+            "剂型",
+            "服法",
+            "参考资料"
+        };
+
+        return names[position];
     }
-    
+
     public static String getPrimaryKeyByPosition(int position) {
-    	if (position < LIST_ITEM_POS_MEDICINE_CATEGORY || position > LIST_ITEM_POS_REFERENCE_MATERIAL) {
-    		return "Unknown Misc Item, pos: " + String.valueOf(position);
-    	}
-    	
-    	final String[] keys = {
-    		"cid",
-    		"cid",
-    		"aid",
-    		"aid",
-    		"aid",
-    		"aid",
-    		"aid",
-    		"rid"
-    	};
-    	
-    	return keys[position];
+        if (position < LIST_ITEM_POS_MEDICINE_CATEGORY || position > LIST_ITEM_POS_REFERENCE_MATERIAL) {
+            return "Unknown Misc Item, pos: " + String.valueOf(position);
+        }
+
+        final String[] keys = {
+            "cid",
+            "cid",
+            "aid",
+            "aid",
+            "aid",
+            "aid",
+            "aid",
+            "rid"
+        };
+
+        return keys[position];
     }
-    
+
     public static String getTableNameByPosition(int position) {
-    	if (position < LIST_ITEM_POS_MEDICINE_CATEGORY || position > LIST_ITEM_POS_REFERENCE_MATERIAL) {
-    		return "Unknown Misc Item, pos: " + String.valueOf(position);
-    	}
-    	
-    	final String[] names = {
-    		"medicine_categories",
-    		"prescription_categories",
-    		"level_word_definitions",
-    		"processing_method_definitions",
-    		"medicine_unit_definitions",
-    		"dosage_form_definitions",
-    		"method_of_taking_medicine_definitions",
-    		"reference_material"
-    	};
-    	
-    	return names[position];
+        if (position < LIST_ITEM_POS_MEDICINE_CATEGORY || position > LIST_ITEM_POS_REFERENCE_MATERIAL) {
+            return "Unknown Misc Item, pos: " + String.valueOf(position);
+        }
+
+        final String[] names = {
+            "medicine_categories",
+            "prescription_categories",
+            "level_word_definitions",
+            "processing_method_definitions",
+            "medicine_unit_definitions",
+            "dosage_form_definitions",
+            "method_of_taking_medicine_definitions",
+            "reference_material"
+        };
+
+        return names[position];
     }
 
     @SuppressLint("NewApi")
@@ -132,7 +130,7 @@ public class MiscManagementActivity extends Activity
         setContentView(R.layout.activity_misc_management);
         getActionBar().setBackgroundDrawable(
             getResources().getDrawable(R.drawable.default_action_bar_style));
-        
+
         initResources();
 
         LinearLayout pageLayout = (LinearLayout) findViewById(R.id.llayout_misc_page);
@@ -191,21 +189,6 @@ public class MiscManagementActivity extends Activity
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-        ListView listView = (ListView) parent;
-        MiscPageItem item = (MiscPageItem) listView.getItemAtPosition(pos);
-
-        /*if (LIST_ITEM_POS_REFERENCE_MATERIAL == pos) {
-            //startActivity(new Intent(this, QueryEntryActivity.class)); // TODO: mIntent = new xxx();
-            Hint.shortToast(this, String.valueOf(pos) + ": TODO: " + item.name);
-            mIntentQueryEntry.putExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
-            startActivity(mIntentQueryEntry);
-        }
-        else {
-            Hint.shortToast(this, String.valueOf(pos) + ": TODO: " + item.name);
-        }
-
-        return;*/
-        Hint.shortToast(this, String.valueOf(pos) + ": TODO: " + item.name);
         mIntentQueryEntry.putExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT);
         mIntentQueryEntry.putExtra(TcmCommon.MISC_ITEM_POS_KEY, pos);
         startActivity(mIntentQueryEntry);

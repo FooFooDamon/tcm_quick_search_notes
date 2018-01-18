@@ -220,7 +220,7 @@ public class MainActivity extends Activity
 
         if (listView == findViewById(R.id.lsv_medication_group)) {
             if (LIST_ITEM_POS_MEDICINE == pos) {
-            	mIntentQueryEntry.putExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+                mIntentQueryEntry.putExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
                 startActivity(mIntentQueryEntry);
             }
             else if (LIST_ITEM_POS_PRESCRIPTION == pos) {

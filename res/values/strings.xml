@@ -83,6 +83,10 @@
     <string name="cht_copyright">版權</string>
     <string name="en_copyright">Copyright</string>
 
+    <string name="version">版本</string>
+    <string name="cht_version">版本</string>
+    <string name="en_version">Version</string>
+
     <string name="version_log">版本日志</string>
     <string name="cht_version_log">版本日志</string>
     <string name="en_version_log">Version Log</string>
@@ -118,6 +122,10 @@
     <string name="remarks">备注</string>
     <string name="cht_remarks">備注</string>
     <string name="en_remarks">Remarks</string>
+
+    <string name="refer_to_remarks">见备注</string>
+    <string name="cht_refer_to_remarks">見備注</string>
+    <string name="en_refer_to_remarks">Refer to Remarks</string>
 
     <string name="save">保存</string>
     <string name="cht_save">保存</string>
@@ -413,6 +421,9 @@
     </string>
 
     <string name="version_log_contents">
+        ---- V1.00.00 2018/01/18\n
+        1、增加方剂和杂项管理的详细内容查询及修改功能。\n
+        至此，核心/基础功能已全部完成。\n\n
         ---- V0.02.01 2018/01/14\n
         1、增加方剂和杂项管理的列表查询（未支持详细内容查询及修改）。\n\n
         ---- V0.01.03 2017/12/02\n
@@ -603,6 +614,7 @@
     <string name="medication_details">详情</string>
 
     <string name="common_prescriptions">常见方剂</string>
+    <string name="relative_prescriptions">相关方剂</string>
 
     <string name="common_medicine_partners">常用药搭配</string>
 
@@ -612,10 +624,24 @@
 
     <string name="contraindications">禁忌</string>
 
+    <string name="composition">组成</string>
+
+    <string name="decoction">煎法</string>
+
     <string name="reference_material">参考资料</string>
     <string name="new_reference_material">新参考资料</string>
     <string name="reference_material_table">reference_material</string>
     <string name="reference_material_contents_example">例如《XX书》第X页第X章第X节第X段</string>
+
+    <string name="original_authors">原作者</string>
+
+    <string name="editors">（改）编者</string>
+
+    <string name="issuing_source">发行机构</string>
+
+    <string name="issuing_date">发行时间</string>
+
+    <string name="sub_category">子类</string>
 
     <string name="hint_input_extra_contents_if_necessary">如有必要，请输入补充内容</string>
 
@@ -658,6 +684,24 @@
             issuing_source, issuing_date, remarks)
         values(?, ?, ?, ?,
             ?, ?, ?)
+    </string>
+
+    <string name="sql_query_reference_material_details_by_id">
+        select name, version,
+            original_authors, editors,
+            issuing_source, issuing_date,
+            remarks
+        from reference_material
+        where rid = ?
+    </string>
+
+    <string name="sql_update_reference_material_item_by_id">
+        update reference_material
+        set name = ?, version = ?,
+            original_authors = ?, editors = ?,
+            issuing_source = ?, issuing_date = ?,
+            remarks = ?
+        where rid = ?
     </string>
 
     <string name="sql_create_medicine_categories_table">
@@ -799,6 +843,13 @@
         order by cid asc
     </string>
 
+    <string name="sql_query_prescription_category_details_by_id">
+        select name, sub_categories,
+            remarks
+        from prescription_categories
+        where cid = ?
+    </string>
+
     <string name="sql_create_prescription_items_table">
         CREATE TABLE `prescription_items` (
             `pid`   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
@@ -848,6 +899,28 @@
         from prescription_items
         where name || ifnull(alias, \'\') like ? and category = ?
         order by pid asc
+    </string>
+
+    <string name="sql_query_prescription_details_by_id">
+        select name, alias,
+            category, effects,
+            actions_and_indications, composition,
+            decoction, method_of_taking_medicine,
+            contraindications, relative_prescriptions,
+            reference_material, remarks
+        from prescription_items
+        where pid = ?
+    </string>
+
+    <string name="sql_update_prescription_item_by_id">
+        update prescription_items
+        set name = ?, alias = ?,
+            category = ?, effects = ?,
+            actions_and_indications = ?, composition = ?,
+            decoction = ?, method_of_taking_medicine = ?,
+            contraindications = ?, relative_prescriptions = ?,
+            reference_material = ?, remarks = ?
+        where pid = ?
     </string>
 
 </resources>

@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:orientation="vertical"
+    tools:context="com.project.tcm_quick_search_notes.ReadWriteItemDetailsActivity" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" >
+
+        <LinearLayout
+            android:id="@+id/llayout_misc_item_details_page"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+                 name
+
+                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+            <com.android_assistant.EnhancedListView
+                android:id="@+id/lsv_title_misc_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </com.android_assistant.EnhancedListView>
+
+            <com.android_assistant.EnhancedListView
+                android:id="@+id/lsv_content_misc_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin" >
+            </com.android_assistant.EnhancedListView>
+
+            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+                 sub_categories
+
+                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+            <com.android_assistant.EnhancedListView
+                android:id="@+id/lsv_title_misc_item_sub_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </com.android_assistant.EnhancedListView>
+
+            <com.android_assistant.EnhancedListView
+                android:id="@+id/lsv_content_misc_item_sub_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin" >
+            </com.android_assistant.EnhancedListView>
+
+            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+                 remarks
+
+                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+            <com.android_assistant.EnhancedListView
+                android:id="@+id/lsv_title_misc_item_remarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </com.android_assistant.EnhancedListView>
+
+            <com.android_assistant.EnhancedListView
+                android:id="@+id/lsv_content_misc_item_remarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin" >
+            </com.android_assistant.EnhancedListView>
+
+            <ImageView
+                android:contentDescription="@string/empty_string"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="#ffb27e50" >
+            </ImageView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

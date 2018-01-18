@@ -110,6 +110,12 @@
         <item>@string/en_copyright</item>
     </string-array>
 
+    <string-array name="version">
+        <item>@string/version</item>
+        <item>@string/cht_version</item>
+        <item>@string/en_version</item>
+    </string-array>
+
     <string-array name="version_log">
         <item>@string/version_log</item>
         <item>@string/cht_version_log</item>
@@ -162,6 +168,12 @@
         <item>@string/remarks</item>
         <item>@string/cht_remarks</item>
         <item>@string/en_remarks</item>
+    </string-array>
+
+    <string-array name="refer_to_remarks">
+        <item>@string/refer_to_remarks</item>
+        <item>@string/cht_refer_to_remarks</item>
+        <item>@string/en_refer_to_remarks</item>
     </string-array>
 
     <string-array name="save">

@@ -16,7 +16,7 @@
         android:background="@android:color/transparent" >
 
         <LinearLayout
-            android:id="@+id/llayout_medicine_details_page"
+            android:id="@+id/llayout_prescription_details_page"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
@@ -28,13 +28,13 @@
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_name"
+                android:id="@+id/lsv_title_prescription_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_name"
+                android:id="@+id/lsv_content_prescription_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"
@@ -48,13 +48,13 @@
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_aliases"
+                android:id="@+id/lsv_title_prescription_aliases"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_aliases"
+                android:id="@+id/lsv_content_prescription_aliases"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"
@@ -68,13 +68,13 @@
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_category"
+                android:id="@+id/lsv_title_prescription_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_category"
+                android:id="@+id/lsv_content_prescription_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"
@@ -83,18 +83,18 @@
 
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                 nature
+                 prescription_effects
 
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_nature"
+                android:id="@+id/lsv_title_prescription_effects"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_nature"
+                android:id="@+id/lsv_content_prescription_effects"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"
@@ -103,18 +103,18 @@
 
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                 tastes
+                 prescription_actions_and_indications
 
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_tastes"
+                android:id="@+id/lsv_title_prescription_actions_and_indications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_tastes"
+                android:id="@+id/lsv_content_prescription_actions_and_indications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"
@@ -123,18 +123,18 @@
 
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                 channel_tropism
+                 composition
 
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_channel_tropism"
+                android:id="@+id/lsv_title_prescription_composition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_channel_tropism"
+                android:id="@+id/lsv_content_prescription_composition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"
@@ -143,18 +143,18 @@
 
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                 relations_with_life_fundamentals
+                 decoction
 
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_relations_with_life_fundamentals"
+                android:id="@+id/lsv_title_decoction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_relations_with_life_fundamentals"
+                android:id="@+id/lsv_content_decoction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"
@@ -163,158 +163,18 @@
 
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                 motion_form
+                 method_of_taking_prescription
 
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_motion_form"
+                android:id="@+id/lsv_title_method_of_taking_prescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_motion_form"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin" >
-            </com.android_assistant.EnhancedListView>
-
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-                 medicine_effects
-
-                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_effects"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </com.android_assistant.EnhancedListView>
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_effects"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin" >
-            </com.android_assistant.EnhancedListView>
-
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-                 medicine_actions_and_indications
-
-                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_actions_and_indications"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </com.android_assistant.EnhancedListView>
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_actions_and_indications"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin" >
-            </com.android_assistant.EnhancedListView>
-
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-                 details
-
-                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </com.android_assistant.EnhancedListView>
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin" >
-            </com.android_assistant.EnhancedListView>
-
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-                 common_prescriptions
-
-                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_common_prescriptions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </com.android_assistant.EnhancedListView>
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_common_prescriptions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin" >
-            </com.android_assistant.EnhancedListView>
-
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-                 common_medicine_partners
-
-                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_common_medicine_partners"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </com.android_assistant.EnhancedListView>
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_common_medicine_partners"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin" >
-            </com.android_assistant.EnhancedListView>
-
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-                 similar_medicines
-
-                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_similar_medicines"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </com.android_assistant.EnhancedListView>
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_similar_medicines"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin" >
-            </com.android_assistant.EnhancedListView>
-
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-                 dosage_reference
-
-                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_dosage_reference"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </com.android_assistant.EnhancedListView>
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_dosage_reference"
+                android:id="@+id/lsv_content_method_of_taking_prescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"
@@ -328,13 +188,33 @@
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_contraindications"
+                android:id="@+id/lsv_title_prescription_contraindications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_contraindications"
+                android:id="@+id/lsv_content_prescription_contraindications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin" >
+            </com.android_assistant.EnhancedListView>
+
+            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+                 relative_prescriptions
+
+                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+            <com.android_assistant.EnhancedListView
+                android:id="@+id/lsv_title_relative_prescriptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </com.android_assistant.EnhancedListView>
+
+            <com.android_assistant.EnhancedListView
+                android:id="@+id/lsv_content_relative_prescriptions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"
@@ -348,13 +228,13 @@
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_reference_material"
+                android:id="@+id/lsv_title_prescription_reference_material"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_reference_material"
+                android:id="@+id/lsv_content_prescription_reference_material"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"
@@ -368,13 +248,13 @@
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_remarks"
+                android:id="@+id/lsv_title_prescription_remarks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </com.android_assistant.EnhancedListView>
 
             <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_remarks"
+                android:id="@+id/lsv_content_prescription_remarks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"

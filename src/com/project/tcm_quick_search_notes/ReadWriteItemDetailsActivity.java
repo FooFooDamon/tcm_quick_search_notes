@@ -65,47 +65,7 @@ import com.android_assistant.Hint;
 
 public class ReadWriteItemDetailsActivity extends Activity {
 
-    private static String[] mMedicinePageItems = null;
-
-    private static final String[] MEDICINE_COLUMNS = {
-        "name",
-        "alias",
-        "category",
-        "nature",
-        "tastes",
-        "channel_tropism",
-        "relations_with_life_fundamentals",
-        "motion_form_of_action",
-        "effects",
-        "actions_and_indications",
-        "details",
-        "common_prescriptions",
-        "common_partners",
-        "similar_medicines",
-        "dosage_reference",
-        "contraindications",
-        "reference_material",
-        "remarks"
-    };
-
-    private static final int MEDICINE_COLUMN_INDEX_NAME = 0;
-    private static final int MEDICINE_COLUMN_INDEX_ALIASES = 1;
-    private static final int MEDICINE_COLUMN_INDEX_CATEGORY = 2;
-    private static final int MEDICINE_COLUMN_INDEX_NATURE = 3;
-    private static final int MEDICINE_COLUMN_INDEX_TASTES = 4;
-    private static final int MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM = 5;
-    private static final int MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS = 6;
-    private static final int MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION = 7;
-    private static final int MEDICINE_COLUMN_INDEX_EFFECTS = 8;
-    private static final int MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS = 9;
-    private static final int MEDICINE_COLUMN_INDEX_DETAILS = 10;
-    private static final int MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS = 11;
-    private static final int MEDICINE_COLUMN_INDEX_COMMON_PARTNERS = 12;
-    private static final int MEDICINE_COLUMN_INDEX_SIMILAR_MEDICINES = 13;
-    private static final int MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE = 14;
-    private static final int MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS = 15;
-    private static final int MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL = 16;
-    private static final int MEDICINE_COLUMN_INDEX_REMARKS = 17;
+    private static String[] mPageItems = null;
 
     private DetailContentTemplate[] mDetailContentTemplates = {
         new DetailContentTemplate(),
@@ -126,7 +86,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
         new DetailContentTemplate(),
         new DetailContentTemplate(),
         new DetailContentTemplate()
-    };
+    }/*new DetailContentTemplate[DbHelper.MAX_COLUMN_COUNT]*/;
 
     private HashMap<String, DetailContentTemplate> mMapDetailContentTemplates = new HashMap<String, DetailContentTemplate>();
 
@@ -187,6 +147,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
 
     private static final String ITEM_READ_ONLY = "read-only";
     private static final String SPACE = " ";
+    private static final String STRING_NONE = "";
 
     private Menu gMenu = null;
 
@@ -201,21 +162,41 @@ public class ReadWriteItemDetailsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medicine_item_details);
         getActionBar().setBackgroundDrawable(
             getResources().getDrawable(R.drawable.default_action_bar_style));
 
-        Intent intent = getIntent();
-        int opType = intent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
-        String primaryId = intent.getStringExtra(TcmCommon.ID_KEY);
-        //String name = intent.getStringExtra(TcmCommon.NAME_KEY);
-
-        setTitle(getString(R.string.main_item_medicine));
-        //Hint.longToast(this, primaryId);
-
         initResources();
 
-        mDetailContentFromDb = mDbHelper.queryMedicineDetails(primaryId);
+        Intent prevIntent = getIntent();
+        int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+        String primaryId = prevIntent.getStringExtra(TcmCommon.ID_KEY);
+        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+        //String name = intent.getStringExtra(TcmCommon.NAME_KEY);
+
+        //Hint.longToast(this, "opType: " + opType + ", primaryId: " + primaryId + ", miscItemPos: " + miscItemPos);
+
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType) {
+            setContentView(R.layout.activity_medicine_item_details);
+            setTitle(getString(R.string.main_item_medicine));
+            mDetailContentFromDb = mDbHelper.queryItemDetails(primaryId, TcmCommon.OP_TYPE_VALUE_MEDICINE, 0);
+        }
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
+            setContentView(R.layout.activity_prescription_item_details);
+            setTitle(getString(R.string.main_item_prescription));
+            mDetailContentFromDb = mDbHelper.queryItemDetails(primaryId, TcmCommon.OP_TYPE_VALUE_PRESCRIPTION, 0);
+        }
+        else {
+            String miscItemName = MiscManagementActivity.getItemNameByPosition(miscItemPos);
+
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == miscItemPos)
+                setContentView(R.layout.activity_reference_material_details);
+            else
+                setContentView(R.layout.activity_general_misc_item_details);
+
+            setTitle(miscItemName);
+
+            mDetailContentFromDb = mDbHelper.queryItemDetails(primaryId, TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT, miscItemPos);
+        }
 
         if (null == mDetailContentFromDb) {
             Hint.alert(this, getString(R.string.db_error),
@@ -223,10 +204,10 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 mExitActivity);
         }
 
-        fillDetailContentTemplates(); // MUST be executed before fillDetailTitles() and fillDetailContents()!!!
+        fillDetailContentTemplates(opType, miscItemPos); // MUST be executed before fillDetailTitles() and fillDetailContents()!!!
 
-        fillDetailTitles();
-        fillDetailContents();
+        fillDetailTitles(opType, miscItemPos);
+        fillDetailContents(opType, miscItemPos);
     }
 
     @Override
@@ -251,7 +232,6 @@ public class ReadWriteItemDetailsActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        int[][] detailResIds = getDetailItemResourceIds();
 
         if (R.id.menu_edit == id) {
             item.setVisible(false);
@@ -260,38 +240,65 @@ public class ReadWriteItemDetailsActivity extends Activity {
             switchEditStatus(true);
         }
         else if (R.id.menu_save == id) {
+            Intent prevIntent = getIntent();
+            String primaryId = prevIntent.getStringExtra(TcmCommon.ID_KEY);
+            int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+            int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+            int[][] detailResIds = getDetailItemResourceIds(opType, miscItemPos);
             ArrayList<String> updateArgs = new ArrayList<String>();
             View convertView = null;
             DetailContentAdapter.ViewHolder viewHolder = null;
+            //StringBuilder debugInfo = new StringBuilder();
+            boolean isMedicine = (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType);
+            boolean isPrescription = (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType);
 
             for (int i = 0; i < detailResIds.length; ++i) {
-                if (detailContentIsNotUsed(i))
+                if (detailContentIsNotUsed(opType, miscItemPos, i))
                     continue;
 
                 ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
                 DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
 
-                if (detailContentIsSimple(i)) {
+                if (detailContentIsSimple(opType, miscItemPos, i)) {
                     convertView = contentsAdapter.getView(0, null, null);
                     viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
                     updateArgs.add(viewHolder.etxValueLong.getText().toString());
+                    //debugInfo.append(" [").append(i).append("]: ").append(viewHolder.etxValueLong.getText().toString());
+                    continue;
                 }
-                else if (MEDICINE_COLUMN_INDEX_CATEGORY == i) {
+
+                if ((isMedicine && DbHelper.MEDICINE_COLUMN_INDEX_CATEGORY == i)
+                    || (isPrescription && DbHelper.PRESCRIPTION_COLUMN_INDEX_CATEGORY == i)
+                    || (isPrescription && DbHelper.PRESCRIPTION_COLUMN_INDEX_METHOD_OF_TAKING_MEDICINE == i)) {
+
                     convertView = contentsAdapter.getView(0, null/*convertView*/, null);
                     viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
                     updateArgs.add(String.valueOf(viewHolder.spnValue.getSelectedItemPosition()));
+                    //debugInfo.append(" [").append(i).append("]: ").append(String.valueOf(viewHolder.spnValue.getSelectedItemPosition()));
+                    continue;
                 }
-                else {
-                    String fieldValue = serializeToDatabaseField(contentsAdapter.getItemList());
 
-                    updateArgs.add(fieldValue);
-                }
+                String fieldValue = serializeToDatabaseField(contentsAdapter.getItemList());
+
+                updateArgs.add(fieldValue);
+                //debugInfo.append(" [").append(i).append("]: ").append(fieldValue);
             }
 
-            updateArgs.add(getIntent().getStringExtra(TcmCommon.ID_KEY));
+            updateArgs.add(primaryId);
+            //debugInfo.append(" [").append(detailResIds.length).append("]: ").append(primaryId);
+            //Hint.alert(this, "detailResIds.length: " + detailResIds.length, debugInfo.toString());
 
             try {
-                mDbHelper.updateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
+                if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType)
+                    mDbHelper.updateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
+                else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
+                    mDbHelper.updatePrescriptionItem(updateArgs.toArray(new String[updateArgs.size()]));
+                else {
+                    if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == miscItemPos)
+                        mDbHelper.updateReferenceMaterialItem(updateArgs.toArray(new String[updateArgs.size()]));
+                    else
+                        mDbHelper.updateMiscItem(miscItemPos, updateArgs.toArray(new String[updateArgs.size()]));
+                }
                 Hint.alert(this, R.string.save_successfully, R.string.asking_after_save_operation, mExitActivity, null);
             } catch(SQLException e) {
                 Hint.alert(this, getString(R.string.alert_failed_to_update),
@@ -325,16 +332,28 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 }
             };
         }
+
+        refreshPageItems();
     }
 
     private void switchEditStatus(boolean editable) {
-        int[][] detailResIds = getDetailItemResourceIds();
+        Intent prevIntent = getIntent();
+        int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+        int[][] detailResIds = getDetailItemResourceIds(opType, miscItemPos);
 
         mEditable = editable;
 
         for (int i = 0; i < detailResIds.length; ++i) {
-            if (detailContentIsNotUsed(i))
+            if (detailContentIsNotUsed(opType, miscItemPos, i))
                 continue;
+
+            if (!detailContentIsSimple(opType, miscItemPos, i)) {
+                ListView lsvTitle = (ListView)findViewById(detailResIds[i][1]);
+                DetailTitleAdapter titleAdapter = (DetailTitleAdapter)lsvTitle.getAdapter();
+
+                titleAdapter.notifyDataSetChanged();
+            }
 
             ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
             DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
@@ -354,17 +373,12 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 contentData.editTextsEnabled = editable;
             }
             contentsAdapter.notifyDataSetChanged();
-
-            ListView lsvTitle = (ListView)findViewById(detailResIds[i][1]);
-            DetailTitleAdapter titleAdapter = (DetailTitleAdapter)lsvTitle.getAdapter();
-
-            titleAdapter.notifyDataSetChanged();
         }
     }
 
     private DetailContentData[] parseFromDataseField(final String dbValue, int pageItemIndex,
         int expectedMinResultCount, boolean resultCountIsFixed) {
-        String _dbValue = (null != dbValue) ? dbValue : SPACE;
+        String _dbValue = (null != dbValue) ? dbValue : /*STRING_NONE*/SPACE;
 
         String[] items = _dbValue.split(TcmCommon.ITEM_DELIM);
         ArrayList<String> itemList = new ArrayList<String>();
@@ -428,10 +442,10 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 if (isSpinner)
                     result.selectedSpinnerPositions.put(FIELD_NAMES[i], 0);
                 else
-                    result.editTextContents.put(FIELD_NAMES[i], SPACE);
+                    result.editTextContents.put(FIELD_NAMES[i], /*STRING_NONE*/SPACE);
             }
 
-            result.editTextContents.put(FIELD_NAMES[EXPECTED_FIELD_COUNT - 1], SPACE);
+            result.editTextContents.put(FIELD_NAMES[EXPECTED_FIELD_COUNT - 1], /*STRING_NONE*/SPACE);
 
             return result;
         }
@@ -487,7 +501,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
             else
                 value = input.editTextContents.get(FIELD_NAMES[i]);
 
-            result.append((null == value || 0 == value.length()) ? SPACE : value);
+            result.append((null == value || 0 == value.length()) ? /*STRING_NONE*/SPACE : value);
             result.append(TcmCommon.FIELD_DELIM);
         }
 
@@ -496,11 +510,11 @@ public class ReadWriteItemDetailsActivity extends Activity {
         return result.toString();
     }
 
-    private void fillDetailTitles() {
-        int[][] detailItemResIds = getDetailItemResourceIds();
+    private void fillDetailTitles(int type, int index) {
+        int[][] detailItemResIds = getDetailItemResourceIds(type, index);
 
         for (int i = 0; i < detailItemResIds.length; ++i) {
-            if (detailContentIsNotUsed(i))
+            if (detailContentIsNotUsed(type, index, i))
                 continue;
 
             ArrayList<DetailTitleData> titleList = new ArrayList<DetailTitleData>();
@@ -513,42 +527,82 @@ public class ReadWriteItemDetailsActivity extends Activity {
         }
     }
 
-    private boolean detailContentIsSimple(int contentIndex) {
-        return (MEDICINE_COLUMN_INDEX_NAME == contentIndex
-            || MEDICINE_COLUMN_INDEX_ALIASES == contentIndex
-            //|| MEDICINE_COLUMN_INDEX_CATEGORY == contentIndex
-            || MEDICINE_COLUMN_INDEX_EFFECTS == contentIndex
-            || MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS == contentIndex
-            || MEDICINE_COLUMN_INDEX_DETAILS == contentIndex
-            || MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS == contentIndex
-            || MEDICINE_COLUMN_INDEX_COMMON_PARTNERS == contentIndex
-            || MEDICINE_COLUMN_INDEX_SIMILAR_MEDICINES == contentIndex
-            || MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE == contentIndex
-            || MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS == contentIndex
-            || MEDICINE_COLUMN_INDEX_REMARKS == contentIndex);
+    private boolean detailContentIsSimple(int type, int itemIndex, int contentIndex) {
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == type) {
+            return (DbHelper.MEDICINE_COLUMN_INDEX_NAME == contentIndex
+                || DbHelper.MEDICINE_COLUMN_INDEX_ALIASES == contentIndex
+                //|| DbHelper.MEDICINE_COLUMN_INDEX_CATEGORY == contentIndex
+                || DbHelper.MEDICINE_COLUMN_INDEX_EFFECTS == contentIndex
+                || DbHelper.MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS == contentIndex
+                || DbHelper.MEDICINE_COLUMN_INDEX_DETAILS == contentIndex
+                || DbHelper.MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS == contentIndex
+                || DbHelper.MEDICINE_COLUMN_INDEX_COMMON_PARTNERS == contentIndex
+                || DbHelper.MEDICINE_COLUMN_INDEX_SIMILAR_MEDICINES == contentIndex
+                || DbHelper.MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE == contentIndex
+                || DbHelper.MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS == contentIndex
+                || DbHelper.MEDICINE_COLUMN_INDEX_REMARKS == contentIndex);
+        }
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == type) {
+            return (DbHelper.PRESCRIPTION_COLUMN_INDEX_NAME == contentIndex
+                || DbHelper.PRESCRIPTION_COLUMN_INDEX_ALIASES == contentIndex
+                || DbHelper.PRESCRIPTION_COLUMN_INDEX_EFFECTS == contentIndex
+                || DbHelper.PRESCRIPTION_COLUMN_INDEX_ACTIONS_AND_INDICATIONS == contentIndex
+                || DbHelper.PRESCRIPTION_COLUMN_INDEX_DECOCTION == contentIndex
+                || DbHelper.PRESCRIPTION_COLUMN_INDEX_CONTRAINDICATIONS == contentIndex
+                || DbHelper.PRESCRIPTION_COLUMN_INDEX_RELATIVE_PRESCRIPTIONS == contentIndex
+                || DbHelper.PRESCRIPTION_COLUMN_INDEX_REMARKS == contentIndex);
+        }
+        else
+            return true;
     }
 
-    private boolean detailContentIsSimple(String contentName) {
-        return (MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_NAME].equals(contentName)
-            || MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_ALIASES].equals(contentName)
-            //|| MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CATEGORY].equals(contentName)
-            || MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_EFFECTS].equals(contentName)
-            || MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS].equals(contentName)
-            || MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_DETAILS].equals(contentName)
-            || MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS].equals(contentName)
-            || MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_COMMON_PARTNERS].equals(contentName)
-            || MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_SIMILAR_MEDICINES].equals(contentName)
-            || MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE].equals(contentName)
-            || MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS].equals(contentName)
-            || MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_REMARKS].equals(contentName));
+    private boolean detailContentIsSimple(int type, int itemIndex, String contentName) {
+        final String[] COLUMNS = DbHelper.getTableColumnsList(type, itemIndex);
+
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == type) {
+            return (COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_NAME].equals(contentName)
+                || COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_ALIASES].equals(contentName)
+                //|| COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_CATEGORY].equals(contentName)
+                || COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_EFFECTS].equals(contentName)
+                || COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS].equals(contentName)
+                || COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_DETAILS].equals(contentName)
+                || COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS].equals(contentName)
+                || COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_COMMON_PARTNERS].equals(contentName)
+                || COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_SIMILAR_MEDICINES].equals(contentName)
+                || COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE].equals(contentName)
+                || COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS].equals(contentName)
+                || COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_REMARKS].equals(contentName));
+        }
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == type) {
+            return (COLUMNS[DbHelper.PRESCRIPTION_COLUMN_INDEX_NAME].equals(contentName)
+                || COLUMNS[DbHelper.PRESCRIPTION_COLUMN_INDEX_ALIASES].equals(contentName)
+                || COLUMNS[DbHelper.PRESCRIPTION_COLUMN_INDEX_EFFECTS].equals(contentName)
+                || COLUMNS[DbHelper.PRESCRIPTION_COLUMN_INDEX_ACTIONS_AND_INDICATIONS].equals(contentName)
+                || COLUMNS[DbHelper.PRESCRIPTION_COLUMN_INDEX_DECOCTION].equals(contentName)
+                || COLUMNS[DbHelper.PRESCRIPTION_COLUMN_INDEX_CONTRAINDICATIONS].equals(contentName)
+                || COLUMNS[DbHelper.PRESCRIPTION_COLUMN_INDEX_RELATIVE_PRESCRIPTIONS].equals(contentName)
+                || COLUMNS[DbHelper.PRESCRIPTION_COLUMN_INDEX_REMARKS].equals(contentName));
+        }
+        else
+            return true;
     }
 
-    private boolean detailContentIsNotUsed(int contentIndex) {
-        return (MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION == contentIndex);
+    private boolean detailContentIsNotUsed(int type, int itemIndex, int contentIndex) {
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == type)
+            return (DbHelper.MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION == contentIndex);
+        else if (TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT == type) {
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == itemIndex
+                || MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY == itemIndex)
+                return false;
+            else
+                return (DbHelper.GENERAL_MISC_ITEM_COLUMN_INDEX_SUB_CATEGORIES == contentIndex);
+        }
+        else
+            return false;
     }
 
-    private int[][] getDetailItemResourceIds() {
-        final int[][] RES_IDS = {
+    private int[][] getDetailItemResourceIds(int type, int index) {
+        final int[][] MEDICINE_RES_IDS = {
             { R.string.name, R.id.lsv_title_medicine_name, R.id.lsv_content_medicine_name },
             { R.string.alias, R.id.lsv_title_medicine_aliases, R.id.lsv_content_medicine_aliases },
             { R.string.category, R.id.lsv_title_medicine_category, R.id.lsv_content_medicine_category },
@@ -568,72 +622,145 @@ public class ReadWriteItemDetailsActivity extends Activity {
             { R.string.reference_material, R.id.lsv_title_medicine_reference_material, R.id.lsv_content_medicine_reference_material },
             { R.string.remarks, R.id.lsv_title_medicine_remarks, R.id.lsv_content_medicine_remarks }
         };
-
-        return RES_IDS;
-    }
-
-    private String[] getPageItems() {
-        if (null == mMedicinePageItems) {
-            int[][] detailItemResIds = getDetailItemResourceIds();
-
-            mMedicinePageItems = new String[detailItemResIds.length];
-
-            for (int i = 0; i < mMedicinePageItems.length; ++i) {
-                mMedicinePageItems[i] = getString(detailItemResIds[i][0]);
-            }
-        }
-
-        return mMedicinePageItems;
-    }
-
-    private void fillDetailContentTemplates() {
-        // Simple items, including name, aliases, category, details, common_prescriptions,
-        // common_partners, similar_medicines, dosage_reference, contraindications
-        // and remarks, need not filling up.
-
-        DetailContentTemplate template = null;
-        DetailContentTemplate[] array = mDetailContentTemplates;
-        HashMap<String, DetailContentTemplate> map = mMapDetailContentTemplates;
-
-        for (int i = 0; i < array.length; ++i) {
-            map.put(MEDICINE_COLUMNS[i], array[i]);
-        }
-
-        DbHelper dbHelper = mDbHelper;
-        String unknownString = getString(R.string.unknown);
-        String hintPleaseSelect = getString(R.string.please_select);
-        //String hintPleaseSelectOrCustomize = getString(R.string.please_select_or_customize);
-        String[] levelWords = dbHelper.queryAttributeNames(R.string.attr_table_prefix_level_word, SPACE);
-
-        int[][] integers = {
-            // column index, isFixed, minRecords, checkBoxFlags
-            { MEDICINE_COLUMN_INDEX_CATEGORY, 1, 1, 0 },
-            { MEDICINE_COLUMN_INDEX_NATURE, 0, 1, 0 },
-            { MEDICINE_COLUMN_INDEX_TASTES, 0, 1, 0 },
-            { MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0, 1, 0 },
-            { MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, 1, 5, CHKBOX_VISIBLE | CHKBOX_CLICKABLE },
-            { MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION, 1, 6, 0 },
-            { MEDICINE_COLUMN_INDEX_EFFECTS, 1, 1, 0 },
-            { MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS, 1, 1, 0 },
-            { MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL, 0, 1, 0 }
+        final int[][] PRESCRIPTION_RES_IDS = {
+            { R.string.name, R.id.lsv_title_prescription_name, R.id.lsv_content_prescription_name },
+            { R.string.alias, R.id.lsv_title_prescription_aliases, R.id.lsv_content_prescription_aliases },
+            { R.string.category, R.id.lsv_title_prescription_category, R.id.lsv_content_prescription_category },
+            { R.string.medicine_effect, R.id.lsv_title_prescription_effects, R.id.lsv_content_prescription_effects },
+            { R.string.medicine_action_and_indication, R.id.lsv_title_prescription_actions_and_indications, R.id.lsv_content_prescription_actions_and_indications },
+            { R.string.composition, R.id.lsv_title_prescription_composition, R.id.lsv_content_prescription_composition },
+            { R.string.decoction, R.id.lsv_title_decoction, R.id.lsv_content_decoction },
+            { R.string.method_of_taking_medicine, R.id.lsv_title_method_of_taking_prescription, R.id.lsv_content_method_of_taking_prescription },
+            { R.string.contraindications, R.id.lsv_title_prescription_contraindications, R.id.lsv_content_prescription_contraindications },
+            { R.string.relative_prescriptions, R.id.lsv_title_relative_prescriptions, R.id.lsv_content_relative_prescriptions },
+            { R.string.reference_material, R.id.lsv_title_prescription_reference_material, R.id.lsv_content_prescription_reference_material },
+            { R.string.remarks, R.id.lsv_title_prescription_remarks, R.id.lsv_content_prescription_remarks }
+        };
+        final int[][] REFERENCE_MATERIAL_RES_IDS = {
+            { R.string.name, R.id.lsv_title_reference_material_name, R.id.lsv_content_reference_material_name },
+            { R.string.version, R.id.lsv_title_reference_material_version, R.id.lsv_content_reference_material_version },
+            { R.string.original_authors, R.id.lsv_title_reference_material_original_authors, R.id.lsv_content_reference_material_original_authors },
+            { R.string.editors, R.id.lsv_title_reference_material_editors, R.id.lsv_content_reference_material_editors },
+            { R.string.issuing_source, R.id.lsv_title_reference_material_issuing_source, R.id.lsv_content_reference_material_issuing_source },
+            { R.string.issuing_date, R.id.lsv_title_reference_material_issuing_date, R.id.lsv_content_reference_material_issuing_date },
+            { R.string.remarks, R.id.lsv_title_reference_material_remarks, R.id.lsv_content_reference_material_remarks }
+        };
+        final int[][] MISC_ITEM_RES_IDS = {
+            { R.string.name, R.id.lsv_title_misc_item_name, R.id.lsv_content_misc_item_name },
+            { R.string.sub_category, R.id.lsv_title_misc_item_sub_categories, R.id.lsv_content_misc_item_sub_categories },
+            { R.string.remarks, R.id.lsv_title_misc_item_remarks, R.id.lsv_content_misc_item_remarks }
         };
 
-        String[] spinnerNames = DETAIL_CONTENT_SPINNER_NAMES;
-        String[][][] spinnerItems = {
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == type)
+            return MEDICINE_RES_IDS;
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == type)
+            return PRESCRIPTION_RES_IDS;
+        else {
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == index)
+                return REFERENCE_MATERIAL_RES_IDS;
+            else
+                return MISC_ITEM_RES_IDS;
+        }
+    }
+
+    private String[] getPageItems(boolean needsRefresh) {
+        if (null == mPageItems || needsRefresh)
+            refreshPageItems();
+
+        return mPageItems;
+    }
+
+    private void refreshPageItems() {
+        if (null == mPageItems) {
+            mPageItems = new String[DbHelper.MAX_COLUMN_COUNT];
+        }
+
+        Intent prevIntent = getIntent();
+        int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+        int[][] detailItemResIds = getDetailItemResourceIds(opType, miscItemPos);
+
+        for (int i = 0; i < detailItemResIds.length; ++i) {
+            mPageItems[i] = getString(detailItemResIds[i][0]);
+        }
+    }
+
+    private void fillDetailContentTemplates(int type, int index) {
+        DetailContentTemplate[] array = mDetailContentTemplates;
+        HashMap<String, DetailContentTemplate> map = mMapDetailContentTemplates;
+        final String[] COLUMN_NAMES = DbHelper.getTableColumnsList(type, index);
+
+        for (int i = 0; i < COLUMN_NAMES.length; ++i) {
+            map.put(COLUMN_NAMES[i], array[i]);
+        }
+
+        // Simple items need not filling up.
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE != type
+            && TcmCommon.OP_TYPE_VALUE_PRESCRIPTION != type)
+            return;
+
+        DbHelper dbHelper = mDbHelper;
+        boolean isMedicine = (TcmCommon.OP_TYPE_VALUE_MEDICINE == type);
+        final String UNKNOWN_STRING = getString(R.string.unknown);
+        final String HINT_PLEASE_SELECT = getString(R.string.please_select);
+        final String HINT_INPUT_EXTRA_CONTENTS = getString(R.string.hint_input_extra_contents_if_necessary);
+        final String REFERENCE_MATERIAL_CONTENTS_EXAMPLE = getString(R.string.reference_material_contents_example);
+        //String hintPleaseSelectOrCustomize = getString(R.string.please_select_or_customize);
+        String[] levelWords = dbHelper.queryAttributeNames(R.string.attr_table_prefix_level_word, SPACE);
+        String[] processingMethod = dbHelper.queryAttributeNames(R.string.attr_table_prefix_processing_method, SPACE);
+        String[] referenceMaterialNames = dbHelper.queryReferenceMaterialNames();
+
+        final int[][] INTEGERS_FOR_MEDICINE_FIELDS = {
+            // column index, isFixed, minRecords, checkBoxFlags
+            { DbHelper.MEDICINE_COLUMN_INDEX_CATEGORY, 1, 1, 0 },
+            { DbHelper.MEDICINE_COLUMN_INDEX_NATURE, 0, 1, 0 },
+            { DbHelper.MEDICINE_COLUMN_INDEX_TASTES, 0, 1, 0 },
+            { DbHelper.MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0, 1, 0 },
+            { DbHelper.MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, 1, 5, CHKBOX_VISIBLE | CHKBOX_CLICKABLE },
+            { DbHelper.MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION, 1, 6, 0 },
+            { DbHelper.MEDICINE_COLUMN_INDEX_EFFECTS, 1, 1, 0 },
+            { DbHelper.MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS, 1, 1, 0 },
+            { DbHelper.MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL, 0, 1, 0 }
+        };
+
+        final int[][] INTEGERS_FOR_PRESCRIPTION_FIELDS = {
+            // column index, isFixed, minRecords, checkBoxFlags
+            { DbHelper.PRESCRIPTION_COLUMN_INDEX_CATEGORY, 1, 1, 0 },
+            { DbHelper.PRESCRIPTION_COLUMN_INDEX_COMPOSITION, 0, 1, 0 },
+            { DbHelper.PRESCRIPTION_COLUMN_INDEX_METHOD_OF_TAKING_MEDICINE, 1, 1, 0 },
+            { DbHelper.PRESCRIPTION_COLUMN_INDEX_REFERENCE_MATERIAL, 0, 1, 0 }
+        };
+
+        final int[][] INTEGERS = isMedicine ? INTEGERS_FOR_MEDICINE_FIELDS : INTEGERS_FOR_PRESCRIPTION_FIELDS;
+
+        final String[] SPINNER_NAMES = DETAIL_CONTENT_SPINNER_NAMES;
+
+        String[][][] spinnerItemsForMedicineFields = {
             // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-            { null, null, null, dbHelper.queryMedicineCategories(unknownString), null, null },
-            { null, dbHelper.queryAttributeNames(R.string.attr_table_prefix_processing_method, SPACE), levelWords, dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_nature, hintPleaseSelect), null, null },
-            { null, null, levelWords, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_taste, hintPleaseSelect/*ITEM_READ_ONLY*/), null, null },
-            { null, null, null, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_channel_tropism, hintPleaseSelect/*ITEM_READ_ONLY*/), null, null },
+            { null, null, null, dbHelper.queryMedicineCategories(UNKNOWN_STRING), null, null },
+            { null, processingMethod, levelWords, dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_nature, HINT_PLEASE_SELECT), null, null },
+            { null, null, levelWords, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_taste, HINT_PLEASE_SELECT/*ITEM_READ_ONLY*/), null, null },
+            { null, null, null, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_channel_tropism, HINT_PLEASE_SELECT/*ITEM_READ_ONLY*/), null, null },
             { null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_action_verb, SPACE)*/, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_life_fundamental, ITEM_READ_ONLY), null, null },
             { null, null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_motion_form, hintPleaseSelect)*/, null, null },
             { null, null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_effect, hintPleaseSelectOrCustomize)*/, null, null },
             { null, null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_action_and_indication, hintPleaseSelectOrCustomize)*/, null, null },
-            { null, null, null, /*null*/dbHelper.queryReferenceMaterialNames(), null, null }
+            { null, null, null, /*null*/referenceMaterialNames, null, null }
         };
 
-        String[] editTextNames = DETAIL_CONTENT_EDIT_TEXT_NAMES;
-        String[][] defaultEditTextValues = {
+        String[][][] spinnerItemsForPrescriptionFields = {
+            // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+            { null, null, null, dbHelper.queryPrescriptionCategories(UNKNOWN_STRING), null, null },
+            { dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_role, SPACE), dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_unit, getString(R.string.medicine_unit)), processingMethod, null, null, null },
+            { null, null, null, dbHelper.queryAttributeNames(R.string.attr_table_prefix_method_of_taking_medicine, getString(R.string.refer_to_remarks)), null, null },
+            { null, null, null, /*null*/referenceMaterialNames, null, null }
+        };
+
+        String[][][] spinnerItems = isMedicine ? spinnerItemsForMedicineFields : spinnerItemsForPrescriptionFields;
+
+        String[] EDIT_TEXT_NAMES = DETAIL_CONTENT_EDIT_TEXT_NAMES;
+
+        final String[][] DEFAULT_EDIT_TEXT_VALUES_FOR_MEDICINE_FIELDS = {
             // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
             { null, null, null, null, null, null, null },
             { null, null, null, null, null, null, null },
@@ -641,36 +768,59 @@ public class ReadWriteItemDetailsActivity extends Activity {
             { null, null, null, null/*ITEM_READ_ONLY*/, null, null, null },
             { null, null, null, null/*ITEM_READ_ONLY*/, null, null, null },
             { null, null, null, null, null, null, null },
-            { null, null, null, null, null, null, getString(R.string.hint_input_extra_contents_if_necessary) },
-            { null, null, null, null, null, null, getString(R.string.hint_input_extra_contents_if_necessary) },
-            { null, null, null, null, null, null, getString(R.string.reference_material_contents_example) }
+            { null, null, null, null, null, null, HINT_INPUT_EXTRA_CONTENTS },
+            { null, null, null, null, null, null, HINT_INPUT_EXTRA_CONTENTS },
+            { null, null, null, null, null, null, REFERENCE_MATERIAL_CONTENTS_EXAMPLE }
         };
 
-        for (int i = 0; i < integers.length; ++i) {
-            int index = integers[i][0];
+        final String[][] DEFAULT_EDIT_TEXT_VALUES_FOR_PRESCRIPTION_FIELDS = {
+            // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+            { null, null, null, null, null, null, null },
+            { getString(R.string.quantity), null, null, null, null, null, getString(R.string.name) },
+            { null, null, null, null, null, null, null },
+            { null, null, null, null, null, null, REFERENCE_MATERIAL_CONTENTS_EXAMPLE }
+        };
 
-            template = array[index];
+        final String[][] DEFAULT_EDIT_TEXT_VALUES = isMedicine ? DEFAULT_EDIT_TEXT_VALUES_FOR_MEDICINE_FIELDS : DEFAULT_EDIT_TEXT_VALUES_FOR_PRESCRIPTION_FIELDS;
 
-            template.isFixed = (0 != integers[i][1]);
-            template.minRecords = integers[i][2];
-            template.checkBoxFlags = integers[i][3];
+        for (int i = 0; i < INTEGERS.length; ++i) {
+            int _index = INTEGERS[i][0];
+            DetailContentTemplate one = array[_index];
 
-            for (int j = 0; j < spinnerNames.length; ++j) {
-                template.mapSpinnerItems.put(spinnerNames[j], spinnerItems[i][j]);
+            one.isFixed = (0 != INTEGERS[i][1]);
+            one.minRecords = INTEGERS[i][2];
+            one.checkBoxFlags = INTEGERS[i][3];
+
+            for (int j = 0; j < SPINNER_NAMES.length; ++j) {
+                one.mapSpinnerItems.put(SPINNER_NAMES[j], spinnerItems[i][j]);
             }
 
-            for (int j = 0; j < editTextNames.length; ++j) {
-                template.mapDefaultEditTextValues.put(editTextNames[j], defaultEditTextValues[i][j]);
+            for (int j = 0; j < EDIT_TEXT_NAMES.length; ++j) {
+                one.mapDefaultEditTextValues.put(EDIT_TEXT_NAMES[j], DEFAULT_EDIT_TEXT_VALUES[i][j]);
             }
         }
     }
 
-    private void fillDetailContents() {
+    private void fillDetailContents(int type, int index) {
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == type)
+            fillMedicineDetailContents();
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == type)
+            fillPrescriptionDetailContents();
+        else {
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == index)
+                fillReferenceMaterialDetailContents();
+            else
+                fillMiscItemDetailContents(type, index);
+        }
+    }
+
+    private void fillMedicineDetailContents() {
         HashMap<String, String> mapDetails = mDetailContentFromDb;
-        int[][] detailItemResIds = getDetailItemResourceIds();
+        final String[] FIELDS = DbHelper.MEDICINE_COLUMNS;
         //String hintPleaseSelect = getString(R.string.please_select);
+        final String REFERENCE_MATERIAL_CONTENTS_EXAMPLE = getString(R.string.reference_material_contents_example);
         String[] lifeFundamental = mDbHelper.queryAttributeNames(R.string.attr_table_prefix_life_fundamental, null);
-        String referenceMaterial = mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL]);
+        String referenceMaterial = mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL]);
         String SPN_VALUE_SHORT = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_SPN_VALUE];
         String ETX_VALUE_SHORT = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_SHORT];
         String ETX_VALUE_LONG = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_LONG];
@@ -679,23 +829,23 @@ public class ReadWriteItemDetailsActivity extends Activity {
             referenceMaterial = getString(R.string.reference_material_contents_example);*/
 
         DetailContentData[] natureData = parseFromDataseField(
-            mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_NATURE]),
-            MEDICINE_COLUMN_INDEX_NATURE, 1, false);
+            mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_NATURE]),
+            DbHelper.MEDICINE_COLUMN_INDEX_NATURE, 1, false);
 
         DetailContentData[] tastesData = parseFromDataseField(
-            mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_TASTES]),
-            MEDICINE_COLUMN_INDEX_TASTES, 1, false);
+            mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_TASTES]),
+            DbHelper.MEDICINE_COLUMN_INDEX_TASTES, 1, false);
 
         DetailContentData[] channelTropismData = parseFromDataseField(
-            mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM]),
-            MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 1, false);
+            mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM]),
+            DbHelper.MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 1, false);
 
         DetailContentData[] lifeFundamentalData = parseFromDataseField(
-            mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS]),
-            MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, lifeFundamental.length, true);
+            mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS]),
+            DbHelper.MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, lifeFundamental.length, true);
 
         DetailContentData[] referenceMaterialData = parseFromDataseField(referenceMaterial,
-            MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL, 1, false);
+            DbHelper.MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL, 1, false);
 
         for (int i = 0; i < lifeFundamentalData.length; ++i) {
             lifeFundamentalData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
@@ -706,7 +856,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
             //referenceMaterialData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
             String _etxValueLong = referenceMaterialData[i].editTextContents.get(ETX_VALUE_LONG);
             if (null == _etxValueLong || 0 == _etxValueLong.length())
-                referenceMaterialData[i].editTextContents.put(ETX_VALUE_LONG, getString(R.string.reference_material_contents_example));
+                referenceMaterialData[i].editTextContents.put(ETX_VALUE_LONG, REFERENCE_MATERIAL_CONTENTS_EXAMPLE);
         }
 
         DetailContentData[][] contentData = {
@@ -715,25 +865,25 @@ public class ReadWriteItemDetailsActivity extends Activity {
             // editTextContents
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_NAME, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_NAME, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_NAME]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_NAME]) } )
             },
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_ALIASES, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_ALIASES, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_ALIASES]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_ALIASES]) } )
             },
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_CATEGORY, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_CATEGORY, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
-                    new int[]{ 0, 0, 0, Integer.parseInt(mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CATEGORY])), 0, 0 },
+                    new int[]{ 0, 0, 0, Integer.parseInt(mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_CATEGORY])), 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
                     new String[] { null, null, null, null, null, null, null } )
             },
@@ -747,7 +897,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
             lifeFundamentalData,
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
@@ -755,67 +905,67 @@ public class ReadWriteItemDetailsActivity extends Activity {
             },
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_EFFECTS, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_EFFECTS, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_EFFECTS]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_EFFECTS]) } )
             },
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS]) } )
             },
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_DETAILS, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_DETAILS, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_DETAILS]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_DETAILS]) } )
             },
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS]) } )
             },
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_COMMON_PARTNERS, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_COMMON_PARTNERS, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_COMMON_PARTNERS]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_COMMON_PARTNERS]) } )
             },
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_SIMILAR_MEDICINES, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_SIMILAR_MEDICINES, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_SIMILAR_MEDICINES]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_SIMILAR_MEDICINES]) } )
             },
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE]) } )
             },
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS]) } )
             },
 
             /*{
@@ -827,16 +977,264 @@ public class ReadWriteItemDetailsActivity extends Activity {
             }*/referenceMaterialData,
 
             {
-                new DetailContentData(MEDICINE_COLUMN_INDEX_REMARKS, 0,
+                new DetailContentData(DbHelper.MEDICINE_COLUMN_INDEX_REMARKS, 0,
                     // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
                     new int[]{ 0, 0, 0, 0, 0, 0 },
                     // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
-                    new String[] { null, null, null, null, null, null, mapDetails.get(MEDICINE_COLUMNS[MEDICINE_COLUMN_INDEX_REMARKS]) } )
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.MEDICINE_COLUMN_INDEX_REMARKS]) } )
             }
         };
 
-        for (int i = 0; i < MEDICINE_COLUMNS.length; ++i) {
-            if (detailContentIsNotUsed(i))
+        fillDetailContentsWithPreparedData(TcmCommon.OP_TYPE_VALUE_MEDICINE, 0, contentData);
+    }
+
+    private void fillPrescriptionDetailContents() {
+        HashMap<String, String> mapDetails = mDetailContentFromDb;
+        final String[] FIELDS = DbHelper.PRESCRIPTION_COLUMNS;
+        //String hintPleaseSelect = getString(R.string.please_select);
+        final String REFERENCE_MATERIAL_CONTENTS_EXAMPLE = getString(R.string.reference_material_contents_example);
+        String composition = mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_COMPOSITION]);
+        String referenceMaterial = mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_REFERENCE_MATERIAL]);
+        //String SPN_VALUE_SHORT = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_SPN_VALUE];
+        //String ETX_VALUE_SHORT = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_SHORT];
+        String ETX_VALUE_LONG = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_LONG];
+        String ETX_KEY = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_KEY];
+        final String NAME_STRING = getString(R.string.name);
+        final String QUANTITY_STRING = getString(R.string.quantity);
+
+        DetailContentData[] compositionData = parseFromDataseField(composition,
+            DbHelper.PRESCRIPTION_COLUMN_INDEX_COMPOSITION, 1, false);
+
+        DetailContentData[] referenceMaterialData = parseFromDataseField(referenceMaterial,
+            DbHelper.PRESCRIPTION_COLUMN_INDEX_REFERENCE_MATERIAL, 1, false);
+
+        for (int i = 0; i < compositionData.length; ++i) {
+            //compositionData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
+
+            String _etxKey = compositionData[i].editTextContents.get(ETX_KEY);
+            if (null == _etxKey || 0 == _etxKey.length())
+                compositionData[i].editTextContents.put(ETX_KEY, QUANTITY_STRING);
+
+            String _etxValueLong = compositionData[i].editTextContents.get(ETX_VALUE_LONG);
+            if (null == _etxValueLong || 0 == _etxValueLong.length())
+                compositionData[i].editTextContents.put(ETX_VALUE_LONG, NAME_STRING);
+        }
+
+        for (int i = 0; i < referenceMaterialData.length; ++i) {
+            //referenceMaterialData[i].selectedSpinnerPositions.put(SPN_VALUE_SHORT, i + 1);
+            String _etxValueLong = referenceMaterialData[i].editTextContents.get(ETX_VALUE_LONG);
+            if (null == _etxValueLong || 0 == _etxValueLong.length())
+                referenceMaterialData[i].editTextContents.put(ETX_VALUE_LONG, REFERENCE_MATERIAL_CONTENTS_EXAMPLE);
+        }
+
+        DetailContentData[][] contentData = {
+            // medicineColumnIndex, checkBoxFlags,
+            // selectedSpinnerPositions,
+            // editTextContents
+
+            {
+                new DetailContentData(DbHelper.PRESCRIPTION_COLUMN_INDEX_NAME, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_NAME]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.PRESCRIPTION_COLUMN_INDEX_ALIASES, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_ALIASES]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.PRESCRIPTION_COLUMN_INDEX_CATEGORY, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, Integer.parseInt(mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_CATEGORY])), 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, null } )
+            },
+
+            {
+                new DetailContentData(DbHelper.PRESCRIPTION_COLUMN_INDEX_EFFECTS, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_EFFECTS]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.PRESCRIPTION_COLUMN_INDEX_ACTIONS_AND_INDICATIONS, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_ACTIONS_AND_INDICATIONS]) } )
+            },
+
+            compositionData,
+
+            {
+                new DetailContentData(DbHelper.PRESCRIPTION_COLUMN_INDEX_DECOCTION, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_DECOCTION]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.PRESCRIPTION_COLUMN_INDEX_METHOD_OF_TAKING_MEDICINE, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, com.android_assistant.Integer.parseInt(mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_METHOD_OF_TAKING_MEDICINE]), 10, 0), 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, null } )
+            },
+
+            {
+                new DetailContentData(DbHelper.PRESCRIPTION_COLUMN_INDEX_CONTRAINDICATIONS, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_CONTRAINDICATIONS]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.PRESCRIPTION_COLUMN_INDEX_RELATIVE_PRESCRIPTIONS, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_RELATIVE_PRESCRIPTIONS]) } )
+            },
+
+            referenceMaterialData,
+
+            {
+                new DetailContentData(DbHelper.PRESCRIPTION_COLUMN_INDEX_REMARKS, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.PRESCRIPTION_COLUMN_INDEX_REMARKS]) } )
+            }
+        };
+
+        fillDetailContentsWithPreparedData(TcmCommon.OP_TYPE_VALUE_PRESCRIPTION, 0, contentData);
+    }
+
+    private void fillReferenceMaterialDetailContents() {
+        HashMap<String, String> mapDetails = mDetailContentFromDb;
+        final String[] FIELDS = DbHelper.REFERENCE_MATERIAL_COLUMNS;
+
+        DetailContentData[][] contentData = {
+            // medicineColumnIndex, checkBoxFlags,
+            // selectedSpinnerPositions,
+            // editTextContents
+
+            {
+                new DetailContentData(DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_NAME, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_NAME]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_VERSION, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_VERSION]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_ORIGINAL_AUTHORS, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_ORIGINAL_AUTHORS]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_EDITORS, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_EDITORS]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_ISSUING_SOURCE, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_ISSUING_SOURCE]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_ISSUING_DATE, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_ISSUING_DATE]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_REMARKS, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.REFERENCE_MATERIAL_COLUMN_INDEX_REMARKS]) } )
+            }
+        };
+
+        fillDetailContentsWithPreparedData(TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT, MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL, contentData);
+    }
+
+    private void fillMiscItemDetailContents(int type, int index) {
+        HashMap<String, String> mapDetails = mDetailContentFromDb;
+        final String[] FIELDS = DbHelper.GENERAL_MISC_ITEM_COLUMNS;
+        String subCategories = (MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY == index)
+            ? mapDetails.get(FIELDS[DbHelper.GENERAL_MISC_ITEM_COLUMN_INDEX_SUB_CATEGORIES])
+            : null;
+
+        DetailContentData[][] contentData = {
+            // medicineColumnIndex, checkBoxFlags,
+            // selectedSpinnerPositions,
+            // editTextContents
+
+            {
+                new DetailContentData(DbHelper.GENERAL_MISC_ITEM_COLUMN_INDEX_NAME, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.GENERAL_MISC_ITEM_COLUMN_INDEX_NAME]) } )
+            },
+
+            {
+                new DetailContentData(DbHelper.GENERAL_MISC_ITEM_COLUMN_INDEX_SUB_CATEGORIES, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, subCategories } )
+            },
+
+            {
+                new DetailContentData(DbHelper.GENERAL_MISC_ITEM_COLUMN_INDEX_REMARKS, 0,
+                    // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
+                    new int[]{ 0, 0, 0, 0, 0, 0 },
+                    // etxKey, etxValuePrefix_1, etxValuePrefix_2, etxValueShort, etxValueSuffix_1, etxValueSuffix_2, etxValueLong
+                    new String[] { null, null, null, null, null, null, mapDetails.get(FIELDS[DbHelper.GENERAL_MISC_ITEM_COLUMN_INDEX_REMARKS]) } )
+            }
+        };
+
+        fillDetailContentsWithPreparedData(TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT, index, contentData);
+    }
+
+    private void fillDetailContentsWithPreparedData(int type, int index, DetailContentData[][] contentData) {
+        int[][] detailItemResIds = getDetailItemResourceIds(type, index);
+        final String[] CONTENT_FIELDS = DbHelper.getTableColumnsList(type, index);
+
+        for (int i = 0; i < CONTENT_FIELDS.length; ++i) {
+            if (detailContentIsNotUsed(type, index, i))
                 continue;
 
             ArrayList<DetailContentData> contentsList = new ArrayList<DetailContentData>();
@@ -914,8 +1312,11 @@ public class ReadWriteItemDetailsActivity extends Activity {
 
             if (!mDetailContentTemplates[item.medicineColumnIndex].isFixed) {
                 final int itemIndex = item.medicineColumnIndex;
-                final String[] pageItems = getPageItems();
-                final int[][] detailItemResIds = getDetailItemResourceIds();
+                final String[] pageItems = getPageItems(false);
+                Intent prevIntent = getIntent();
+                int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+                int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+                final int[][] detailItemResIds = getDetailItemResourceIds(opType, miscItemPos);
                 final ListView lsvContents = (ListView) findViewById(detailItemResIds[itemIndex][2]);
                 final DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
                 final List<DetailContentData> contentItemList = contentsAdapter.getItemList();
@@ -984,24 +1385,24 @@ public class ReadWriteItemDetailsActivity extends Activity {
     }
 
     private class DetailContentData {
-        public final int medicineColumnIndex;
+        public final int contentFieldIndex;
         public int checkBoxFlags;
         public HashMap<String, Integer> selectedSpinnerPositions;
         public HashMap<String, String> editTextContents;
         public boolean spinnersEnabled;
         public boolean editTextsEnabled;
 
-        public DetailContentData(int medicineColumnIndex) {
-            this.medicineColumnIndex = medicineColumnIndex;
+        public DetailContentData(int contentFieldIndex) {
+            this.contentFieldIndex = contentFieldIndex;
             selectedSpinnerPositions = new HashMap<String, Integer>();
             editTextContents = new HashMap<String, String>();
             spinnersEnabled = false;
             editTextsEnabled = false;
         }
 
-        public DetailContentData(int medicineColumnIndex, int checkBoxFlags,
+        public DetailContentData(int contentFieldIndex, int checkBoxFlags,
             int[] selectedSpinnerPositions, String[] editTextContents) {
-            this.medicineColumnIndex = medicineColumnIndex;
+            this.contentFieldIndex = contentFieldIndex;
             this.checkBoxFlags = checkBoxFlags;
             this.spinnersEnabled = false;
             this.editTextsEnabled = false;
@@ -1050,6 +1451,8 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 return false;
             }
         };
+        private final int mContentType;
+        private final int mMiscIndex;
 
         private final SmarterTextWatcher[] TEXT_WATCHERS = {
             new SmarterTextWatcher(DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_KEY]),
@@ -1066,6 +1469,11 @@ public class ReadWriteItemDetailsActivity extends Activity {
             this.mItemList = itemList;
             this.mContext = context;
             mInflater = LayoutInflater.from(context);
+
+            Intent prevIntent = getIntent();
+
+            mContentType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+            mMiscIndex = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
         }
 
         @Override
@@ -1158,8 +1566,8 @@ public class ReadWriteItemDetailsActivity extends Activity {
             if (null == item)
                 return;
 
-            DetailContentTemplate template = mMapDetailContentTemplates.get(
-                MEDICINE_COLUMNS[item.medicineColumnIndex]);
+            final String[] FIELDS = DbHelper.getTableColumnsList(mContentType, mMiscIndex);
+            DetailContentTemplate template = mMapDetailContentTemplates.get(FIELDS[item.contentFieldIndex]);
 
             Spinner[] holderSpinners = {
                 holder.spnKey,
@@ -1190,7 +1598,10 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 holder.watcherEtxValueLong
             };
 
-            boolean isSimpleContent = detailContentIsSimple(item.medicineColumnIndex);
+            Intent prevIntent = getIntent();
+            int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+            int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+            boolean isSimpleContent = detailContentIsSimple(opType, miscItemPos, item.contentFieldIndex);
 
             View.OnClickListener onEditTextClicked = new View.OnClickListener() {
 

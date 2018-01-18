@@ -40,6 +40,114 @@ import com.android_assistant.App;
 import com.android_assistant.Hint;
 
 public class DbHelper {
+    public static final int MAX_COLUMN_COUNT = 18;
+
+    public static final String[] MEDICINE_COLUMNS = {
+        "name",
+        "alias",
+        "category",
+        "nature",
+        "tastes",
+        "channel_tropism",
+        "relations_with_life_fundamentals",
+        "motion_form_of_action",
+        "effects",
+        "actions_and_indications",
+        "details",
+        "common_prescriptions",
+        "common_partners",
+        "similar_medicines",
+        "dosage_reference",
+        "contraindications",
+        "reference_material",
+        "remarks"
+    };
+
+    public static final int MEDICINE_COLUMN_INDEX_NAME = 0;
+    public static final int MEDICINE_COLUMN_INDEX_ALIASES = 1;
+    public static final int MEDICINE_COLUMN_INDEX_CATEGORY = 2;
+    public static final int MEDICINE_COLUMN_INDEX_NATURE = 3;
+    public static final int MEDICINE_COLUMN_INDEX_TASTES = 4;
+    public static final int MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM = 5;
+    public static final int MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS = 6;
+    public static final int MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION = 7;
+    public static final int MEDICINE_COLUMN_INDEX_EFFECTS = 8;
+    public static final int MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS = 9;
+    public static final int MEDICINE_COLUMN_INDEX_DETAILS = 10;
+    public static final int MEDICINE_COLUMN_INDEX_COMMON_PRESCRIPTIONS = 11;
+    public static final int MEDICINE_COLUMN_INDEX_COMMON_PARTNERS = 12;
+    public static final int MEDICINE_COLUMN_INDEX_SIMILAR_MEDICINES = 13;
+    public static final int MEDICINE_COLUMN_INDEX_DOSAGE_REFERENCE = 14;
+    public static final int MEDICINE_COLUMN_INDEX_CONTRAINDICATIONS = 15;
+    public static final int MEDICINE_COLUMN_INDEX_REFERENCE_MATERIAL = 16;
+    public static final int MEDICINE_COLUMN_INDEX_REMARKS = 17;
+
+    public static final String[] PRESCRIPTION_COLUMNS = {
+        "name",
+        "alias",
+        "category",
+        "effects",
+        "actions_and_indications",
+        "composition",
+        "decoction",
+        "method_of_taking_medicine",
+        "contraindications",
+        "relative_prescriptions",
+        "reference_material",
+        "remarks"
+    };
+
+    public static final int PRESCRIPTION_COLUMN_INDEX_NAME = 0;
+    public static final int PRESCRIPTION_COLUMN_INDEX_ALIASES = 1;
+    public static final int PRESCRIPTION_COLUMN_INDEX_CATEGORY = 2;
+    public static final int PRESCRIPTION_COLUMN_INDEX_EFFECTS = 3;
+    public static final int PRESCRIPTION_COLUMN_INDEX_ACTIONS_AND_INDICATIONS = 4;
+    public static final int PRESCRIPTION_COLUMN_INDEX_COMPOSITION = 5;
+    public static final int PRESCRIPTION_COLUMN_INDEX_DECOCTION = 6;
+    public static final int PRESCRIPTION_COLUMN_INDEX_METHOD_OF_TAKING_MEDICINE = 7;
+    public static final int PRESCRIPTION_COLUMN_INDEX_CONTRAINDICATIONS = 8;
+    public static final int PRESCRIPTION_COLUMN_INDEX_RELATIVE_PRESCRIPTIONS = 9;
+    public static final int PRESCRIPTION_COLUMN_INDEX_REFERENCE_MATERIAL = 10;
+    public static final int PRESCRIPTION_COLUMN_INDEX_REMARKS = 11;
+
+    public static final String[] REFERENCE_MATERIAL_COLUMNS = {
+        "name",
+        "version",
+        "original_authors",
+        "editors",
+        "issuing_source",
+        "issuing_date",
+        "remarks"
+    };
+
+    public static final int REFERENCE_MATERIAL_COLUMN_INDEX_NAME = 0;
+    public static final int REFERENCE_MATERIAL_COLUMN_INDEX_VERSION = 1;
+    public static final int REFERENCE_MATERIAL_COLUMN_INDEX_ORIGINAL_AUTHORS = 2;
+    public static final int REFERENCE_MATERIAL_COLUMN_INDEX_EDITORS = 3;
+    public static final int REFERENCE_MATERIAL_COLUMN_INDEX_ISSUING_SOURCE = 4;
+    public static final int REFERENCE_MATERIAL_COLUMN_INDEX_ISSUING_DATE = 5;
+    public static final int REFERENCE_MATERIAL_COLUMN_INDEX_REMARKS = 6;
+
+    /*public static final String[] PRESCRIPTION_CATEGORIES_COLUMNS = {
+        "name",
+        "sub_categories",
+        "remarks"
+    };
+
+    public static final int PRESCRIPTION_CATEGORIES_COLUMN_INDEX_NAME = 0;
+    public static final int PRESCRIPTION_CATEGORIES_COLUMN_INDEX_SUB_CATEGORIES = 1;
+    public static final int PRESCRIPTION_CATEGORIES_COLUMN_INDEX_REMARKS = 2;*/
+
+    public static final String[] GENERAL_MISC_ITEM_COLUMNS = {
+        "name",
+        "sub_categories",
+        "remarks"
+    };
+
+    public static final int GENERAL_MISC_ITEM_COLUMN_INDEX_NAME = 0;
+    public static final int GENERAL_MISC_ITEM_COLUMN_INDEX_SUB_CATEGORIES = 1;
+    public static final int GENERAL_MISC_ITEM_COLUMN_INDEX_REMARKS = 2;
+
     private Context mContext = null;
     private String mDbDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
     private SQLiteDatabase mDbInstance = null;
@@ -63,6 +171,19 @@ public class DbHelper {
             dir.mkdirs();
 
         mDbDir = dbDirectory;
+    }
+
+    public static String[] getTableColumnsList(int type, int index) {
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == type)
+            return MEDICINE_COLUMNS;
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == type)
+            return PRESCRIPTION_COLUMNS;
+        else {
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == index)
+                return REFERENCE_MATERIAL_COLUMNS;
+            else
+                return GENERAL_MISC_ITEM_COLUMNS;
+        }
     }
 
     public void openOrCreate() {
@@ -207,10 +328,33 @@ public class DbHelper {
         return results.toArray(new String[results.size()]);
     }
 
-    public HashMap<String, String> queryMedicineDetails(String mid) {
-        Cursor c = getDatabase().rawQuery(mContext.getString(R.string.sql_query_medicine_details_by_id),
-            new String[] { mid });
-        HashMap<String, String> results = new HashMap<String, String>();
+    public HashMap<String, String> queryItemDetails(String id, int type, int index) {
+        String[] sqlArgs = new String[] { id };
+        String sql = null;
+        final String[] COLUMN_NAMES = getTableColumnsList(type, index);
+
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == type) {
+            sql = mContext.getString(R.string.sql_query_medicine_details_by_id);
+        }
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == type) {
+            sql = mContext.getString(R.string.sql_query_prescription_details_by_id);
+        }
+        else {
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == index) {
+                sql = mContext.getString(R.string.sql_query_reference_material_details_by_id);
+            }
+            else if (MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY == index) {
+                sql = mContext.getString(R.string.sql_query_prescription_category_details_by_id);
+            }
+            else {
+                String tableName = MiscManagementActivity.getTableNameByPosition(index);
+                String primaryIdName = MiscManagementActivity.getPrimaryKeyByPosition(index);
+
+                sql = "select name, remarks from " + tableName + " where " + primaryIdName + " = ?";
+            }
+        }
+
+        Cursor c = getDatabase().rawQuery(sql, sqlArgs);
 
         if (!c.moveToNext()) {
             c.close();
@@ -218,20 +362,16 @@ public class DbHelper {
             return null;
         }
 
-        final String[] COLUMN_NAMES = {
-            "name", "alias",
-            "category", "nature",
-            "tastes", "channel_tropism",
-            "relations_with_life_fundamentals", "motion_form_of_action",
-            "effects", "actions_and_indications",
-            "details", "common_prescriptions",
-            "common_partners", "similar_medicines",
-            "dosage_reference", "contraindications",
-            "reference_material", "remarks"
-        };
+        HashMap<String, String> results = new HashMap<String, String>();
 
         for (int i = 0; i < COLUMN_NAMES.length; ++i) {
             String key = COLUMN_NAMES[i];
+
+            if (TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT == type
+                && MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY != index
+                && "sub_categories".equals(key))
+                continue;
+
             int columnIndex = c.getColumnIndex(key);
             String value = "category".equals(key)
                 ? String.valueOf(c.getInt(columnIndex))
@@ -259,14 +399,55 @@ public class DbHelper {
         SQLiteDatabase db = getDatabase();
         String sql = mContext.getString(R.string.sql_update_medicine_item_by_id);
 
+        //showSqlInfo("updateMedicineItem()", sql, bindArgs);
+        db.execSQL(sql, bindArgs);
+    }
+
+    public void updatePrescriptionItem(String[] bindArgs) {
+        SQLiteDatabase db = getDatabase();
+        String sql = mContext.getString(R.string.sql_update_prescription_item_by_id);
+
+        //showSqlInfo("updatePrescriptionItem()", sql, bindArgs);
+        db.execSQL(sql, bindArgs);
+    }
+
+    public void updateReferenceMaterialItem(String[] bindArgs) {
+        SQLiteDatabase db = getDatabase();
+        String sql = mContext.getString(R.string.sql_update_reference_material_item_by_id);
+
+        db.execSQL(sql, bindArgs);
+    }
+
+    public void updateMiscItem(int itemIndex, String[] bindArgs) {
+        if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == itemIndex)
+            return;
+
+        String tableName = MiscManagementActivity.getTableNameByPosition(itemIndex);
+        String primaryIdName = MiscManagementActivity.getPrimaryKeyByPosition(itemIndex);
+        SQLiteDatabase db = getDatabase();
+        String sql = null;
+
+        if (MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY == itemIndex) {
+            sql = "update " + tableName
+                + " set name = ?, sub_categories = ?,"
+                + "     remarks = ?"
+                + " where " + primaryIdName + " = ?";
+        }
+        else {
+            sql = "update " + tableName
+                + " set name = ?,"
+                + "     remarks = ?"
+                + " where " + primaryIdName + " = ?";
+        }
+
         db.execSQL(sql, bindArgs);
     }
 
     // NOTE: This method should be used to tables with a small quantity of data!
-    private String[] queryAllNames(String table, String primaryId, String firstItem) {
+    private String[] queryAllNames(String table, String primaryIdName, String firstItem) {
         String sql = "select name from `"
             + table + "`"
-            + " order by " + primaryId + " asc";
+            + " order by " + primaryIdName + " asc";
         Cursor c = getDatabase().rawQuery(sql, null);
         ArrayList<String> results = new ArrayList<String>();
 
@@ -371,6 +552,22 @@ public class DbHelper {
         String sql = mContext.getResources().getString(sqlStringResId);
 
         makePresetData(sql, valuesArrayResId, bindArgsCount, enablesTransaction);
+    }
+
+    private void showSqlInfo(String targetFunction, String sql, String[] bindArgs) {
+        StringBuilder args = new StringBuilder();
+
+        args.append("sql: ").append(sql).append("\nargsCount: ").append(bindArgs.length)
+            .append("\nbindArgs: ");
+
+        for (int i = 0; i < bindArgs.length; ++i) {
+            if (0 == i)
+                args.append("[").append(i).append("]: ").append(bindArgs[i]);
+            else
+                args.append(" | [").append(i).append("]: ").append(bindArgs[i]);
+        }
+
+        Hint.alert(mContext, targetFunction, args.toString());
     }
 
     public void showTestData() {
