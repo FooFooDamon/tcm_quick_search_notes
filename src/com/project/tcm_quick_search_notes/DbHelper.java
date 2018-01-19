@@ -310,6 +310,24 @@ public class DbHelper {
         return results.toArray(new String[results.size()]);
     }
 
+    public String[] queryMedicineIdsByName(String name) {
+        String sql = mContext.getString(R.string.sql_query_medicine_ids_by_name);
+        String[] args = { "%" + name + "%" };
+        Cursor c = getDatabase().rawQuery(sql, args);
+        ArrayList<String> results = new ArrayList<String>();
+
+        //showSqlInfo("queryMedicineIdsByName()", sql, args);
+        while (c.moveToNext()) {
+            results.add(c.getString(c.getColumnIndex("mid")));
+        }
+        c.close();
+
+        if (0 == results.size())
+            return null;
+
+        return results.toArray(new String[results.size()]);
+    }
+
     public String[] queryPrescriptionCategories(String firstItem) {
         String sql = mContext.getString(R.string.sql_query_all_prescription_category_names);
         Cursor c = getDatabase().rawQuery(sql, null);

@@ -143,6 +143,14 @@
     <string name="cht_refresh">刷新</string>
     <string name="en_refresh">Refresh</string>
 
+    <string name="please">请</string>
+    <string name="cht_please">請</string>
+    <string name="en_please">Please</string>
+
+    <string name="please_wait">请稍候</string>
+    <string name="cht_please_wait">請稍候</string>
+    <string name="en_please_wait">Please Wait</string>
+
     <string name="yes">是</string>
     <string name="cht_yes">是</string>
     <string name="en_yes">Yes</string>
@@ -191,6 +199,10 @@
     <string name="cht_query">查詢</string>
     <string name="en_query">Query</string>
 
+    <string name="querying">查询中……</string>
+    <string name="cht_querying">查詢中……</string>
+    <string name="en_querying">Querying\.\.\.</string>
+
     <string name="query_result">查询结果</string>
     <string name="cht_query_result">查詢結果</string>
     <string name="en_query_result">Query Result</string>
@@ -198,6 +210,14 @@
     <string name="search">查找</string>
     <string name="cht_search">查找</string>
     <string name="en_search">Search</string>
+
+    <string name="searching">查找中……</string>
+    <string name="cht_searching">查找中……</string>
+    <string name="en_searching">Searching\.\.\.</string>
+
+    <string name="search_manually">手动查找</string>
+    <string name="cht_search_manually">手動查找</string>
+    <string name="en_search_manually">Search Manually</string>
 
     <string name="search_result">查找结果</string>
     <string name="cht_search_result">查找結果</string>
@@ -214,6 +234,18 @@
     <string name="none">无</string>
     <string name="cht_none">無</string>
     <string name="en_none">None</string>
+
+    <string name="multi_records_found">找到多条记录</string>
+    <string name="cht_multi_records_found">找到多條記錄</string>
+    <string name="en_multi_records_found">Multiple Records Found</string>
+
+    <string name="redirect">跳转/重定向</string>
+    <string name="cht_redirect">跳轉/重定向</string>
+    <string name="en_redirect">Redirect</string>
+
+    <string name="redirecting">跳转/重定向中……</string>
+    <string name="cht_redirecting">跳轉/重定向中……</string>
+    <string name="en_redirecting">Redirecting\.\.\.</string>
 
     <string name="unknown">未知</string>
     <string name="cht_unknown">未知</string>
@@ -417,10 +449,14 @@
         较快，增长到一定量的时候该软件可能会卡顿或退出（不会影响已经
         保存好的数据），目前尚未对该问题进行优化，用户若碰到这种问题，
         可每次编辑一定条数的内容（例如2、30条），先退出软件以让系统
-        回收内存资源，再重新打开软件进行下一轮的编辑。
+        回收内存资源，再重新打开软件进行下一轮的编辑。\n\n
+        7、文本框存在换行时光标错位的问题，目前尚未找到有效解决办法，
+        用户在编辑内容时需加以注意并手动调整光标位置。
     </string>
 
     <string name="version_log_contents">
+        ---- V1.00.01 2018/01/19\n
+        1、方剂详情页增加药物页面跳转功能。\n\n
         ---- V1.00.00 2018/01/18\n
         1、增加方剂和杂项管理的详细内容查询及修改功能。\n
         至此，核心/基础功能已全部完成。\n\n
@@ -791,6 +827,13 @@
         select mid, name
         from medicine_items
         where name || ifnull(alias, \'\') like ? and category = ?
+        order by mid asc
+    </string>
+
+    <string name="sql_query_medicine_ids_by_name" formatted="false">
+        select mid
+        from medicine_items
+        where name || ifnull(alias, \'\') like ?
         order by mid asc
     </string>
 

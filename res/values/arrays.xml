@@ -200,6 +200,18 @@
         <item>@string/en_refresh</item>
     </string-array>
 
+    <string-array name="please">
+        <item>@string/please</item>
+        <item>@string/cht_please</item>
+        <item>@string/en_please</item>
+    </string-array>
+
+    <string-array name="please_wait">
+        <item>@string/please_wait</item>
+        <item>@string/cht_please_wait</item>
+        <item>@string/en_please_wait</item>
+    </string-array>
+
     <string-array name="yes">
         <item>@string/yes</item>
         <item>@string/cht_yes</item>
@@ -272,6 +284,12 @@
         <item>@string/en_query</item>
     </string-array>
 
+    <string-array name="querying">
+        <item>@string/querying</item>
+        <item>@string/cht_querying</item>
+        <item>@string/en_querying</item>
+    </string-array>
+
     <string-array name="query_result">
         <item>@string/query_result</item>
         <item>@string/cht_query_result</item>
@@ -282,6 +300,18 @@
         <item>@string/search</item>
         <item>@string/cht_search</item>
         <item>@string/en_search</item>
+    </string-array>
+
+    <string-array name="searching">
+        <item>@string/searching</item>
+        <item>@string/cht_searching</item>
+        <item>@string/en_searching</item>
+    </string-array>
+
+    <string-array name="search_manually">
+        <item>@string/search_manually</item>
+        <item>@string/cht_search_manually</item>
+        <item>@string/en_search_manually</item>
     </string-array>
 
     <string-array name="search_result">
@@ -306,6 +336,24 @@
         <item>@string/none</item>
         <item>@string/cht_none</item>
         <item>@string/en_none</item>
+    </string-array>
+
+    <string-array name="multi_records_found">
+        <item>@string/multi_records_found</item>
+        <item>@string/cht_multi_records_found</item>
+        <item>@string/en_multi_records_found</item>
+    </string-array>
+
+    <string-array name="redirect">
+        <item>@string/redirect</item>
+        <item>@string/cht_redirect</item>
+        <item>@string/en_redirect</item>
+    </string-array>
+
+    <string-array name="redirecting">
+        <item>@string/redirecting</item>
+        <item>@string/cht_redirecting</item>
+        <item>@string/en_redirecting</item>
     </string-array>
 
     <string-array name="unknown">

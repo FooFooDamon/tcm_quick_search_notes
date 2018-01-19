@@ -33,7 +33,8 @@
             android:hint="@string/empty_string"
             android:textAppearance="@style/DefaultTextStyle"
             android:textColor="#ffcacaca"
-            android:minEms="1" />
+            android:minEms="1"
+            android:maxEms="5" />
 
         <Spinner
             android:id="@+id/spn_details_value_prefix_1"

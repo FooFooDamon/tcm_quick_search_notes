@@ -38,6 +38,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.database.SQLException;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -157,6 +158,8 @@ public class ReadWriteItemDetailsActivity extends Activity {
     private boolean mEditable = false;
 
     private DialogInterface.OnClickListener mExitActivity = null;
+
+    private Intent mNextIntent = null;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -332,6 +335,9 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 }
             };
         }
+
+        if (null == mNextIntent)
+            mNextIntent = new Intent(this, ReadWriteItemDetailsActivity.class);
 
         refreshPageItems();
     }
@@ -1250,11 +1256,11 @@ public class ReadWriteItemDetailsActivity extends Activity {
     }
 
     private class DetailTitleData {
-        public final int medicineColumnIndex;
+        public final int contentFieldIndex;
         public final String name;
 
-        public DetailTitleData(int medicineColumnIndex, String name) {
-            this.medicineColumnIndex = medicineColumnIndex;
+        public DetailTitleData(int contentFieldIndex, String name) {
+            this.contentFieldIndex = contentFieldIndex;
             this.name = name;
         }
     }
@@ -1310,8 +1316,8 @@ public class ReadWriteItemDetailsActivity extends Activity {
             holder.name.setText(item.name);
             com.android_assistant.TextView.setDefaultTextShadow(holder.name);
 
-            if (!mDetailContentTemplates[item.medicineColumnIndex].isFixed) {
-                final int itemIndex = item.medicineColumnIndex;
+            if (!mDetailContentTemplates[item.contentFieldIndex].isFixed) {
+                final int itemIndex = item.contentFieldIndex;
                 final String[] pageItems = getPageItems(false);
                 Intent prevIntent = getIntent();
                 int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
@@ -1451,6 +1457,15 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 return false;
             }
         };
+        /* TODO: does not work: private int mEtxCursorPosition = 0;
+        private final View.OnFocusChangeListener mOnEditTextFocusChanged = new OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus)
+                    mEtxCursorPosition = ((EditText)v).getSelectionStart();
+            }
+        };*/
         private final int mContentType;
         private final int mMiscIndex;
 
@@ -1521,7 +1536,7 @@ public class ReadWriteItemDetailsActivity extends Activity {
             };
 
             for (int i = 0; i < textWatchers.length; ++i) {
-                textWatchers[i].updatePosition(position);
+                textWatchers[i].updatePositionAtListView(position);
             }
 
             setViewHolder(holder, position);
@@ -1567,7 +1582,10 @@ public class ReadWriteItemDetailsActivity extends Activity {
                 return;
 
             final String[] FIELDS = DbHelper.getTableColumnsList(mContentType, mMiscIndex);
-            DetailContentTemplate template = mMapDetailContentTemplates.get(FIELDS[item.contentFieldIndex]);
+            final String CURRENT_FIELD_NAME = FIELDS[item.contentFieldIndex];
+            final String COMPOSITION_FIELD = DbHelper.PRESCRIPTION_COLUMNS[DbHelper.PRESCRIPTION_COLUMN_INDEX_COMPOSITION];
+            boolean isCompositionField = COMPOSITION_FIELD.equals(CURRENT_FIELD_NAME);
+            DetailContentTemplate template = mMapDetailContentTemplates.get(CURRENT_FIELD_NAME);
 
             Spinner[] holderSpinners = {
                 holder.spnKey,
@@ -1603,27 +1621,60 @@ public class ReadWriteItemDetailsActivity extends Activity {
             int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
             boolean isSimpleContent = detailContentIsSimple(opType, miscItemPos, item.contentFieldIndex);
 
-            View.OnClickListener onEditTextClicked = new View.OnClickListener() {
+            View.OnClickListener listenerJumpToMedicinePage = new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
-                    if (item.editTextsEnabled)
-                        return;
+                    EditText etxTouched = (EditText)v;
+                    String medicineName = etxTouched.getText().toString();
+                    String[] medicineIds = mDbHelper.queryMedicineIdsByName(medicineName);
+                    StringBuilder hintTitle = new StringBuilder();
+                    StringBuilder hintContent = new StringBuilder();
 
-                    //Hint.alert(mContext, "Debug", ((EditText)v).getText().toString()); // TODO: more operations in future...
+                    //Hint.alert(mContext, CURRENT_FIELD_NAME, medicineName);
+
+                    if (null == medicineIds)
+                        Hint.alert(mContext, R.string.not_found, medicineName);
+                    else if (medicineIds.length > 1) {
+                        hintTitle.append(medicineName).append(": ").append(getString(R.string.multi_records_found));
+                        hintContent.append(getString(R.string.please)).append(" ").append(getString(R.string.search_manually));
+                        Hint.alert(mContext, hintTitle.toString(), hintContent.toString());
+                    }
+                    else {
+                        mNextIntent.putExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+                        mNextIntent.putExtra(TcmCommon.ID_KEY, medicineIds[0]);
+                        mNextIntent.putExtra(TcmCommon.NAME_KEY, medicineName);
+                        mNextIntent.putExtra(TcmCommon.MISC_ITEM_POS_KEY, 0);
+                        hintContent.append(medicineName).append(": ").append(getString(R.string.redirecting)).append(getString(R.string.please_wait));
+                        Hint.longToast(mContext, hintContent);
+                        startActivity(mNextIntent);
+                    }
                 }
             };
 
             for (int i = 0; i < holderEditTexts.length; ++i) {
                 final String editTextName = DETAIL_CONTENT_EDIT_TEXT_NAMES[i];
                 String templateTextValue = template.mapDefaultEditTextValues.get(editTextName);
+                boolean isLongValueEditText = DETAIL_CONTENT_FIELDS[ITEM_COLUMN_INDEX_ETX_VALUE_LONG].equals(editTextName);
+                int textFlags = holderEditTexts[i].getPaint().getFlags();
 
                 /*if (null != templateTextValue)
                     holderEditTexts[i].setEnabled(item.editTextsEnabled && !templateTextValue.equals(ITEM_READ_ONLY));
                 else
                     holderEditTexts[i].setEnabled(true);*/
                 holderEditTexts[i].setClickable(true);
-                holderEditTexts[i].setOnClickListener(onEditTextClicked);
+                if (!mEditable
+                    && TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType
+                    && isCompositionField
+                    && isLongValueEditText) {
+
+                    holderEditTexts[i].setOnClickListener(listenerJumpToMedicinePage);
+                    holderEditTexts[i].getPaint().setFlags(textFlags | Paint.UNDERLINE_TEXT_FLAG);
+                }
+                else {
+                    holderEditTexts[i].setOnClickListener(null);
+                    holderEditTexts[i].getPaint().setFlags(textFlags & (~Paint.UNDERLINE_TEXT_FLAG));
+                }
                 holderEditTexts[i].setFocusable(item.editTextsEnabled);
                 holderEditTexts[i].setCursorVisible(item.editTextsEnabled);
                 holderEditTexts[i].setFocusableInTouchMode(item.editTextsEnabled);
@@ -1631,13 +1682,36 @@ public class ReadWriteItemDetailsActivity extends Activity {
                     holderEditTexts[i].requestFocus();
                 holderEditTexts[i].setText(item.editTextContents.get(editTextName));
                 com.android_assistant.TextView.setDefaultTextShadow(holderEditTexts[i]);
+                //textWatchers[i].updatePosition(position); // TODO: Do this before setViewHolder(), why ??
                 /////////////////// begin: deals with the EditText focus problem ///////////////////
                 holderEditTexts[i].setOnTouchListener(mOnEditTextTouched);
+                // holderEditTexts[i].setOnFocusChangeListener(mOnEditTextFocusChanged); // TODO: does not work
                 holderEditTexts[i].setTag(position);
                 if (mEtxTouchPosition == position) {
                     holderEditTexts[i].requestFocus();
-                    holderEditTexts[i].setSelection(holderEditTexts[i].getText().length());
                     holderEditTexts[i].setCursorVisible(item.editTextsEnabled);
+
+                    final int FIXED_POSITION = 0/*holderEditTexts[i].getText().toString().length()*/;
+                    int currentTextLength = holderEditTexts[i].getText().toString().length();
+                    int expectedCursorPos = 0;
+                    /*int prevStartCursorPos = textWatchers[i].getPreviousStartCursorPosition(); // not accurate when the ListView re-paints
+                    int prevTextLength = textWatchers[i].getPreviousTextLength(); // not accurate when the ListView re-paints
+
+                    if (prevTextLength < currentTextLength) {
+                        expectedCursorPos = prevStartCursorPos + (currentTextLength - prevTextLength);
+                    }
+                    else {
+                        expectedCursorPos = prevStartCursorPos - (prevTextLength - currentTextLength);
+                    }*/
+                    expectedCursorPos = FIXED_POSITION; // acceptable but unwise
+
+                    if (expectedCursorPos < 0)
+                        expectedCursorPos = 0;
+                    else if (expectedCursorPos > currentTextLength)
+                        expectedCursorPos = currentTextLength;
+
+                    holderEditTexts[i].setSelection(expectedCursorPos);
+                    //holderEditTexts[i].setSelection(mEtxCursorPosition); // TODO: does not work
                 }
                 else {
                     holderEditTexts[i].clearFocus();
@@ -1747,26 +1821,43 @@ public class ReadWriteItemDetailsActivity extends Activity {
         }
 
         private class SmarterTextWatcher implements TextWatcher {
-            private int mPosition;
+            private int mPositionAtListView;
+            private int mPreviousStartCursorPosition = 0;
+            private int mPreviousTextLength = 0;
             private final String mTargetEditTextName;
 
             public SmarterTextWatcher(String targetEditTextName) {
                 mTargetEditTextName = targetEditTextName;
             }
 
-            public void updatePosition(int position) {
-                mPosition = position;
+            public void updatePositionAtListView(int position) {
+                mPositionAtListView = position;
+            }
+
+            public int getPositionAtListView() {
+                return mPositionAtListView;
+            }
+
+            public int getPreviousStartCursorPosition() {
+                return mPreviousStartCursorPosition;
+            }
+
+            public int getPreviousTextLength() {
+                return mPreviousTextLength;
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                mItemList.get(mPosition).editTextContents.put(mTargetEditTextName, s.toString());
+                mItemList.get(mPositionAtListView).editTextContents.put(mTargetEditTextName, s.toString());
             }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count,
                     int after) {
-                ;
+                mPreviousStartCursorPosition = start;
+                mPreviousTextLength = s.toString().length();
+                /*Hint.shortToast(mContext, "start cursor position: " + mPreviousStartCursorPosition
+                    + ", previous text length: " + mPreviousTextLength);*/
             }
 
             @Override
