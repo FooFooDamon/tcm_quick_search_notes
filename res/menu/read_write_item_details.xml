@@ -3,21 +3,27 @@
     tools:context="com.project.tcm_quick_search_notes.ReadWriteItemDetailsActivity" >
 
     <item
-        android:id="@+id/menu_edit"
+        android:id="@+id/menu_mode_switch"
         android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/single_line_mode" />
+
+    <item
+        android:id="@+id/menu_edit"
+        android:orderInCategory="101"
         android:showAsAction="ifRoom"
         android:title="@string/edit"/>
 
     <item
         android:id="@+id/menu_save"
-        android:orderInCategory="101"
+        android:orderInCategory="102"
         android:showAsAction="ifRoom"
         android:title="@string/save"
         android:visible="false" />
 
     <item
         android:id="@+id/menu_cancel"
-        android:orderInCategory="102"
+        android:orderInCategory="103"
         android:showAsAction="ifRoom"
         android:title="@string/cancal"
         android:visible="false" />

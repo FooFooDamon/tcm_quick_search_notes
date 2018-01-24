@@ -128,16 +128,6 @@ public class DbHelper {
     public static final int REFERENCE_MATERIAL_COLUMN_INDEX_ISSUING_DATE = 5;
     public static final int REFERENCE_MATERIAL_COLUMN_INDEX_REMARKS = 6;
 
-    /*public static final String[] PRESCRIPTION_CATEGORIES_COLUMNS = {
-        "name",
-        "sub_categories",
-        "remarks"
-    };
-
-    public static final int PRESCRIPTION_CATEGORIES_COLUMN_INDEX_NAME = 0;
-    public static final int PRESCRIPTION_CATEGORIES_COLUMN_INDEX_SUB_CATEGORIES = 1;
-    public static final int PRESCRIPTION_CATEGORIES_COLUMN_INDEX_REMARKS = 2;*/
-
     public static final String[] GENERAL_MISC_ITEM_COLUMNS = {
         "name",
         "sub_categories",
@@ -173,13 +163,13 @@ public class DbHelper {
         mDbDir = dbDirectory;
     }
 
-    public static String[] getTableColumnsList(int type, int index) {
-        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == type)
+    public static String[] getTableColumnsList(int opType, int positionAtFunctionalityList) {
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType)
             return MEDICINE_COLUMNS;
-        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == type)
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
             return PRESCRIPTION_COLUMNS;
         else {
-            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == index)
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == positionAtFunctionalityList)
                 return REFERENCE_MATERIAL_COLUMNS;
             else
                 return GENERAL_MISC_ITEM_COLUMNS;
@@ -223,7 +213,7 @@ public class DbHelper {
         mDbDir = dir;
     }
 
-    public void precheck() throws Exception {
+    public void initData() throws Exception {
         String dbPath = getDatabaseDirectory() + "/" + getDatabaseName();
         File dbFile = new File(dbPath);
         boolean dbExits = dbFile.exists();
@@ -234,7 +224,7 @@ public class DbHelper {
         Hint.shortToast(mContext, R.string.hint_db_creating);
 
         prepareTestData();
-        prepareMedicineData();
+        prepareMedicationData();
 
         Hint.longToast(mContext, mContext.getResources().getString(R.string.hint_db_created)
             + "\n" + dbPath);
@@ -245,7 +235,7 @@ public class DbHelper {
         makePresetData(R.string.sql_make_test_data, R.array.sql_args_make_test_data, 2, true);
     }
 
-    public void prepareMedicineData() throws Exception {
+    public void prepareMedicationData() throws Exception {
         createTable(R.string.sql_create_medicine_categories_table);
         makePresetData(R.string.sql_make_medicine_categories_data,
             R.array.medicine_categories, 1, true);
@@ -310,7 +300,7 @@ public class DbHelper {
         return results.toArray(new String[results.size()]);
     }
 
-    public String[] queryMedicineIdsByName(String name) {
+    public String[] queryMedicineIdValuesByName(String name) {
         String sql = mContext.getString(R.string.sql_query_medicine_ids_by_name);
         String[] args = { "%" + name + "%" };
         Cursor c = getDatabase().rawQuery(sql, args);
@@ -346,27 +336,27 @@ public class DbHelper {
         return results.toArray(new String[results.size()]);
     }
 
-    public HashMap<String, String> queryItemDetails(String id, int type, int index) {
+    public HashMap<String, String> queryItemDetails(String id, int opType, int positionAtFunctionalityList) {
         String[] sqlArgs = new String[] { id };
         String sql = null;
-        final String[] COLUMN_NAMES = getTableColumnsList(type, index);
+        final String[] COLUMN_NAMES = getTableColumnsList(opType, positionAtFunctionalityList);
 
-        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == type) {
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType) {
             sql = mContext.getString(R.string.sql_query_medicine_details_by_id);
         }
-        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == type) {
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
             sql = mContext.getString(R.string.sql_query_prescription_details_by_id);
         }
         else {
-            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == index) {
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == positionAtFunctionalityList) {
                 sql = mContext.getString(R.string.sql_query_reference_material_details_by_id);
             }
-            else if (MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY == index) {
+            else if (MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY == positionAtFunctionalityList) {
                 sql = mContext.getString(R.string.sql_query_prescription_category_details_by_id);
             }
             else {
-                String tableName = MiscManagementActivity.getTableNameByPosition(index);
-                String primaryIdName = MiscManagementActivity.getPrimaryKeyByPosition(index);
+                String tableName = MiscManagementActivity.getTableNameByPosition(positionAtFunctionalityList);
+                String primaryIdName = MiscManagementActivity.getDbPrimaryIdNameByPosition(positionAtFunctionalityList);
 
                 sql = "select name, remarks from " + tableName + " where " + primaryIdName + " = ?";
             }
@@ -385,8 +375,8 @@ public class DbHelper {
         for (int i = 0; i < COLUMN_NAMES.length; ++i) {
             String key = COLUMN_NAMES[i];
 
-            if (TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT == type
-                && MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY != index
+            if (TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT == opType
+                && MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY != positionAtFunctionalityList
                 && "sub_categories".equals(key))
                 continue;
 
@@ -436,16 +426,16 @@ public class DbHelper {
         db.execSQL(sql, bindArgs);
     }
 
-    public void updateMiscItem(int itemIndex, String[] bindArgs) {
-        if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == itemIndex)
+    public void updateMiscItem(int positionAtMiscList, String[] bindArgs) {
+        if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == positionAtMiscList)
             return;
 
-        String tableName = MiscManagementActivity.getTableNameByPosition(itemIndex);
-        String primaryIdName = MiscManagementActivity.getPrimaryKeyByPosition(itemIndex);
+        String tableName = MiscManagementActivity.getTableNameByPosition(positionAtMiscList);
+        String primaryIdName = MiscManagementActivity.getDbPrimaryIdNameByPosition(positionAtMiscList);
         SQLiteDatabase db = getDatabase();
         String sql = null;
 
-        if (MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY == itemIndex) {
+        if (MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY == positionAtMiscList) {
             sql = "update " + tableName
                 + " set name = ?, sub_categories = ?,"
                 + "     remarks = ?"

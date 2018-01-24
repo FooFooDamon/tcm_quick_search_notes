@@ -195,6 +195,18 @@
     <string name="cht_undo">撤銷</string>
     <string name="en_undo">Undo</string>
 
+    <string name="continue_to">继续</string>
+    <string name="cht_continue_to">繼續</string>
+    <string name="en_continue_to">Continue</string>
+
+    <string name="abort">中止</string>
+    <string name="cht_abort">中止</string>
+    <string name="en_abort">Abort</string>
+
+    <string name="stop">停止</string>
+    <string name="cht_stop">停止</string>
+    <string name="en_stop">Stop</string>
+
     <string name="query">查询</string>
     <string name="cht_query">查詢</string>
     <string name="en_query">Query</string>
@@ -371,6 +383,14 @@
     <string name="cht_black_list_first">黑名單優先</string>
     <string name="en_black_list_first">Black List First</string>
 
+    <string name="single_line_mode">单行模式</string>
+    <string name="cht_single_line_mode">單行模式</string>
+    <string name="en_single_line_mode">Single-line Mode</string>
+
+    <string name="multi_line_mode">多行模式</string>
+    <string name="cht_multi_line_mode">多行模式</string>
+    <string name="en_multi_line_mode">Multi-line Mode</string>
+
     <string name="config_details">配置详情</string>
     <string name="cht_config_details">配置詳情</string>
     <string name="en_config_details">Configuration Details</string>
@@ -451,10 +471,17 @@
         可每次编辑一定条数的内容（例如2、30条），先退出软件以让系统
         回收内存资源，再重新打开软件进行下一轮的编辑。\n\n
         7、文本框存在换行时光标错位的问题，目前尚未找到有效解决办法，
-        用户在编辑内容时需加以注意并手动调整光标位置。
+        用户在编辑内容时可切换成单行模式来避免这个问题。
     </string>
 
     <string name="version_log_contents">
+        ---- V1.01.01 2018/01/24\n
+        1、增加单行/多行模式模式的切换选项，让用户自行选择是否进入单行模式
+        来避开文本框换行时光标错位的问题。\n
+        2、部分信息的展示，界面控件由下拉框换成只读文本。\n
+        3、修复缺陷：方剂功能的参考资料和药物组成信息存在多项时，对它们的文本
+        框内容全部修改并提交保存，然后重新查询，只有最后一项能修改。\n
+        4、内部代码重构。\n\n
         ---- V1.00.01 2018/01/19\n
         1、方剂详情页增加药物页面跳转功能。\n\n
         ---- V1.00.00 2018/01/18\n
@@ -544,6 +571,14 @@
 
     <string name="confirm_or_cancel_guide">
         确认操作请按“确定”，取消操作则按“取消”。
+    </string>
+
+    <string name="continue_or_stop_guide">
+        继续操作请按“继续”或“确定”，停止操作则按“停止”或“取消”。
+    </string>
+
+    <string name="asking_whether_to_continue_or_not">
+        本次操作成功。是否继续操作？
     </string>
 
     <string name="click_to_restore">点击可恢复</string>

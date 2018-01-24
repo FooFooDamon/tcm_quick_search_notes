@@ -278,6 +278,24 @@
         <item>@string/en_undo</item>
     </string-array>
 
+    <string-array name="continue_to">
+        <item>@string/continue_to</item>
+        <item>@string/cht_continue_to</item>
+        <item>@string/en_continue_to</item>
+    </string-array>
+
+    <string-array name="abort">
+        <item>@string/abort</item>
+        <item>@string/cht_abort</item>
+        <item>@string/en_abort</item>
+    </string-array>
+
+    <string-array name="stop">
+        <item>@string/stop</item>
+        <item>@string/cht_stop</item>
+        <item>@string/en_stop</item>
+    </string-array>
+
     <string-array name="query">
         <item>@string/query</item>
         <item>@string/cht_query</item>
@@ -540,6 +558,18 @@
         <item>@string/black_list_first</item>
         <item>@string/cht_black_list_first</item>
         <item>@string/en_black_list_first</item>
+    </string-array>
+
+    <string-array name="single_line_mode">
+        <item>@string/single_line_mode</item>
+        <item>@string/cht_single_line_mode</item>
+        <item>@string/en_single_line_mode</item>
+    </string-array>
+
+    <string-array name="multi_line_mode">
+        <item>@string/multi_line_mode</item>
+        <item>@string/cht_multi_line_mode</item>
+        <item>@string/en_multi_line_mode</item>
     </string-array>
 
     <string-array name="config_details">

@@ -61,16 +61,16 @@ import com.android_assistant.ResourceExports;
 public class MainActivity extends Activity
     implements OnItemClickListener {
 
-    private static final int LIST_ITEM_POS_MEDICINE = 0;
-    private static final int LIST_ITEM_POS_PRESCRIPTION = 1;
-    private static final int LIST_ITEM_POS_MISC_MANAGEMENT = 2;
+    private static final int SUB_LIST_ITEM_POS_MEDICINE = 0;
+    private static final int SUB_LIST_ITEM_POS_PRESCRIPTION = 1;
+    private static final int SUB_LIST_ITEM_POS_MISC_MANAGEMENT = 2;
 
-    private static final int LIST_ITEM_POS_SETTINGS = 0;
-    private static final int LIST_ITEM_POS_ABOUT = 1;
-    private static final int LIST_ITEM_POS_HELP = 2;
-    private static final int LIST_ITEM_POS_TERMS_OF_NOTE = 3;
+    private static final int SUB_LIST_ITEM_POS_SETTINGS = 0;
+    private static final int SUB_LIST_ITEM_POS_ABOUT = 1;
+    private static final int SUB_LIST_ITEM_POS_HELP = 2;
+    private static final int SUB_LIST_ITEM_POS_TERMS_OF_NOTE = 3;
 
-    private static final int LIST_ITEM_POS_EXIT = 0;
+    private static final int SUB_LIST_ITEM_POS_EXIT = 0;
 
     private Intent mIntentQueryEntry = null;
     private Intent mIntentMiscManagement = null;
@@ -92,46 +92,46 @@ public class MainActivity extends Activity
         pageLayout.setBackgroundColor(android.graphics.Color.parseColor("#88b27e50"));
 
         final String[] MEDICATION_STRINGS = getMedicationItems();
-        final MainPageItem[] MEDICATION_ITEMS = {
-            new MainPageItem(getResources().getDrawable(R.drawable.ic_medicine),
-                MEDICATION_STRINGS[LIST_ITEM_POS_MEDICINE]),
+        final PageItem[] MEDICATION_ITEMS = {
+            new PageItem(getResources().getDrawable(R.drawable.ic_medicine),
+                MEDICATION_STRINGS[SUB_LIST_ITEM_POS_MEDICINE]),
 
-            new MainPageItem(getResources().getDrawable(R.drawable.ic_prescription),
-                MEDICATION_STRINGS[LIST_ITEM_POS_PRESCRIPTION]),
+            new PageItem(getResources().getDrawable(R.drawable.ic_prescription),
+                MEDICATION_STRINGS[SUB_LIST_ITEM_POS_PRESCRIPTION]),
 
-            new MainPageItem(getResources().getDrawable(R.drawable.ic_misc),
-                MEDICATION_STRINGS[LIST_ITEM_POS_MISC_MANAGEMENT])
+            new PageItem(getResources().getDrawable(R.drawable.ic_misc),
+                MEDICATION_STRINGS[SUB_LIST_ITEM_POS_MISC_MANAGEMENT])
         };
 
-        inflateMainPageListView(MEDICATION_ITEMS, R.id.lsv_medication_group);
+        inflatePageListView(MEDICATION_ITEMS, R.id.lsv_medication_group);
 
         final String[] HELP_STRINGS = getHelpItems();
-        final MainPageItem[] HELP_ITEMS = {
-            new MainPageItem(getResources().getDrawable(R.drawable.ic_settings),
-                HELP_STRINGS[LIST_ITEM_POS_SETTINGS]),
+        final PageItem[] HELP_ITEMS = {
+            new PageItem(getResources().getDrawable(R.drawable.ic_settings),
+                HELP_STRINGS[SUB_LIST_ITEM_POS_SETTINGS]),
 
-            new MainPageItem(getResources().getDrawable(R.drawable.ic_about),
-                HELP_STRINGS[LIST_ITEM_POS_ABOUT]),
+            new PageItem(getResources().getDrawable(R.drawable.ic_about),
+                HELP_STRINGS[SUB_LIST_ITEM_POS_ABOUT]),
 
-            new MainPageItem(getResources().getDrawable(R.drawable.ic_help),
-                HELP_STRINGS[LIST_ITEM_POS_HELP]),
+            new PageItem(getResources().getDrawable(R.drawable.ic_help),
+                HELP_STRINGS[SUB_LIST_ITEM_POS_HELP]),
 
-            new MainPageItem(getResources().getDrawable(R.drawable.ic_terms_of_note),
-                HELP_STRINGS[LIST_ITEM_POS_TERMS_OF_NOTE])
+            new PageItem(getResources().getDrawable(R.drawable.ic_terms_of_note),
+                HELP_STRINGS[SUB_LIST_ITEM_POS_TERMS_OF_NOTE])
         };
 
-        inflateMainPageListView(HELP_ITEMS, R.id.lsv_help_group);
+        inflatePageListView(HELP_ITEMS, R.id.lsv_help_group);
 
         final String[] EXIT_STRINGS = getExitItems();
-        final MainPageItem[] EXIT_ITEMS = {
-            new MainPageItem(getResources().getDrawable(R.drawable.ic_exit),
-                EXIT_STRINGS[LIST_ITEM_POS_EXIT])
+        final PageItem[] EXIT_ITEMS = {
+            new PageItem(getResources().getDrawable(R.drawable.ic_exit),
+                EXIT_STRINGS[SUB_LIST_ITEM_POS_EXIT])
         };
 
-        inflateMainPageListView(EXIT_ITEMS, R.id.lsv_exit_group);
+        inflatePageListView(EXIT_ITEMS, R.id.lsv_exit_group);
 
         try {
-            new DbHelper(this).precheck();
+            new DbHelper(this).initData();
         } catch (Exception e) {
             Hint.alert(this, getString(R.string.data_init_error), e.getMessage(), new OnClickListener() {
 
@@ -216,20 +216,20 @@ public class MainActivity extends Activity
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
         ListView listView = (ListView) parent;
-        MainPageItem item = (MainPageItem) listView.getItemAtPosition(pos);
+        PageItem item = (PageItem) listView.getItemAtPosition(pos);
 
         if (listView == findViewById(R.id.lsv_medication_group)) {
-            if (LIST_ITEM_POS_MEDICINE == pos) {
+            if (SUB_LIST_ITEM_POS_MEDICINE == pos) {
                 mIntentQueryEntry.putExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
                 startActivity(mIntentQueryEntry);
             }
-            else if (LIST_ITEM_POS_PRESCRIPTION == pos) {
+            else if (SUB_LIST_ITEM_POS_PRESCRIPTION == pos) {
                 /*Hint.alert(this, ResourceExports.getString(this, R.array.function_not_implemented),
                     getString(R.string.please_look_forward_to_it));*/
                 mIntentQueryEntry.putExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_PRESCRIPTION);
                 startActivity(mIntentQueryEntry);
             }
-            else if (LIST_ITEM_POS_MISC_MANAGEMENT == pos)
+            else if (SUB_LIST_ITEM_POS_MISC_MANAGEMENT == pos)
                 startActivity(mIntentMiscManagement);
             else
                 Hint.shortToast(this, String.valueOf(pos) + ": Unknown " + item.name);
@@ -238,16 +238,16 @@ public class MainActivity extends Activity
         }
 
         if (listView == findViewById(R.id.lsv_help_group)) {
-            if (LIST_ITEM_POS_SETTINGS == pos) {
+            if (SUB_LIST_ITEM_POS_SETTINGS == pos) {
                 Hint.alert(this, ResourceExports.getString(this, R.array.function_not_implemented),
                     getString(R.string.settings_not_implemented));
                 // startActivity(new Intent(this, SettingsActivity.class));
             }
-            else if (LIST_ITEM_POS_ABOUT == pos)
+            else if (SUB_LIST_ITEM_POS_ABOUT == pos)
                 startActivity(mIntentAbout);
-            else if (LIST_ITEM_POS_HELP == pos)
+            else if (SUB_LIST_ITEM_POS_HELP == pos)
                 App.showHelpText(this, getString(R.string.help_info_for_main_page));
-            else if (LIST_ITEM_POS_TERMS_OF_NOTE == pos)
+            else if (SUB_LIST_ITEM_POS_TERMS_OF_NOTE == pos)
                 Hint.alert(this, R.string.terms_of_note, R.string.terms_of_note_contents);
             else
                 Hint.shortToast(this, String.valueOf(pos) + ": Unknown " + item.name);
@@ -256,7 +256,7 @@ public class MainActivity extends Activity
         }
 
         if (listView == findViewById(R.id.lsv_exit_group)) {
-            if (LIST_ITEM_POS_EXIT == pos)
+            if (SUB_LIST_ITEM_POS_EXIT == pos)
                 App.exit(this);
             else
                 Hint.shortToast(this, String.valueOf(pos) + ": Unknown " + item.name);
@@ -308,15 +308,15 @@ public class MainActivity extends Activity
     }
 
     @SuppressWarnings("deprecation")
-    private void inflateMainPageListView(final MainPageItem[] pageItems, int listViewId) {
-        List<MainPageItem> itemList = new ArrayList<MainPageItem>();
+    private void inflatePageListView(final PageItem[] pageItems, int listViewId) {
+        List<PageItem> itemList = new ArrayList<PageItem>();
 
-        for (MainPageItem item : pageItems)
+        for (PageItem item : pageItems)
         {
             itemList.add(item);
         }
 
-        MainPageItemAdapter adapter = new MainPageItemAdapter(this, itemList);
+        PageItemAdapter adapter = new PageItemAdapter(this, itemList);
         ListView listView = (ListView) findViewById(listViewId);
 
         listView.setAdapter(adapter);
@@ -324,26 +324,26 @@ public class MainActivity extends Activity
         listView.setBackground(getResources().getDrawable(R.drawable.background));
     }
 
-    private class MainPageItem {
+    private class PageItem {
         public Drawable icon;
         public String name;
 
-        public MainPageItem() {
+        public PageItem() {
         }
 
-        public MainPageItem(Drawable icon, String name) {
+        public PageItem(Drawable icon, String name) {
             this.icon = icon;
             this.name = name;
         }
     }
 
-    private class MainPageItemAdapter extends BaseAdapter {
+    private class PageItemAdapter extends BaseAdapter {
 
         private final Context mContext;
-        private final List<MainPageItem> mItemList;
+        private final List<PageItem> mItemList;
         private final LayoutInflater mInflater;
 
-        public MainPageItemAdapter(Context context, List<MainPageItem> itemList) {
+        public PageItemAdapter(Context context, List<PageItem> itemList) {
             super();
             this.mItemList = itemList;
             this.mContext = context;
@@ -382,7 +382,7 @@ public class MainActivity extends Activity
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            MainPageItem item = mItemList.get(position);
+            PageItem item = mItemList.get(position);
 
             holder.icon.setImageDrawable(item.icon);
             holder.name.setText(item.name);

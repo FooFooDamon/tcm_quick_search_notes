@@ -65,12 +65,12 @@ public class MiscManagementActivity extends Activity
 
     private Intent mIntentQueryEntry = null;
 
-    public static String getItemNameByPosition(int position) {
-        if (position < LIST_ITEM_POS_MEDICINE_CATEGORY || position > LIST_ITEM_POS_REFERENCE_MATERIAL) {
-            return "Unknown Misc Item, pos: " + String.valueOf(position);
+    public static String getItemNameByPosition(int positionAtMiscList) {
+        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_REFERENCE_MATERIAL) {
+            return "Unknown Misc Item, pos: " + String.valueOf(positionAtMiscList);
         }
 
-        final String[] names = {
+        final String[] NAMES = {
             "药物种类",
             "方剂种类",
             "程度（修饰词）",
@@ -81,15 +81,15 @@ public class MiscManagementActivity extends Activity
             "参考资料"
         };
 
-        return names[position];
+        return NAMES[positionAtMiscList];
     }
 
-    public static String getPrimaryKeyByPosition(int position) {
-        if (position < LIST_ITEM_POS_MEDICINE_CATEGORY || position > LIST_ITEM_POS_REFERENCE_MATERIAL) {
-            return "Unknown Misc Item, pos: " + String.valueOf(position);
+    public static String getDbPrimaryIdNameByPosition(int positionAtMiscList) {
+        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_REFERENCE_MATERIAL) {
+            return "Unknown Misc Item, pos: " + String.valueOf(positionAtMiscList);
         }
 
-        final String[] keys = {
+        final String[] ID_NAMES = {
             "cid",
             "cid",
             "aid",
@@ -100,12 +100,12 @@ public class MiscManagementActivity extends Activity
             "rid"
         };
 
-        return keys[position];
+        return ID_NAMES[positionAtMiscList];
     }
 
-    public static String getTableNameByPosition(int position) {
-        if (position < LIST_ITEM_POS_MEDICINE_CATEGORY || position > LIST_ITEM_POS_REFERENCE_MATERIAL) {
-            return "Unknown Misc Item, pos: " + String.valueOf(position);
+    public static String getTableNameByPosition(int positionAtMiscList) {
+        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_REFERENCE_MATERIAL) {
+            return "Unknown Misc Item, pos: " + String.valueOf(positionAtMiscList);
         }
 
         final String[] names = {
@@ -119,7 +119,7 @@ public class MiscManagementActivity extends Activity
             "reference_material"
         };
 
-        return names[position];
+        return names[positionAtMiscList];
     }
 
     @SuppressLint("NewApi")
@@ -138,24 +138,24 @@ public class MiscManagementActivity extends Activity
         pageLayout.setBackgroundColor(android.graphics.Color.parseColor("#88b27e50"));
 
         final Drawable ICON = getResources().getDrawable(R.drawable.ic_blue_arrow);
-        final MiscPageItem[] MISC_ITEMS = {
-            new MiscPageItem(ICON, getString(R.string.medicine_category)),
-            new MiscPageItem(ICON, getString(R.string.prescription_category)),
-            new MiscPageItem(ICON, getString(R.string.level_word)),
-            new MiscPageItem(ICON, getString(R.string.processing_method)),
-            new MiscPageItem(ICON, getString(R.string.medicine_unit)),
-            new MiscPageItem(ICON, getString(R.string.dosage_form)),
-            new MiscPageItem(ICON, getString(R.string.method_of_taking_medicine)),
-            new MiscPageItem(ICON, getString(R.string.reference_material))
+        final PageItem[] MISC_ITEMS = {
+            new PageItem(ICON, getString(R.string.medicine_category)),
+            new PageItem(ICON, getString(R.string.prescription_category)),
+            new PageItem(ICON, getString(R.string.level_word)),
+            new PageItem(ICON, getString(R.string.processing_method)),
+            new PageItem(ICON, getString(R.string.medicine_unit)),
+            new PageItem(ICON, getString(R.string.dosage_form)),
+            new PageItem(ICON, getString(R.string.method_of_taking_medicine)),
+            new PageItem(ICON, getString(R.string.reference_material))
         };
-        List<MiscPageItem> itemList = new ArrayList<MiscPageItem>();
+        List<PageItem> itemList = new ArrayList<PageItem>();
 
-        for (MiscPageItem item : MISC_ITEMS)
+        for (PageItem item : MISC_ITEMS)
         {
             itemList.add(item);
         }
 
-        MiscPageItemAdapter adapter = new MiscPageItemAdapter(this, itemList);
+        PageItemAdapter adapter = new PageItemAdapter(this, itemList);
         ListView listView = (ListView) findViewById(R.id.lsv_all_in_one_group);
 
         listView.setAdapter(adapter);
@@ -199,26 +199,26 @@ public class MiscManagementActivity extends Activity
             mIntentQueryEntry = new Intent(this, QueryEntryActivity.class);
     }
 
-    private class MiscPageItem {
+    private class PageItem {
         public Drawable icon;
         public String name;
 
-        public MiscPageItem() {
+        public PageItem() {
         }
 
-        public MiscPageItem(Drawable icon, String name) {
+        public PageItem(Drawable icon, String name) {
             this.icon = icon;
             this.name = name;
         }
     }
 
-    private class MiscPageItemAdapter extends BaseAdapter {
+    private class PageItemAdapter extends BaseAdapter {
 
         private final Context mContext;
-        private final List<MiscPageItem> mItemList;
+        private final List<PageItem> mItemList;
         private final LayoutInflater mInflater;
 
-        public MiscPageItemAdapter(Context context, List<MiscPageItem> itemList) {
+        public PageItemAdapter(Context context, List<PageItem> itemList) {
             super();
             this.mItemList = itemList;
             this.mContext = context;
@@ -257,7 +257,7 @@ public class MiscManagementActivity extends Activity
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            MiscPageItem item = mItemList.get(position);
+            PageItem item = mItemList.get(position);
 
             holder.icon.setImageDrawable(item.icon);
             holder.name.setText(item.name);

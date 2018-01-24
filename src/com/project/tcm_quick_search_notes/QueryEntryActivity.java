@@ -66,7 +66,7 @@ public class QueryEntryActivity extends Activity
 
     private Intent mNextIntent = null;
 
-    private View.OnClickListener mOnAddButtonClicked = null;
+    private View.OnClickListener mAddItemDialog = null;
     private DialogInterface.OnClickListener mAddItemAction = null;
 
     @SuppressWarnings("deprecation")
@@ -109,7 +109,7 @@ public class QueryEntryActivity extends Activity
 
         Button btnAddItem = (Button) findViewById(R.id.btn_add_item);
 
-        btnAddItem.setOnClickListener(mOnAddButtonClicked);
+        btnAddItem.setOnClickListener(mAddItemDialog);
     }
 
     @Override
@@ -139,6 +139,140 @@ public class QueryEntryActivity extends Activity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+        Intent prevIntent = getIntent();
+        int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+        ListView listView = (ListView) parent;
+        ItemBrief item = (ItemBrief) listView.getItemAtPosition(pos);
+
+        mNextIntent.putExtra(TcmCommon.OP_TYPE_KEY, opType);
+        mNextIntent.putExtra(TcmCommon.ID_KEY, item.id);
+        mNextIntent.putExtra(TcmCommon.NAME_KEY, item.name);
+        mNextIntent.putExtra(TcmCommon.MISC_ITEM_POS_KEY, miscItemPos);
+        startActivity(mNextIntent);
+    }
+
+    private void initResources() {
+        if (null == mNextIntent)
+            mNextIntent = new Intent(this, ReadWriteItemDetailsActivity.class);
+
+        if (null == mDbHelper) {
+            mDbHelper = new DbHelper(this);
+            mDbHelper.openOrCreate();
+        }
+
+        if (null == mAddItemAction) {
+            mAddItemAction = new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent prevIntent = getIntent();
+                    int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+                    String sqlCheckItem = null;
+                    String sqlAddItem = null;
+                    String newItem = null;
+                    String hintReusingItemTitle = null;
+                    String hintReusingItemContents = null;
+                    String hintAddingItemSuccessfully = null;
+                    String hintAfterAddingItem = null;
+
+                    if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType) {
+                        sqlCheckItem = getString(R.string.sql_query_medicine_items_by_name);
+                        sqlAddItem = getString(R.string.sql_make_medicine_items_data);
+                        newItem = getString(R.string.new_medicine);
+                        hintReusingItemTitle = getString(R.string.alert_reusing_medicine_title);
+                        hintReusingItemContents = getString(R.string.alert_reusing_medicine_contents);
+                        hintAddingItemSuccessfully = getString(R.string.hint_adding_medicine_successfully);
+                        hintAfterAddingItem = getString(R.string.hint_after_adding_medicine);
+                    }
+                    else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
+                        sqlCheckItem = getString(R.string.sql_query_prescription_items_by_name);
+                        sqlAddItem = getString(R.string.sql_make_prescription_items_data);
+                        newItem = getString(R.string.new_prescription);
+                        hintReusingItemTitle = getString(R.string.alert_reusing_prescription_title);
+                        hintReusingItemContents = getString(R.string.alert_reusing_prescription_contents);
+                        hintAddingItemSuccessfully = getString(R.string.hint_adding_prescription_successfully);
+                        hintAfterAddingItem = getString(R.string.hint_after_adding_prescription);
+                    }
+                    else {
+                        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+                        String miscItemName = MiscManagementActivity.getItemNameByPosition(miscItemPos);
+                        String primaryKey = MiscManagementActivity.getDbPrimaryIdNameByPosition(miscItemPos);
+                        String tableName = MiscManagementActivity.getTableNameByPosition(miscItemPos);
+
+                        sqlCheckItem = "select " + primaryKey +", name"
+                            + " from " + tableName
+                            + " where name like ?"
+                            + " order by " + primaryKey + " asc";
+                        sqlAddItem = "insert into " + tableName + "(name)"
+                            + " values(?)";
+                        newItem = "新" + miscItemName;
+                        hintReusingItemTitle = "已存在未使用的" + newItem + "信息";
+                        hintReusingItemContents = "数据库已存在一个“" + newItem + "”，"
+                            + "可在名称栏输入“" + newItem + "”查询出该" + miscItemName + "详细页面，"
+                            + "对其进行重命名，并补全其余信息。";
+                        hintAddingItemSuccessfully = "新增" + miscItemName + "成功";
+                        hintAfterAddingItem = "已成功添加" + newItem
+                            + "，请在名称栏输入“" + newItem +"”进行查询并编辑详细的药物信息。";
+                    }
+
+                    String[] sqlArgs = (new String[]{ newItem });
+                    SQLiteDatabase db = mDbHelper.getDatabase();
+                    Cursor c = db.rawQuery(sqlCheckItem, sqlArgs);
+
+                    if (c.moveToNext()) {
+                        Hint.alert(QueryEntryActivity.this, hintReusingItemTitle, hintReusingItemContents);
+                        c.close();
+                        return;
+                    }
+                    c.close();
+
+                    int categorySpinnerPos = 0;
+                    String[] sqlArgsOfAddingItem = (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType || TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
+                        ? (new String[] { newItem, String.valueOf(categorySpinnerPos) })
+                        : (new String[] { newItem });
+
+                    db.execSQL(sqlAddItem, sqlArgsOfAddingItem);
+                    Hint.alert(QueryEntryActivity.this, hintAddingItemSuccessfully, hintAfterAddingItem);
+
+                    EditText etxName = (EditText) findViewById(R.id.etx_name);
+                    Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
+
+                    etxName.setText(newItem);
+                    spnCategory.setSelection(categorySpinnerPos);
+                    queryItems();
+                }
+            };
+        }
+
+        if (null == mAddItemDialog) {
+            mAddItemDialog = new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Intent prevIntent = getIntent();
+                    int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+                    String hint = null;
+
+                    if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType)
+                        hint = getString(R.string.asking_before_adding_medicine);
+                    else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
+                        hint = getString(R.string.asking_before_adding_prescription);
+                    else {
+                        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+
+                        hint = "确定要新增" + MiscManagementActivity.getItemNameByPosition(miscItemPos) + "吗？";
+                    }
+
+                    Hint.alert(QueryEntryActivity.this, hint, R.string.confirm_or_cancel_guide,
+                        mAddItemAction, null);
+                }
+            };
+        }
     }
 
     private void doExtraJobsForLowerVersions() {
@@ -217,7 +351,7 @@ public class QueryEntryActivity extends Activity
             int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
             String tableName = MiscManagementActivity.getTableNameByPosition(miscItemPos);
 
-            primaryKey = MiscManagementActivity.getPrimaryKeyByPosition(miscItemPos);
+            primaryKey = MiscManagementActivity.getDbPrimaryIdNameByPosition(miscItemPos);
             sql = (itemName.length() > 0)
                 ? ("select " + primaryKey + ", name"
                     + " from " + tableName
@@ -333,140 +467,6 @@ public class QueryEntryActivity extends Activity
             CheckBox checkBox;
             TextView id;
             TextView name;
-        }
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-        Intent prevIntent = getIntent();
-        int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
-        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
-        ListView listView = (ListView) parent;
-        ItemBrief item = (ItemBrief) listView.getItemAtPosition(pos);
-
-        mNextIntent.putExtra(TcmCommon.OP_TYPE_KEY, opType);
-        mNextIntent.putExtra(TcmCommon.ID_KEY, item.id);
-        mNextIntent.putExtra(TcmCommon.NAME_KEY, item.name);
-        mNextIntent.putExtra(TcmCommon.MISC_ITEM_POS_KEY, miscItemPos);
-        startActivity(mNextIntent);
-    }
-
-    private void initResources() {
-        if (null == mNextIntent)
-            mNextIntent = new Intent(this, ReadWriteItemDetailsActivity.class);
-
-        if (null == mDbHelper) {
-            mDbHelper = new DbHelper(this);
-            mDbHelper.openOrCreate();
-        }
-
-        if (null == mAddItemAction) {
-            mAddItemAction = new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Intent prevIntent = getIntent();
-                    int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
-                    String sqlCheckItem = null;
-                    String sqlAddItem = null;
-                    String newItem = null;
-                    String hintReusingItemTitle = null;
-                    String hintReusingItemContents = null;
-                    String hintAddingItemSuccessfully = null;
-                    String hintAfterAddingItem = null;
-
-                    if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType) {
-                        sqlCheckItem = getString(R.string.sql_query_medicine_items_by_name);
-                        sqlAddItem = getString(R.string.sql_make_medicine_items_data);
-                        newItem = getString(R.string.new_medicine);
-                        hintReusingItemTitle = getString(R.string.alert_reusing_medicine_title);
-                        hintReusingItemContents = getString(R.string.alert_reusing_medicine_contents);
-                        hintAddingItemSuccessfully = getString(R.string.hint_adding_medicine_successfully);
-                        hintAfterAddingItem = getString(R.string.hint_after_adding_medicine);
-                    }
-                    else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
-                        sqlCheckItem = getString(R.string.sql_query_prescription_items_by_name);
-                        sqlAddItem = getString(R.string.sql_make_prescription_items_data);
-                        newItem = getString(R.string.new_prescription);
-                        hintReusingItemTitle = getString(R.string.alert_reusing_prescription_title);
-                        hintReusingItemContents = getString(R.string.alert_reusing_prescription_contents);
-                        hintAddingItemSuccessfully = getString(R.string.hint_adding_prescription_successfully);
-                        hintAfterAddingItem = getString(R.string.hint_after_adding_prescription);
-                    }
-                    else {
-                        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
-                        String miscItemName = MiscManagementActivity.getItemNameByPosition(miscItemPos);
-                        String primaryKey = MiscManagementActivity.getPrimaryKeyByPosition(miscItemPos);
-                        String tableName = MiscManagementActivity.getTableNameByPosition(miscItemPos);
-
-                        sqlCheckItem = "select " + primaryKey +", name"
-                            + " from " + tableName
-                            + " where name like ?"
-                            + " order by " + primaryKey + " asc";
-                        sqlAddItem = "insert into " + tableName + "(name)"
-                            + " values(?)";
-                        newItem = "新" + miscItemName;
-                        hintReusingItemTitle = "已存在未使用的" + newItem + "信息";
-                        hintReusingItemContents = "数据库已存在一个“" + newItem + "”，"
-                            + "可在名称栏输入“" + newItem + "”查询出该" + miscItemName + "详细页面，"
-                            + "对其进行重命名，并补全其余信息。";
-                        hintAddingItemSuccessfully = "新增" + miscItemName + "成功";
-                        hintAfterAddingItem = "已成功添加" + newItem
-                            + "，请在名称栏输入“" + newItem +"”进行查询并编辑详细的药物信息。";
-                    }
-
-                    String[] sqlArgs = (new String[]{ newItem });
-                    SQLiteDatabase db = mDbHelper.getDatabase();
-                    Cursor c = db.rawQuery(sqlCheckItem, sqlArgs);
-
-                    if (c.moveToNext()) {
-                        Hint.alert(QueryEntryActivity.this, hintReusingItemTitle, hintReusingItemContents);
-                        c.close();
-                        return;
-                    }
-                    c.close();
-
-                    int categorySpinnerPos = 0;
-                    String[] sqlArgsOfAddingItem = (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType || TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
-                        ? (new String[] { newItem, String.valueOf(categorySpinnerPos) })
-                        : (new String[] { newItem });
-
-                    db.execSQL(sqlAddItem, sqlArgsOfAddingItem);
-                    Hint.alert(QueryEntryActivity.this, hintAddingItemSuccessfully, hintAfterAddingItem);
-
-                    EditText etxName = (EditText) findViewById(R.id.etx_name);
-                    Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
-
-                    etxName.setText(newItem);
-                    spnCategory.setSelection(categorySpinnerPos);
-                    queryItems();
-                }
-            };
-        }
-
-        if (null == mOnAddButtonClicked) {
-            mOnAddButtonClicked = new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Intent prevIntent = getIntent();
-                    int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
-                    String hint = null;
-
-                    if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType)
-                        hint = getString(R.string.asking_before_adding_medicine);
-                    else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
-                        hint = getString(R.string.asking_before_adding_prescription);
-                    else {
-                        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
-
-                        hint = "确定要新增" + MiscManagementActivity.getItemNameByPosition(miscItemPos) + "吗？";
-                    }
-
-                    Hint.alert(QueryEntryActivity.this, hint, R.string.confirm_or_cancel_guide,
-                        mAddItemAction, null);
-                }
-            };
         }
     }
 }
