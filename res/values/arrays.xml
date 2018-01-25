@@ -566,10 +566,22 @@
         <item>@string/en_single_line_mode</item>
     </string-array>
 
+    <string-array name="switch_to_single_line_mode">
+        <item>@string/switch_to_single_line_mode</item>
+        <item>@string/cht_switch_to_single_line_mode</item>
+        <item>@string/en_switch_to_single_line_mode</item>
+    </string-array>
+
     <string-array name="multi_line_mode">
         <item>@string/multi_line_mode</item>
         <item>@string/cht_multi_line_mode</item>
         <item>@string/en_multi_line_mode</item>
+    </string-array>
+
+    <string-array name="switch_to_multi_line_mode">
+        <item>@string/switch_to_multi_line_mode</item>
+        <item>@string/cht_switch_to_multi_line_mode</item>
+        <item>@string/en_switch_to_multi_line_mode</item>
     </string-array>
 
     <string-array name="config_details">

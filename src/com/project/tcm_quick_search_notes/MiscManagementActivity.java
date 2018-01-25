@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Wen Xiongchang <udc577 at 126 dot com>
+ * Copyright (c) 2017-2018, Wen Xiongchang <udc577 at 126 dot com>
  * All rights reserved.
  *
  * This software is provided 'as-is', without any express or implied
@@ -190,7 +190,7 @@ public class MiscManagementActivity extends Activity
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
         mIntentQueryEntry.putExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT);
-        mIntentQueryEntry.putExtra(TcmCommon.MISC_ITEM_POS_KEY, pos);
+        mIntentQueryEntry.putExtra(TcmCommon.FUNC_LIST_POS_KEY, pos);
         startActivity(mIntentQueryEntry);
     }
 

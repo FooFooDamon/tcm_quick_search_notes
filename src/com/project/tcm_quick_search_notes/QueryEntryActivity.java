@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Wen Xiongchang <udc577 at 126 dot com>
+ * Copyright (c) 2017-2018, Wen Xiongchang <udc577 at 126 dot com>
  * All rights reserved.
  *
  * This software is provided 'as-is', without any express or implied
@@ -102,7 +102,7 @@ public class QueryEntryActivity extends Activity
                 setTitle(getString(R.string.main_item_prescription));
         }
         else {
-            int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+            int miscItemPos = prevIntent.getIntExtra(TcmCommon.FUNC_LIST_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
 
             setTitle(MiscManagementActivity.getItemNameByPosition(miscItemPos));
         }
@@ -123,7 +123,7 @@ public class QueryEntryActivity extends Activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.query_entry, menu);
+        getMenuInflater().inflate(R.menu.query_entry_page, menu);
         return true;
     }
 
@@ -145,20 +145,20 @@ public class QueryEntryActivity extends Activity
     public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
         Intent prevIntent = getIntent();
         int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
-        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+        int miscItemPos = prevIntent.getIntExtra(TcmCommon.FUNC_LIST_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
         ListView listView = (ListView) parent;
         ItemBrief item = (ItemBrief) listView.getItemAtPosition(pos);
 
         mNextIntent.putExtra(TcmCommon.OP_TYPE_KEY, opType);
         mNextIntent.putExtra(TcmCommon.ID_KEY, item.id);
         mNextIntent.putExtra(TcmCommon.NAME_KEY, item.name);
-        mNextIntent.putExtra(TcmCommon.MISC_ITEM_POS_KEY, miscItemPos);
+        mNextIntent.putExtra(TcmCommon.FUNC_LIST_POS_KEY, miscItemPos);
         startActivity(mNextIntent);
     }
 
     private void initResources() {
         if (null == mNextIntent)
-            mNextIntent = new Intent(this, ReadWriteItemDetailsActivity.class);
+            mNextIntent = new Intent(this, DetailContentActivity.class);
 
         if (null == mDbHelper) {
             mDbHelper = new DbHelper(this);
@@ -199,7 +199,7 @@ public class QueryEntryActivity extends Activity
                         hintAfterAddingItem = getString(R.string.hint_after_adding_prescription);
                     }
                     else {
-                        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+                        int miscItemPos = prevIntent.getIntExtra(TcmCommon.FUNC_LIST_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
                         String miscItemName = MiscManagementActivity.getItemNameByPosition(miscItemPos);
                         String primaryKey = MiscManagementActivity.getDbPrimaryIdNameByPosition(miscItemPos);
                         String tableName = MiscManagementActivity.getTableNameByPosition(miscItemPos);
@@ -263,7 +263,7 @@ public class QueryEntryActivity extends Activity
                     else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
                         hint = getString(R.string.asking_before_adding_prescription);
                     else {
-                        int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+                        int miscItemPos = prevIntent.getIntExtra(TcmCommon.FUNC_LIST_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
 
                         hint = "确定要新增" + MiscManagementActivity.getItemNameByPosition(miscItemPos) + "吗？";
                     }
@@ -348,7 +348,7 @@ public class QueryEntryActivity extends Activity
             primaryKey = "pid";
         }
         else {
-            int miscItemPos = prevIntent.getIntExtra(TcmCommon.MISC_ITEM_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+            int miscItemPos = prevIntent.getIntExtra(TcmCommon.FUNC_LIST_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
             String tableName = MiscManagementActivity.getTableNameByPosition(miscItemPos);
 
             primaryKey = MiscManagementActivity.getDbPrimaryIdNameByPosition(miscItemPos);

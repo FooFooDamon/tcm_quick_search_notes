@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Wen Xiongchang <udc577 at 126 dot com>
+ * Copyright (c) 2017-2018, Wen Xiongchang <udc577 at 126 dot com>
  * All rights reserved.
  *
  * This software is provided 'as-is', without any express or implied
@@ -300,15 +300,15 @@ public class DbHelper {
         return results.toArray(new String[results.size()]);
     }
 
-    public String[] queryMedicineIdValuesByName(String name) {
-        String sql = mContext.getString(R.string.sql_query_medicine_ids_by_name);
+    public String[] queryMedicineIdNamePairsByName(String name) {
+        String sql = mContext.getString(R.string.sql_query_medicine_items_by_name);
         String[] args = { "%" + name + "%" };
         Cursor c = getDatabase().rawQuery(sql, args);
         ArrayList<String> results = new ArrayList<String>();
 
-        //showSqlInfo("queryMedicineIdsByName()", sql, args);
+        //showSqlInfo("queryMedicineIdNamePairsByName()", sql, args);
         while (c.moveToNext()) {
-            results.add(c.getString(c.getColumnIndex("mid")));
+            results.add(c.getString(c.getColumnIndex("mid")) + ":" + c.getString(c.getColumnIndex("name")));
         }
         c.close();
 

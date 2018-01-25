@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Wen Xiongchang <udc577 at 126 dot com>
+ * Copyright (c) 2017-2018, Wen Xiongchang <udc577 at 126 dot com>
  * All rights reserved.
  *
  * This software is provided 'as-is', without any express or implied

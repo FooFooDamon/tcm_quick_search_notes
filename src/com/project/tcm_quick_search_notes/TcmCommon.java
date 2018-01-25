@@ -43,7 +43,7 @@ public class TcmCommon {
     public static final int CONDITION_BY_ID = 0;
     public static final int CONDITION_BY_NAME = 1;
 
-    public static final String MISC_ITEM_POS_KEY = "misc_item_position";
+    public static final String FUNC_LIST_POS_KEY = "position_at_functionality_list";
 
     public static final String FIELD_DELIM = "\b";
     public static final String ITEM_DELIM = "\f";
