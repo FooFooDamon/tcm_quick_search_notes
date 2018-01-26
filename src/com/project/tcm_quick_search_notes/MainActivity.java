@@ -57,6 +57,7 @@ import android.widget.TextView;
 import com.android_assistant.App;
 import com.android_assistant.Hint;
 import com.android_assistant.ResourceExports;
+import com.android_assistant.SharedPreferences;
 
 public class MainActivity extends Activity
     implements OnItemClickListener {
@@ -140,6 +141,14 @@ public class MainActivity extends Activity
                     MainActivity.this.finish();
                 }
             });
+        }
+
+        boolean isFirstRunning = (boolean) SharedPreferences.getValue(this, "isFirstRunning", SharedPreferences.ValueTypeEnum.BOOL, true);
+
+        if (isFirstRunning) {
+            App.showHelpText(this, getString(R.string.help_info_for_main_page));
+
+            SharedPreferences.setValue(this, "isFirstRunning", false);
         }
     }
 

@@ -230,6 +230,7 @@ public class DetailContentActivity extends Activity {
             mIsMultiLineMode = !mIsMultiLineMode;
             gMenu.findItem(id).setTitle(mIsMultiLineMode ? R.string.switch_to_single_line_mode : R.string.switch_to_multi_line_mode);
             refreshAllViews();
+            Hint.shortToast(this, mIsMultiLineMode ? R.string.multi_line_mode : R.string.single_line_mode);
         }
         else if (R.id.menu_save == id) {
             int[][] detailResIds = getDetailFieldResourceIds(mOpType, mPositionAtFunctionalityList);
@@ -714,7 +715,7 @@ public class DetailContentActivity extends Activity {
             // spnKey, spnValuePrefix_1, spnValuePrefix_2, spnValue, spnValueSuffix_1, spnValueSuffix_2
             { null, null, null, dbHelper.queryMedicineCategories(UNKNOWN_STRING), null, null },
             { null, processingMethod, levelWords, dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_nature, HINT_PLEASE_SELECT), null, null },
-            { null, null, levelWords, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_taste, HINT_PLEASE_SELECT/*ITEM_READ_ONLY*/), null, null },
+            { null, processingMethod, levelWords, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_medicine_taste, HINT_PLEASE_SELECT/*ITEM_READ_ONLY*/), null, null },
             { null, null, null, /*null*/dbHelper.queryAttributeNames(R.string.attr_table_prefix_channel_tropism, HINT_PLEASE_SELECT/*ITEM_READ_ONLY*/), null, null },
             { null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_action_verb, SPACE)*/, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_life_fundamental, ITEM_READ_ONLY)*/, null, null },
             { null, null, null, null/*dbHelper.queryAttributeNames(R.string.attr_table_prefix_motion_form, hintPleaseSelect)*/, null, null },
