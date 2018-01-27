@@ -306,6 +306,8 @@ public class DetailContentActivity extends Activity {
             mEditable = false;
             refreshAllViews();
         }
+        else if (R.id.menu_details_help == id)
+            Hint.alert(this, R.string.help, R.string.help_info_for_details_page);
         else
             ;
 

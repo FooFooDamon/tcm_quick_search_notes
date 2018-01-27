@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.project.communicationmonitor.MiscManagementActivity" >
+
+    <item
+        android:id="@+id/menu_misc_help"
+        android:orderInCategory="100"
+        android:title="@string/help"
+        android:showAsAction="ifRoom" />
+
+</menu>

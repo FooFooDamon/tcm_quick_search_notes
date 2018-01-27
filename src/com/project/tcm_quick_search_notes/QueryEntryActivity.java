@@ -134,9 +134,12 @@ public class QueryEntryActivity extends Activity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.menu_query) {
+        if (R.id.menu_query == id)
             queryItems();
-        }
+        else if (R.id.menu_export == id)
+            Hint.alert(this, R.string.function_not_implemented, R.string.please_look_forward_to_it);
+        else if (R.id.menu_query_help == id)
+            Hint.alert(this, R.string.help, R.string.help_info_for_query_page);
 
         return super.onOptionsItemSelected(item);
     }
@@ -223,21 +226,26 @@ public class QueryEntryActivity extends Activity
                     String[] sqlArgs = (new String[]{ newItem });
                     SQLiteDatabase db = mDbHelper.getDatabase();
                     Cursor c = db.rawQuery(sqlCheckItem, sqlArgs);
+                    boolean exists = false;
 
                     if (c.moveToNext()) {
                         Hint.alert(QueryEntryActivity.this, hintReusingItemTitle, hintReusingItemContents);
-                        c.close();
-                        return;
+                        //c.close();
+                        //return;
+                        exists = true;
                     }
                     c.close();
 
                     int categorySpinnerPos = 0;
-                    String[] sqlArgsOfAddingItem = (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType || TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
-                        ? (new String[] { newItem, String.valueOf(categorySpinnerPos) })
-                        : (new String[] { newItem });
 
-                    db.execSQL(sqlAddItem, sqlArgsOfAddingItem);
-                    Hint.alert(QueryEntryActivity.this, hintAddingItemSuccessfully, hintAfterAddingItem);
+                    if (!exists) {
+                        String[] sqlArgsOfAddingItem = (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType || TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType)
+                            ? (new String[] { newItem, String.valueOf(categorySpinnerPos) })
+                            : (new String[] { newItem });
+
+                        db.execSQL(sqlAddItem, sqlArgsOfAddingItem);
+                        Hint.alert(QueryEntryActivity.this, hintAddingItemSuccessfully, hintAfterAddingItem);
+                    }
 
                     EditText etxName = (EditText) findViewById(R.id.etx_name);
                     Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);

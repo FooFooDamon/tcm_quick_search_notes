@@ -14,4 +14,10 @@
         android:showAsAction="always"
         android:title="@string/export"/>
 
+    <item
+        android:id="@+id/menu_query_help"
+        android:orderInCategory="102"
+        android:showAsAction="ifRoom"
+        android:title="@string/help"/>
+
 </menu>
