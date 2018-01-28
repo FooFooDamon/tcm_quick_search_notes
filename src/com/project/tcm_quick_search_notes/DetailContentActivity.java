@@ -389,15 +389,19 @@ public class DetailContentActivity extends Activity {
         }
     }
 
-    private DetailContentData[] parseFromDataseField(final String dbValue, int pageItemIndex,
+    // NOTE: for complicated items only.
+    // TODO: Parameter expectedMinResultCount and resultCountIsFixed seem no use, optimize them later.
+    private DetailContentData[] parseFromDataseField(final String rawDbValue, int pageItemIndex,
         int expectedMinResultCount, boolean resultCountIsFixed) {
-        String _dbValue = (null != dbValue) ? dbValue : /*STRING_NONE*/SPACE;
-
-        String[] items = _dbValue.split(TcmCommon.ITEM_DELIM);
+        String handledValue = (null == rawDbValue || 0 == rawDbValue.length()) ? STRING_NONE/*SPACE*/ : rawDbValue;
+        String[] items = (0 == handledValue.length()) ? null : handledValue.split(TcmCommon.LINE_DELIM, -1);
         ArrayList<String> itemList = new ArrayList<String>();
 
+        expectedMinResultCount = mDetailContentTemplatesArray[pageItemIndex].minRecords;
         if (expectedMinResultCount < 1)
             expectedMinResultCount = 1;
+
+        resultCountIsFixed = mDetailContentTemplatesArray[pageItemIndex].isFixed;
 
         if (resultCountIsFixed) {
             for (int i = 0; i < expectedMinResultCount; ++i) {
@@ -425,28 +429,34 @@ public class DetailContentActivity extends Activity {
             }
         }
 
-        return parseFromDataseField(itemList.toArray(new String[itemList.size()]), pageItemIndex);
+        return parseFromDataseField(itemList, pageItemIndex);
     }
 
-    private DetailContentData[] parseFromDataseField(final String[] dbValueArray, int pageItemIndex) {
+    private DetailContentData[] parseFromDataseField(final List<String> semiParsedValueList, int pageItemIndex) {
         ArrayList<DetailContentData> dataList = new ArrayList<DetailContentData>();
 
-        for (int i = 0; i < dbValueArray.length; ++i) {
-            dataList.add(parseFromDataseField(dbValueArray[i], pageItemIndex));
+        if (null == semiParsedValueList || 0 == semiParsedValueList.size()) {
+            dataList.add(parseFromDataseField(STRING_NONE, pageItemIndex)); // at least one
+        }
+        else {
+            for (int i = 0; i < semiParsedValueList.size(); ++i) {
+                dataList.add(parseFromDataseField(semiParsedValueList.get(i), pageItemIndex));
+            }
         }
 
         return dataList.toArray(new DetailContentData[dataList.size()]);
     }
 
-    private DetailContentData parseFromDataseField(final String dbValue, int pageItemIndex) {
+    private DetailContentData parseFromDataseField(final String singleLineValue, int pageItemIndex) {
         DetailContentData result = new DetailContentData(pageItemIndex);
-        String[] fieldValues = (null != dbValue) ? dbValue.split(TcmCommon.FIELD_DELIM) : null;
-        int fieldCount = (null != fieldValues) ? fieldValues.length : 0;
+        String[] fieldValues = (null == singleLineValue || 0 == singleLineValue.length())
+            ? null : singleLineValue.split(TcmCommon.INNER_FIELD_DELIM, -1);
+        int actualFieldCount = (null != fieldValues) ? fieldValues.length : 0;
 
         final String[] FIELD_NAMES = DETAIL_CONTENT_FIELD_NAMES;
         final int EXPECTED_FIELD_COUNT = FIELD_NAMES.length;
 
-        if (0 == fieldCount) {
+        if (0 == actualFieldCount) {
             result.checkBoxFlags &= (~CHKBOX_SELECTED);
 
             for (int i = 1; i < EXPECTED_FIELD_COUNT - 1; ++i) {
@@ -455,10 +465,10 @@ public class DetailContentActivity extends Activity {
                 if (isSpinner)
                     result.selectedSpinnerPositions.put(FIELD_NAMES[i], 0);
                 else
-                    result.editTextContents.put(FIELD_NAMES[i], /*STRING_NONE*/SPACE);
+                    result.editTextContents.put(FIELD_NAMES[i], STRING_NONE/*SPACE*/); // null is ok, too
             }
 
-            result.editTextContents.put(FIELD_NAMES[EXPECTED_FIELD_COUNT - 1], /*STRING_NONE*/SPACE);
+            result.editTextContents.put(FIELD_NAMES[EXPECTED_FIELD_COUNT - 1], STRING_NONE/*SPACE*/);
 
             return result;
         }
@@ -468,8 +478,8 @@ public class DetailContentActivity extends Activity {
         else
             result.checkBoxFlags &= (~CHKBOX_SELECTED);
 
-        for (int i = 1; i < fieldCount - 1; ++i) {
-            if (i >= EXPECTED_FIELD_COUNT)
+        for (int i = 1; i < actualFieldCount - 1; ++i) {
+            if (i >= EXPECTED_FIELD_COUNT - 1)
                 break;
 
             boolean isSpinner = (1 == i % 2);
@@ -480,18 +490,29 @@ public class DetailContentActivity extends Activity {
                 result.editTextContents.put(FIELD_NAMES[i], fieldValues[i]);
         }
 
-        if (fieldCount >= EXPECTED_FIELD_COUNT)
+        if (actualFieldCount >= EXPECTED_FIELD_COUNT)
             result.editTextContents.put(FIELD_NAMES[EXPECTED_FIELD_COUNT - 1], fieldValues[EXPECTED_FIELD_COUNT - 1]);
 
         return result;
     }
 
     private String serializeToDatabaseField(final List<DetailContentData> input) {
+        if (null == input)
+            return STRING_NONE;
+
+        int size = input.size();
+
+        if (0 == size)
+            return STRING_NONE;
+
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < input.size(); ++i) {
+        for (int i = 0; i < size; ++i) {
+            boolean isLastLine = (i == size - 1);
+
             result.append(serializeToDatabaseField(input.get(i)));
-            result.append(TcmCommon.ITEM_DELIM);
+            if (!isLastLine)
+                result.append(TcmCommon.LINE_DELIM);
         }
 
         return result.toString();
@@ -499,26 +520,36 @@ public class DetailContentActivity extends Activity {
 
     private String serializeToDatabaseField(final DetailContentData input) {
         StringBuilder result = new StringBuilder();
-
         final String[] FIELD_NAMES = DETAIL_CONTENT_FIELD_NAMES;
+        final int FIELD_COUNT = FIELD_NAMES.length;
 
-        result.append(input.checkBoxFlags);
-        result.append(TcmCommon.FIELD_DELIM);
+        if (null == input) {
+            for (int i = 0; i < FIELD_COUNT - 1; ++i) {
+                result.append(TcmCommon.INNER_FIELD_DELIM);
+            }
 
-        for (int i = 1; i < FIELD_NAMES.length - 1; ++i) {
-            boolean isSpinner = (1 == i % 2);
-            String value = null;
-
-            if (isSpinner)
-                value = String.valueOf(input.selectedSpinnerPositions.get(FIELD_NAMES[i]));
-            else
-                value = input.editTextContents.get(FIELD_NAMES[i]);
-
-            result.append((null == value || 0 == value.length()) ? /*STRING_NONE*/SPACE : value);
-            result.append(TcmCommon.FIELD_DELIM);
+            return result.toString();
         }
 
-        result.append(input.editTextContents.get(FIELD_NAMES[FIELD_NAMES.length - 1]));
+        result.append(input.checkBoxFlags);
+        result.append(TcmCommon.INNER_FIELD_DELIM);
+
+        String fieldValue = null;
+
+        for (int i = 1; i < FIELD_COUNT - 1; ++i) {
+            boolean isSpinner = (1 == i % 2);
+
+            if (isSpinner)
+                fieldValue = String.valueOf(input.selectedSpinnerPositions.get(FIELD_NAMES[i]));
+            else
+                fieldValue = input.editTextContents.get(FIELD_NAMES[i]);
+
+            result.append((null == fieldValue || 0 == fieldValue.length()) ? STRING_NONE/*SPACE*/ : fieldValue);
+            result.append(TcmCommon.INNER_FIELD_DELIM);
+        }
+
+        fieldValue = input.editTextContents.get(FIELD_NAMES[FIELD_COUNT - 1]);
+        result.append((null == fieldValue || 0 == fieldValue.length()) ? STRING_NONE/*SPACE*/ : fieldValue);
 
         return result.toString();
     }
@@ -962,7 +993,7 @@ public class DetailContentActivity extends Activity {
             DbHelper.PRESCRIPTION_COLUMN_INDEX_COMPOSITION, 1, false);
 
         DetailContentData[] decoctionData = parseFromDataseField(decoction,
-            DbHelper.PRESCRIPTION_COLUMN_INDEX_DECOCTION, 1, false);
+            DbHelper.PRESCRIPTION_COLUMN_INDEX_DECOCTION, 1, true);
 
         DetailContentData[] methodOfTakingMedicineData = parseFromDataseField(methodOfTakingMedicine,
             DbHelper.PRESCRIPTION_COLUMN_INDEX_METHOD_OF_TAKING_MEDICINE, 1, true);
@@ -1645,6 +1676,9 @@ public class DetailContentActivity extends Activity {
         private void checkAndRedirectToMedicineDetailsPage(String originalMedicineName,
             String[] idNamePairsFromDb) {
 
+            if (null == originalMedicineName || 0 == originalMedicineName.length())
+                return;
+
             if (null == idNamePairsFromDb) {
                 Hint.alert(mContext, R.string.not_found, originalMedicineName);
                 return;
@@ -1657,7 +1691,7 @@ public class DetailContentActivity extends Activity {
             StringBuilder hintContent = new StringBuilder();
 
             for (int i = 0; i < idNamePairsFromDb.length; ++i) {
-                String[] valuesInPair = idNamePairsFromDb[i].split(":");
+                String[] valuesInPair = idNamePairsFromDb[i].split(":", -1);
 
                 id = valuesInPair[0];
                 name = valuesInPair[1];
@@ -1798,18 +1832,22 @@ public class DetailContentActivity extends Activity {
                 }*/
                 /////////////////// end: deals with the EditText focus problem ///////////////////
 
+                com.android_assistant.TextView.setDefaultTextShadow(holderEditTexts[i]);
+
                 if (mEditable)
                     continue; // NOTE: Calling setText() under edit mode may cause data chaos during TextWatcher.xxTextChanged() execution.
 
                 String editTextValue = item.editTextContents.get(editTextName);
 
-                com.android_assistant.TextView.setDefaultTextShadow(holderEditTexts[i]);
-
                 if (null != editTextValue && editTextValue.length() > 0)
                     holderEditTexts[i].setText(editTextValue);
                 else {
-                    if (null != templateTextValue)
-                        holderEditTexts[i].setHint(templateTextValue);
+                    if (null != templateTextValue) {
+                        if (templateTextValue.equals(ITEM_READ_ONLY))
+                            holderEditTexts[i].setText(templateTextValue);
+                        else
+                            holderEditTexts[i].setHint(templateTextValue);
+                    }
                 }
 
                 if (!hasSimpleCharTextOnly) {
