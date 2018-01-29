@@ -10,6 +10,84 @@
     android:orientation="vertical"
     tools:context="com.project.tcm_quick_search_notes.DetailContentActivity" >
 
+    <!-- <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/txv_prev_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/prev_arrow"
+            android:textSize="20sp"
+            android:textColor="#ffcacaca" />
+
+        <TextView
+            android:id="@+id/txv_prev_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txv_prev_item"
+            android:layout_toEndOf="@+id/txv_prev_item"
+            android:textSize="20sp"
+            android:textColor="#ffcacaca" />
+
+        <TextView
+            android:id="@+id/txv_prev_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txv_prev_id"
+            android:layout_toEndOf="@+id/txv_prev_id"
+            android:text="@string/prev_one"
+            android:textSize="20sp"
+            android:textColor="#ffcacaca" />
+
+        <TextView
+            android:id="@+id/txv_next_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txv_prev_item"
+            android:layout_alignParentEnd="true"
+            android:text="@string/next_arrow"
+            android:textSize="20sp"
+            android:textColor="#ffcacaca" />
+
+        <TextView
+            android:id="@+id/txv_next_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txv_next_item"
+            android:layout_toStartOf="@+id/txv_next_item"
+            android:textSize="20sp"
+            android:textColor="#ffcacaca" />
+
+        <TextView
+            android:id="@+id/txv_next_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txv_next_id"
+            android:layout_toStartOf="@+id/txv_next_id"
+            android:text="@string/next_one"
+            android:textSize="20sp"
+            android:textColor="#ffcacaca" />
+
+        <ImageView
+            android:contentDescription="@string/empty_string"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@+id/txv_next_name"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent" >
+        </ImageView>
+
+    </RelativeLayout>
+
+    <!-- </ScrollView>-->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

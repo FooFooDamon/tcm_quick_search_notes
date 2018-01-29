@@ -31,6 +31,7 @@ package com.project.tcm_quick_search_notes;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -74,8 +75,11 @@ public class QueryEntryActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query_entry);
-        getActionBar().setBackgroundDrawable(
-            getResources().getDrawable(R.drawable.default_action_bar_style));
+
+        ActionBar actionBar = getActionBar();
+
+        actionBar.setDisplayShowHomeEnabled(false); // hides the icon
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.default_action_bar_style));
 
         initResources();
 

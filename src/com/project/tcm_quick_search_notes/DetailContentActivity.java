@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -156,8 +157,11 @@ public class DetailContentActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setBackgroundDrawable(
-            getResources().getDrawable(R.drawable.default_action_bar_style));
+
+        ActionBar actionBar = getActionBar();
+
+        actionBar.setDisplayShowHomeEnabled(false); // hides the icon
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.default_action_bar_style));
 
         initResources();
 
@@ -602,8 +606,8 @@ public class DetailContentActivity extends Activity {
         if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType)
             return (DbHelper.MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION == fieldIndex);
         else if (TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT == opType) {
-            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == fieldIndex
-                || MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY == fieldIndex)
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == positionAtFunctionalityList
+                || MiscManagementActivity.LIST_ITEM_POS_PRESCRIPTION_CATEGORY == positionAtFunctionalityList)
                 return false;
             else
                 return (DbHelper.GENERAL_MISC_ITEM_COLUMN_INDEX_SUB_CATEGORIES == fieldIndex);

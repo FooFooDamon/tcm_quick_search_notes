@@ -44,6 +44,22 @@
     <string name="cht_ellipsis">……</string>
     <string name="en_ellipsis">&#8230;</string>
 
+    <string name="less_than">&lt;</string>
+    <string name="cht_less_than">&lt;</string>
+    <string name="en_less_than">&lt;</string>
+
+    <string name="prev_arrow">&#160;&lt;&#160;</string>
+    <string name="cht_prev_arrow">&#160;&lt;&#160;</string>
+    <string name="en_prev_arrow">&#160;&lt;&#160;</string>
+
+    <string name="greater_than">&gt;</string>
+    <string name="cht_greater_than">&gt;</string>
+    <string name="en_greater_than">&gt;</string>
+
+    <string name="next_arrow">&#160;&gt;&#160;</string>
+    <string name="cht_next_arrow">&#160;&gt;&#160;</string>
+    <string name="en_next_arrow">&#160;&gt;&#160;</string>
+
 
 
     <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -57,7 +73,7 @@
     <string name="en_hello_world">Hello world!</string>
 
     <string name="empty_string"></string>
-    <string name="space"> </string>
+    <string name="space">&#160;</string>
 
     <string name="settings">设置</string>
     <string name="cht_settings">設置</string>
@@ -258,6 +274,14 @@
     <string name="redirecting">跳转/重定向中……</string>
     <string name="cht_redirecting">跳轉/重定向中……</string>
     <string name="en_redirecting">Redirecting\.\.\.</string>
+
+    <string name="prev_one">前一个</string>
+    <string name="cht_prev_one">前一個</string>
+    <string name="en_prev_one">Previous</string>
+
+    <string name="next_one">后一个</string>
+    <string name="cht_next_one">後一個</string>
+    <string name="en_next_one">Next</string>
 
     <string name="unknown">未知</string>
     <string name="cht_unknown">未知</string>
@@ -521,6 +545,12 @@
     </string>
 
     <string name="version_log_contents">
+        ---- V1.01.06 2018/01/29\n
+        1、修复除方剂种类和参考资料以外的杂项在保存时崩溃的缺陷，并修正
+        界面显示。\n
+        2、在各个详情页的顶端加上“前一个”和“后一个”跳转的界面展示，但
+        功能暂未实现。\n
+	3、隐藏查询页和详情页的图标，留更多空间用于文字信息的展示。\n\n
         ---- V1.01.05 2018/01/28\n
         1、规范内部数据格式。\n\n
         ---- V1.01.04 2018/01/27\n
