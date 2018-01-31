@@ -227,6 +227,10 @@
     <string name="cht_query">查詢</string>
     <string name="en_query">Query</string>
 
+    <string name="conditions_insufficient_or_wrong">条件不足或错误</string>
+    <string name="cht_conditions_insufficient_or_wrong">條件不足或錯誤</string>
+    <string name="en_conditions_insufficient_or_wrong">Conditions Insufficient or Wrong</string>
+
     <string name="querying">查询中……</string>
     <string name="cht_querying">查詢中……</string>
     <string name="en_querying">Querying\.\.\.</string>
@@ -484,7 +488,13 @@
         的信息，而只需创建四君子汤，并且在相关方剂填上六君子汤，则
         输入四君子汤或六君子汤都能查到该方剂项，减少数据量，也方便
         关联记忆和查找操作。\n\n
-        3、名称栏后的新增按钮，可用于新增操作，默认且也只能默认新增
+        3、如果是药物或方剂查询页面，还可通过勾选“按功效主治查询”
+        复选框来决定是按名称（不勾选，查询方法见前一点说明）还是按
+        功效主治（勾选）来查药物或方剂。例如人参功效之一是益气生津、
+        主治之一是治疗气虚，则在按功效主治查询时，输入“益气生津”或
+        “治疗气虚”或这两个词里任何一个字，查出的结果中都会有人参。
+        要注意的是，按功效主治查询时，不会考虑药物或方剂的种类。\n\n
+        4、名称栏后的新增按钮，可用于新增操作，默认且也只能默认新增
         一个“新XX”（XX指药物、方剂等，因所操作的功能而不同），新增
         成功后可点击进入其页面修改其详细信息。
     </string>
@@ -545,12 +555,14 @@
     </string>
 
     <string name="version_log_contents">
+        ---- V1.01.07 2018/01/31\n
+        1、药物和方剂查询页面增加按功效主治关键字查询的功能。\n\n
         ---- V1.01.06 2018/01/29\n
         1、修复除方剂种类和参考资料以外的杂项在保存时崩溃的缺陷，并修正
         界面显示。\n
         2、在各个详情页的顶端加上“前一个”和“后一个”跳转的界面展示，但
         功能暂未实现。\n
-	3、隐藏查询页和详情页的图标，留更多空间用于文字信息的展示。\n\n
+        3、隐藏查询页和详情页的图标，留更多空间用于文字信息的展示。\n\n
         ---- V1.01.05 2018/01/28\n
         1、规范内部数据格式。\n\n
         ---- V1.01.04 2018/01/27\n
@@ -714,6 +726,9 @@
 
     <string name="hint_input_name">请输入药名/方剂名</string>
     <string name="hint_null_for_querying_all">不填则全查</string>
+    <string name="hint_cannot_be_empty">不能为空</string>
+    <string name="query_by_effects">&#160;按功效主治查询</string>
+    <string name="effects_condition_cannot_be_empty">功效主治条件不能为空</string>
 
     <string name="hint_add_when_not_found">
         找不到所指定的条目，请确认输入是否有误，或通过对应的
@@ -773,6 +788,8 @@
 
     <string name="attr_table_prefix_medicine_action_and_indication">medicine_action_and_indication</string>
     <string name="medicine_action_and_indication">主治</string>
+
+    <string name="effects_and_actions_and_indications">功效主治</string>
 
     <string name="medication_details">详情</string>
 
@@ -957,6 +974,13 @@
         order by mid asc
     </string>
 
+    <string name="sql_query_medicine_items_by_effects" formatted="false">
+        select mid, name
+        from medicine_items
+        where ifnull(effects, \'\') || ifnull(actions_and_indications, \'\') like ?
+        order by mid asc
+    </string>
+
     <string name="sql_query_medicine_ids_by_name" formatted="false">
         select mid
         from medicine_items
@@ -1068,6 +1092,13 @@
         select pid, name
         from prescription_items
         where name || ifnull(alias, \'\') || ifnull(relative_prescriptions, \'\') like ? and category = ?
+        order by pid asc
+    </string>
+
+    <string name="sql_query_prescription_items_by_effects" formatted="false">
+        select pid, name
+        from prescription_items
+        where ifnull(effects, \'\') || ifnull(actions_and_indications, \'\') like ?
         order by pid asc
     </string>
 

@@ -326,6 +326,12 @@
         <item>@string/en_query</item>
     </string-array>
 
+    <string-array name="conditions_insufficient_or_wrong">
+        <item>@string/conditions_insufficient_or_wrong</item>
+        <item>@string/cht_conditions_insufficient_or_wrong</item>
+        <item>@string/en_conditions_insufficient_or_wrong</item>
+    </string-array>
+
     <string-array name="querying">
         <item>@string/querying</item>
         <item>@string/cht_querying</item>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.tcm_quick_search_notes"
-    android:versionCode="10106"
-    android:versionName="V1.01.06" >
+    android:versionCode="10107"
+    android:versionName="V1.01.07" >
 
     <uses-sdk
         android:minSdkVersion="17"

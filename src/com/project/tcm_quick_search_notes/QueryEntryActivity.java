@@ -51,6 +51,8 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -86,19 +88,41 @@ public class QueryEntryActivity extends Activity
         if (Version.SDK <= Version.getDeprecatedVersionUpperBound())
             doExtraJobsForLowerVersions();
 
+        final Button btnAddItem = (Button) findViewById(R.id.btn_add_item);
+
+        btnAddItem.setOnClickListener(mAddItemDialog);
+
         Intent prevIntent = getIntent();
         int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
 
         if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType
             || TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
             TextView txvCategory = (TextView)findViewById(R.id.txv_category);
-            Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
+            final Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
             Button btnCategory = (Button)findViewById(R.id.btn_add_category);
+            CheckBox chkboxQueryByEffects = (CheckBox)findViewById(R.id.chkbox_query_by_effects);
 
             txvCategory.setVisibility(TextView.VISIBLE);
             spnCategory.setVisibility(TextView.VISIBLE);
             btnCategory.setVisibility(TextView.INVISIBLE);
             fillCategorySpinner(opType);
+            chkboxQueryByEffects.setVisibility(TextView.VISIBLE);
+            chkboxQueryByEffects.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (!buttonView.isPressed())
+                        return;
+
+                    TextView txvName = (TextView)findViewById(R.id.txv_name);
+                    EditText etxName = (EditText) findViewById(R.id.etx_name);
+
+                    //btnAddItem.setVisibility(isChecked ? TextView.INVISIBLE : TextView.VISIBLE);
+                    txvName.setText(isChecked ? R.string.effects_and_actions_and_indications : R.string.name);
+                    etxName.setHint(isChecked ? R.string.hint_cannot_be_empty : R.string.hint_null_for_querying_all);
+                    spnCategory.setEnabled(!isChecked);
+                }
+            });
 
             if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType)
                 setTitle(getString(R.string.main_item_medicine));
@@ -110,10 +134,6 @@ public class QueryEntryActivity extends Activity
 
             setTitle(MiscManagementActivity.getItemNameByPosition(miscItemPos));
         }
-
-        Button btnAddItem = (Button) findViewById(R.id.btn_add_item);
-
-        btnAddItem.setOnClickListener(mAddItemDialog);
     }
 
     @Override
@@ -253,9 +273,11 @@ public class QueryEntryActivity extends Activity
 
                     EditText etxName = (EditText) findViewById(R.id.etx_name);
                     Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
+                    CheckBox chkboxQueryByEffects = (CheckBox)findViewById(R.id.chkbox_query_by_effects);
 
                     etxName.setText(newItem);
                     spnCategory.setSelection(categorySpinnerPos);
+                    chkboxQueryByEffects.setChecked(false);
                     queryItems();
                 }
             };
@@ -289,6 +311,9 @@ public class QueryEntryActivity extends Activity
 
     private void doExtraJobsForLowerVersions() {
         com.android_assistant.TextView.setDefaultTextShadow(
+            (TextView) findViewById(R.id.chkbox_query_by_effects));
+
+        com.android_assistant.TextView.setDefaultTextShadow(
             (TextView) findViewById(R.id.txv_name));
 
         com.android_assistant.TextView.setDefaultTextShadow(
@@ -311,11 +336,19 @@ public class QueryEntryActivity extends Activity
     }
 
     private void queryItems() {
+        CheckBox chkboxQueryByEffects = (CheckBox)findViewById(R.id.chkbox_query_by_effects);
+        boolean isQueryByEffects = chkboxQueryByEffects.isChecked();
+        EditText etxName = (EditText) findViewById(R.id.etx_name);
+        String itemName = etxName.getText().toString();
+
+        if (isQueryByEffects && 0 == itemName.length()) {
+            Hint.alert(this, R.string.conditions_insufficient_or_wrong, R.string.effects_condition_cannot_be_empty);
+            return;
+        }
+
         Intent prevIntent = getIntent();
         int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
         ArrayList<ItemBrief> itemList = new ArrayList<ItemBrief>();
-        EditText etxName = (EditText) findViewById(R.id.etx_name);
-        String itemName = etxName.getText().toString();
         Spinner spnCategory = (Spinner) findViewById(R.id.spn_category);
         int selectedCategoryPos = spnCategory.getSelectedItemPosition();
         int sqlResId = 0;
@@ -324,39 +357,51 @@ public class QueryEntryActivity extends Activity
         String primaryKey = null;
 
         if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType) {
-            sqlResId = (selectedCategoryPos > 0)
-                ? ((itemName.length() > 0)
-                    ? R.string.sql_query_medicine_items_by_name_and_category
-                    : R.string.sql_query_medicine_items_by_category)
-                : ((itemName.length() > 0)
-                    ? R.string.sql_query_medicine_items_by_name
-                    : R.string.sql_query_all_medicine_items);
+            if (isQueryByEffects) {
+                sqlResId = R.string.sql_query_medicine_items_by_effects;
+                sqlArgs = new String[]{ "%" + itemName + "%" };
+            }
+            else {
+                sqlResId = (selectedCategoryPos > 0)
+                    ? ((itemName.length() > 0)
+                        ? R.string.sql_query_medicine_items_by_name_and_category
+                        : R.string.sql_query_medicine_items_by_category)
+                    : ((itemName.length() > 0)
+                        ? R.string.sql_query_medicine_items_by_name
+                        : R.string.sql_query_all_medicine_items);
+                sqlArgs = (selectedCategoryPos > 0)
+                    ? ((itemName.length() > 0)
+                        ? (new String[]{ "%" + itemName + "%", String.valueOf(selectedCategoryPos)})
+                        : (new String[]{ String.valueOf(selectedCategoryPos) }) )
+                    : ((itemName.length() > 0)
+                        ? (new String[]{ "%" + itemName + "%" })
+                        : null);
+            }
             sql = getString(sqlResId);
-            sqlArgs = (selectedCategoryPos > 0)
-                ? ((itemName.length() > 0)
-                    ? (new String[]{ "%" + itemName + "%", String.valueOf(selectedCategoryPos)})
-                    : (new String[]{ String.valueOf(selectedCategoryPos) }) )
-                : ((itemName.length() > 0)
-                    ? (new String[]{ "%" + itemName + "%" })
-                    : null);
             primaryKey = "mid";
         }
         else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
-            sqlResId = (selectedCategoryPos > 0)
-                ? ((itemName.length() > 0)
-                    ? R.string.sql_query_prescription_items_by_name_and_category
-                    : R.string.sql_query_prescription_items_by_category)
-                : ((itemName.length() > 0)
-                    ? R.string.sql_query_prescription_items_by_name
-                    : R.string.sql_query_all_prescription_items);
+            if (isQueryByEffects) {
+                sqlResId = R.string.sql_query_prescription_items_by_effects;
+                sqlArgs = new String[]{ "%" + itemName + "%" };
+            }
+            else {
+                sqlResId = (selectedCategoryPos > 0)
+                    ? ((itemName.length() > 0)
+                        ? R.string.sql_query_prescription_items_by_name_and_category
+                        : R.string.sql_query_prescription_items_by_category)
+                    : ((itemName.length() > 0)
+                        ? R.string.sql_query_prescription_items_by_name
+                        : R.string.sql_query_all_prescription_items);
+                sqlArgs = (selectedCategoryPos > 0)
+                    ? ((itemName.length() > 0)
+                        ? (new String[]{ "%" + itemName + "%", String.valueOf(selectedCategoryPos)})
+                        : (new String[]{ String.valueOf(selectedCategoryPos) }) )
+                    : ((itemName.length() > 0)
+                        ? (new String[]{ "%" + itemName + "%" })
+                        : null);
+            }
             sql = getString(sqlResId);
-            sqlArgs = (selectedCategoryPos > 0)
-                ? ((itemName.length() > 0)
-                    ? (new String[]{ "%" + itemName + "%", String.valueOf(selectedCategoryPos)})
-                    : (new String[]{ String.valueOf(selectedCategoryPos) }) )
-                : ((itemName.length() > 0)
-                    ? (new String[]{ "%" + itemName + "%" })
-                    : null);
             primaryKey = "pid";
         }
         else {
