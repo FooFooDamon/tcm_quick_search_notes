@@ -153,6 +153,16 @@ public class DetailContentActivity extends Activity {
 
     private Intent mNextIntent = null;
 
+    private TextView mTxvPrevItemId = null;
+    private TextView mTxvPrevItemName = null;
+    private TextView mTxvPrevArrow = null;
+
+    private TextView mTxvNextItemId = null;
+    private TextView mTxvNextItemName = null;
+    private TextView mTxvNextArrow = null;
+
+    private View.OnClickListener mJumpToNeiborDetailsPage = null;
+
     @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,12 +178,10 @@ public class DetailContentActivity extends Activity {
         if (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType) {
             setContentView(R.layout.activity_medicine_item_details);
             setTitle(getString(R.string.main_item_medicine));
-            mDetailContentFromDb = mDbHelper.queryItemDetails(mDetailItemId, TcmCommon.OP_TYPE_VALUE_MEDICINE, mPositionAtFunctionalityList);
         }
         else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType) {
             setContentView(R.layout.activity_prescription_item_details);
             setTitle(getString(R.string.main_item_prescription));
-            mDetailContentFromDb = mDbHelper.queryItemDetails(mDetailItemId, TcmCommon.OP_TYPE_VALUE_PRESCRIPTION, mPositionAtFunctionalityList);
         }
         else {
             String miscItemName = MiscManagementActivity.getItemNameByPosition(mPositionAtFunctionalityList);
@@ -184,20 +192,17 @@ public class DetailContentActivity extends Activity {
                 setContentView(R.layout.activity_general_misc_item_details);
 
             setTitle(miscItemName);
-
-            mDetailContentFromDb = mDbHelper.queryItemDetails(mDetailItemId, TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT, mPositionAtFunctionalityList);
         }
 
-        if (null == mDetailContentFromDb) {
-            Hint.alert(this, getString(R.string.db_error),
-                getString(R.string.not_found) + ": " + "id = " + mDetailItemId,
-                mExitActivity);
-        }
+        reloadDetailContentFromDatabase();
 
         fillDetailContentTemplates(mOpType, mPositionAtFunctionalityList); // MUST be executed before fillDetailTitles() and fillDetailContents()!!!
 
         fillDetailTitles(mOpType, mPositionAtFunctionalityList);
         fillDetailContents(mOpType, mPositionAtFunctionalityList);
+
+        initNeiboringItemViews();
+        updateNeiboringItems();
     }
 
     @Override
@@ -318,6 +323,52 @@ public class DetailContentActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    private int[] getNeiboringItemResIds() {
+        final int[] MEDICINE_IDS = {
+            R.id.txv_prev_medicine_item,
+            R.id.txv_prev_medicine_id,
+            R.id.txv_prev_medicine_name,
+            R.id.txv_next_medicine_item,
+            R.id.txv_next_medicine_id,
+            R.id.txv_next_medicine_name
+        };
+        final int[] PRESCRIPTION_IDS = {
+            R.id.txv_prev_prescription_item,
+            R.id.txv_prev_prescription_id,
+            R.id.txv_prev_prescription_name,
+            R.id.txv_next_prescription_item,
+            R.id.txv_next_prescription_id,
+            R.id.txv_next_prescription_name
+        };
+        final int[] REF_IDS = {
+            R.id.txv_prev_ref_item,
+            R.id.txv_prev_ref_id,
+            R.id.txv_prev_ref_name,
+            R.id.txv_next_ref_item,
+            R.id.txv_next_ref_id,
+            R.id.txv_next_ref_name
+        };
+        final int[] MISC_IDS = {
+            R.id.txv_prev_misc_item,
+            R.id.txv_prev_misc_id,
+            R.id.txv_prev_misc_name,
+            R.id.txv_next_misc_item,
+            R.id.txv_next_misc_id,
+            R.id.txv_next_misc_name
+        };
+
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType)
+            return MEDICINE_IDS;
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType)
+            return PRESCRIPTION_IDS;
+        else {
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == mPositionAtFunctionalityList)
+                return REF_IDS;
+            else
+                return MISC_IDS;
+        }
+    }
+
     private void initResources() {
         if (null == mDbHelper) {
             mDbHelper = new DbHelper(this);
@@ -355,6 +406,123 @@ public class DetailContentActivity extends Activity {
         }
 
         refreshPageItemNames();
+    }
+
+    private void initNeiboringItemViews() {
+        if (null == mJumpToNeiborDetailsPage) {
+            mJumpToNeiborDetailsPage = new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    if (v == mTxvPrevItemId
+                        || v == mTxvPrevItemName
+                        || v == mTxvPrevArrow) {
+                        if (mTxvPrevItemId.getText().toString().equals("0"))
+                            return;
+
+                        mDetailItemId = mTxvPrevItemId.getText().toString();
+                        mDetailItemName = mTxvPrevItemName.getText().toString();
+                    } else {
+                        if (mTxvNextItemId.getText().toString().equals("0"))
+                            return;
+
+                        mDetailItemId = mTxvNextItemId.getText().toString();
+                        mDetailItemName = mTxvNextItemName.getText().toString();
+                    }
+
+                    //boolean isEditableBeforeJumping = mEditable;
+
+                    reloadDetailContentFromDatabase();
+
+                    mEditable = false; // Necessary before filling detail contents!!!
+                    fillDetailContents(mOpType, mPositionAtFunctionalityList);
+
+                    /*if (isEditableBeforeJumping) {
+                        gMenu.findItem(R.id.menu_edit).setVisible(false);
+                        gMenu.findItem(R.id.menu_save).setVisible(true);
+                        gMenu.findItem(R.id.menu_cancel).setVisible(true);
+                        mEditable = true;
+                        refreshAllViews();
+                    } else {*/
+                        gMenu.findItem(R.id.menu_edit).setVisible(true);
+                        gMenu.findItem(R.id.menu_save).setVisible(false);
+                        gMenu.findItem(R.id.menu_cancel).setVisible(false);
+                    //}
+
+                    updateNeiboringItems();
+                }
+
+            };
+        }
+
+        int[] neiborResIds = getNeiboringItemResIds();
+
+        if (null == mTxvPrevArrow) {
+            mTxvPrevArrow = (TextView) findViewById(neiborResIds[0]);
+            mTxvPrevArrow.setOnClickListener(mJumpToNeiborDetailsPage);
+        }
+
+        if (null == mTxvPrevItemId) {
+            mTxvPrevItemId = (TextView) findViewById(neiborResIds[1]);
+            mTxvPrevItemId.setOnClickListener(mJumpToNeiborDetailsPage);
+        }
+
+        if (null == mTxvPrevItemName) {
+            mTxvPrevItemName = (TextView) findViewById(neiborResIds[2]);
+            mTxvPrevItemName.setOnClickListener(mJumpToNeiborDetailsPage);
+        }
+
+        if (null == mTxvNextArrow) {
+            mTxvNextArrow = (TextView) findViewById(neiborResIds[3]);
+            mTxvNextArrow.setOnClickListener(mJumpToNeiborDetailsPage);
+        }
+
+        if (null == mTxvNextItemId) {
+            mTxvNextItemId = (TextView) findViewById(neiborResIds[4]);
+            mTxvNextItemId.setOnClickListener(mJumpToNeiborDetailsPage);
+        }
+
+        if (null == mTxvNextItemName) {
+            mTxvNextItemName = (TextView) findViewById(neiborResIds[5]);
+            mTxvNextItemName.setOnClickListener(mJumpToNeiborDetailsPage);
+        }
+    }
+
+    private void updateNeiboringItems() {
+        int category = com.android_assistant.Integer.parseInt(mDetailContentFromDb.get(DbHelper.MEDICINE_COLUMNS[DbHelper.MEDICINE_COLUMN_INDEX_CATEGORY]), 10, 0);
+        String[][] prevItem = mDbHelper.queryBriefOfNearItems(mOpType, mPositionAtFunctionalityList, true, 1, mDetailItemId, category);
+        String[][] nextItem = mDbHelper.queryBriefOfNearItems(mOpType, mPositionAtFunctionalityList, false, 1, mDetailItemId, category);
+
+        if (null == prevItem) {
+            mTxvPrevItemId.setText(String.valueOf(0));
+            mTxvPrevItemName.setText(R.string.none);
+        } else {
+            mTxvPrevItemId.setText(prevItem[0][0]);
+            mTxvPrevItemName.setText(prevItem[0][1]);
+        }
+
+        if (null == nextItem) {
+            mTxvNextItemId.setText(String.valueOf(0));
+            mTxvNextItemName.setText(R.string.none);
+        } else {
+            mTxvNextItemId.setText(nextItem[0][0]);
+            mTxvNextItemName.setText(nextItem[0][1]);
+        }
+    }
+
+    private void reloadDetailContentFromDatabase() {
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType)
+            mDetailContentFromDb = mDbHelper.queryItemDetails(mDetailItemId, TcmCommon.OP_TYPE_VALUE_MEDICINE, mPositionAtFunctionalityList);
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType)
+            mDetailContentFromDb = mDbHelper.queryItemDetails(mDetailItemId, TcmCommon.OP_TYPE_VALUE_PRESCRIPTION, mPositionAtFunctionalityList);
+        else
+            mDetailContentFromDb = mDbHelper.queryItemDetails(mDetailItemId, TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT, mPositionAtFunctionalityList);
+
+        if (null == mDetailContentFromDb) {
+            Hint.alert(this, getString(R.string.db_error),
+                getString(R.string.not_found) + ": " + "id = " + mDetailItemId,
+                mExitActivity);
+        }
     }
 
     private void refreshAllViews() {

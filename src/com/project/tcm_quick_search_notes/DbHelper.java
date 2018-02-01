@@ -393,6 +393,72 @@ public class DbHelper {
         return results;
     }
 
+    public String[][] queryBriefOfNearItems(int opType, int positionAtFunctionalityList,
+        boolean isBefore, int expectedCount, String id, int categoryIfNeeded) {
+
+        String[] sqlArgs = null ;
+        String sql = null;
+
+        if (expectedCount < 1)
+            expectedCount = 1;
+
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType) {
+            sql = mContext.getString(isBefore
+                ? R.string.sql_query_forward_near_medicine_items
+                : R.string.sql_query_afterward_near_medicine_items);
+            sqlArgs = new String[] { id, String.valueOf(categoryIfNeeded), String.valueOf(expectedCount) };
+        }
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
+            sql = mContext.getString(isBefore
+                ? R.string.sql_query_forward_near_prescription_items
+                : R.string.sql_query_afterward_near_prescription_items);
+            sqlArgs = new String[] { id, String.valueOf(categoryIfNeeded), String.valueOf(expectedCount) };
+        }
+        else {
+            if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == positionAtFunctionalityList) {
+                sql = mContext.getString(isBefore
+                    ? R.string.sql_query_forward_near_reference_material_items
+                    : R.string.sql_query_afterward_near_reference_material_items);
+            }
+            else {
+                String tableName = MiscManagementActivity.getTableNameByPosition(positionAtFunctionalityList);
+                String primaryIdName = MiscManagementActivity.getDbPrimaryIdNameByPosition(positionAtFunctionalityList);
+
+                if (isBefore) {
+                    sql = "select " + primaryIdName + " as iid, name from " + tableName
+                        + " where " + primaryIdName + " < ?"
+                        + " order by iid desc limit ?";
+                } else {
+                    sql = "select " + primaryIdName + " as iid, name from " + tableName
+                        + " where " + primaryIdName + " > ?"
+                        + " order by iid asc limit ?";
+                }
+            }
+            sqlArgs = new String[] { id, String.valueOf(expectedCount) };
+        }
+
+        Cursor c = getDatabase().rawQuery(sql, sqlArgs);
+
+        if (!c.moveToNext()) {
+            c.close();
+
+            return null;
+        }
+
+        ArrayList<String[]> results = new ArrayList<String[]>();
+
+        do {
+            String[] brief = new String[2];
+
+            brief[0] = c.getString(c.getColumnIndex("iid"));
+            brief[1] = c.getString(c.getColumnIndex("name"));
+            results.add(brief);
+        } while (c.moveToNext());
+        c.close();
+
+        return results.toArray(new String[results.size()][2]);
+    }
+
     public String[] queryAttributeNames(int attrPrefixResId, String firstItem) {
         return queryAllNames(mContext.getString(attrPrefixResId) + "_definitions",
             "aid", firstItem);

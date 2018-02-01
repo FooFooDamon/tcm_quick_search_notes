@@ -15,11 +15,12 @@
         android:layout_height="wrap_content" >-->
 
     <RelativeLayout
+        android:id="@+id/llayout_prescription_item_neibors_page"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/txv_prev_item"
+            android:id="@+id/txv_prev_prescription_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -28,58 +29,66 @@
             android:textColor="#ffcacaca" />
 
         <TextView
-            android:id="@+id/txv_prev_id"
+            android:id="@+id/txv_prev_prescription_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/txv_prev_item"
-            android:layout_toEndOf="@+id/txv_prev_item"
+            android:layout_alignBaseline="@+id/txv_prev_prescription_item"
+            android:layout_toEndOf="@+id/txv_prev_prescription_item"
             android:textSize="20sp"
-            android:textColor="#ffcacaca" />
+            android:textColor="#ffcacaca"
+            android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txv_prev_name"
+            android:id="@+id/txv_prev_prescription_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/txv_prev_id"
-            android:layout_toEndOf="@+id/txv_prev_id"
+            android:layout_alignBaseline="@+id/txv_prev_prescription_id"
+            android:layout_toEndOf="@+id/txv_prev_prescription_id"
             android:text="@string/prev_one"
             android:textSize="20sp"
-            android:textColor="#ffcacaca" />
+            android:textColor="#ffcacaca"
+            android:singleLine="false"
+            android:minEms="2"
+            android:maxEms="6" />
 
         <TextView
-            android:id="@+id/txv_next_item"
+            android:id="@+id/txv_next_prescription_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/txv_prev_item"
+            android:layout_alignBaseline="@+id/txv_prev_prescription_item"
             android:layout_alignParentEnd="true"
             android:text="@string/next_arrow"
             android:textSize="20sp"
             android:textColor="#ffcacaca" />
 
         <TextView
-            android:id="@+id/txv_next_id"
+            android:id="@+id/txv_next_prescription_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/txv_next_item"
-            android:layout_toStartOf="@+id/txv_next_item"
+            android:layout_alignBaseline="@+id/txv_next_prescription_item"
+            android:layout_toStartOf="@+id/txv_next_prescription_item"
             android:textSize="20sp"
-            android:textColor="#ffcacaca" />
+            android:textColor="#ffcacaca"
+            android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txv_next_name"
+            android:id="@+id/txv_next_prescription_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/txv_next_id"
-            android:layout_toStartOf="@+id/txv_next_id"
+            android:layout_alignBaseline="@+id/txv_next_prescription_id"
+            android:layout_toStartOf="@+id/txv_next_prescription_id"
             android:text="@string/next_one"
             android:textSize="20sp"
-            android:textColor="#ffcacaca" />
+            android:textColor="#ffcacaca"
+            android:singleLine="false"
+            android:minEms="2"
+            android:maxEms="6" />
 
         <ImageView
             android:contentDescription="@string/empty_string"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:layout_below="@+id/txv_next_name"
+            android:layout_below="@+id/txv_next_prescription_name"
             android:layout_marginTop="5dp"
             android:background="@android:color/transparent" >
         </ImageView>

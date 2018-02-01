@@ -510,7 +510,13 @@
         一个短文本框、一个长文本框，则在首次新增且新增多项的时候，可能
         会出现数据保存为空或错乱的问题，暂未找到解决办法，建议先新增并
         保存退出，再次点击进入进行二次编辑并保存，且最好一次只修改一种
-        文本框的内容，即短文本框或长文本框。
+        文本框的内容，即短文本框或长文本框。\n\n
+        4、页面顶端的向前和向后跳转，若有种类（例如药物和方剂），则针对
+        同种类的项（例如跳到同是补益药或补益剂大类中的前一项或后一项），
+        否则针对全范围内的项。该跳转功能可令用户在不返回查询界面的情况下
+        跳转到另一项，在需要编辑大量连续的项的内容时比较方便，不过在跳转
+        后，页面又恢复成只读状态，若要再度进入编辑状态需手动点击编辑菜单项，
+        这个小问题目前暂未找到解决办法，但也只是带来小小的不便而已。
     </string>
 
     <string name="help_info_for_misc_page">
@@ -555,6 +561,8 @@
     </string>
 
     <string name="version_log_contents">
+        ---- V1.01.08 2018/02/01\n
+        1、实现各个详情页的“前一个”和“后一个”的跳转功能。\n\n
         ---- V1.01.07 2018/01/31\n
         1、药物和方剂查询页面增加按功效主治关键字查询的功能。\n\n
         ---- V1.01.06 2018/01/29\n
@@ -875,6 +883,22 @@
         where rid = ?
     </string>
 
+    <string name="sql_query_forward_near_reference_material_items" formatted="false">
+        select rid as iid, name
+        from reference_material
+        where iid &lt; ?
+        order by iid desc
+        limit ?
+    </string>
+
+    <string name="sql_query_afterward_near_reference_material_items" formatted="false">
+        select rid as iid, name
+        from reference_material
+        where iid &gt; ?
+        order by iid asc
+        limit ?
+    </string>
+
     <string name="sql_update_reference_material_item_by_id">
         update reference_material
         set name = ?, version = ?,
@@ -979,6 +1003,22 @@
         from medicine_items
         where ifnull(effects, \'\') || ifnull(actions_and_indications, \'\') like ?
         order by mid asc
+    </string>
+
+    <string name="sql_query_forward_near_medicine_items" formatted="false">
+        select mid as iid, name
+        from medicine_items
+        where iid &lt; ? and category = ?
+        order by iid desc
+        limit ?
+    </string>
+
+    <string name="sql_query_afterward_near_medicine_items" formatted="false">
+        select mid as iid, name
+        from medicine_items
+        where iid &gt; ? and category = ?
+        order by iid asc
+        limit ?
     </string>
 
     <string name="sql_query_medicine_ids_by_name" formatted="false">
@@ -1100,6 +1140,22 @@
         from prescription_items
         where ifnull(effects, \'\') || ifnull(actions_and_indications, \'\') like ?
         order by pid asc
+    </string>
+
+    <string name="sql_query_forward_near_prescription_items" formatted="false">
+        select pid as iid, name
+        from prescription_items
+        where iid &lt; ? and category = ?
+        order by iid desc
+        limit ?
+    </string>
+
+    <string name="sql_query_afterward_near_prescription_items" formatted="false">
+        select pid as iid, name
+        from prescription_items
+        where iid &gt; ? and category = ?
+        order by iid asc
+        limit ?
     </string>
 
     <string name="sql_query_prescription_details_by_id">
