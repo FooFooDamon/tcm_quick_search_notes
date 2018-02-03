@@ -1,56 +1,4713 @@
+--======================== 2018-02-03 17:21:26 begin ========================--
 
 insert into prescription_items(name, alias, category, effects, actions_and_indications,
 	contraindications, relative_prescriptions, remarks)
 values(/* name: */ '大青龙汤',
 	/* alias: */ '',
 	/* category: */ 0,
-	/* effects: */ '',
-	/* actions_and_indications: */ '',
-	/* contraindications: */ '',
+	/* effects: */ '发汗解表，清热除烦',
+	/* actions_and_indications: */ '表实里热证。症见：发热恶寒，寒热俱重，身疼痛，无汗而烦躁，舌苔薄白，脉浮紧有力',
+	/* contraindications: */ '因本方发汗力较强，过汗容易伤阳，故风寒表虚证，有汗而烦，发热脉弱者，不宜使用',
 	/* relative_prescriptions: */ '',
-	/* remarks: */ '' );
+	/* remarks: */ '杏仁去皮尖' );
 
-insert into prescription_items(name, alias, category, effects, actions_and_indications,
-	contraindications, relative_prescriptions, remarks)
-values(/* name: */ '小青龙汤',
-	/* alias: */ '',
-	/* category: */ 0,
-	/* effects: */ '',
-	/* actions_and_indications: */ '',
-	/* contraindications: */ '',
-	/* relative_prescriptions: */ '',
-	/* remarks: */ '' );
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小青龙汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '神术散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '射干麻黄汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '香苏散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '葱豉汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '桑菊饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '银翘散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '柴葛解肌汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '升麻葛根汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '宣毒发表汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '竹叶柳蒡汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '葱豉桔梗汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '人参败毒散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '再造散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '参苏饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '芎苏饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '麻黄附子细辛汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '加减葳蕤汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '葱白七味饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '白虎汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '竹叶石膏汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '栀子豉汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清营汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清宫汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '犀角地黄汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '神犀丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '犀角汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '犀角散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清瘟败毒饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '普济消毒饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '黄连解毒汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '牛蒡解肌汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五味消毒饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '仙方活命饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '四妙勇安汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '银花解毒汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '连翘归尾煎',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '犀黄丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '连翘金贝煎',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五神汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '消乳汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '导赤散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '导赤泻心汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清心莲子饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '龙胆泻肝汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '左金丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '化肝煎',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '泻青丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '当归龙荟丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '石决明散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清胃散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '玉女煎',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '泻黄散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '泻白散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '地骨皮丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清肺饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '葶苈大枣泻肺汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '苇茎汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清肺解毒汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '人参泻肺汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '白头翁汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '白头翁加甘草阿胶汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '黄芩汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清肠饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清络饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '香薷饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '新加香薷饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '六一散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '滑石黄柏散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清暑益气汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '青蒿鳖甲汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '黄芪鳖甲汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '秦艽鳖甲散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '秦艽扶羸汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清骨散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '地骨皮汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '藿香正气散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '平胃散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '三仁汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '六和汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '藿朴夏苓汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '甘露消毒丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '黄芩滑石汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '蚕矢汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '八正散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '石韦散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '茵陈蒿汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '栀子柏皮汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '麻黄连翘赤小豆汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '宣痹汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '连朴饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '二妙散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五苓散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '猪苓汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五皮散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '防己黄芪汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '苓桂术甘汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '实脾饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '肾着汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '真武汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '渗湿汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '防己茯苓汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '萆薢分清饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '鸡鸣散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '吴萸木瓜汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '羌活胜湿汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '独活寄生汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '三痹汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '蠲痹汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '薏苡仁汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '乌头汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '通痹散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '川芎茶调散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清空膏',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '三叉神经痛经验方',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '苍耳子散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '牵正散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '止痉散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五虎追风散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '玉真散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '逐风汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小续命汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大秦艽汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小活络丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '羚角钩藤汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '天麻钩藤饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '钩藤饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '羚羊角汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '镇肝熄风汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '建瓴汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '平肝清晕汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大定风珠',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小定风珠',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '阿胶鸡子黄汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '地黄饮子',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '桑杏汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '翘荷汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '沙参麦冬汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清燥救肺汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '杏苏散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '百合固金汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '补肺阿胶汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '养阴清肺汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '琼玉膏',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '麦门冬汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '益胃汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五汁饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '冬地三黄汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '增液汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '月华丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '加减复脉汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小柴胡汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '蒿芩清胆汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '四逆散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '柴胡疏肝散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '逍遥散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '痛泻要方',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '芍药甘草汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '半夏泻心汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '截疟七宝饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '达原饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '柴胡达原饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '截疟常山饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清脾饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大柴胡汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '复方大柴胡汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '防风通圣散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '双解散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '祛风至宝丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '厚朴七物汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '葛根黄芩黄连汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '石膏汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五积散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '二陈汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '指迷茯苓丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '驱痰饮子',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '苓甘五味姜辛汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '冷哮丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '贝母瓜蒌散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清气化痰丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '滚痰丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '消瘰丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '消疬丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小陷胸汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '竹沥汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '止嗽散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '金沸草散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '半夏白术天麻汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '稀涎散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '青州白丸子',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '越鞠丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '愈痛散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '半夏厚朴汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '良附丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '青囊丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '瓜蒌薤白白酒汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '瓜蒌薤白半夏汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '瓜蒌薤白桂枝汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '加味乌药汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '天台乌药散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '暖肝煎',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '橘核丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '导气汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '金铃子散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '推气散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '丹参饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '苏子降气汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '定喘汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '人参蛤蚧散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '人参胡桃汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '旋覆代赭汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '橘皮竹茹汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '济生橘皮竹茹汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '新制橘皮竹茹汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '丁香柿蒂汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '柿蒂散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '柿钱散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '降逆止呃汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '四磨饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五磨饮子',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '桃核承气汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '下瘀血汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大黄䗪虫丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '桂枝茯苓丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '血府逐瘀汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '通窍活血汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '膈下逐瘀汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '少腹逐瘀汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '身痛逐瘀汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '七厘散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '复元活血汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '补阳还五汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '温经汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '失笑散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '生化汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '加参生化汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '加味生化汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '抵当汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '十灰散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '四红丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小蓟饮子',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '槐花散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '地榆散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '四生丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '槐角丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '脏连丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '止血神效丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '咳血方',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '寒降汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '保元清降汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '三鲜饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '秘红丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '柏叶汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '温降汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '黄土汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '胶艾汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '参苓白术散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '资生丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '补中益气汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '升陷汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '生脉散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '保元汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '举元煎',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '独参汤（替代者：党参、白术等）',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '当归补血汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '七宝美髯丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '当归生姜羊肉汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '八珍益母丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五福饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '两仪膏',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '人参养荣汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '归脾汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小草汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '炙甘草汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '泰山磐石散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '薯蓣丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '六味地黄丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '左归饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '左归丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '一贯煎',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '二至丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大补阴丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '虎潜丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '固本丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '肾气丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '济生肾气丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '十补丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '右归饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '右归丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五子衍宗丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '内补丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '斑龙丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '二仙汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '保和丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大安丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小保和丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '枳术丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '健脾丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '枳实导滞丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '木香槟榔丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大和中饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小和中饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '葛花解酲汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '枳实消痞丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '化积丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '鳖甲煎丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '鳖甲饮子',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '理中丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '厚朴温中汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '吴茱萸汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '附子茴香散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '附子粳米汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大建中汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '圣济吴茱萸汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '温中补脾汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '附子汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '四逆汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '参附汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '芪附汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '术附汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '回阳救急汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '六味回阳饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '回阳生脉散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '黑锡丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '当归四逆汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '当归四逆加吴茱萸生姜汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '黄芪桂枝五物汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '桂枝附子汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '阳和汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大承气汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '凉膈散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '更衣丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大黄牡丹汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '桃仁汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大黄附子汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '温脾汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '三物备急丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '麻子仁丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '五仁丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '润肠丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '济川煎',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '十枣汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '舟车丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '疏凿饮子',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '己椒苈黄丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '黄龙汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '新加黄龙汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '承气养营汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '增液承气汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '牡蛎散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '玉屏风散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '当归六黄汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '柏子仁丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '金锁固精丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '茯菟丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '固真丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '秘元煎',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '水陆二仙丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '三才封髓丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '三才汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '封髓丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '桑螵蛸散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '缩泉丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '治浊固本丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '真人养脏汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '人参樗皮散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '桃花汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '赤石脂禹余粮汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '四神丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '二神丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '澹寮四神丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '敦复汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '诃子散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '固冲汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '滋肾固冲汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清热固经汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '固经丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '升阳举经汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '安冲汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '完带汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '清带汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '易黄汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '白芷散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '当归丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '固下丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '滋肾束带方',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '磁朱丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '生铁落饮',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '朱砂安神丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '珍珠母丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '酸枣仁汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '天王补心丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '柏子养心丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '甘麦大枣汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '孔圣枕中丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '平补镇心丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '安神定志丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '人参琥珀丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '养心汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '益荣汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '安宫牛黄丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '牛黄承气丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '牛黄清心丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '紫雪丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '至宝丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '神犀丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '行军散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小儿至宝丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '小儿回春丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '抱龙丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '牛黄抱龙丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '琥珀抱龙丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '猴枣散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '苏合香丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '通关散',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '卫生防疫宝丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '急救回生丹',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '乌梅丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '理中安蛔汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '连理安蛔汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '肥儿丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '布袋丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '使君子丸',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '扫虫煎',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '驱绦汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '驱蛲虫方',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '胆蛔汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '',
+--	/* actions_and_indications: */ '',
+--	/* contraindications: */ '',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '' );
 
-insert into prescription_items(name, alias, category, effects, actions_and_indications,
-	contraindications, relative_prescriptions, remarks)
-values(/* name: */ '神术散',
-	/* alias: */ '',
-	/* category: */ 0,
-	/* effects: */ '',
-	/* actions_and_indications: */ '',
-	/* contraindications: */ '',
-	/* relative_prescriptions: */ '',
-	/* remarks: */ '' );
+--======================== 2018-02-03 17:21:26 end ========================--
 
-insert into prescription_items(name, alias, category, effects, actions_and_indications,
-	contraindications, relative_prescriptions, remarks)
-values(/* name: */ '射干麻黄汤',
-	/* alias: */ '',
-	/* category: */ 0,
-	/* effects: */ '',
-	/* actions_and_indications: */ '',
-	/* contraindications: */ '',
-	/* relative_prescriptions: */ '',
-	/* remarks: */ '' );
-
-insert into prescription_items(name, alias, category, effects, actions_and_indications,
-	contraindications, relative_prescriptions, remarks)
-values(/* name: */ '香苏散',
-	/* alias: */ '',
-	/* category: */ 0,
-	/* effects: */ '',
-	/* actions_and_indications: */ '',
-	/* contraindications: */ '',
-	/* relative_prescriptions: */ '',
-	/* remarks: */ '' );
 

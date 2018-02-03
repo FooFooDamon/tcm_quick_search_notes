@@ -34,5 +34,9 @@ UPDATE_PRESCRIPTION_SQL_FILE=update_prescription_items.sql
 INSERT_MEDICINE_SQL_FILE=insert_medicine_items.sql
 INSERT_PRESCRIPTION_SQL_FILE=insert_prescription_items.sql
 
+CUR_TIME="$(date "+%Y-%m-%d %H:%M:%S")"
+BEGIN_DELIM=$(echo "--======================== $CUR_TIME begin ========================--")
+END_DELIM=$(echo "--======================== $CUR_TIME end ========================--")
+
 cd $(dirname $0)
 

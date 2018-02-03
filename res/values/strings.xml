@@ -493,7 +493,10 @@
         功效主治（勾选）来查药物或方剂。例如人参功效之一是益气生津、
         主治之一是治疗气虚，则在按功效主治查询时，输入“益气生津”或
         “治疗气虚”或这两个词里任何一个字，查出的结果中都会有人参。
-        要注意的是，按功效主治查询时，不会考虑药物或方剂的种类。\n\n
+        要注意的是，按功效主治查询时，不会考虑药物或方剂的种类。而且，
+        考虑到药物之间、方剂之间的关联性和实际的搭配效应，以及笔记
+        的实际组织形式，参与匹配的可能不止功效和主治内容，还会有常用
+        药搭配、相关方剂等，稍为知悉便可，不必太咬文嚼字。\n\n
         4、名称栏后的新增按钮，可用于新增操作，默认且也只能默认新增
         一个“新XX”（XX指药物、方剂等，因所操作的功能而不同），新增
         成功后可点击进入其页面修改其详细信息。
@@ -561,6 +564,9 @@
     </string>
 
     <string name="version_log_contents">
+        ---- V1.01.09 2018/02/03\n
+        1、按功效主治查询的条件，药物加上“详情”和“常用药搭配”，方剂则
+        加上“相关方剂”。\n\n
         ---- V1.01.08 2018/02/01\n
         1、实现各个详情页的“前一个”和“后一个”的跳转功能。\n\n
         ---- V1.01.07 2018/01/31\n
@@ -1001,7 +1007,8 @@
     <string name="sql_query_medicine_items_by_effects" formatted="false">
         select mid, name
         from medicine_items
-        where ifnull(effects, \'\') || ifnull(actions_and_indications, \'\') like ?
+        where ifnull(effects, \'\') || ifnull(actions_and_indications, \'\')
+        || ifnull(details, \'\') || ifnull(common_partners, \'\') like ?
         order by mid asc
     </string>
 
@@ -1138,7 +1145,7 @@
     <string name="sql_query_prescription_items_by_effects" formatted="false">
         select pid, name
         from prescription_items
-        where ifnull(effects, \'\') || ifnull(actions_and_indications, \'\') like ?
+        where ifnull(effects, \'\') || ifnull(actions_and_indications, \'\') || ifnull(relative_prescriptions, \'\') like ?
         order by pid asc
     </string>
 

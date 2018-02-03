@@ -1,4849 +1,4852 @@
+--======================== 2018-01-29 13:34:15 begin ========================--
+
+--update medicine_items
+--set alias = '',
+--	effects = '健脾燥湿，益气生血，和中安胎，是常用的补气药，但与补血药同用，也可以补血（中焦运化旺盛，则气血自生）',
+--	actions_and_indications = '可治脾胃虚弱、中焦运化不健、消化不良、水湿不化、食欲不振等。可治气虚，也可与补血药同用而治贫血',
+--	details = '现代研究还表明，本品可使胃肠分泌旺盛，蠕动增速，入血可使血循环加快，还有降低血糖和利尿作用。',
+--	common_prescriptions = '八珍汤、人参养荣汤',
+--	common_partners = '配合猪苓、茯苓皮、冬瓜皮、车前子、桂枝等，可治脾虚水肿；配合黄芪、防风、浮小麦等，可用于气虚自汗；配合枳实、莪术、神曲、麦芽、山楂核、生牡蛎、桃仁、丹参等，可用于腹中癥结癖块等',
+--	similar_medicines = '党参、人参补气，偏于补脾肺元气，适用于补虚救急，白术补气，偏于健脾、补中焦以生气，适用于生气血以治虚。苍术健脾燥湿因其芳香苦温，其性燥烈，兼能升阳散郁，燥湿、升散之力优于白术，而健脾、补气生血之力则不如白术。',
+--	dosage_reference = '一般用量为4.5～9克，重症时可用15～30克（例如抢救虚脱需用独参汤但又一时得不到人参，可用生白术20～45g、党参30～80g、附片9～12g，急煎服）',
+--	contraindications = '脾胃阴虚者慎用',
+--	remarks = '生白术适用于益气生血；炒白术适用于健脾燥湿；焦白术适用于助消化、开胃口、散癥癖；土炒白术适用于补健脾胃而止泄泻。'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白术';
+--
+--update medicine_items
+--set alias = '淮山',
+--	effects = '补脾胃、益肺气、强肾固精、治带下',
+--	actions_and_indications = '可治脾胃虚（大便虚泄难愈、四肢乏力、脉虚等）、肺气虚（气短乏力、懒言声低、自感胸中气少、右寸脉虚等）、肾虚（滑精、遗精等）、带下（白带、黄带、赤带），还能益肺肾之阴而治消渴证（上、中、下消的症状及用药搭配详见参考资料）',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '配白术、党参、茯苓、扁豆、莲子肉、炒芡实等，可治脾胃虚；配白术、党参、五味子、黄芪、陈皮等，可治肺气虚；配生地、熟地、山萸肉、五味子、锁阳、金樱子等，可治肾虚；治带下的用药搭配详见参考资料',
+--	similar_medicines = '白术的燥湿健脾、益气生血之力大于山药，补肾强精之力却不如；炒薏米健脾止泻偏于利湿而燥脾，炒山药则偏于补脾肾而固涩。',
+--	dosage_reference = '一般用量为9～25克，重症时可用30克以上',
+--	contraindications = '腹胀、中焦满闷者不宜使用，若用后产生气壅、腹中胀闷、食欲不振等，可加上陈皮。',
+--	remarks = '补脾胃、益肺气、治带下用炒山药，强肾生精、治消渴用生山药'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '山药';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '补脾气、养胃阴、润心肺、补肝明目、补肾益精，可助筋骨，可除风湿',
+--	actions_and_indications = '可治脾胃虚弱、心肺阴虚、高热病后胃阴受伤等',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '治脾胃虚弱：配白术、党参、茯苓、甘草、陈皮、麦芽、谷芽等；养阴开胃：配玉竹、麦冬、沙参、冰糖、生麦芽等；治心肺阴虚：配麦冬、贝母、沙参、远志、杏仁、茯神、枣仁等；补肝明目：配蔓荆子、草决明等；补肾益精：配杜仲、续断等；除风湿：配羌活、独活等。',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为6～9克',
+--	contraindications = '阴盛、气滞者，均忌用',
+--	remarks = '本品性质平和，适于久服、病后调养之用，前人经验认为“黄精可代参芪，玉竹可代参地”，可作参考'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '黄精';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '补脾、清热、解毒（甚至对河豚毒、蛇毒也有一定作用，故前人认为能解百毒）、缓急、润肺、调和药性',
+--	actions_and_indications = '可治体虚或久病而致的中焦气虚，可用于痈疽疮疡，可缓腹中急痛，可治肺热所致的咽痛、咳嗽等，可治肺结核，可祛痰、用于咽喉炎症，可配合抗痨药',
+--	details = '',
+--	common_prescriptions = '炙甘草汤（可用于阴气虚少、阳气虚败而致的脉结代、心动悸之症有一定的效果）',
+--	common_partners = '治中焦气虚：配党参、白术、茯苓、扁豆、陈皮等；治痈疡：配金银花、连翘、赤芍、牡丹皮、紫花地丁、蒲公英等；治各种阴疽：熟地、麻黄、肉桂、鹿角胶、白芥子、桂枝等；治腹中急痛者：配白芍、饴糖、桂枝、大枣、生姜等；治肺热咳嗽：配杏仁、贝母、枇杷叶、瓜蒌、知母、黄芩等；治咽喉肿痛：配桔梗、射干、牛蒡子、玄参等',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为1～9克',
+--	contraindications = '反大戟、甘遂、芫花、海藻。脾胃有湿而中满呕吐者忌用。长期大量服用可引起水肿、高血压。',
+--	remarks = '用蜜炙过的称为炙甘草，适用于补中益气；生甘草适用于清热解毒'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '甘草';
+--
+--update medicine_items
+--set alias = '熟地',
+--	effects = '补血生精、滋肾养肝，是最常用的滋阴补血药',
+--	actions_and_indications = '可治血虚、贫血、肝肾阴虚',
+--	details = '',
+--	common_prescriptions = '四物汤（最常用的补血方）、六味地黄丸/汤（治肝肾阴虚证）',
+--	common_partners = '治血虚：配当归、白芍、川芎（即四物汤）；治贫血：配当归、黄芪、党参、阿胶等；治肝肾阴虚证：配山药、山萸肉、牡丹皮、泽泻、茯苓（即六味地黄丸/汤）；配当归则补血，配白芍则养肝，配柏子仁则养心，配龙眼肉则养脾，配麻黄则不黏滞且能通血脉温肌腠。',
+--	similar_medicines = '桑葚补肝肾，其性偏凉，补血之力不如熟地；当归补血其性动，熟地性静，当归生新血而补血，熟地滋阴精而养血，二药合用能互补长短；何首乌也能补肝肾，但补血之力不如熟地，乌须发之力强于熟地',
+--	dosage_reference = '一般用量为9～25克，重症时可用30克以上',
+--	contraindications = '阳虚阴盛之人忌用本品，痰多、苔腻、胸膈滞闷者均不宜用之。本品久服时，宜佐用砂仁，以免腻膈（妨碍食欲、胸脘发闷）。',
+--	remarks = '最常用的滋阴补血药'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '熟地黄';
 
 update medicine_items
 set alias = '',
-	effects = '',
-	actions_and_indications = '',
+	effects = '补血，活血通络，散瘀消肿，润肠通便，调月经',
+	actions_and_indications = '可治各种血虚、贫血，可治跌打损伤、瘀血肿痛、风寒湿痹、肌肤麻木不仁等，可治因血虚肠燥而致的大便秘结，可治闭经、行经腹痛、崩漏等',
 	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白术';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '山药';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '黄精';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '甘草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '熟地黄';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
+	common_prescriptions = '四物汤（常用于血虚、贫血）、当归补血汤（常用于失血过多而血虚、气血不足等）',
+	common_partners = '治血虚、贫血：配黄芪、熟地、白芍、川芎等；治跌打：配红花、赤芍、三七、桃仁、乳香、没药等；治痈疮初起：配连翘、金银花、赤芍、红花、皂角刺、炙穿山甲等；治风寒湿痹、臂腿腰足疼痛：配桂枝、羌活、独活、威灵仙、片姜黄、红花、薏米、续断、附子等；治肌肤麻木：配川芎、红花、半夏、防风、黄芪、桂枝、白芍、熟地、炙穿山甲等；治血虚便秘：配麻仁、生地、熟地、桃仁、肉苁蓉、郁李仁、瓜蒌仁、大黄等',
+	similar_medicines = '白芍补血偏于养阴，性静主守，血虚生热者宜用，当归补血偏于温阳，性动主走，血虚有寒者宜用。',
+	dosage_reference = '一般用量为3～9克，重症时可用15克',
+	contraindications = '大肠滑泄和火旺者，均不宜使用',
+	remarks = '治疗血分病最常用的药，也是妇科调理经血最常用的药。归头和归尾偏于活血、破血；归身偏于补血、养血；全当归既可活血也可补血；归须偏于活血通络；酒当归偏于行血活血；土炒当归可用于血虚而又兼大便溏软者；当归炭用于止血。在配伍上，配黄芪、党参，可生气补血；配大黄、牛膝，可破下部瘀血；配川芎、苏木、红花、桔梗，可活上部瘀血；配桂枝、桑枝、路路通、丝瓜络，可通达四肢，活血通络。'
 where (effects is null or length(effects) = 0)
 	and (actions_and_indications is null or length(actions_and_indications) = 0)
 	and (alias is null or length(alias) = 0)
 	and name = '当归';
 
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白芍';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '阿胶';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '紫河车';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '何首乌';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '龟甲/龟板';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '鳖甲';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '山茱萸';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '枸杞子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '沙参';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '元参';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '麦冬';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '天冬';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '玉竹';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '百合';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '女贞子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '旱莲草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '桑椹';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '潼蒺藜';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '黑芝麻';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '牛膝';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '土牛膝';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '鹿茸';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '鹿角';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '鹿角胶';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '鹿角霜';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '肉苁蓉';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '巴戟天';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '淫羊藿';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '补骨脂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '益智仁';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '仙茅';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '菟丝子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '杜仲';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '续断';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '狗脊';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '蛇床子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '阳起石';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '酸枣仁';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '柏子仁';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '远志';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '珍珠母';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '朱砂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '琥珀';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '磁石';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '龙骨';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '龙齿';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '牡蛎';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '浮小麦';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '麻黄根';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '金樱子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '莲子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '海螵蛸';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '瓦楞子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '赤石脂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白石脂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '禹余粮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '乌梅';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '诃子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '肉豆蔻';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '桑螵蛸';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '复盆子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '五味子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白果';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '陈皮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '橘红';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '青皮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '枳实';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '枳壳';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '沉香';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '檀香';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '柿蒂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '旋复花';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '莱菔子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '薤白';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '苏子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '草豆蔻';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '红豆蔻';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '砂仁';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白豆蔻';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '荔枝核';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '川楝子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '香附';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '木香';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '厚朴';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '乌药';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '槟榔';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '香橼';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '佛手（花）';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '川芎';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '丹参';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '姜黄';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '郁金';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '莪术';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '三棱';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '乳香';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '没药';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '红花';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '桃仁';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '五灵脂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '蒲黄';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '穿山甲';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '王不留行';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '泽兰';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '益母草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '骨碎补';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '刘寄奴';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '苏木';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '茜草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '赤芍';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '血竭';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '水蛭';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '虻虫';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '麻黄';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '桂枝';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '荆芥';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '防风';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '紫苏';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '羌活';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '独活';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白芷';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '藁本';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '细辛';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '辛荑';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '苍耳子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '香薷';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '生姜';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '薄荷';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '菊花';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '牛蒡子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '蔓荆子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '浮萍';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '蝉蜕';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '大黄';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '芒硝';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '番泻叶';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '芦荟';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '巴豆';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '火麻仁';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '郁李仁';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '蜂蜜';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '木通';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '通草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '茯苓';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '猪苓';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '泽泻';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '车前子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '滑石';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '石韦';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '萹蓄';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '瞿麦';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '海金沙';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '金钱草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '冬葵子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '薏米';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '防己';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '木瓜';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '五加皮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '冬瓜皮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '冬瓜子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '茵陈';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '玉米须';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '抽葫芦';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '甘遂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '大戟';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '芫花';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '商陆';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '牵牛子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '附子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '肉桂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '干姜';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '炮姜';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '吴茱萸';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '小茴香';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '丁香';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '高良姜';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '艾叶';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '胡芦巴';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '半夏';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '天南星';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '胆南星';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白芥子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '皂角';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '皂刺';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白附子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '乌头';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '石膏';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '黄连';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '黄芩';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '栀子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '黄柏';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '生地黄';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '犀角';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '广角';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '水牛角';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '羚羊角';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '知母';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '大青叶';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '青黛';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '板蓝根';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '山豆根';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '锦灯笼';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '射干';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '金银花';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '连翘';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '蒲公英';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '地丁';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '龙胆草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '苦参';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '胡黄连';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '芦根';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '竹叶';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '天花粉';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '败酱草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '马勃';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '蚤休';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '鸦胆子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '漏芦';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '夏枯草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '草决明';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '青葙子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '密蒙花';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '夜明砂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '地骨皮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '紫草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '银柴胡';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白薇';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '青蒿';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白头翁';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '秦皮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白鲜皮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '瓜蒌';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '葶苈子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '天竺黄';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '竹茹';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '竹沥';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '昆布';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '海藻';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '代赭石';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '石决明';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '杏仁';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '桔梗';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白前';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '贝母';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '紫苑';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '款冬花';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '百部';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '马兜铃';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '桑白皮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '枇杷叶';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '威灵仙';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '秦艽';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '豨莶草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '海风藤';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '络石藤';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '海桐皮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '千年健';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '老鹳草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '伸筋草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '透骨草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '追地风';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '桑枝';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '松节';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '丝瓜络';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白僵蚕';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '全蝎';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '蜈蚣';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '地龙';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '天麻';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '钩藤';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '大蓟';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '小蓟';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '地榆';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '侧柏叶';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白茅根';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '棕榈炭';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '三七';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '仙鹤草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '藕节';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '麝香';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '冰片';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '神曲';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '麦芽';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '山楂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '鸡内金';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '常山';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '草果';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '使君子';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '苦楝根皮';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '芜荑';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '鹤虱';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '雷丸';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '紫硇砂';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '山慈菇';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '半枝莲';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '白花蛇舌草';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '新药物2';
-
-update medicine_items
-set alias = '',
-	effects = '',
-	actions_and_indications = '',
-	details = '',
-	common_prescriptions = '',
-	common_partners = '',
-	similar_medicines = '',
-	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
-	contraindications = '',
-	remarks = ''
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '新药物';
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白芍';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '阿胶';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '紫河车';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '何首乌';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '龟甲/龟板';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '鳖甲';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '山茱萸';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '枸杞子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '沙参';
+--
+--update medicine_items
+--set alias = '玄参',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '元参';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '麦冬';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '天冬';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '玉竹';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '百合';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '女贞子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '旱莲草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '桑椹';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '潼蒺藜';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '黑芝麻';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '牛膝';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '土牛膝';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '鹿茸';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '鹿角';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '鹿角胶';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '鹿角霜';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '肉苁蓉';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '巴戟天';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '淫羊藿';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '补骨脂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '益智仁';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '仙茅';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '菟丝子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '杜仲';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '续断';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '狗脊';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '蛇床子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '阳起石';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '酸枣仁';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '柏子仁';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '远志';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '珍珠母';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '朱砂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '琥珀';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '磁石';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '龙骨';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '龙齿';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '牡蛎';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '浮小麦';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '麻黄根';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '金樱子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '莲子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '海螵蛸';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '瓦楞子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '赤石脂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白石脂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '禹余粮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '乌梅';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '诃子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '肉豆蔻';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '桑螵蛸';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '复盆子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '五味子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白果';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '陈皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '橘红';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '青皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '枳实';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '枳壳';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '沉香';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '檀香';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '柿蒂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '旋复花';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '莱菔子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '薤白';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '苏子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '草豆蔻';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '红豆蔻';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '砂仁';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白豆蔻';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '荔枝核';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '川楝子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '香附';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '木香';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '厚朴';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '乌药';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '槟榔';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '香橼';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '佛手（花）';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '川芎';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '丹参';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '姜黄';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '郁金';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '莪术';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '三棱';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '乳香';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '没药';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '红花';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '桃仁';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '五灵脂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '蒲黄';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '穿山甲';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '王不留行';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '泽兰';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '益母草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '骨碎补';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '刘寄奴';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '苏木';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '茜草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '赤芍';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '血竭';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '水蛭';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '虻虫';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '麻黄';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '桂枝';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '荆芥';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '防风';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '紫苏';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '羌活';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '独活';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白芷';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '藁本';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '细辛';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '辛荑';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '苍耳子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '香薷';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '生姜';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '薄荷';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '菊花';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '牛蒡子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '蔓荆子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '浮萍';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '蝉蜕';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '大黄';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '芒硝';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '番泻叶';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '芦荟';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '巴豆';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '火麻仁';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '郁李仁';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '蜂蜜';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '木通';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '通草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '茯苓';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '猪苓';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '泽泻';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '车前子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '滑石';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '石韦';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '萹蓄';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '瞿麦';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '海金沙';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '金钱草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '冬葵子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '薏米';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '防己';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '木瓜';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '五加皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '冬瓜皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '冬瓜子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '茵陈';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '玉米须';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '抽葫芦';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '甘遂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '大戟';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '芫花';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '商陆';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '牵牛子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '附子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '肉桂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '干姜';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '炮姜';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '吴茱萸';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '小茴香';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '丁香';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '高良姜';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '艾叶';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '胡芦巴';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '半夏';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '天南星';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '胆南星';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白芥子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '皂角';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '皂刺';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白附子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '乌头';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '石膏';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '黄连';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '黄芩';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '栀子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '黄柏';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '生地黄';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '犀角';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '广角';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '水牛角';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '羚羊角';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '知母';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '大青叶';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '青黛';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '板蓝根';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '山豆根';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '锦灯笼';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '射干';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '金银花';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '连翘';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '蒲公英';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '地丁';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '龙胆草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '苦参';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '胡黄连';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '芦根';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '竹叶';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '天花粉';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '败酱草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '马勃';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '蚤休';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '鸦胆子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '漏芦';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '夏枯草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '草决明';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '青葙子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '密蒙花';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '夜明砂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '地骨皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '紫草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '银柴胡';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白薇';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '青蒿';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白头翁';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '秦皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白鲜皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '瓜蒌';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '葶苈子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '天竺黄';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '竹茹';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '竹沥';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '昆布';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '海藻';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '代赭石';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '石决明';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '杏仁';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '桔梗';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白前';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '贝母';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '紫苑';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '款冬花';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '百部';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '马兜铃';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '桑白皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '枇杷叶';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '威灵仙';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '秦艽';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '豨莶草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '海风藤';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '络石藤';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '海桐皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '千年健';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '老鹳草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '伸筋草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '透骨草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '追地风';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '桑枝';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '松节';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '丝瓜络';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白僵蚕';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '全蝎';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '蜈蚣';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '地龙';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '天麻';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '钩藤';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '大蓟';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '小蓟';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '地榆';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '侧柏叶';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白茅根';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '棕榈炭';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '三七';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '仙鹤草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '藕节';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '麝香';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '冰片';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '神曲';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '麦芽';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '山楂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '鸡内金';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '常山';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '草果';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '使君子';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '苦楝根皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '芜荑';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '鹤虱';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '雷丸';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '紫硇砂';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '山慈菇';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '半枝莲';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白花蛇舌草';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '新药物2';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '',
+--	actions_and_indications = '',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	contraindications = '',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '新药物';
+
+--======================== 2018-01-29 13:34:15 end ========================--
 

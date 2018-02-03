@@ -450,6 +450,8 @@ public class DetailContentActivity extends Activity {
                     //}
 
                     updateNeiboringItems();
+
+                    Hint.shortToast(DetailContentActivity.this, mDetailItemName);
                 }
 
             };

@@ -5,15 +5,15 @@ source $(dirname $0)/common_precheck.sh
 INSERT_MEDICINE_DATA_FILE=insert_medicine_items.data.txt
 INSERT_PRESCRIPTION_DATA_FILE=insert_prescription_items.data.txt
 
-for i in $INSERT_MEDICINE_DATA_FILE $INSERT_PRESCRIPTION_DATA_FILE
-do
-	if [ ! -f $i ]
-	then
-		echo "Required data file does not exist: $i" >&2
-		exit 1
-	fi
-	echo "Data file validation successful: $i"
-done
+#for i in $INSERT_MEDICINE_DATA_FILE $INSERT_PRESCRIPTION_DATA_FILE
+#do
+#	if [ ! -f $i ]
+#	then
+#		echo "Required data file does not exist: $i" >&2
+#		exit 1
+#	fi
+#	echo "Data file validation successful: $i"
+#done
 
 UPDATE_MEDICINE_DATA_FILE=update_medicine_items.data.txt
 UPDATE_PRESCRIPTION_DATA_FILE=update_prescription_items.data.txt
@@ -73,14 +73,28 @@ do
 	data_file=${UPDATE_DATA_FILES[$i]}
 	sql_file=${UPDATE_SQL_FILES[$i]}
 
-	echo "" > $sql_file
-
+	echo "$BEGIN_DELIM" >> $sql_file
+	echo "" >> $sql_file
+	grep "and name = " $sql_file > /tmp/$sql_file.digest
+	no_new_items=1
 	while read line
 	do
-		update_sql="${UPDATE_SQLS[$i]}\n\tand name = '$line';"
-		printf "${update_sql}\n\n" >> $sql_file
+		if [ $(grep "and name = '$line'" /tmp/$sql_file.digest -c) -eq 0 ]
+		then
+			update_sql="${UPDATE_SQLS[$i]}\n\tand name = '$line';"
+			printf "${update_sql}\n\n" >> $sql_file
+			no_new_items=0
+		else
+			echo "$line has already existed, skip it" >&2
+		fi
 	done < $data_file
+	echo "$END_DELIM" >> $sql_file
+	printf "\n\n" >> $sql_file
 	echo "SQL file generation successful: $sql_file"
+	if [ $no_new_items -eq 1 ]
+	then
+		sed -i "/$CUR_TIME\ begin/,+5d" $sql_file
+	fi
 done
 
 INSERT_MEDICINE_ITEM_SQL="insert into medicine_items(name, alias, category, effects, actions_and_indications,\n\
@@ -121,13 +135,30 @@ do
 	data_file=${INSERT_DATA_FILES[$i]}
 	sql_file=${INSERT_SQL_FILES[$i]}
 
-	echo "" > $sql_file
-
-	while read line
-	do
-		insert_sql="${INSERT_SQLS[$i]/__NEW_ITEM_NAME__/$line}"
-		printf "${insert_sql}\n\n" >> $sql_file
-	done < $data_file
-	echo "SQL file generation successful: $sql_file"
+	if [ -f $data_file ]
+	then
+		echo "$BEGIN_DELIM" >> $sql_file
+		echo "" >> $sql_file
+		grep "values(\/\* name:" $sql_file > /tmp/$sql_file.digest
+		no_new_items=1
+		while read line
+		do
+			if [ $(grep "values(\/\* name: \*\/ '$line'" /tmp/$sql_file.digest -c) -eq 0 ]
+			then
+				insert_sql="${INSERT_SQLS[$i]/__NEW_ITEM_NAME__/$line}"
+				printf "${insert_sql}\n\n" >> $sql_file
+				no_new_items=0
+			else
+				echo "$line has already existed, skip it" >&2
+			fi
+		done < $data_file
+		echo "$END_DELIM" >> $sql_file
+		printf "\n\n" >> $sql_file
+		echo "SQL file generation successful: $sql_file"
+		if [ $no_new_items -eq 1 ]
+		then
+			sed -i "/$CUR_TIME\ begin/,+5d" $sql_file
+		fi
+	fi
 done
 
