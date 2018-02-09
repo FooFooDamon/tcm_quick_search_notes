@@ -1,21 +1,21 @@
 --======================== 2018-02-03 17:21:26 begin ========================--
-
-insert into medicine_items(name, alias, category, effects, actions_and_indications,
-	details, common_prescriptions, common_partners, similar_medicines, dosage_reference,
-	contraindications, remarks)
-values(/* name: */ '洋葱',
-	/* alias: */ '',
-	/* category: */ 0,
-	/* effects: */ '杀虫除湿，温中消食，化肉消谷，提神健体，降血压，消血脂',
-	/* actions_and_indications: */ '腹中冷痛，宿食不消，高血压，高血脂，糖尿病',
-	/* details: */ '',
-	/* common_prescriptions: */ '',
-	/* common_partners: */ '',
-	/* similar_medicines: */ '',
-	/* dosage_reference: */ '一般用量为X～X克，重症时可用X～X克',
-	/* contraindications: */ '',
-	/* remarks: */ '' );
-
+--
+--insert into medicine_items(name, alias, category, effects, actions_and_indications,
+--	details, common_prescriptions, common_partners, similar_medicines, dosage_reference,
+--	contraindications, remarks)
+--values(/* name: */ '洋葱',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '杀虫除湿，温中消食，化肉消谷，提神健体，降血压，消血脂',
+--	/* actions_and_indications: */ '腹中冷痛，宿食不消，高血压，高血脂，糖尿病',
+--	/* details: */ '',
+--	/* common_prescriptions: */ '',
+--	/* common_partners: */ '',
+--	/* similar_medicines: */ '',
+--	/* dosage_reference: */ '一般用量为X～X克，重症时可用X～X克',
+--	/* contraindications: */ '',
+--	/* remarks: */ '' );
+--
 --insert into medicine_items(name, alias, category, effects, actions_and_indications,
 --	details, common_prescriptions, common_partners, similar_medicines, dosage_reference,
 --	contraindications, remarks)
@@ -3647,7 +3647,7 @@ values(/* name: */ '洋葱',
 --	/* dosage_reference: */ '一般用量为X～X克，重症时可用X～X克',
 --	/* contraindications: */ '',
 --	/* remarks: */ '' );
-
+--
 --======================== 2018-02-03 17:21:26 end ========================--
 
 

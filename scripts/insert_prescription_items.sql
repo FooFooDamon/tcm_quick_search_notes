@@ -1,16 +1,16 @@
 --======================== 2018-02-03 17:21:26 begin ========================--
-
-insert into prescription_items(name, alias, category, effects, actions_and_indications,
-	contraindications, relative_prescriptions, remarks)
-values(/* name: */ '大青龙汤',
-	/* alias: */ '',
-	/* category: */ 0,
-	/* effects: */ '发汗解表，清热除烦',
-	/* actions_and_indications: */ '表实里热证。症见：发热恶寒，寒热俱重，身疼痛，无汗而烦躁，舌苔薄白，脉浮紧有力',
-	/* contraindications: */ '因本方发汗力较强，过汗容易伤阳，故风寒表虚证，有汗而烦，发热脉弱者，不宜使用',
-	/* relative_prescriptions: */ '',
-	/* remarks: */ '杏仁去皮尖' );
-
+--
+--insert into prescription_items(name, alias, category, effects, actions_and_indications,
+--	contraindications, relative_prescriptions, remarks)
+--values(/* name: */ '大青龙汤',
+--	/* alias: */ '',
+--	/* category: */ 0,
+--	/* effects: */ '发汗解表，清热除烦',
+--	/* actions_and_indications: */ '表实里热证。症见：发热恶寒，寒热俱重，身疼痛，无汗而烦躁，舌苔薄白，脉浮紧有力',
+--	/* contraindications: */ '因本方发汗力较强，过汗容易伤阳，故风寒表虚证，有汗而烦，发热脉弱者，不宜使用',
+--	/* relative_prescriptions: */ '',
+--	/* remarks: */ '杏仁去皮尖' );
+--
 --insert into prescription_items(name, alias, category, effects, actions_and_indications,
 --	contraindications, relative_prescriptions, remarks)
 --values(/* name: */ '小青龙汤',
@@ -4707,7 +4707,7 @@ values(/* name: */ '大青龙汤',
 --	/* contraindications: */ '',
 --	/* relative_prescriptions: */ '',
 --	/* remarks: */ '' );
-
+--
 --======================== 2018-02-03 17:21:26 end ========================--
 
 

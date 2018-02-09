@@ -564,6 +564,12 @@
     </string>
 
     <string name="version_log_contents">
+        ---- V1.01.10 2018/02/09\n
+        1、标题栏显示当前项的名称，用户操作时不必上下拖动查看当前编辑的
+        是哪个项。\n
+        2、增加内容改动检测，当内容改动后未保存就退出或切换到邻近项时，
+        弹框提示是否要保存。\n
+        3、清空操作改为同时支持全部及部分删除。\n\n
         ---- V1.01.09 2018/02/03\n
         1、按功效主治查询的条件，药物加上“详情”和“常用药搭配”，方剂则
         加上“相关方剂”。\n\n
@@ -680,6 +686,22 @@
     <string name="alert_failed_to_update">更新信息出错</string>
     <string name="alert_checking_input">
         请检查输入的信息是否有效，或与现有信息冲突（例如名称相同等）。
+    </string>
+
+    <string name="page_data_changed_title">
+        内容已改动
+    </string>
+
+    <string name="page_data_changed_contents">
+        是否保存改动的内容？保存改动请点击“确定”，不保存请点击“取消”。
+    </string>
+
+    <string name="whether_to_select_all_title">
+        是否全选
+    </string>
+
+    <string name="whether_to_select_all_contents">
+        全选请点击“确定”，自行选择请点击“取消”。
     </string>
 
     <string name="asking_after_save_operation">

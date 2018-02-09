@@ -209,7 +209,7 @@ public class MainActivity extends Activity
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-        if (KeyEvent.KEYCODE_BACK != keyCode)
+        if (KeyEvent.KEYCODE_BACK != keyCode && KeyEvent.KEYCODE_HOME != keyCode)
             return super.onKeyDown(keyCode, event);
 
         App.moveTaskToBack(this, App.getAppName(this), true, R.drawable.ic_launcher);

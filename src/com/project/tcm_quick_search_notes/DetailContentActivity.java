@@ -45,6 +45,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -65,6 +66,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.android_assistant.App;
 import com.android_assistant.Hint;
 
 public class DetailContentActivity extends Activity {
@@ -130,6 +132,7 @@ public class DetailContentActivity extends Activity {
     private static final String SPACE = " ";
     private static final String STRING_NONE = "";
 
+    private /*static */DialogInterface.OnClickListener mSaveModificationsAndExit = null;
     private /*static */DialogInterface.OnClickListener mExitActivity = null;
 
     private /*static */String[] mPageItemNames = null;
@@ -150,6 +153,7 @@ public class DetailContentActivity extends Activity {
 
     private boolean mEditable = false;
     private boolean mIsMultiLineMode = true;
+    private boolean mIsChanged = false;
 
     private Intent mNextIntent = null;
 
@@ -161,6 +165,10 @@ public class DetailContentActivity extends Activity {
     private TextView mTxvNextItemName = null;
     private TextView mTxvNextArrow = null;
 
+    private DialogInterface.OnClickListener mJumpToPrevItemDetailsPage = null;
+    private DialogInterface.OnClickListener mJumpToNextItemDetailsPage = null;
+    private DialogInterface.OnClickListener mSaveAndJumpToPrevItemDetailsPage = null;
+    private DialogInterface.OnClickListener mSaveAndJumpToNextItemDetailsPage = null;
     private View.OnClickListener mJumpToNeiborDetailsPage = null;
 
     @SuppressWarnings("deprecation")
@@ -175,24 +183,18 @@ public class DetailContentActivity extends Activity {
 
         initResources();
 
-        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType) {
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType)
             setContentView(R.layout.activity_medicine_item_details);
-            setTitle(getString(R.string.main_item_medicine));
-        }
-        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType) {
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType)
             setContentView(R.layout.activity_prescription_item_details);
-            setTitle(getString(R.string.main_item_prescription));
-        }
         else {
-            String miscItemName = MiscManagementActivity.getItemNameByPosition(mPositionAtFunctionalityList);
-
             if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == mPositionAtFunctionalityList)
                 setContentView(R.layout.activity_reference_material_details);
             else
                 setContentView(R.layout.activity_general_misc_item_details);
-
-            setTitle(miscItemName);
         }
+
+        updatePageTitle();
 
         reloadDetailContentFromDatabase();
 
@@ -233,87 +235,24 @@ public class DetailContentActivity extends Activity {
             gMenu.findItem(R.id.menu_save).setVisible(true);
             gMenu.findItem(R.id.menu_cancel).setVisible(true);
             mEditable = true;
-            refreshAllViews();
+            refreshAllFieldViews(false);
         }
         else if (R.id.menu_mode_switch == id) {
             mIsMultiLineMode = !mIsMultiLineMode;
             gMenu.findItem(id).setTitle(mIsMultiLineMode ? R.string.switch_to_single_line_mode : R.string.switch_to_multi_line_mode);
-            refreshAllViews();
+            refreshAllFieldViews(false);
             Hint.shortToast(this, mIsMultiLineMode ? R.string.multi_line_mode : R.string.single_line_mode);
         }
         else if (R.id.menu_save == id) {
-            int[][] detailResIds = getDetailFieldResourceIds(mOpType, mPositionAtFunctionalityList);
-            ArrayList<String> updateArgs = new ArrayList<String>();
-            DetailContentData contentData = null;
-            boolean isMedicine = (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType);
-            boolean isPrescription = (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType);
-            final String SHORT_VALUE_SPN_NAME = DETAIL_CONTENT_FIELD_NAMES[DETAIL_CONTENT_FIELD_SPN_VALUE];
-            final String LONG_ETX_NAME = DETAIL_CONTENT_FIELD_NAMES[DETAIL_CONTENT_FIELD_ETX_VALUE_LONG];
-
-            for (int i = 0; i < detailResIds.length; ++i) {
-                if (detailFieldIsNotUsed(mOpType, mPositionAtFunctionalityList, i))
-                    continue;
-
-                ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
-                DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
-
-                if (detailFieldIsSimpleCharText(mOpType, mPositionAtFunctionalityList, i)) {
-                    // NOTE: The commented code below may cause data chaos and performance problem, but keep it for a warning.
-                    //View convertView = null;
-                    //DetailContentAdapter.ViewHolder viewHolder = null;
-                    //convertView = contentsAdapter.getView(0, null, null);
-                    //viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
-                    //updateArgs.add(viewHolder.etxValueLong.getText().toString());
-
-                    contentData = contentsAdapter.getItemList().get(0);
-                    updateArgs.add(contentData.editTextContents.get(LONG_ETX_NAME));
-                    continue;
-                }
-
-                if ((isMedicine && DbHelper.MEDICINE_COLUMN_INDEX_CATEGORY == i)
-                    || (isPrescription && DbHelper.PRESCRIPTION_COLUMN_INDEX_CATEGORY == i)) {
-                    // NOTE: The commented code below may cause data chaos and performance problem, but keep it for a warning.
-                    //View convertView = null;
-                    //DetailContentAdapter.ViewHolder viewHolder = null;
-                    //convertView = contentsAdapter.getView(0, null/*convertView*/, null);
-                    //viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
-                    //updateArgs.add(String.valueOf(viewHolder.spnValue.getSelectedItemPosition()));
-
-                    contentData = contentsAdapter.getItemList().get(0);
-                    updateArgs.add(String.valueOf(contentData.selectedSpinnerPositions.get(SHORT_VALUE_SPN_NAME)));
-                    continue;
-                }
-
-                String fieldValue = serializeToDatabaseField(contentsAdapter.getItemList());
-
-                updateArgs.add(fieldValue);
-            }
-
-            updateArgs.add(mDetailItemId);
-
-            try {
-                if (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType)
-                    mDbHelper.updateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
-                else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType)
-                    mDbHelper.updatePrescriptionItem(updateArgs.toArray(new String[updateArgs.size()]));
-                else {
-                    if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == mPositionAtFunctionalityList)
-                        mDbHelper.updateReferenceMaterialItem(updateArgs.toArray(new String[updateArgs.size()]));
-                    else
-                        mDbHelper.updateMiscItem(mPositionAtFunctionalityList, updateArgs.toArray(new String[updateArgs.size()]));
-                }
-                Hint.alert(this, R.string.save_successfully, R.string.asking_after_save_operation, mExitActivity, null);
-            } catch(SQLException e) {
-                Hint.alert(this, getString(R.string.alert_failed_to_update),
-                    getString(R.string.alert_checking_input) + e.getMessage());
-            }
+            saveModifications();
+            Hint.alert(this, R.string.save_successfully, R.string.asking_after_save_operation, mExitActivity, null);
         }
         else if (R.id.menu_cancel == id) {
             item.setVisible(false);
             gMenu.findItem(R.id.menu_save).setVisible(false);
             gMenu.findItem(R.id.menu_edit).setVisible(true);
             mEditable = false;
-            refreshAllViews();
+            refreshAllFieldViews(false);
         }
         else if (R.id.menu_details_help == id)
             Hint.alert(this, R.string.help, R.string.help_info_for_details_page);
@@ -321,6 +260,106 @@ public class DetailContentActivity extends Activity {
             ;
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (KeyEvent.KEYCODE_HOME == keyCode) {
+            App.moveTaskToBack(this, App.getAppName(this), true, R.drawable.ic_launcher);
+            return true;
+        }
+
+        if (KeyEvent.KEYCODE_BACK == keyCode) {
+            if (mIsChanged)
+                Hint.alert(DetailContentActivity.this, R.string.page_data_changed_title, R.string.page_data_changed_contents, mSaveModificationsAndExit, mExitActivity);
+
+            //return super.onKeyDown(keyCode, event);
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void saveModifications() {
+        int[][] detailResIds = getDetailFieldResourceIds(mOpType, mPositionAtFunctionalityList);
+        ArrayList<String> updateArgs = new ArrayList<String>();
+        DetailContentData contentData = null;
+        boolean isMedicine = (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType);
+        boolean isPrescription = (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType);
+        final String SHORT_VALUE_SPN_NAME = DETAIL_CONTENT_FIELD_NAMES[DETAIL_CONTENT_FIELD_SPN_VALUE];
+        final String LONG_ETX_NAME = DETAIL_CONTENT_FIELD_NAMES[DETAIL_CONTENT_FIELD_ETX_VALUE_LONG];
+
+        for (int i = 0; i < detailResIds.length; ++i) {
+            if (detailFieldIsNotUsed(mOpType, mPositionAtFunctionalityList, i))
+                continue;
+
+            ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
+            DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
+
+            if (detailFieldIsSimpleCharText(mOpType, mPositionAtFunctionalityList, i)) {
+                // NOTE: The commented code below may cause data chaos and performance problem, but keep it for a warning.
+                //View convertView = null;
+                //DetailContentAdapter.ViewHolder viewHolder = null;
+                //convertView = contentsAdapter.getView(0, null, null);
+                //viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
+                //updateArgs.add(viewHolder.etxValueLong.getText().toString());
+
+                contentData = contentsAdapter.getItemList().get(0);
+                updateArgs.add(contentData.editTextContents.get(LONG_ETX_NAME));
+                continue;
+            }
+
+            if ((isMedicine && DbHelper.MEDICINE_COLUMN_INDEX_CATEGORY == i)
+                || (isPrescription && DbHelper.PRESCRIPTION_COLUMN_INDEX_CATEGORY == i)) {
+                // NOTE: The commented code below may cause data chaos and performance problem, but keep it for a warning.
+                //View convertView = null;
+                //DetailContentAdapter.ViewHolder viewHolder = null;
+                //convertView = contentsAdapter.getView(0, null/*convertView*/, null);
+                //viewHolder = (DetailContentAdapter.ViewHolder) convertView.getTag();
+                //updateArgs.add(String.valueOf(viewHolder.spnValue.getSelectedItemPosition()));
+
+                contentData = contentsAdapter.getItemList().get(0);
+                updateArgs.add(String.valueOf(contentData.selectedSpinnerPositions.get(SHORT_VALUE_SPN_NAME)));
+                continue;
+            }
+
+            String fieldValue = serializeToDatabaseField(contentsAdapter.getItemList());
+
+            updateArgs.add(fieldValue);
+        }
+
+        updateArgs.add(mDetailItemId);
+
+        try {
+            if (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType)
+                mDbHelper.updateMedicineItem(updateArgs.toArray(new String[updateArgs.size()]));
+            else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType)
+                mDbHelper.updatePrescriptionItem(updateArgs.toArray(new String[updateArgs.size()]));
+            else {
+                if (MiscManagementActivity.LIST_ITEM_POS_REFERENCE_MATERIAL == mPositionAtFunctionalityList)
+                    mDbHelper.updateReferenceMaterialItem(updateArgs.toArray(new String[updateArgs.size()]));
+                else
+                    mDbHelper.updateMiscItem(mPositionAtFunctionalityList, updateArgs.toArray(new String[updateArgs.size()]));
+            }
+            mIsChanged = false;
+        } catch(SQLException e) {
+            Hint.alert(this, getString(R.string.alert_failed_to_update),
+                getString(R.string.alert_checking_input) + e.getMessage());
+        }
+    }
+
+    private void updatePageTitle() {
+        if (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType) {
+            setTitle(mDetailItemName + " - " + getString(R.string.main_item_medicine));
+        }
+        else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType) {
+            setTitle(mDetailItemName + " - " + getString(R.string.main_item_prescription));
+        }
+        else {
+            String miscItemName = MiscManagementActivity.getItemNameByPosition(mPositionAtFunctionalityList);
+
+            setTitle(mDetailItemName + " - " + miscItemName);
+        }
     }
 
     private int[] getNeiboringItemResIds() {
@@ -375,6 +414,17 @@ public class DetailContentActivity extends Activity {
             mDbHelper.openOrCreate();
         }
 
+        if (null == mSaveModificationsAndExit) {
+            mSaveModificationsAndExit = new OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    saveModifications();
+                    DetailContentActivity.this.finish();
+                }
+            };
+        }
+
         if (null == mExitActivity) {
             mExitActivity = new OnClickListener() {
 
@@ -408,7 +458,86 @@ public class DetailContentActivity extends Activity {
         refreshPageItemNames();
     }
 
+    private void jumpToNeiborDetailsPage(boolean toPrevious, boolean savesBeforeJumping) {
+        if (savesBeforeJumping)
+            saveModifications();
+
+        mIsChanged = false;
+
+        if (toPrevious) {
+            mDetailItemId = mTxvPrevItemId.getText().toString();
+            mDetailItemName = mTxvPrevItemName.getText().toString();
+        } else {
+            mDetailItemId = mTxvNextItemId.getText().toString();
+            mDetailItemName = mTxvNextItemName.getText().toString();
+        }
+
+        //boolean isEditableBeforeJumping = mEditable;
+
+        reloadDetailContentFromDatabase();
+
+        mEditable = false; // Necessary before filling detail contents!!!
+        fillDetailContents(mOpType, mPositionAtFunctionalityList);
+
+        /*if (isEditableBeforeJumping) {
+            gMenu.findItem(R.id.menu_edit).setVisible(false);
+            gMenu.findItem(R.id.menu_save).setVisible(true);
+            gMenu.findItem(R.id.menu_cancel).setVisible(true);
+            mEditable = true;
+            refreshAllViews();
+        } else {*/
+            gMenu.findItem(R.id.menu_edit).setVisible(true);
+            gMenu.findItem(R.id.menu_save).setVisible(false);
+            gMenu.findItem(R.id.menu_cancel).setVisible(false);
+        //}
+        refreshAllFieldViews(true);
+
+        updateNeiboringItems();
+        updatePageTitle();
+
+        Hint.shortToast(DetailContentActivity.this, mDetailItemName);
+    }
+
     private void initNeiboringItemViews() {
+        if (null == mJumpToPrevItemDetailsPage) {
+            mJumpToPrevItemDetailsPage = new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    jumpToNeiborDetailsPage(true, false);
+                }
+            };
+        }
+
+        if (null == mJumpToNextItemDetailsPage) {
+            mJumpToNextItemDetailsPage = new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    jumpToNeiborDetailsPage(false, false);
+                }
+            };
+        }
+        if (null == mSaveAndJumpToPrevItemDetailsPage) {
+            mSaveAndJumpToPrevItemDetailsPage = new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    jumpToNeiborDetailsPage(true, true);
+                }
+            };
+        }
+
+        if (null == mSaveAndJumpToNextItemDetailsPage) {
+            mSaveAndJumpToNextItemDetailsPage = new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    jumpToNeiborDetailsPage(false, true);
+                }
+            };
+        }
+
         if (null == mJumpToNeiborDetailsPage) {
             mJumpToNeiborDetailsPage = new View.OnClickListener() {
 
@@ -420,38 +549,19 @@ public class DetailContentActivity extends Activity {
                         if (mTxvPrevItemId.getText().toString().equals("0"))
                             return;
 
-                        mDetailItemId = mTxvPrevItemId.getText().toString();
-                        mDetailItemName = mTxvPrevItemName.getText().toString();
+                        if (mIsChanged)
+                            Hint.alert(DetailContentActivity.this, R.string.page_data_changed_title, R.string.page_data_changed_contents, mSaveAndJumpToPrevItemDetailsPage, mJumpToPrevItemDetailsPage);
+                        else
+                            jumpToNeiborDetailsPage(true, false);
                     } else {
                         if (mTxvNextItemId.getText().toString().equals("0"))
                             return;
 
-                        mDetailItemId = mTxvNextItemId.getText().toString();
-                        mDetailItemName = mTxvNextItemName.getText().toString();
+                        if (mIsChanged)
+                            Hint.alert(DetailContentActivity.this, R.string.page_data_changed_title, R.string.page_data_changed_contents, mSaveAndJumpToNextItemDetailsPage, mJumpToNextItemDetailsPage);
+                        else
+                            jumpToNeiborDetailsPage(false, false);
                     }
-
-                    //boolean isEditableBeforeJumping = mEditable;
-
-                    reloadDetailContentFromDatabase();
-
-                    mEditable = false; // Necessary before filling detail contents!!!
-                    fillDetailContents(mOpType, mPositionAtFunctionalityList);
-
-                    /*if (isEditableBeforeJumping) {
-                        gMenu.findItem(R.id.menu_edit).setVisible(false);
-                        gMenu.findItem(R.id.menu_save).setVisible(true);
-                        gMenu.findItem(R.id.menu_cancel).setVisible(true);
-                        mEditable = true;
-                        refreshAllViews();
-                    } else {*/
-                        gMenu.findItem(R.id.menu_edit).setVisible(true);
-                        gMenu.findItem(R.id.menu_save).setVisible(false);
-                        gMenu.findItem(R.id.menu_cancel).setVisible(false);
-                    //}
-
-                    updateNeiboringItems();
-
-                    Hint.shortToast(DetailContentActivity.this, mDetailItemName);
                 }
 
             };
@@ -527,7 +637,7 @@ public class DetailContentActivity extends Activity {
         }
     }
 
-    private void refreshAllViews() {
+    private void refreshAllFieldViews(boolean updateTitlesOnly) {
         int[][] detailResIds = getDetailFieldResourceIds(mOpType, mPositionAtFunctionalityList);
         boolean isEditable = mEditable;
 
@@ -542,12 +652,18 @@ public class DetailContentActivity extends Activity {
                 titleAdapter.notifyDataSetChanged();
             }
 
+            if (updateTitlesOnly)
+                continue;
+
             ListView lsvContents = (ListView) findViewById(detailResIds[i][2]);
             DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
             DetailContentTemplate template = mDetailContentTemplatesArray[i];
 
             for (int j = 0; j < contentsAdapter.getCount(); ++j) {
                 DetailContentData contentData = (DetailContentData) contentsAdapter.getItem(j);
+
+                if (!template.isFixed && !isEditable)
+                    contentData.checkBoxFlags &= (~CHKBOX_VISIBLE);
 
                 if (0 != (template.checkBoxFlags & CHKBOX_VISIBLE)) {
                     if (isEditable)
@@ -736,10 +852,11 @@ public class DetailContentActivity extends Activity {
                 continue;
 
             ArrayList<DetailTitleData> titleList = new ArrayList<DetailTitleData>();
-            ListView lsvTitle = (ListView) findViewById(detailItemResIds[i][1]);
-            DetailTitleAdapter titleAdapter = new DetailTitleAdapter(this, titleList);
 
             titleList.add(new DetailTitleData(i, getString(detailItemResIds[i][0])));
+
+            ListView lsvTitle = (ListView) findViewById(detailItemResIds[i][1]);
+            DetailTitleAdapter titleAdapter = new DetailTitleAdapter(this, titleList);
 
             lsvTitle.setAdapter(titleAdapter);
         }
@@ -1376,8 +1493,6 @@ public class DetailContentActivity extends Activity {
                 continue;
 
             ArrayList<DetailContentData> contentsList = new ArrayList<DetailContentData>();
-            DetailContentAdapter contentsAdapter = new DetailContentAdapter(this, contentsList);
-            ListView lsvContents = (ListView) findViewById(detailItemResIds[i][2]);
 
             for (int j = 0; j < contentData[i].length; ++j) {
                 contentsList.add(contentData[i][j]);
@@ -1393,6 +1508,9 @@ public class DetailContentActivity extends Activity {
                         + ": " + editTextValue);
                 }
             }
+
+            DetailContentAdapter contentsAdapter = new DetailContentAdapter(this, contentsList);
+            ListView lsvContents = (ListView) findViewById(detailItemResIds[i][2]);
 
             lsvContents.setAdapter(contentsAdapter);
         }
@@ -1413,7 +1531,11 @@ public class DetailContentActivity extends Activity {
         private final Context mContext;
         private final List<DetailTitleData> mItemList;
         private final LayoutInflater mInflater;
+        private final String[] PAGE_ITEMS = getPageItemNames(false);
         private boolean mContinueToAddNewItem;
+
+        private View.OnClickListener mAddContentItems = null;
+        private View.OnClickListener mClearAllContentItems = null;
 
         final DialogInterface.OnClickListener notifyToStopAddingItem = new OnClickListener() {
 
@@ -1428,6 +1550,39 @@ public class DetailContentActivity extends Activity {
             this.mItemList = itemList;
             this.mContext = context;
             mInflater = LayoutInflater.from(context);
+
+            final int FIELD_INDEX = mItemList.get(0).contentFieldIndex;
+
+            mAddContentItems = new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Hint.alert(DetailContentActivity.this, getString(R.string.add_content_item), "要为[" + PAGE_ITEMS[FIELD_INDEX] + "]新增条目吗？",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //addMultiContentItems(); // will result in crash
+                                addOneContentItem();
+                            }
+                        }, null);
+                }
+            };
+
+            mClearAllContentItems = new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Hint.alert(mContext, getString(R.string.clear_content_items), "要清空[" + PAGE_ITEMS[FIELD_INDEX] + "]所有的条目吗？",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                clearContentItems(false);
+                            }
+                        }, null);
+                }
+            };
         }
 
         @Override
@@ -1463,32 +1618,16 @@ public class DetailContentActivity extends Activity {
                 holder = (ViewHolder) convertView.getTag();
             }
 
+            final ViewHolder holderRef = holder;
             final DetailTitleData item = mItemList.get(position);
 
             holder.name.setText(item.name);
             com.android_assistant.TextView.setDefaultTextShadow(holder.name);
 
             if (!mDetailContentTemplatesArray[item.contentFieldIndex].isFixed) {
-                final int FIELD_INDEX = item.contentFieldIndex;
-                final String[] PAGE_ITEMS = getPageItemNames(false);
-
                 holder.iconAdd.setVisibility(mEditable ? TextView.VISIBLE : TextView.GONE);
                 holder.iconAdd.setClickable(mEditable);
-                holder.iconAdd.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        Hint.alert(DetailContentActivity.this, getString(R.string.add_content_item), "要为[" + PAGE_ITEMS[FIELD_INDEX] + "]新增条目吗？",
-                            new DialogInterface.OnClickListener() {
-
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    //addMultiContentItems(); // will result in crash
-                                    addOneContentItem();
-                                }
-                            }, null);
-                    }
-                });
+                holder.iconAdd.setOnClickListener(mAddContentItems);
 
                 holder.iconDelete.setVisibility(mEditable ? TextView.VISIBLE : TextView.GONE);
                 holder.iconDelete.setClickable(mEditable);
@@ -1496,20 +1635,57 @@ public class DetailContentActivity extends Activity {
 
                     @Override
                     public void onClick(View v) {
-                        Hint.alert(mContext, getString(R.string.clear_content_items), "要清空[" + PAGE_ITEMS[FIELD_INDEX] + "]所有的条目吗？",
+                        Hint.alert(mContext, R.string.whether_to_select_all_title, R.string.whether_to_select_all_contents,
                             new DialogInterface.OnClickListener() {
 
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    clearContentItems(false);
+                                    changeCheckedStatusOfAllCheckBoxes(true, true);
+                                    holderRef.iconDelete.setVisibility(TextView.INVISIBLE);
+                                    holderRef.btnConfirm.setVisibility(TextView.VISIBLE);
+                                    holderRef.btnCancel.setVisibility(TextView.VISIBLE);
                                 }
-                            }, null);
+                            },
+                            new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    changeCheckedStatusOfAllCheckBoxes(false, true);
+                                    holderRef.iconDelete.setVisibility(TextView.INVISIBLE);
+                                    holderRef.btnConfirm.setVisibility(TextView.VISIBLE);
+                                    holderRef.btnCancel.setVisibility(TextView.VISIBLE);
+                                }
+                            });
                     }
                 });
 
-                // Uncomment them if you want to see how title bars look with them.
-                /*holder.btnConfirm.setVisibility(TextView.VISIBLE);
-                holder.btnCancel.setVisibility(TextView.VISIBLE);*/
+                if (!mEditable)
+                    holder.btnConfirm.setVisibility(TextView.GONE);
+                holder.btnConfirm.setClickable(mEditable);
+                holder.btnConfirm.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        removeSelectedContentItems();
+                        holderRef.iconDelete.setVisibility(TextView.VISIBLE);
+                        holderRef.btnConfirm.setVisibility(TextView.INVISIBLE);
+                        holderRef.btnCancel.setVisibility(TextView.INVISIBLE);
+                    }
+                });
+
+                if (!mEditable)
+                    holder.btnCancel.setVisibility(TextView.GONE);
+                holder.btnCancel.setClickable(mEditable);
+                holder.btnCancel.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        changeCheckedStatusOfAllCheckBoxes(false, false);
+                        holderRef.iconDelete.setVisibility(TextView.VISIBLE);
+                        holderRef.btnConfirm.setVisibility(TextView.INVISIBLE);
+                        holderRef.btnCancel.setVisibility(TextView.INVISIBLE);
+                    }
+                });
             }
 
             return convertView;
@@ -1677,6 +1853,49 @@ public class DetailContentActivity extends Activity {
             contentsAdapter.notifyDataSetChanged();
         }
 
+        private void removeSelectedContentItems() {
+            final int FIELD_INDEX = mItemList.get(0).contentFieldIndex;
+            int[][] detailFieldResIds = getDetailFieldResourceIds(mOpType, mPositionAtFunctionalityList);
+            ListView lsvContents = (ListView) findViewById(detailFieldResIds[FIELD_INDEX][2]);
+            DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
+            List<DetailContentData> contentItemList = contentsAdapter.getItemList();
+
+            for (int i = contentItemList.size() - 1; i > -1; --i) {
+                DetailContentData contentData = contentItemList.get(i);
+
+                if (0 != (contentData.checkBoxFlags & CHKBOX_SELECTED))
+                    contentItemList.remove(i);
+            }
+
+            contentsAdapter.notifyDataSetChanged();
+        }
+
+        private void changeCheckedStatusOfAllCheckBoxes(boolean isChecked, boolean isVisible) {
+            final int FIELD_INDEX = mItemList.get(0).contentFieldIndex;
+            int[][] detailFieldResIds = getDetailFieldResourceIds(mOpType, mPositionAtFunctionalityList);
+            ListView lsvContents = (ListView) findViewById(detailFieldResIds[FIELD_INDEX][2]);
+            DetailContentAdapter contentsAdapter = (DetailContentAdapter) lsvContents.getAdapter();
+            List<DetailContentData> contentItemList = contentsAdapter.getItemList();
+
+            for (int i = 0; i < contentItemList.size(); ++i) {
+                DetailContentData contentData = contentItemList.get(i);
+
+                contentData.checkBoxFlags |= CHKBOX_CLICKABLE;
+
+                if (isChecked)
+                    contentData.checkBoxFlags |= CHKBOX_SELECTED;
+                else
+                    contentData.checkBoxFlags &= (~CHKBOX_SELECTED);
+
+                if (isVisible)
+                    contentData.checkBoxFlags |= CHKBOX_VISIBLE;
+                else
+                    contentData.checkBoxFlags &= (~CHKBOX_VISIBLE);
+            }
+
+            contentsAdapter.notifyDataSetChanged();
+        }
+
         private class ViewHolder {
             TextView name;
             ImageView iconAdd;
@@ -1742,8 +1961,9 @@ public class DetailContentActivity extends Activity {
         private final Context mContext;
         private final List<DetailContentData> mItemList;
         private final LayoutInflater mInflater;
+
         private int mEtxTouchPosition = 0;
-        private boolean mTouchHappens = false;
+        private boolean mEtxTouchHappens = false;
         private final View.OnTouchListener mUpdateEditTextTouchPosition = new OnTouchListener() {
 
             @Override
@@ -1754,7 +1974,7 @@ public class DetailContentActivity extends Activity {
                 if (!mEditable)
                     return FIXED_RETURN_VALUE;
 
-                mTouchHappens = true;
+                mEtxTouchHappens = true;
 
                 mEtxTouchPosition = (java.lang.Integer)targetEditText.getTag();
 
@@ -1764,6 +1984,22 @@ public class DetailContentActivity extends Activity {
                 Log.v(TAG, "mEtxTouchPosition: " + mEtxTouchPosition);
 
                 return FIXED_RETURN_VALUE; // TODO: How about v.performClick() or true?
+            }
+        };
+
+        private boolean mSpnTouchHappens = false;
+        private final View.OnTouchListener mSetSpinnerTouchFlag = new OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                boolean FIXED_RETURN_VALUE = false;
+
+                if (!mEditable)
+                    return FIXED_RETURN_VALUE;
+
+                mSpnTouchHappens = true;
+
+                return FIXED_RETURN_VALUE;
             }
         };
 
@@ -1979,32 +2215,6 @@ public class DetailContentActivity extends Activity {
                 holderEditTexts[i].setOnTouchListener(mUpdateEditTextTouchPosition);
                 holderEditTexts[i].addTextChangedListener(TEXT_WATCHERS[i]);
                 holderEditTexts[i].setSingleLine(!mIsMultiLineMode);
-                /////////////////// begin: deals with the EditText focus problem ///////////////////
-                // TODO: It does not work, why? Because of cursor position recovery due to the view re-painting?
-                /*if (mIsMultiLineMode) {
-                    if (mEtxTouchPosition == position) {
-                        holderEditTexts[i].requestFocus();
-                        holderEditTexts[i].setCursorVisible(item.editTextsEnabled);
-
-                        final int START_POSITION = 1;
-                        int currentTextLength = holderEditTexts[i].getText().toString().length();
-                        final int FIXED_POSITION = START_POSITION; // currentTextLength
-                        int expectedCursorPos = FIXED_POSITION; // acceptable but unwise
-
-                        expectedCursorPos = TEXT_WATCHERS[i].getCursorPositionAfterChanged();
-
-                        if (expectedCursorPos < 0)
-                            expectedCursorPos = START_POSITION;
-                        else if (expectedCursorPos > currentTextLength)
-                            expectedCursorPos = currentTextLength;
-
-                        holderEditTexts[i].setSelection(expectedCursorPos);
-                    }
-                    else {
-                        holderEditTexts[i].clearFocus();
-                    }
-                }*/
-                /////////////////// end: deals with the EditText focus problem ///////////////////
 
                 com.android_assistant.TextView.setDefaultTextShadow(holderEditTexts[i]);
 
@@ -2050,8 +2260,13 @@ public class DetailContentActivity extends Activity {
              * case 2: for complicated contents
              */
 
-            holder.checkBox.setVisibility((0 != (template.checkBoxFlags & CHKBOX_VISIBLE))
-                ? TextView.VISIBLE : TextView.GONE);
+            if (mDetailContentTemplatesArray[item.contentFieldIndex].isFixed) {
+                holder.checkBox.setVisibility((0 != (template.checkBoxFlags & CHKBOX_VISIBLE))
+                    ? TextView.VISIBLE : TextView.GONE);
+            } else {
+                holder.checkBox.setVisibility((0 != (item.checkBoxFlags & CHKBOX_VISIBLE))
+                    ? TextView.VISIBLE : TextView.GONE);
+            }
             holder.checkBox.setClickable(0 != (item.checkBoxFlags & CHKBOX_CLICKABLE));
             holder.checkBox.setChecked(0 != (item.checkBoxFlags & CHKBOX_SELECTED));
             holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -2084,12 +2299,15 @@ public class DetailContentActivity extends Activity {
                 Integer selectedPosition = item.selectedSpinnerPositions.get(spinnerName);
                 holderSpinners[i].setSelection((null != selectedPosition) ? selectedPosition : 0);
                 holderSpinners[i].setEnabled(ITEM_READ_ONLY != spinnerItems[0] && item.spinnersEnabled);
+                holderSpinners[i].setOnTouchListener(mSetSpinnerTouchFlag);
                 holderSpinners[i].setOnItemSelectedListener(new OnItemSelectedListener() {
 
                     @Override
                     public void onItemSelected(AdapterView<?> adapter, View view,
                             int position, long id) {
                         item.selectedSpinnerPositions.put(spinnerName, position);
+                        if (mEditable && mSpnTouchHappens)
+                            mIsChanged = true;
                     }
 
                     @Override
@@ -2141,8 +2359,10 @@ public class DetailContentActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!mEditable || !mTouchHappens)
+                if (!mEditable || !mEtxTouchHappens)
                     return;
+
+                mIsChanged = true;
 
                 DetailContentData dataItem = mItemList.get(mPositionAtListView);
                 String[] fieldNames = DbHelper.getTableColumnsList(mOpType, mPositionAtFunctionalityList);

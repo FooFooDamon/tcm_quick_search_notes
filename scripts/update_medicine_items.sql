@@ -1,5 +1,5 @@
 --======================== 2018-01-29 13:34:15 begin ========================--
-
+--
 --update medicine_items
 --set alias = '',
 --	effects = '健脾燥湿，益气生血，和中安胎，是常用的补气药，但与补血药同用，也可以补血（中焦运化旺盛，则气血自生）',
@@ -79,23 +79,23 @@
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '熟地黄';
-
-update medicine_items
-set alias = '',
-	effects = '补血，活血通络，散瘀消肿，润肠通便，调月经',
-	actions_and_indications = '可治各种血虚、贫血，可治跌打损伤、瘀血肿痛、风寒湿痹、肌肤麻木不仁等，可治因血虚肠燥而致的大便秘结，可治闭经、行经腹痛、崩漏等',
-	details = '',
-	common_prescriptions = '四物汤（常用于血虚、贫血）、当归补血汤（常用于失血过多而血虚、气血不足等）',
-	common_partners = '治血虚、贫血：配黄芪、熟地、白芍、川芎等；治跌打：配红花、赤芍、三七、桃仁、乳香、没药等；治痈疮初起：配连翘、金银花、赤芍、红花、皂角刺、炙穿山甲等；治风寒湿痹、臂腿腰足疼痛：配桂枝、羌活、独活、威灵仙、片姜黄、红花、薏米、续断、附子等；治肌肤麻木：配川芎、红花、半夏、防风、黄芪、桂枝、白芍、熟地、炙穿山甲等；治血虚便秘：配麻仁、生地、熟地、桃仁、肉苁蓉、郁李仁、瓜蒌仁、大黄等',
-	similar_medicines = '白芍补血偏于养阴，性静主守，血虚生热者宜用，当归补血偏于温阳，性动主走，血虚有寒者宜用。',
-	dosage_reference = '一般用量为3～9克，重症时可用15克',
-	contraindications = '大肠滑泄和火旺者，均不宜使用',
-	remarks = '治疗血分病最常用的药，也是妇科调理经血最常用的药。归头和归尾偏于活血、破血；归身偏于补血、养血；全当归既可活血也可补血；归须偏于活血通络；酒当归偏于行血活血；土炒当归可用于血虚而又兼大便溏软者；当归炭用于止血。在配伍上，配黄芪、党参，可生气补血；配大黄、牛膝，可破下部瘀血；配川芎、苏木、红花、桔梗，可活上部瘀血；配桂枝、桑枝、路路通、丝瓜络，可通达四肢，活血通络。'
-where (effects is null or length(effects) = 0)
-	and (actions_and_indications is null or length(actions_and_indications) = 0)
-	and (alias is null or length(alias) = 0)
-	and name = '当归';
-
+--
+--update medicine_items
+--set alias = '',
+--	effects = '补血，活血通络，散瘀消肿，润肠通便，调月经',
+--	actions_and_indications = '可治各种血虚、贫血，可治跌打损伤、瘀血肿痛、风寒湿痹、肌肤麻木不仁等，可治因血虚肠燥而致的大便秘结，可治闭经、行经腹痛、崩漏等',
+--	details = '',
+--	common_prescriptions = '四物汤（常用于血虚、贫血）、当归补血汤（常用于失血过多而血虚、气血不足等）',
+--	common_partners = '治血虚、贫血：配黄芪、熟地、白芍、川芎等；治跌打：配红花、赤芍、三七、桃仁、乳香、没药等；治痈疮初起：配连翘、金银花、赤芍、红花、皂角刺、炙穿山甲等；治风寒湿痹、臂腿腰足疼痛：配桂枝、羌活、独活、威灵仙、片姜黄、红花、薏米、续断、附子等；治肌肤麻木：配川芎、红花、半夏、防风、黄芪、桂枝、白芍、熟地、炙穿山甲等；治血虚便秘：配麻仁、生地、熟地、桃仁、肉苁蓉、郁李仁、瓜蒌仁、大黄等',
+--	similar_medicines = '白芍补血偏于养阴，性静主守，血虚生热者宜用，当归补血偏于温阳，性动主走，血虚有寒者宜用。',
+--	dosage_reference = '一般用量为3～9克，重症时可用15克',
+--	contraindications = '大肠滑泄和火旺者，均不宜使用',
+--	remarks = '治疗血分病最常用的药，也是妇科调理经血最常用的药。归头和归尾偏于活血、破血；归身偏于补血、养血；全当归既可活血也可补血；归须偏于活血通络；酒当归偏于行血活血；土炒当归可用于血虚而又兼大便溏软者；当归炭用于止血。在配伍上，配黄芪、党参，可生气补血；配大黄、牛膝，可破下部瘀血；配川芎、苏木、红花、桔梗，可活上部瘀血；配桂枝、桑枝、路路通、丝瓜络，可通达四肢，活血通络。'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '当归';
+--
 --update medicine_items
 --set alias = '',
 --	effects = '',
@@ -242,14 +242,14 @@ where (effects is null or length(effects) = 0)
 --
 --update medicine_items
 --set alias = '玄参',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	effects = '滋阴降火、清热凉血、解毒软坚',
+--	actions_and_indications = '可治：因阴虚火旺火热上炎而致的咽喉肿痛、口渴烦热等；温热病热邪入营，邪热伤阴而见口干烦躁、夜寐不安、舌质红绛、高热谵语、斑疹隐隐、大便秘结等；痰热郁结而致颈部发生瘰疬（颈淋巴结肿大）',
+--	details = '除以上功效，还有降血压血糖的作用，对绿脓杆菌还有较强的抑制作用',
+--	common_prescriptions = '消瘰丸、清营汤、化斑汤',
+--	common_partners = '治阴虚火旺：配生甘草、桔梗、麦冬、牛蒡子、生地、黄芩、连翘；治热邪入营：配水牛角、生地、黄连、连翘、麦冬、丹皮等；治大便秘结：配麦冬、生地、玉竹、瓜蒌、生大黄等；凉血解毒：配生地、水牛角、生石膏、知母、甘草、赤芍、丹皮等；治瘰疬：配贝母、生牡蛎，即消瘰丸，还可适当加入夏枯草、昆布、海藻等；',
+--	similar_medicines = '生地甘寒补阴，偏于凉血清热，适用于血热之火；元参咸寒滋阴，偏于滋阴降火，适用于阴虚上浮之火。苦参苦寒，泻火燥湿，善治外部皮肤湿热疥癞；元参咸寒，降火养阴，善治内部肾阴不足，骨蒸痨热。麦冬养阴，偏于润肺；元参养阴，则偏于滋肾。',
+--	dosage_reference = '一般用量为6～12克，重症时可用30克',
+--	contraindications = '大便溏泄及痰湿盛者忌用。本品反藜芦。',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -353,7 +353,7 @@ where (effects is null or length(effects) = 0)
 --	and name = '旱莲草';
 --
 --update medicine_items
---set alias = '',
+--set alias = '桑葚',
 --	effects = '',
 --	actions_and_indications = '',
 --	details = '',
@@ -369,16 +369,16 @@ where (effects is null or length(effects) = 0)
 --	and name = '桑椹';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '沙苑子、沙苑蒺藜',
+--	effects = '补肾固精',
+--	actions_and_indications = '可治肾虚所致的腰痛、遗精阳痿、小便频数或失禁、头晕眼花等',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '治肾虚腰痛：配续断、牛膝、杜仲等；治遗精阳萎：配山萸、五味子、莲须、龙骨、巴戟天、仙茅等；治小便频数或失禁：配桑螵蛸、菟丝子、复盆子、益智仁、补骨脂等；治头晕眼花：配枸杞、菊花、白蒺藜、菟丝子、决明子等',
+--	similar_medicines = '白蒺藜主要用于散郁调肝，潼蒺藜主要用于补肾益精。菟丝子补肾温而不燥，偏于生精强肾，可治久无子女；潼蒺藜温助肾阳，偏治遗精阳萎，兼能明目。',
+--	dosage_reference = '一般用量为9～12克，需要时也可以再多些',
+--	contraindications = '性欲亢奋者忌用',
+--	remarks = '治肾虚所致的遗精、早泄效果最好'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1057,7 +1057,7 @@ where (effects is null or length(effects) = 0)
 --	and name = '桑螵蛸';
 --
 --update medicine_items
---set alias = '',
+--set alias = '覆盆子',
 --	effects = '',
 --	actions_and_indications = '',
 --	details = '',
@@ -3153,32 +3153,32 @@ where (effects is null or length(effects) = 0)
 --	and name = '生地黄';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '犀牛角',
+--	effects = '清营凉血、解毒定惊',
+--	actions_and_indications = '可治温病热入营分出现的高热、神昏谵语、惊风等，入血分出现的吐血、衄血、咳血、尿血、便血、身出红斑等。',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '治热入营分：配郁金、天竺黄、元参、钩藤、羚羊角、远志、菖蒲、黄连等；治热入血分：配生地、生石膏、赤芍、丹皮、元参、白茅根、大蓟、小蓟等。',
+--	similar_medicines = '水牛角、广（犀）角',
+--	dosage_reference = '一般用量为0.7～1.5克，为末随汤药冲服',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '价格昂贵而货源缺乏，故常作为粉剂冲服，近年来常以水牛角、广（犀）角代替'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '犀角';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '广犀角',
+--	effects = '同犀角：清营凉血、解毒定惊',
+--	actions_and_indications = '同犀角：可治温病热入营分、入血分导致的症状',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '参考犀角一节',
+--	similar_medicines = '水牛角、犀角',
+--	dosage_reference = '可用3～9克水煎服，也可用粉剂随汤药冲服，每次1.5～3克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '非洲犀角经广州进口，故称广角，价格较低'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3186,15 +3186,15 @@ where (effects is null or length(effects) = 0)
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '同犀角：清营凉血、解毒定惊',
+--	actions_and_indications = '同犀角：可治温病热入营分、入血分导致的症状',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '参考犀角一节',
+--	similar_medicines = '犀角、广角',
+--	dosage_reference = '一般用量为20～30克，先下、水煎服',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '煎煮时，先下'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3521,16 +3521,16 @@ where (effects is null or length(effects) = 0)
 --	and name = '马勃';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--set alias = '草河车、金线重楼、七叶一枝花',
+--	effects = '常用的清热解毒药',
+--	actions_and_indications = '可用于因肺胃有毒热而致的咽喉肿痛和扁桃体红肿、（血有毒热所致）疔毒疮疡、淋巴结核',
+--	details = '清热解毒，抗菌，也有试用于治癌瘤者',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '治咽喉肿痛：配连翘、黄芩、生地、元参、赤芍、射干、山豆根、薄荷、锦灯笼等；治疔毒疮疡：配银花、连翘、赤芍、当归尾、红花、天花粉、炙山甲、地丁、蒲公英、野菊花等；治淋巴结核：配夏枯草',
+--	similar_medicines = '解毒、祛毒的作用大于蒲公英、地丁、银花等品，故凡对毒性大的疾病，常用本品解毒护心（可免毒气内侵的意思）',
+--	dosage_reference = '一般用量为6～9克，用量大时，可出现恶心、呕吐等副作用，但一般并无危险。前人经验认为体内有毒者容易发生呕吐，但吐后毒即可内消，仅供参考',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '有小毒'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -4847,6 +4847,7 @@ where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '新药物';
-
+--
 --======================== 2018-01-29 13:34:15 end ========================--
+
 
