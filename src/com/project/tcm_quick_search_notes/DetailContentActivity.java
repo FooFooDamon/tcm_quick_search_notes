@@ -1670,6 +1670,7 @@ public class DetailContentActivity extends Activity {
                         holderRef.iconDelete.setVisibility(TextView.VISIBLE);
                         holderRef.btnConfirm.setVisibility(TextView.INVISIBLE);
                         holderRef.btnCancel.setVisibility(TextView.INVISIBLE);
+                        changeCheckedStatusOfAllCheckBoxes(false, false);
                     }
                 });
 
@@ -1701,7 +1702,12 @@ public class DetailContentActivity extends Activity {
             if (!contentItemList.add(new DetailContentData(FIELD_INDEX)))
                 return false;
 
-            DetailContentData contentData = contentItemList.get(contentItemList.size() - 1);
+            int expectedFocusedPosition = contentItemList.size() - 1;
+            DetailContentData contentData = contentItemList.get(expectedFocusedPosition);
+
+            // NOTE: One of he new added item's EditTexts will be focused automatically,
+            //  so, don't forget to update the position variable watched by text watchers!
+            contentsAdapter.updatePositionToTextWatchers(expectedFocusedPosition);
 
             contentData.checkBoxFlags |= CHKBOX_CLICKABLE;
             contentData.spinnersEnabled = true;
@@ -1851,6 +1857,8 @@ public class DetailContentActivity extends Activity {
             }
 
             contentsAdapter.notifyDataSetChanged();
+
+            mIsChanged = true;
         }
 
         private void removeSelectedContentItems() {
@@ -1868,6 +1876,9 @@ public class DetailContentActivity extends Activity {
             }
 
             contentsAdapter.notifyDataSetChanged();
+            Hint.alert(mContext, R.string.alert_view_delusion_title, R.string.alert_view_delusion_contents);
+
+            mIsChanged = true;
         }
 
         private void changeCheckedStatusOfAllCheckBoxes(boolean isChecked, boolean isVisible) {
@@ -1978,9 +1989,7 @@ public class DetailContentActivity extends Activity {
 
                 mEtxTouchPosition = (java.lang.Integer)targetEditText.getTag();
 
-                for (int i = 0; i < TEXT_WATCHERS.length; ++i) {
-                    TEXT_WATCHERS[i].updatePositionAtListView(mEtxTouchPosition);
-                }
+                updatePositionToTextWatchers(mEtxTouchPosition);
                 Log.v(TAG, "mEtxTouchPosition: " + mEtxTouchPosition);
 
                 return FIXED_RETURN_VALUE; // TODO: How about v.performClick() or true?
@@ -2281,6 +2290,8 @@ public class DetailContentActivity extends Activity {
                         item.checkBoxFlags |= CHKBOX_SELECTED;
                     else
                         item.checkBoxFlags &= (~CHKBOX_SELECTED);
+
+                    mIsChanged = true;
                 }
 
             });
@@ -2334,6 +2345,12 @@ public class DetailContentActivity extends Activity {
             Spinner spnValueSuffix_2;
             EditText etxValueSuffix_2;
             EditText etxValueLong;
+        }
+
+        private void updatePositionToTextWatchers(int position) {
+            for (int i = 0; i < TEXT_WATCHERS.length; ++i) {
+                TEXT_WATCHERS[i].updatePositionAtListView(position);
+            }
         }
 
         private class SmarterTextWatcher implements TextWatcher {
