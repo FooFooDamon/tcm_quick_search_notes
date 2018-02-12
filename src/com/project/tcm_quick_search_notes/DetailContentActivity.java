@@ -1015,7 +1015,7 @@ public class DetailContentActivity extends Activity {
             { DbHelper.MEDICINE_COLUMN_INDEX_NATURE, 0, 1, 0 },
             { DbHelper.MEDICINE_COLUMN_INDEX_TASTES, 0, 1, 0 },
             { DbHelper.MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM, 0, 1, 0 },
-            { DbHelper.MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, 1, 5, CHKBOX_VISIBLE | CHKBOX_CLICKABLE },
+            { DbHelper.MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS, 1, 7, CHKBOX_VISIBLE | CHKBOX_CLICKABLE },
             { DbHelper.MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION, 1, 6, 0 },
             { DbHelper.MEDICINE_COLUMN_INDEX_EFFECTS, 1, 1, 0 },
             { DbHelper.MEDICINE_COLUMN_INDEX_ACTIONS_AND_INDICATIONS, 1, 1, 0 },
@@ -1876,7 +1876,7 @@ public class DetailContentActivity extends Activity {
             }
 
             contentsAdapter.notifyDataSetChanged();
-            Hint.alert(mContext, R.string.alert_view_delusion_title, R.string.alert_view_delusion_contents);
+            //Hint.alert(mContext, R.string.alert_view_delusion_title, R.string.alert_view_delusion_contents);
 
             mIsChanged = true;
         }
@@ -2153,6 +2153,7 @@ public class DetailContentActivity extends Activity {
             final String CURRENT_FIELD_NAME = FIELDS[item.contentFieldIndex];
             final String COMPOSITION_FIELD = DbHelper.PRESCRIPTION_COLUMNS[DbHelper.PRESCRIPTION_COLUMN_INDEX_COMPOSITION];
             boolean isCompositionField = COMPOSITION_FIELD.equals(CURRENT_FIELD_NAME);
+            boolean isNameField = "name".equals(CURRENT_FIELD_NAME);
             DetailContentTemplate template = mDetailContentTemplatesMap.get(CURRENT_FIELD_NAME);
 
             Spinner[] holderSpinners = {
@@ -2189,9 +2190,13 @@ public class DetailContentActivity extends Activity {
                 }
 
                 boolean isLongValueEditText = DETAIL_CONTENT_FIELD_NAMES[DETAIL_CONTENT_FIELD_ETX_VALUE_LONG].equals(editTextName);
+                boolean isReadOnly = (null != templateTextValue && templateTextValue.equals(ITEM_READ_ONLY));
+                boolean isModificationRestricted = (TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT == mOpType
+                    && MiscManagementActivity.isModificationRestricted(mPositionAtFunctionalityList));
                 int textFlags = holderEditTexts[i].getPaint().getFlags();
 
-                if (null != templateTextValue && templateTextValue.equals(ITEM_READ_ONLY))
+                if (isReadOnly
+                    || (isModificationRestricted && isNameField))
                     holderEditTexts[i].setEnabled(false);
                 holderEditTexts[i].setClickable(true);
                 if (!mEditable

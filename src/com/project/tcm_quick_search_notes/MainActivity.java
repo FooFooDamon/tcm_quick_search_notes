@@ -38,6 +38,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.sqlite.SQLiteException;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -76,6 +77,8 @@ public class MainActivity extends Activity
     private Intent mIntentQueryEntry = null;
     private Intent mIntentMiscManagement = null;
     private Intent mIntentAbout = null;
+
+    private DialogInterface.OnClickListener mExitActivity = null;
 
     @SuppressLint("NewApi")
     @SuppressWarnings("deprecation")
@@ -131,16 +134,27 @@ public class MainActivity extends Activity
 
         inflatePageListView(EXIT_ITEMS, R.id.lsv_exit_group);
 
-        try {
-            new DbHelper(this).initData();
-        } catch (Exception e) {
-            Hint.alert(this, getString(R.string.data_init_error), e.getMessage(), new OnClickListener() {
+        DbHelper dbHelper = new DbHelper(this);
 
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    MainActivity.this.finish();
-                }
-            });
+        try {
+            dbHelper.initData();
+        } catch (Exception e) {
+            Hint.alert(this, getString(R.string.data_init_error), e.getMessage(), mExitActivity);
+        }
+
+        UpdateManager updateManager = new UpdateManager(this, dbHelper, App.getAppName(this) + ".db", null);
+
+        try {
+            updateManager.getWritableDatabase(); // triggers operations such as
+                                                 // creating or altering tables.
+            updateManager.close();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+
+            String eMsg = ((null != e.getCause()) ? e.getCause().getMessage()
+                    : e.getMessage());
+
+            Hint.alert(this, R.string.db_error, eMsg, mExitActivity);
         }
 
         boolean isFirstRunning = (boolean) SharedPreferences.getValue(this, "isFirstRunning", SharedPreferences.ValueTypeEnum.BOOL, true);
@@ -285,6 +299,16 @@ public class MainActivity extends Activity
 
         if (null == mIntentAbout)
             mIntentAbout = new Intent(this, AboutActivity.class);
+
+        if (null == mExitActivity) {
+            mExitActivity = new OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    MainActivity.this.finish();
+                }
+            };
+        }
     }
 
     private final String[] getMedicationItems() {

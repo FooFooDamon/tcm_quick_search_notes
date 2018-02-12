@@ -558,12 +558,15 @@
         保存好的数据），目前尚未对该问题进行优化，用户若碰到这种问题，
         可每次编辑一定条数的内容（例如2、30条），先退出软件以让系统
         回收内存资源，再重新打开软件进行下一轮的编辑。\n\n
-        7、文本框存在换行时光标错位的问题，目前尚未找到有效解决办法，
-        用户在编辑内容时可切换成单行模式来避免这个问题。\n\n
+        7、文本框输入在换行时可能出现光标重新定位错误的现象，如果出现，
+        可以通过切换成单行模式来避免这个问题。\n\n
         8、其余帮助信息，详见各操作页面的帮助菜单。
     </string>
 
     <string name="version_log_contents">
+        ---- V1.01.11 2018/02/12\n
+        1、杂项管理增加药性、药味、归经、药物角色、基础生命物质的展示
+        及修改（仅能修改备注内容）。\n\n
         ---- V1.01.10 2018/02/09\n
         1、标题栏显示当前项的名称，用户操作时不必上下拖动查看当前编辑的
         是哪个项。\n
@@ -804,7 +807,7 @@
     <string name="zang_fu_viscera">脏腑</string>
 
     <string name="attr_table_prefix_life_fundamental">life_fundamental</string>
-    <string name="life_fundamental">气血津液精神</string>
+    <string name="life_fundamental">基础生命物质</string>
     <string name="life_fundamental_diplay_name">有利于</string>
 
     <string name="attr_table_prefix_motion_form">motion_form</string>
@@ -876,24 +879,6 @@
 
     <string name="attr_table_prefix_action_verb">action_verb</string>
     <string name="action_verb">作用动词</string>
-
-    <string name="sql_create_test_table">
-        CREATE TABLE `pretest` (
-            `test_id`   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-            `test_name` TEXT NOT NULL UNIQUE,
-            `test_remarks`  TEXT)
-    </string>
-
-    <string name="sql_make_test_data">
-        insert into pretest(test_name, test_remarks)
-        values(?, ?)
-    </string>
-
-    <string name="sql_query_test_data">
-        select test_id, test_name, test_remarks
-        from pretest
-        where test_id between 1 and ?
-    </string>
 
     <string name="sql_create_reference_material_table">
         CREATE TABLE `reference_material` (

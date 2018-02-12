@@ -88,12 +88,17 @@ public class QueryEntryActivity extends Activity
         if (Version.SDK <= Version.getDeprecatedVersionUpperBound())
             doExtraJobsForLowerVersions();
 
+        Intent prevIntent = getIntent();
+        int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+        int listItemPos = prevIntent.getIntExtra(TcmCommon.FUNC_LIST_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+
         final Button btnAddItem = (Button) findViewById(R.id.btn_add_item);
 
         btnAddItem.setOnClickListener(mAddItemDialog);
-
-        Intent prevIntent = getIntent();
-        int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
+        if (TcmCommon.OP_TYPE_VALUE_MISC_MANAGEMENT == opType
+            && MiscManagementActivity.isModificationRestricted(listItemPos)) {
+            btnAddItem.setEnabled(false);
+        }
 
         if (TcmCommon.OP_TYPE_VALUE_MEDICINE == opType
             || TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == opType) {
@@ -130,9 +135,7 @@ public class QueryEntryActivity extends Activity
                 setTitle(getString(R.string.main_item_prescription));
         }
         else {
-            int miscItemPos = prevIntent.getIntExtra(TcmCommon.FUNC_LIST_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
-
-            setTitle(MiscManagementActivity.getItemNameByPosition(miscItemPos));
+            setTitle(MiscManagementActivity.getItemNameByPosition(listItemPos));
         }
     }
 
@@ -172,14 +175,14 @@ public class QueryEntryActivity extends Activity
     public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
         Intent prevIntent = getIntent();
         int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
-        int miscItemPos = prevIntent.getIntExtra(TcmCommon.FUNC_LIST_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
+        int listItemPos = prevIntent.getIntExtra(TcmCommon.FUNC_LIST_POS_KEY, MiscManagementActivity.LIST_ITEM_POS_MEDICINE_CATEGORY);
         ListView listView = (ListView) parent;
         ItemBrief item = (ItemBrief) listView.getItemAtPosition(pos);
 
         mNextIntent.putExtra(TcmCommon.OP_TYPE_KEY, opType);
         mNextIntent.putExtra(TcmCommon.ID_KEY, item.id);
         mNextIntent.putExtra(TcmCommon.NAME_KEY, item.name);
-        mNextIntent.putExtra(TcmCommon.FUNC_LIST_POS_KEY, miscItemPos);
+        mNextIntent.putExtra(TcmCommon.FUNC_LIST_POS_KEY, listItemPos);
         startActivity(mNextIntent);
     }
 

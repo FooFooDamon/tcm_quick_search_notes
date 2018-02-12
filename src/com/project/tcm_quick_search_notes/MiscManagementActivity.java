@@ -64,11 +64,16 @@ public class MiscManagementActivity extends Activity
     public static final int LIST_ITEM_POS_DOSAGE_FORM = 5;
     public static final int LIST_ITEM_POS_METHOD_OF_TAKING_MEDICINE = 6;
     public static final int LIST_ITEM_POS_REFERENCE_MATERIAL = 7;
+    public static final int LIST_ITEM_POS_MEDICINE_NATURE = 8;
+    public static final int LIST_ITME_POS_MEDICINE_TASTE = 9;
+    public static final int LIST_ITEM_POS_CHANNEL_TROPISIM = 10;
+    public static final int LIST_ITEM_POS_MEDICINE_ROLE = 11;
+    public static final int LIST_ITEM_POS_LIFE_FUNDAMENTAL = 12;
 
     private Intent mIntentQueryEntry = null;
 
     public static String getItemNameByPosition(int positionAtMiscList) {
-        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_REFERENCE_MATERIAL) {
+        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_LIFE_FUNDAMENTAL) {
             return "Unknown Misc Item, pos: " + String.valueOf(positionAtMiscList);
         }
 
@@ -80,14 +85,19 @@ public class MiscManagementActivity extends Activity
             "单位",
             "剂型",
             "服法",
-            "参考资料"
+            "参考资料",
+            "药性",
+            "药味",
+            "归经",
+            "药物角色",
+            "基础生命物质"
         };
 
         return NAMES[positionAtMiscList];
     }
 
     public static String getDbPrimaryIdNameByPosition(int positionAtMiscList) {
-        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_REFERENCE_MATERIAL) {
+        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_LIFE_FUNDAMENTAL) {
             return "Unknown Misc Item, pos: " + String.valueOf(positionAtMiscList);
         }
 
@@ -99,14 +109,19 @@ public class MiscManagementActivity extends Activity
             "aid",
             "aid",
             "aid",
-            "rid"
+            "rid",
+            "aid",
+            "aid",
+            "aid",
+            "aid",
+            "aid"
         };
 
         return ID_NAMES[positionAtMiscList];
     }
 
     public static String getTableNameByPosition(int positionAtMiscList) {
-        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_REFERENCE_MATERIAL) {
+        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_LIFE_FUNDAMENTAL) {
             return "Unknown Misc Item, pos: " + String.valueOf(positionAtMiscList);
         }
 
@@ -118,10 +133,26 @@ public class MiscManagementActivity extends Activity
             "medicine_unit_definitions",
             "dosage_form_definitions",
             "method_of_taking_medicine_definitions",
-            "reference_material"
+            "reference_material",
+            "medicine_nature_definitions",
+            "medicine_taste_definitions",
+            "channel_tropism_definitions",
+            "medicine_role_definitions",
+            "life_fundamental_definitions"
         };
 
         return names[positionAtMiscList];
+    }
+
+    public static boolean isModificationRestricted(int positionAtMiscList) {
+        if (LIST_ITEM_POS_MEDICINE_NATURE == positionAtMiscList
+            || LIST_ITME_POS_MEDICINE_TASTE == positionAtMiscList
+            || LIST_ITEM_POS_CHANNEL_TROPISIM == positionAtMiscList
+            || LIST_ITEM_POS_MEDICINE_ROLE == positionAtMiscList
+            || LIST_ITEM_POS_LIFE_FUNDAMENTAL == positionAtMiscList)
+            return true;
+
+        return false;
     }
 
     @SuppressLint("NewApi")
@@ -148,7 +179,12 @@ public class MiscManagementActivity extends Activity
             new PageItem(ICON, getString(R.string.medicine_unit)),
             new PageItem(ICON, getString(R.string.dosage_form)),
             new PageItem(ICON, getString(R.string.method_of_taking_medicine)),
-            new PageItem(ICON, getString(R.string.reference_material))
+            new PageItem(ICON, getString(R.string.reference_material)),
+            new PageItem(ICON, getString(R.string.medicine_nature)),
+            new PageItem(ICON, getString(R.string.medicine_taste)),
+            new PageItem(ICON, getString(R.string.channel_tropism)),
+            new PageItem(ICON, getString(R.string.medicine_role)),
+            new PageItem(ICON, getString(R.string.life_fundamental))
         };
         List<PageItem> itemList = new ArrayList<PageItem>();
 

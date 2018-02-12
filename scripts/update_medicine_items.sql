@@ -97,16 +97,16 @@
 --	and name = '当归';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--set alias = '芍药',
+--	effects = '养血荣筋、缓急止痛、柔肝安脾，常用的补血养阴药',
+--	actions_and_indications = '血虚，阴虚盗汗，肝血不足而致筋肉失荣（肢体拘挛/抽筋、关节强硬、屈伸不利等），脾虚寒，其缓急止痛的作用对腹中疼痛效果最好',
+--	details = '有制菌作用（如痢疾杆菌、伤寒杆菌、大肠杆菌等），能缓解由于胃肠蠕动亢进而引起的腹部疝痛。',
+--	common_prescriptions = '痛泻要方、胶艾四物汤、桃仁四物汤',
+--	common_partners = '治血虚：配当归、熟地、川芎、白术、阿胶等；治阴虚盗汗：配麦冬、五味子、浮小麦等；治肢体拘挛关节强硬：配伸筋草、薏米、鸡血藤、木瓜、甘草、当归尾等；治血虚肝旺或脾虚寒所致的腹中疼痛：配当归、甘草、桂枝、饴糖等；治慢性腹泻：配炒防风、白术、陈皮；调月经：配当归、生地、黄芩、艾叶炭、阿胶（胶艾四物汤）等，用于月经前期或月经过多，配当归、川芎、熟地、红花、桃仁（桃仁四物汤）、香附等 ，则用于月经错后、量少等，对行经腹痛，常重用白芍；清热安胎：配桑寄生、白术、炒黄芩等',
+--	similar_medicines = '赤芍偏于行血散瘀，白芍偏于养血益阴；赤芍泻肝火，白芍养肝阴；赤芍散而不补，白芍补而不散。当归性动，能动肝阳，白芍性静，能敛肝阳，二药合用，可互纠其偏，互助其用。熟地补血以入肾生精为主，白芍补血以入肝养阴为主；熟地甘温，白芍酸寒。',
+--	dosage_reference = '一般用量为4.5～12克，重症时可用15～30克',
+--	contraindications = '产后血瘀、恶露不下者忌用',
+--	remarks = '1、养阴、补血、柔肝，用生白芍；和中缓急用酒炒白芍；安脾止泻用土炒白芍。' || x'0A' || '2、药方如写芍药且无特别注明，均指白芍，也可根据病症去判断到底要用白芍还是赤芍'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -114,15 +114,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '补血、滋阴、润肺、养肝、止血',
+--	actions_and_indications = '血虚，贫血，阴虚内热，肺阴虚所致的咳嗽、咳血、肺痨，月经过多、崩漏等，大便带血、痔疮出血',
+--	details = '还有养血润燥而滑肠的作用，可用于妇女产后便秘、老人肠燥便秘、血虚便秘等。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '治血虚、贫血：配当归、熟地、白芍、白术等；治阴虚内热：配地黄、鳖甲、龟甲、秦艽、银柴胡、青蒿等；治肺阴虚：配麦冬、百合、白及、沙参、黑栀子、藕节等；治月经过多、崩漏等：配白芍、当归炭、艾炭、棕炭、白术等；治大便带血：配炒黄芩、苦参、槐花炭、炒地榆、炒心土、防风等；',
+--	similar_medicines = '熟地偏于补肾阴、填精髓而补血，阿胶则偏于润肺养肝、补血而滋阴，兼能止血。黄明胶（牛皮胶）功能与阿胶相似，可代用，但补益之力不如阿胶，兼有活血解毒的作用。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '舌苔厚腻、食欲不振、大便溏泄者，均不宜用',
+--	remarks = '滋阴、补血时，多生用（烊化服）；润肺、止血时，则炒用，其中，用于润肺化痰时，可用蛤粉炒，用于止血时，可用蒲黄炒。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -145,16 +145,16 @@
 --	and name = '紫河车';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--set alias = '首乌',
+--	effects = '养血益精，平补肝肾，乌须发，兼能润便滑肠、消瘰疬、治疟疾',
+--	actions_and_indications = '肝肾不足、血虚气衰及各种贫血；肾虚、滑精、遗精、妇女带下等；年老、久病或产后失血导致的便秘；须发早白；瘰疬痈肿；疟疾',
+--	details = '促进血液新生；促进肠管蠕动，适于治疗虚性便秘；强心；阻止胆固醇在肝内沉积，减轻动脉粥样硬化',
+--	common_prescriptions = '何人饮',
+--	common_partners = '肝肾不足、血虚气衰及各种贫血：配熟地、当归、白芍、阿胶、白术等；肾虚、滑精、遗精、妇女带下等：配山萸肉、山药、芡实、五味子、龙骨、牡蛎、远志、茯苓等；年老、久病或产后失血导致的便秘：配当归、肉苁蓉、黑芝麻、火麻仁等；须发早白：配补骨脂、当归、地黄、枸杞、女贞子、菟丝子、黑芝麻、旱莲草等；瘰疬痈肿：配蒲公英、紫花地丁、连翘、玄参、生牡蛎、夏枯草等；疟疾：配人参或党参（何人饮）',
+--	similar_medicines = '熟地滋补肝肾、添精益髓之力优于何首乌，但滋腻太甚；何首乌则不寒不燥，不腻膈，又有养血祛风之功，为熟地所不及；急需滋补时，用熟地为宜，长服慢补时，用何首乌为好，二药也可合用。黄精也补而不腻，但偏于补中益气、润养肺胃阴津；何首乌偏于滋补肝肾，养血益精',
+--	dosage_reference = '一般用量为9～15克，重症时可用20～30克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '温而不燥，补而不腻，性质平和，适于久服。生用适用于消瘰疬、解疮毒、通便结；制用适用于补肝肾、强筋骨、养血、固精。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -209,16 +209,16 @@
 --	and name = '山茱萸';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--set alias = '枸杞',
+--	effects = '滋补肝肾、益精明目',
+--	actions_and_indications = '肝肾不足，可致腰膝无力、脐腹隐痛、阳痿不举、大便溏泄、两目昏暗、视物模糊；消渴病',
+--	details = '还有降血糖的作用',
+--	common_prescriptions = '右归丸',
+--	common_partners = '治腰膝无力、大便溏泄等：配熟地、山药、山萸肉、肉桂、附片、鹿角胶、菟丝子等；治视物模糊：配地黄、山药、山萸肉、茯苓、泽泻、菊花等；治消渴病：配天冬、麦冬、山药、玉竹、地黄、知母等；',
+--	similar_medicines = '山茱萸滋补肝肾，兼能收肝胆之火，枸杞子兼能益肾阳。枸杞子与五味子合用，可代替山萸肉。桑葚滋阴补血，益脑润燥；枸杞子滋养肝肾，益精明目。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '外感发热、消化不良易生腹泻者慎用本品',
+--	remarks = '枸杞叶苦甘而凉，可清上焦毒热，代茶饮之，可止消渴。枸杞的根皮，即地骨皮，能清虚热、退骨蒸，详见地骨皮一节'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -226,15 +226,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '养阴润肺，清热生津',
+--	actions_and_indications = '肺阴不足而生虚热，出现干咳少痰、咽喉干燥、咽痛、声音嘶哑、口鼻干燥、舌尖边红等症；阴液耗伤或久病而致胃阴亏损，出现舌干口燥、食欲不振、咽干口渴、舌苔剥脱等；盗汗、五心烦热等',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '治肺阴不足、肺燥：配生地、知母、麦冬、天冬、川贝、生甘草、桑叶、玄参、生石膏、百合、火麻仁、阿胶等；治胃阴亏损：配麦冬、生地、石斛、玉竹、玄参、天花粉、生白芍等；治盗汗、五心烦热等：配生地、玄参、鳖甲、秦艽、地骨皮、银柴胡、贝母、百部、白及等',
+--	similar_medicines = '党参甘温，补肺胃之气；沙参甘凉，补肺胃之阴。人参补阳而生阴，沙参补阴而制阳。',
+--	dosage_reference = '一般用量为4.5～12克',
+--	contraindications = '风寒感冒咳嗽及肺寒白痰多者不宜用',
+--	remarks = '南沙参体较轻、质松，性味苦寒，清肺火而益肺阴，兼有风热感冒而肺燥热者，可以使用；北沙参体重、质坚，性味甘凉，主用于养阴清肺、生津益胃，有外感者不宜用。若处方上只写沙参，药店即付北沙参，要用南沙参时须注明。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -258,15 +258,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '滋阴润肺、养阴清心、生津益胃、润肺利咽',
+--	actions_and_indications = '肺热咳嗽、干咳少痰等；治心阴虚而致的心烦、心悸、失眠、舌红等；治胃阴不足而致口燥咽干、食欲不振、大便数日不行等；治肺热阴伤而致的咽喉干痛、声哑失音等。',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '生脉散、益胃汤',
+--	common_partners = '治肺热咳嗽、干咳少痰等：配桑叶、杏仁、沙参、火麻仁、阿胶珠、枇杷叶、天冬等；治心阴虚而致的心烦、心悸、失眠、舌红等：配黄连、阿胶、贝母、生地、玄参、丹参、珍珠母、远志等；治胃阴不足而致口燥咽干、食欲不振、大便数日不行等：配玄参、细生地、玉竹、冰糖、瓜蒌、生大黄、火麻仁、枳实等；治肺热阴伤而致的咽喉干痛、声哑失音等：配玄参、生地、桔梗、甘草、山豆根、金果榄、知母等。',
+--	similar_medicines = '天冬也能滋阴，但甘苦大寒，偏于清热降火，兼能滋肾阴、降肾火，麦冬则甘而微寒，偏于润肺宁心，兼能养胃阴、止烦渴。川贝母、麦冬皆常用于润肺止咳，但川贝母偏于散肺郁而化痰，兼能开心郁而清热，麦冬偏于滋肺阴而清热，兼能养胃阴而止渴。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '腹泻便溏、舌苔白腻、消化不良者，均不宜使用',
+--	remarks = '用朱砂拌过的，叫朱麦冬或朱寸冬，适用于宁心安神。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -274,15 +274,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '滋阴清热',
+--	actions_and_indications = '阴虚火旺，肺肾阴虚',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '治阴虚火旺、肺热而咳等：配麦冬、玄参、生地、石斛、贝母、蜜枇杷叶、杏仁、藕节、白及、生石膏、瓜蒌等；治肺肾阴虚而致的痨热骨蒸、颧红盗汗、声音嘶哑等：配秦艽、白薇、鳖甲、地骨皮、银柴胡、生地、龟甲、黄柏、知母等；治肺肾阴虚而致的口渴多饮、饮不解渴、尿频而多：配生地、山萸肉、天花粉、知母、沙参、麦冬、五味子、乌梅、枸杞子等。',
+--	similar_medicines = '石斛、天冬皆能滋肾阴，但石斛兼能养胃生津，天冬兼能清肺润燥。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '腹泻便溏、舌苔白腻、消化不良者，均不宜使用',
+--	remarks = '常用的滋阴清热药'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -290,15 +290,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '益阴润燥，生津止渴',
+--	actions_and_indications = '肺胃阴伤或燥邪伤肺而致的咳嗽少痰、咽干舌燥、炽热口渴、食欲不振等。',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '治肺胃阴伤或燥邪伤肺而致的咳嗽少痰、咽干舌燥、炽热口渴等：配沙参、麦冬、桑叶、杏仁、石斛、玄参等；治温热病后期胃阴损伤而致的口渴舌燥、食欲不振、胃部不适等：配沙参、石斛、麦冬、冰糖、生麦芽等。',
+--	similar_medicines = '天冬滋阴偏在肺肾，且性寒滞胃；玉竹养阴偏在肺胃，性平而不害胃，虽养胃阴但不妨脾阳。',
+--	dosage_reference = '一般用量为6～12克，重症时可用15～30克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '还有降血糖的作用'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -306,14 +306,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '润肺止咳，清心安神，益气调中',
+--	actions_and_indications = '阴虚肺燥的咳嗽、肺气浮散之证；热病后余热不清的神志恍惚和阴虚的心烦失眠',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '治阴虚肺燥的咳嗽：配生地、麦冬、沙参、贝母、梨皮等；治久咳不愈、肺阴虚而肺气浮散之证：配沙参、五味子、马兜铃、诃子、麦冬等；治热病后余热不清的神志恍惚和阴虚的心烦失眠：配麦冬、莲子、远志、黄连、阿胶、玄参等；治胃痛：配乌药。',
+--	similar_medicines = '五味子酸而收，偏于治肺气之浮散；百合甘敛润肺，偏于治肺阴之虚燥。百部温肺化痰而治嗽，并可杀虫；百合甘敛润肺而治嗽，并可宁心。',
+--	dosage_reference = '一般用量为9～12克，重症时可用25～30克',
+--	contraindications = '外感咳嗽时不宜使用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1825,16 +1825,16 @@
 --	and name = '茜草';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '芍药',
+--	effects = '与白芍作用类似，但偏于活血散瘀、凉血、消痈肿',
+--	actions_and_indications = '血热吐衄，血瘀经闭，跌打损伤、血瘀作痛，胁肋疼痛，痈肿疮毒',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '治血热吐衄：配生地、牡丹皮、玄参、白茅根等；治血瘀经闭：配当归、川芎、桃仁、红花、香附、牛膝、茜草等；治跌打损伤、血瘀作痛：配桃仁、红花、乳香、没药、续断、骨碎补等；治胁肋疼痛：配柴胡、香附、郁金、枳壳、片姜黄、川楝子等；治痈肿疮毒：配金银花、连翘、白芍、天花粉、蒲公英、野菊花、地丁、炙穿山甲等',
+--	similar_medicines = '白芍偏于养血柔肝，性收而补，善治血虚疼痛；赤芍偏于行血活血，性散而泻，善治血瘀疼痛。牡丹皮泻心经之火，除血中伏热而凉血和血；赤芍泻肝经之炎，行血中瘀滞而活血散瘀。',
+--	dosage_reference = '一般用量为4.5～10克',
+--	contraindications = '不可与藜芦同用。腹中冷痛、腹泻及无瘀血者忌用。',
+--	remarks = '1、药方中的芍药如果指的是赤芍，需要注明，否则默认为白芍' || x'0A' || '2、本药与白芍作用类似，只是侧重点不同，未尽之处可参考白芍一节。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3658,7 +3658,7 @@
 --	similar_medicines = '',
 --	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '即枸杞的根皮'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -4849,5 +4849,5 @@
 --	and name = '新药物';
 --
 --======================== 2018-01-29 13:34:15 end ========================--
-
+--
 

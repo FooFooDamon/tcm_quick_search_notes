@@ -223,16 +223,10 @@ public class DbHelper {
 
         Hint.shortToast(mContext, R.string.hint_db_creating);
 
-        prepareTestData();
         prepareMedicationData();
 
         Hint.longToast(mContext, mContext.getResources().getString(R.string.hint_db_created)
             + "\n" + dbPath);
-    }
-
-    public void prepareTestData() throws Exception {
-        createTable(R.string.sql_create_test_table);
-        makePresetData(R.string.sql_make_test_data, R.array.sql_args_make_test_data, 2, true);
     }
 
     public void prepareMedicationData() throws Exception {
@@ -517,6 +511,11 @@ public class DbHelper {
         db.execSQL(sql, bindArgs);
     }
 
+    public void upgradeV10111() throws Exception {
+        makeAttributeData(mContext.getString(R.string.attr_table_prefix_medicine_nature), R.array.medicine_natures_v10111);
+        makeAttributeData(mContext.getString(R.string.attr_table_prefix_life_fundamental), R.array.life_fundamentals_v10111);
+    }
+
     // NOTE: This method should be used to tables with a small quantity of data!
     private String[] queryAllNames(String table, String primaryIdName, String firstItem) {
         String sql = "select name from `"
@@ -642,19 +641,5 @@ public class DbHelper {
         }
 
         Hint.alert(mContext, targetFunction, args.toString());
-    }
-
-    public void showTestData() {
-        Cursor c = getDatabase().rawQuery(mContext.getResources().getString(R.string.sql_query_test_data),
-            mContext.getResources().getStringArray(R.array.sql_args_query_test_data));
-
-        while (c.moveToNext()) {
-            int id = c.getInt(c.getColumnIndex("test_id"));
-            String name = c.getString(c.getColumnIndex("test_name"));
-            String remarks = c.getString(c.getColumnIndex("test_remarks"));
-
-            Hint.shortToast(mContext, String.valueOf(id) + " | " + name + " | " + remarks);
-        }
-        c.close();
     }
 }

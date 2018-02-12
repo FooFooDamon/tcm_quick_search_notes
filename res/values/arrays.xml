@@ -837,11 +837,11 @@
     <string-array name="medicine_roles">
         <item>（君）主药</item>
         <item>（臣）辅药</item>
-        <item>佐药_佐助</item>
-        <item>佐药_佐制</item>
-        <item>佐药_反佐</item>
-        <item>使药_引经</item>
-        <item>使药_调和</item>
+        <item>佐助药</item>
+        <item>佐制药</item>
+        <item>反佐药</item>
+        <item>引经药</item>
+        <item>调和药</item>
     </string-array>
 
     <string-array name="dosage_forms">
@@ -962,43 +962,34 @@
         <item>辛温解表、辛凉解表、扶正解表</item>
         <item>泻下剂</item>
         <item>寒下、温下、润下、逐水、攻补兼施</item>
-        <item>温里回阳</item>
+        <item>温里回阳剂</item>
         <item>温中祛寒、回阳救逆、温经散寒</item>
-        <item>清热</item>
+        <item>清热剂</item>
         <item>清气分热、清营凉血、清热解毒、清脏腑热、清热祛暑、清虚热</item>
-        <item>祛湿</item>
+        <item>祛湿剂</item>
         <item>芳香化湿、清热祛湿、利水渗湿、温化水湿、祛风胜湿</item>
-        <item>润燥</item>
+        <item>润燥剂</item>
         <item>轻宣外燥、滋润内燥</item>
-        <item>和解</item>
+        <item>和解剂</item>
         <item>和解少阳、调和肝脾、其它</item>
-        <item>表里双解</item>
+        <item>表里双解剂</item>
         <item>解表攻/清/温里</item>
-        <item>消导</item>
+        <item>消导剂</item>
         <item>消食导滞、消痞化积</item>
-        <item>固涩</item>
+        <item>固涩剂</item>
         <item>敛汗固表、涩精止遗、涩肠固脱、固崩止带</item>
-        <item>安神</item>
+        <item>安神剂</item>
         <item>重镇安神、滋养安神</item>
-        <item>开窍</item>
+        <item>开窍剂</item>
         <item>凉开、温开</item>
+        <item>驱虫剂</item>
         <item>驱虫</item>
-        <item>驱虫</item>
-        <item>治风</item>
+        <item>治风剂</item>
         <item>疏散外风、平熄内风</item>
-        <item>祛痰</item>
+        <item>祛痰剂</item>
         <item>燥湿/祛寒/清热/治风化痰</item>
+        <item>涌吐剂</item>
         <item>涌吐</item>
-        <item>涌吐</item>
-    </string-array>
-
-    <string-array name="sql_args_make_test_data">
-        <item>名称1</item>
-        <item>备注1</item>
-    </string-array>
-
-    <string-array name="sql_args_query_test_data">
-        <item>10</item>
     </string-array>
 
     <string-array name="sql_args_add_reference_material">
@@ -1743,6 +1734,17 @@
         <item>1</item>
         <item>十全大补汤</item>
         <item>1</item>
+    </string-array>
+
+    <!-- For update manager -->
+
+    <string-array name="medicine_natures_v10111">
+        <item>毒</item>
+    </string-array>
+
+    <string-array name="life_fundamentals_v10111">
+        <item>阴</item>
+        <item>阳</item>
     </string-array>
 
 </resources>
