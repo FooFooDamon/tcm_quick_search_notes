@@ -142,12 +142,15 @@ public class MainActivity extends Activity
             Hint.alert(this, getString(R.string.data_init_error), e.getMessage(), mExitActivity);
         }
 
-        UpdateManager updateManager = new UpdateManager(this, dbHelper, App.getAppName(this) + ".db", null);
+        UpgradeManager upgradeManager = new UpgradeManager(this, dbHelper, App.getAppName(this) + ".db", null);
 
         try {
-            updateManager.getWritableDatabase(); // triggers operations such as
+            upgradeManager.getWritableDatabase(); // triggers operations such as
                                                  // creating or altering tables.
-            updateManager.close();
+            upgradeManager.close();
+
+            if (upgradeManager.hasException())
+                Hint.alert(this, R.string.db_error, upgradeManager.getExceptionMessage(), mExitActivity);
         } catch (SQLiteException e) {
             e.printStackTrace();
 
