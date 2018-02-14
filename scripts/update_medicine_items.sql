@@ -162,15 +162,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '滋阴潜阳，以滋阴为主。滋补肝肾之阴血，潜肝阳以熄风。还有凉血、软坚、消散癥瘕癖块的作用。',
+--	actions_and_indications = '阴虚所致的骨蒸劳热、盗汗、肺痨咳嗽、咳血等；温热病所致的阴虚液燥、虚风内动（手足轻微抽动、口干、低热等）；肝肾阴虚、肝阳上浮所致的头晕目眩、耳鸣、烦热、偏头痛等；肝肾不足所致的筋骨痿弱、腰酸腿软、驼背鸡胸等；阴虚火旺而血热妄行导致出血证（咳血、衄、崩漏等）；血虚气灌所致的腹中积有癥瘕癖块',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '三甲复脉汤、大定风珠、小定风珠、龟鹿二仙胶',
+--	common_partners = '阴虚所致的骨蒸劳热、盗汗、肺痨咳嗽、咳血等：配熟地、生地、知母、黄柏、猪脊髓、天冬、麦冬、玄参、沙参等；阴虚液燥、虚风内动：配麦冬、白芍、阿胶、钩藤、鳖甲、生牡蛎等；肝阳上浮：配白芍、生地、生牡蛎、生石决明、菊花、黄芩及六味地黄丸等同用；肝肾不足所致的筋骨病症：配牛膝、山药、山萸肉、补骨脂、胡桃肉、杜仲、续断、地黄等；出血证：配生地、玄参、阿胶、黄芩、白芍、黄柏、白茅根、侧柏炭、棕榈炭等；癥瘕癖块：鳖甲、赤芍、生牡蛎、红花、桃仁、山楂核、郁金、柴胡、香附、莪术、三棱等，近年常以此法治疗肝脾肿大。',
+--	similar_medicines = '鹿茸偏于通督脉、补肾阳，龟板偏于通任脉（龟甲能否通任脉，尚需验证）、补肾阴。玳瑁长于平肝镇惊，功力偏于潜降；龟甲长于补阴降火，功力偏于滋收。鹿角胶补阴中之阳，通督脉之血；龟甲胶收孤阳之汗，安欲脱之阴，二者可以使用，即龟鹿二仙胶，药房有成品。',
+--	dosage_reference = '一般用量为9～25克，重症时可用30～60克',
+--	contraindications = '舌苔腻、食欲不振者慎用',
+--	remarks = '传统用药是龟板，今多用龟甲。煎煮时，需要打碎、先煎。用龟甲熬的胶叫龟甲胶，性平味甘，滋阴补血的作用比龟甲更好，并有止血作用，但通血脉、消癥瘕的力量则不如龟甲。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -178,15 +178,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '常用的滋阴清热药，并有软坚散结的功能，兼能平肝潜阳',
+--	actions_and_indications = '阴虚内热而致的骨蒸痨热、盗汗、颧红、肺痨干咳、痰中带血；疟疾久久不愈而致的脾肿大；妇女经闭而生癥块者',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '鳖甲煎丸（治疟母专剂，即上述的疟疾脾肿大）',
+--	common_partners = '阴虚内热诸证：配银柴胡、秦艽、青蒿、地骨皮、知母、当归、乌梅、白芍、生地、玄参等；疟疾脾肿大：可用本品醋炙研末服，或配柴胡、黄芩、党参、半夏、桃仁、牡丹皮、射干、生牡蛎、三棱、莪术等；妇女经闭而生癥块者：配桃仁、红花、当归尾、赤芍、生大黄、三棱、莪术、桂枝、炙穿山甲等。',
+--	similar_medicines = '龟甲偏于入肾滋阴，补益之力大于鳖甲；鳖甲偏于入肝退热，散结之力大于龟甲。牡蛎偏于化痰结、消瘰疬；鳖甲偏于除胁满、散疟母。',
+--	dosage_reference = '一般用量为9～15克，重症时可用30克',
+--	contraindications = '无阴虚内热者、消化不良者、肠冷便泄者忌用',
+--	remarks = '入汤药时需要先煎'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -322,15 +322,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '滋补肝肾、清热明目',
+--	actions_and_indications = '肝肾阴虚所致的发热、头发早白、两目昏花、耳鸣耳聋、牙齿动摇、腰膝酸痛；身体衰弱，慢性虚损诸证',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '以上肝肾阴虚诸证：配何首乌、桑葚、生地、杜仲、山药、旱莲草、枸杞子等；身体衰弱，慢性虚损诸证：配桑葚、旱莲草制成蜜丸，久服。',
+--	similar_medicines = '何首乌补肝肾、乌须发，偏走血分，其性微温；女贞子则兼清气分，其性微凉',
+--	dosage_reference = '一般用量为6～9克',
+--	contraindications = '胃有寒者或老年人，可佐用一些补脾暖胃的药（如白术、陈皮、草豆蔻等）',
+--	remarks = '性质平和，补阴而不腻滞，适于久服，不像生熟地容易腻滞，但滋补之力也不如二地。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -338,15 +338,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '滋补肝肾，凉血止血',
+--	actions_and_indications = '肝肾阴虚之头发早白、脱落；出血（尿血、吐血、便血、崩漏）；再生障碍性贫血、功能性子宫出血、紫癜等，在相应的主方剂中随证选用',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_prescriptions = '二至丸',
+--	common_partners = '肝肾阴虚之头发早白、脱落：配女贞子（即二至丸），需要时还可加桑葚汁；尿血：配生地、玄参、白茅根、黄柏炭、大蓟、小蓟、泽泻等；吐血：生石膏、知母、黄芩、白及、藕节炭等；便血：配槐角、地榆、槐花炭、黄柏、防风等；崩漏：配桑寄生、续断炭、白术、棕榈炭、艾叶炭、当归炭、阿胶等',
+--	similar_medicines = '有墨（黑）旱莲与红旱莲之分，功效各有侧重，详见备注',
+--	dosage_reference = '一般用量为9克，重症时可用15～30克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '墨旱莲偏于补肾、滋阴、止血；红旱莲偏于凉、活瘀、清热，并能治疮疡。若只写旱莲草，药房一般给墨旱莲。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -354,15 +354,15 @@
 --
 --update medicine_items
 --set alias = '桑葚',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '滋阴补血药，可滋补肝肾、聪耳明目 ',
+--	actions_and_indications = '阴虚津少所致的口渴舌燥、大便干涩；阴血虚所致的头发早白、脱发等',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '阴虚津少所致的口渴舌燥、大便干涩：配麦冬、沙参、玉竹等；阴血虚所致的头发早白、脱发：配何首乌、旱莲草、女贞子等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	dosage_reference = '一般用量为6～9克',
+--	contraindications = '腹部有寒、大便溏软者忌用。',
+--	remarks = '有黑白两种：白桑葚（未成熟）功力小，黑桑葚（成熟）功力大。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -386,15 +386,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '滋补肝肾，有补精、润燥、滑肠等功效',
+--	actions_and_indications = '肝肾不足所致的头晕眼花、头发早白；津枯血燥所致的便秘。',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '肝肾不足所致的头晕眼花：配枸杞子、菊花、熟地、山萸、（白）蒺藜等；肝肾不足所致的头发早白：配何首乌、桑葚、旱莲草、女贞子、生地等；便秘：配当归、桃仁、肉苁蓉、火麻仁等',
+--	similar_medicines = '何首乌乌须发兼能养血，黑芝麻乌须发兼能润便。',
+--	dosage_reference = '一般用量为9～12克',
+--	contraindications = '便溏、口渴、火牙痛者不宜用',
+--	remarks = '本品含油脂多，故有润肠通便的作用。多用于丸剂中。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -402,15 +402,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '补肝肾，强筋骨，散瘀血，引药下行（可作为治疗身体下部疾病的引经药），降血压、溶血',
+--	actions_and_indications = '肝肾虚所致的腰膝酸痛、足软无力；湿热下注引起的两腿红肿、足不能行、下部湿疮等；经闭、癥瘕、胞衣不下、瘀血所致的腰腿疼痛；泌尿系结石；血栓闭塞性脉管炎（脱疽）',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	common_prescriptions = '三妙丸',
+--	common_partners = '腰膝酸痛、足软无力：配龟甲、黄柏、知母、熟地、当归等；湿热下注：配苍术、黄柏（即三妙丸）；经闭、癥瘕：配桃仁、当归尾、红花、川芎、赤芍、牡丹皮等；胞衣不下：配红花、川芎、当归、木通、滑石、冬葵子等；瘀血所致的腰腿疼痛：配泽兰；泌尿系结石：重用本品，再配冬葵子、泽泻、泽兰、猪苓、茯苓、海金沙、金钱草、木通、槟榔等；血栓闭塞性脉管炎：配金银花、赤芍等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	dosage_reference = '一般用量为2～9克，重症时可用15～30克',
+--	contraindications = '因本品性善下行，故对滑精、溏泄者及孕妇，不应使用',
+--	remarks = '有怀牛膝和川牛膝之分，怀牛膝偏于补肝肾；川牛膝则偏于散瘀血，并能祛风治痹。若不注明，药店一般给怀牛膝。在炮制方面，生牛膝偏于散恶血、破癥结、活血散瘀；制牛膝（酒浸或酒蒸）偏于补肝肾、壮筋骨、强腰膝。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -418,8 +418,8 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '功血、止血、解毒、清热',
+--	actions_and_indications = '火热牙痛、乳蛾、喉痹（包括急性扁桃体炎、咽炎、喉炎）、血淋',
 --	details = '',
 --	common_prescriptions = '',
 --	common_partners = '',
@@ -434,29 +434,29 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '补肾阳、强筋骨、益精髓、养血',
+--	actions_and_indications = '肾虚腰冷、四肢酸楚、头晕目眩、遗精阳痿；小儿元阳不足、发育迟缓、两腿痿软',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '单用，也可随证配合丸剂或胶囊服用。小儿元阳不足：可在六味地黄丸中加入本品、南五加皮、淫羊藿、补骨脂、续断等，作为丸剂服用',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	dosage_reference = '本品不入汤药，常作为粉剂，装入胶囊中吞服，每次用量为0.6～1.5克，每日1～2次，温开水送下，或随汤药冲服。也常加入丸剂中使用',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '常用为峻补肝肾药'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '鹿茸';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '处方用名：鹿角镑、鹿角片',
+--	effects = '补肾阳、益精血，作用与鹿茸差不多，只是作用较缓弱，可作用鹿茸的代用品',
+--	actions_and_indications = '肾阳虚的腰痛；疮疡肿毒',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '肾阳虚的腰痛：配杜仲、续断、补骨脂、附片等；疮疡肿毒：配金银花、连翘、穿山甲、红花、赤芍等',
+--	similar_medicines = '鹿茸补肝肾之力大于鹿角，但活血、散瘀、消肿毒的作用却逊于鹿角。',
+--	dosage_reference = '一般用量为3～9克，重症时可用15克。为末冲服时，每次0.9～2.5克，每日2～3克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -466,15 +466,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '温补下元，补阴中之阳，通督脉之血，生精血，止血崩，功能与鹿茸大致相似，但补力缓慢，久服方效',
+--	actions_and_indications = '崩漏带下、虚性出血；阴疽（没有红肿热痛的肿块）；阳痿；小儿发育不良',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_prescriptions = '阳和汤',
+--	common_partners = '崩漏带下、虚性出血：配阿胶、当归炭、蒲黄、乌贼骨等；阴疽：配麻黄、熟地、白芥子、肉桂等；阳痿：配杜仲、肉苁蓉、淫羊藿等；小儿发育不良：配熟地、山萸肉、山药、茯苓等；配人参、黄芪、当归、熟地等，可用于温补气血，滋养精血，强壮身体。',
+--	similar_medicines = '鹿角活血消肿之力大于鹿角胶，鹿角胶滋补止血之力大于鹿角。龟甲胶也为滋补药，但龟甲胶偏于滋阴，鹿角胶补阴之中兼能补阳，二胶合用，阴阳俱补。',
+--	dosage_reference = '一般用量为6～9克，烊化服',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '用鹿角熬成的胶'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -482,15 +482,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '功效见鹿角和鹿角胶',
+--	actions_and_indications = '可用于脾胃虚寒、食少便溏等证，有时也作为鹿角或鹿角胶的代用品，但用量需比二药大些。',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '见鹿角和鹿角胶',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	dosage_reference = '一般用量为6～9克，重症时可用20～25克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '鹿角熬胶后的残渣'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -514,13 +514,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '补肾阳，兼有强筋骨、祛风湿作用',
+--	actions_and_indications = '肾阳虚而致的性功能不好，如阳痿、早泄等；肝肾虚寒而致的少腹冷痛、寒疝、腰骶部酸痛；风寒湿痹引起的腰膝疼痛或腿部肌肉日渐软弱、消瘦等症',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '性功能不好：配熟地、山药、淫羊藿、枸杞子等；肝肾虚寒：配乌药、吴茱萸、胡芦巴、补骨脂、小茴香、续断等；风寒湿痹：配桑寄生、独活、肉桂、附子、牛膝、续断、木瓜、当归、党参等',
+--	similar_medicines = '淫羊藿补肾阳，偏入肾经气分，并有燥性；巴戟天补肾阳，偏入肾经血分，燥性较小。肉苁蓉补肾阳兼能润燥通便，巴戟天补肾阳兼能祛风寒湿痹。',
+--	dosage_reference = '一般用量为3～9克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
