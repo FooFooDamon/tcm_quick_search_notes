@@ -38,6 +38,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -51,6 +52,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android_assistant.App;
 import com.android_assistant.Hint;
 
 public class MiscManagementActivity extends Activity
@@ -69,11 +71,12 @@ public class MiscManagementActivity extends Activity
     public static final int LIST_ITEM_POS_CHANNEL_TROPISIM = 10;
     public static final int LIST_ITEM_POS_MEDICINE_ROLE = 11;
     public static final int LIST_ITEM_POS_LIFE_FUNDAMENTAL = 12;
+    public static final int LIST_ITEM_POS_USER_DEFINED_NOTES = 13;
 
     private Intent mIntentQueryEntry = null;
 
     public static String getItemNameByPosition(int positionAtMiscList) {
-        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_LIFE_FUNDAMENTAL) {
+        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_USER_DEFINED_NOTES) {
             return "Unknown Misc Item, pos: " + String.valueOf(positionAtMiscList);
         }
 
@@ -90,14 +93,15 @@ public class MiscManagementActivity extends Activity
             "药味",
             "归经",
             "药物角色",
-            "基础生命物质"
+            "基础生命物质",
+            "自定义笔记"
         };
 
         return NAMES[positionAtMiscList];
     }
 
     public static String getDbPrimaryIdNameByPosition(int positionAtMiscList) {
-        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_LIFE_FUNDAMENTAL) {
+        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_USER_DEFINED_NOTES) {
             return "Unknown Misc Item, pos: " + String.valueOf(positionAtMiscList);
         }
 
@@ -114,14 +118,15 @@ public class MiscManagementActivity extends Activity
             "aid",
             "aid",
             "aid",
-            "aid"
+            "aid",
+            "nid"
         };
 
         return ID_NAMES[positionAtMiscList];
     }
 
     public static String getTableNameByPosition(int positionAtMiscList) {
-        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_LIFE_FUNDAMENTAL) {
+        if (positionAtMiscList < LIST_ITEM_POS_MEDICINE_CATEGORY || positionAtMiscList > LIST_ITEM_POS_USER_DEFINED_NOTES) {
             return "Unknown Misc Item, pos: " + String.valueOf(positionAtMiscList);
         }
 
@@ -138,7 +143,8 @@ public class MiscManagementActivity extends Activity
             "medicine_taste_definitions",
             "channel_tropism_definitions",
             "medicine_role_definitions",
-            "life_fundamental_definitions"
+            "life_fundamental_definitions",
+            "user_defined_notes"
         };
 
         return names[positionAtMiscList];
@@ -160,6 +166,7 @@ public class MiscManagementActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        App.allowHomeKeyListening(this);
         setContentView(R.layout.activity_misc_management);
         getActionBar().setBackgroundDrawable(
             getResources().getDrawable(R.drawable.default_action_bar_style));
@@ -184,7 +191,8 @@ public class MiscManagementActivity extends Activity
             new PageItem(ICON, getString(R.string.medicine_taste)),
             new PageItem(ICON, getString(R.string.channel_tropism)),
             new PageItem(ICON, getString(R.string.medicine_role)),
-            new PageItem(ICON, getString(R.string.life_fundamental))
+            new PageItem(ICON, getString(R.string.life_fundamental)),
+            new PageItem(ICON, getString(R.string.user_defined_notes))
         };
         List<PageItem> itemList = new ArrayList<PageItem>();
 
@@ -221,6 +229,17 @@ public class MiscManagementActivity extends Activity
             ; // more things in future ...
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (KeyEvent.KEYCODE_HOME != keyCode)
+            return super.onKeyDown(keyCode, event);
+
+        App.moveTaskToBack(this, App.getAppName(this), true, R.drawable.ic_launcher);
+
+        return true;
     }
 
     @Override

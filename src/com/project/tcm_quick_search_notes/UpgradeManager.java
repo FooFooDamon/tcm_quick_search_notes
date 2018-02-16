@@ -39,7 +39,7 @@ import com.android_assistant.Hint;
 
 public class UpgradeManager extends SQLiteOpenHelper {
 
-    private static String TAG = "UpdateManager";
+    private static String TAG = "UpgradeManager";
     private Context mContext = null;
     private DbHelper mBusinessDbHelper = null;
     private boolean mHasException = false;
@@ -92,7 +92,9 @@ public class UpgradeManager extends SQLiteOpenHelper {
                 Log.v(TAG, "Making data of version " + 10111 + " ...");
                 mBusinessDbHelper.upgradeV10111();
 
-            // case N: ...
+            case 10111:
+                Log.v(TAG, "Making data of version " + 10112 + " ...");
+                mBusinessDbHelper.upgradeV10112();
 
             default:
                 ; // nothing

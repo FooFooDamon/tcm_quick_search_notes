@@ -39,6 +39,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,6 +59,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.android_assistant.App;
 import com.android_assistant.Hint;
 import com.android_assistant.ResourceExports;
 import com.android_assistant.Version;
@@ -76,6 +78,7 @@ public class QueryEntryActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        App.allowHomeKeyListening(this);
         setContentView(R.layout.activity_query_entry);
 
         ActionBar actionBar = getActionBar();
@@ -172,6 +175,17 @@ public class QueryEntryActivity extends Activity
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (KeyEvent.KEYCODE_HOME != keyCode)
+            return super.onKeyDown(keyCode, event);
+
+        App.moveTaskToBack(this, App.getAppName(this), true, R.drawable.ic_launcher);
+
+        return true;
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
         Intent prevIntent = getIntent();
         int opType = prevIntent.getIntExtra(TcmCommon.OP_TYPE_KEY, TcmCommon.OP_TYPE_VALUE_MEDICINE);
@@ -247,7 +261,7 @@ public class QueryEntryActivity extends Activity
                             + "对其进行重命名，并补全其余信息。";
                         hintAddingItemSuccessfully = "新增" + miscItemName + "成功";
                         hintAfterAddingItem = "已成功添加" + newItem
-                            + "，请在名称栏输入“" + newItem +"”进行查询并编辑详细的药物信息。";
+                            + "，请在名称栏输入“" + newItem +"”进行查询并编辑详细的信息。";
                     }
 
                     String[] sqlArgs = (new String[]{ newItem });
@@ -516,7 +530,7 @@ public class QueryEntryActivity extends Activity
             holder.id.setLineSpacing(0, 1.5F);
             holder.id.setVisibility(TextView.GONE);
 
-            holder.name.setText(item.name);
+            holder.name.setText(position + 1 + ". " + item.name);
             com.android_assistant.TextView.setDefaultTextShadow(holder.name);
             holder.name.setLineSpacing(0, 1.5F);
 

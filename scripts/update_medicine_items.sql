@@ -129,16 +129,16 @@
 --	and name = '阿胶';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--set alias = '胎盘',
+--	effects = '大补气血，为滋补强壮药',
+--	actions_and_indications = '本品气味俱厚，可用于各种虚损、精血不足的证候。前人有“精血不足者，补之以味”的经验，即指用这些厚味之药。',
+--	details = '促进乳腺、女性生殖器、卵巢的发育；有免疫作用，能增强抵抗力；对子宫发育不全、子宫萎缩、功能性无月经、子宫肌炎、子宫出血、乳少、产后垂体前叶功能减退（席汉综合征）、贫血、肺结核、支气管炎等，都有治疗作用。',
+--	common_prescriptions = '河车大造丸',
+--	common_partners = '虚劳羸瘦、身体虚弱、精神不振、遗精、阳痿等：河车大造丸等',
+--	similar_medicines = '鹿茸补肾、督（督脉经）的阳气，并能生精益髓；紫河车补肝、肾的阳气，功能益血助气。',
+--	dosage_reference = '一般用量为2～4.5克',
+--	contraindications = '有虚火者忌用',
+--	remarks = '本品有肉腥味，常在丸药中使用，或焙干研粉，装入胶囊中吞服，不入汤药。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -193,16 +193,16 @@
 --	and name = '鳖甲';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '处方上常写山萸、山萸肉（即经过去核）',
+--	effects = '补肝肾、强身体，是常用的滋补强壮药，兼能涩精、止尿频、敛汗益阴',
+--	actions_and_indications = '肝肾不足诸证；正气不足而虚脱汗出不止者',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '六味地黄丸',
+--	common_partners = '肝肾不足而见腰酸腿软、头晕耳鸣、遗精早泄、月经过多、身体虚弱等：配地黄、山药、牡丹皮、泽泄、茯苓（即六味地黄丸）同用；遗精明显者：加锁阳、金樱子、五味子等；月经过多者：加黄柏炭、艾叶炭、阿胶珠等；腰痛者：可加续断、杜仲等；肾虚而小便频数者：配桑螵蛸、益智仁、覆盆子、乌药、地黄、山药、五味子等；虚脱汗出不止者：配五味子、麦冬、生黄芪、煅龙骨、煅牡蛎等；血压急剧降低者：配人参、附片等。',
+--	similar_medicines = '五味子偏于敛肺经耗散欲绝之气，收肾脏耗散欲失之元阳；山茱萸偏于滋肝肾不足之阴，敛阴阳欲绝之汗。金樱子、山茱萸皆能固精秘气，但金樱子兼能收肺气、敛大肠，山茱萸兼能缩小便、收阴汗（阴部多汗）。',
+--	dosage_reference = '一般用量为3～9克，重症时可用20～30克',
+--	contraindications = '肾阳亢奋，下焦有热，小便不利者，均不宜用',
+--	remarks = '用时要去净核，前人经验认为不去核反能滑精。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -498,13 +498,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '主要用为补肾阳药，兼有润肠通便的功能。其质地油润，补肾阳的同时又无燥性',
+--	actions_and_indications = '肾虚诸证；气血衰弱、津液缺乏而致的便秘',
+--	details = '有降血压作用，也可作为膀胱炎、膀胱出血及肾脏出血的止血药。用于止血时最好配合凉血药同用，或仅用于下虚性的出血。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '肾虚所致的腰痛、膝软、阳痿、性功能减退、眩晕耳鸣等：配熟地、菟丝子、杜仲、山药、巴戟天、淫羊藿等；肾气虚寒之月经延后、子宫寒冷、久不受孕等：当归、川芎、白芍、艾叶、香附、续断等；上述便秘：配熟地、当归、桃仁、火麻仁、黑芝麻等',
+--	similar_medicines = '火麻仁通便由于滋脾润肠，肉苁蓉通便由于滋肾润燥。',
+--	dosage_reference = '一般用量为6～12克，重症时可用15～30克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -529,15 +529,15 @@
 --	and name = '巴戟天';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--set alias = '仙灵脾',
+--	effects = '常用的（峻）补肾阳药，兼有强筋骨、祛风湿的作用',
+--	actions_and_indications = '阳痿；风湿',
+--	details = '有促进精液分泌的作用',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '由于峻补肾阳、兴奋性功能而治疗阳痿：配熟地、仙茅、肉苁蓉、枸杞子、巴戟天、沙苑子、山萸肉、锁阳、阳起石、羊睾丸等同用，作丸剂服，也可用本品浸酒（浓度为10%）饮用；因风寒湿所致的四肢肌肤酸痛、麻木不仁，或关节疼痛、腿软无力：配威灵仙、苍耳子、肉桂、附子、川芎、独活、续断等',
+--	similar_medicines = '枸杞子补肾益精，偏用于肾精虚者；淫羊藿补肾助阳，偏用于肾阳虚者。仙茅补肾阳并能助脾胃运化，增进食欲；淫羊藿补肾阳并能祛风湿、强筋骨，治四肢风冷不仁。',
+--	dosage_reference = '一般用量为3～9克，重症时可用12～15克',
+--	contraindications = '性欲亢奋者忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -545,15 +545,15 @@
 --	and name = '淫羊藿';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '破故纸',
+--	effects = '补肾阳、固下元、暖脾胃、止泄泻',
+--	actions_and_indications = '肾阳虚诸证；脾胃虚寒而致消化不良、慢性泄泻等症',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '二神丸',
+--	common_partners = '肾阳虚而致的阳痿、性功能减退、腰膝冷痛、阴囊湿冷、下腹部虚冷等：配胡桃肉、杜仲、阳起石、续断、附子、熟地等；下元不固而出现遗尿、尿频、尿失禁等：配桑螵蛸、菟丝子、乌药、益智仁等，也可用本品炒脆为末，睡前服；脾胃虚寒而致消化不良、慢性泄泻等症：配肉豆蔻、大枣、生姜（即二神丸）、茯苓、白术等同用',
+--	similar_medicines = '肉豆蔻也能止泄泻，但肉豆蔻偏于助脾阳、燥脾湿而涩肠止泄，补骨脂则偏于补肾暖脾而固肠止泄。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '尿血、便秘者及孕妇慎用本品。急性泌尿系感染而致尿频者，也不宜用之。',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -562,14 +562,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '温脾胃，燥脾湿，摄涎唾，缩小便',
+--	actions_and_indications = '脾胃虚寒诸证；流口水；遗尿',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '缩泉丸',
+--	common_partners = '脾胃虚寒之腹中冷痛、呕吐泄泻、涎多泛酸等：配白术、黄芪、砂仁、木香、茯苓等；流口水：配苍术、茯苓、诃子、半夏、陈皮等；遗尿、小便频数、夜间尿多等：配乌药、山药（即缩泉丸）',
+--	similar_medicines = '覆盆子涩性大，补肾缩小便的作用大于益智仁；益智仁燥性大，燥脾摄涎唾的作用大于覆盆子。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '一切燥热证及尿色黄赤而且尿道疼痛的尿频数者，均不应使用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -578,13 +578,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '主用为温肾壮阳药，兼有暖胃的功能',
+--	actions_and_indications = '肾阳虚诸证；胃脘问题；表现为肾虚证的高血压',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	common_prescriptions = '二仙汤',
+--	common_partners = '肾阳虚而阳痿、腰膝冷痛，老年遗尿等：配熟地、山萸肉、淫羊藿、枸杞子、五味子、续断等；胃脘部冷气胀痛，或泛酸水，食欲不振等：配砂仁、吴茱萸、木香、高良姜等；表现为肾虚证的高血压：配仙灵脾（淫羊藿）、巴戟天、黄柏、知母、当归等（即二仙汤）',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	dosage_reference = '一般用量为3～9克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -594,13 +594,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '主要用为补肝肾药，可益精血、强腰膝、固下元',
+--	actions_and_indications = '肝肾不足诸证；对功能性子宫出血、习惯性流产、再生障碍性贫血等，也常在辩证论治的基础上加入本品',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '遗精：配五味子、莲子肉、远志、芡实等；阳痿：配沙苑子、淫羊藿、枸杞子、巴戟天等；视力减退：配草决明、枸杞子、菊花、车前子、青葙子、熟地、生地等。',
+--	similar_medicines = '蛇床子补肾，偏助肾阳，并可外用祛湿治阴痒；菟丝子补肾，偏于益精，温而不燥，很少外用。',
+--	dosage_reference = '一般用量为9～12克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -610,15 +610,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '常用的补肝肾、强筋骨、壮腰膝的药物，并有安胎作用，还有降血压的作用',
+--	actions_and_indications = '肾虚腰痛、膝腿无力；肾虚而致胎动、胎漏（孕妇子宫出血）；',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '肾虚腰痛、膝腿无力：配熟地、续断、怀牛膝、山药、山萸肉、补骨脂等，腰腿发凉、喜暖怕冷的，还可加附片、肉桂、淫羊藿等；肾虚而致胎动：配桑寄生、续断、白术、熟地、白芍、苏梗、当归等；胎漏：配续断炭、当归、白芍、阿胶、艾叶炭等',
+--	similar_medicines = '桑寄生祛风湿、益血脉，适用于肾经血虚、风湿乘袭所致的腰痛；杜仲温气、燥湿，适用于肾经气虚、寒湿交侵所致的腰痛。在安胎方面，桑寄生益肝肾血脉、补筋骨而使胎牢固；杜仲补肝肾之气，肝肾气足而胎自安。二药常同用。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '肾阴不足而有虚热者不宜用之',
+--	remarks = '伤科中常把杜仲与续断同用。前人经验认为杜仲能促进筋骨离开的部分结合起来，续断能促使筋骨断折的部分接续起来，二药同用可增强疗效。内科也常以这二药同用，以加强肝肾、强筋骨、壮腰膝的作用。本品性温而燥湿，入肾经气分，用熟地补肝肾时，佐用一些杜仲，可使熟地补而不滞。用于降血压时，炒用为佳，而且煎剂比酊剂作用更强。有热证者，可配黄芩同用。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -626,13 +626,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '补肝肾，续筋骨，通血脉，利关节，安胎',
+--	actions_and_indications = '肾虚腰痛；跌打损伤；胎动、胎漏。近年来常于腰肌劳损、扭伤、肾炎、泌尿系感染等出现腰痛者随证选用本品。',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '肾虚腰痛：配杜仲、狗脊、怀牛膝、生地、熟地、制附片等；跌打损伤：配当归、川芎、乳香、没药、三七、杜仲、牛膝、骨碎补等；胎动：配桑寄生、杜仲、白术、当归等；胎漏：配当归、白芍、生地、杜仲炭、阿胶、艾叶炭等。',
+--	similar_medicines = '杜仲入肾经气分，偏治腰膝酸痛；续断入肾经血分，偏治腰膝关节不利、行动艰难。二药常同用。狗脊兼入督脉，偏治腰脊部僵痛，兼能祛风湿；续断偏治腰膝腿足疼痛，兼能活血。',
+--	dosage_reference = '一般用量为5～10克，重症时可用25～30克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -642,15 +642,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '补肝肾，强腰膝，兼能除风湿',
+--	actions_and_indications = '肝肾虚弱兼受风寒湿邪所侵而致的腰脊疼痛、腿软乏力等；肝肾不足之月经过多、白带、尿频',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '上述腰痛及腿软：配川牛膝、海风藤、木瓜、续断、秦艽、独活等；肝肾不足之月经过多（配当归炭、白芍、艾叶炭、生地、黄芩等）、白带（配白术、白蔹、苍术、茯苓、白鸡冠花等）、尿频（配菟丝子、五味子、桑螵蛸等）',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	dosage_reference = '一般用量为6～9克，重症时可用12～30克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '狗脊毛炒炭有止血作用，主用于外伤止血。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)

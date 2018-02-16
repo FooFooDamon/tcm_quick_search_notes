@@ -183,6 +183,8 @@ public class DetailContentActivity extends Activity {
 
         initResources();
 
+        App.allowHomeKeyListening(this);
+
         if (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType)
             setContentView(R.layout.activity_medicine_item_details);
         else if (TcmCommon.OP_TYPE_VALUE_PRESCRIPTION == mOpType)
@@ -273,6 +275,8 @@ public class DetailContentActivity extends Activity {
         if (KeyEvent.KEYCODE_BACK == keyCode) {
             if (mIsChanged)
                 Hint.alert(DetailContentActivity.this, R.string.page_data_changed_title, R.string.page_data_changed_contents, mSaveModificationsAndExit, mExitActivity);
+            else
+                this.finish();
 
             //return super.onKeyDown(keyCode, event);
         }

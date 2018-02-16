@@ -516,6 +516,12 @@ public class DbHelper {
         makeAttributeData(mContext.getString(R.string.attr_table_prefix_life_fundamental), R.array.life_fundamentals_v10111);
     }
 
+    public void upgradeV10112() throws Exception {
+        createTable(R.string.sql_create_user_defined_notes_table);
+        makePresetData(R.string.sql_make_user_defined_notes_data,
+            R.array.user_defined_notes_v10112, 1, true);
+    }
+
     // NOTE: This method should be used to tables with a small quantity of data!
     private String[] queryAllNames(String table, String primaryIdName, String firstItem) {
         String sql = "select name from `"

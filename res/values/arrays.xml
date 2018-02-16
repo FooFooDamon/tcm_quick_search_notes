@@ -835,8 +835,8 @@
     </string-array>
 
     <string-array name="medicine_roles">
-        <item>（君）主药</item>
-        <item>（臣）辅药</item>
+        <item>君/主药</item>
+        <item>臣/辅药</item>
         <item>佐助药</item>
         <item>佐制药</item>
         <item>反佐药</item>
@@ -1736,7 +1736,7 @@
         <item>1</item>
     </string-array>
 
-    <!-- For update manager -->
+    <!-- For upgrade manager -->
 
     <string-array name="medicine_natures_v10111">
         <item>毒</item>
@@ -1745,6 +1745,12 @@
     <string-array name="life_fundamentals_v10111">
         <item>阴</item>
         <item>阳</item>
+    </string-array>
+
+    <string-array name="user_defined_notes_v10112">
+        <item>性味归经的意义</item>
+        <item>不同药的服药时间</item>
+        <item>不同药的煎煮时间</item>
     </string-array>
 
 </resources>
