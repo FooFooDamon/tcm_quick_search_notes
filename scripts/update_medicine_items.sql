@@ -658,14 +658,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '内服可温肾阳、暖子宫，外用（可煎汤冲洗，或制成坐药、软膏等）可燥湿、杀虫、止痒',
+--	actions_and_indications = '内服可用于男子阳痿、性功能减退，女子宫寒不孕等症，外用可治阴道滴虫引起的白带',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '性功能及不孕问题：配熟地、山萸肉、茯苓、菟丝子、沙苑子、当归、肉桂、淫羊藿等；顽癣、湿疮等：配苦参、黄柏、密陀僧等研末，油调外涂',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '内服一般用量为3～9克，常作丸剂用；外用取9～30克煎汤外洗',
+--	contraindications = '肾经有火、性功能亢奋者，忌用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -674,14 +674,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '主要用为补肾阳药',
+--	actions_and_indications = '男子肾阳虚而致的阳痿、阴部冷汗，女子子宫寒冷、腹痛、久不受孕等',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '男子阳痿、女子宫寒等：配熟地、山药、山萸肉、茯苓、泽泻、淫羊藿、巴戟天、附子等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '一般用量为9～30克',
+--	contraindications = '肾阳偏亢者不宜用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -690,14 +690,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	effects = '养肝，宁心，安神，敛汗',
+--	actions_and_indications = '肝胆血虚不能养心而致心烦不眠、多梦、易惊等症；久病失血或忧思劳伤心脾而致的疲乏、出汗、烦渴、心惊等症',
+--	details = '能抑制中枢神经系统，有镇静催眠作用，但需生用或微炒用，炒枯则失去镇静作用。注意生用时甘酸而润，偏用于肝胆虚热之证；炒熟用则酸温而香，兼有醒脾作用，偏用于肝、胆、心、脾血虚少眠之证。',
+--	common_prescriptions = '归脾汤、酸枣仁汤',
+--	common_partners = '失眠多梦偏于心脾不足、气血两虚者：配黄芪、白术、当归、白芍等；偏于肝胆虚热者：配知母、茯苓、黄芩等；偏于阴虚肝旺者：配白芍、生石决明、生地、龙齿、茯苓、生牡蛎等。出汗烦渴等：配生地、白芍、山萸肉、五味子、牡蛎等。',
+--	similar_medicines = '黄连治心火亢盛之心中烦热不得眠，酸枣仁治肝胆不足之虚烦神怯不得眠。',
+--	dosage_reference = '一般用量为3～9克，重症时可用15～30克',
+--	contraindications = '肝、胆、心、脾有实热或暑湿内停以及初感风寒者，不宜用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -706,14 +706,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '养心安神，润燥通便',
+--	actions_and_indications = '思虑过度、心脾受损而致的心慌不安、惊悸失眠、夜间盗汗等；年老、外病、体衰、津血枯耗而致的便秘',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '心慌失眠盗汗等：配地黄、酸枣仁、当归、党参、茯苓、麦冬、五味子、远志等；血枯便秘：配桃仁、杏仁、当归、麻仁、瓜蒌、松子仁等',
+--	similar_medicines = '合欢花治肝郁的失眠，首乌藤治阴阳不交的失眠，柏子仁治心虚的失眠。郁李仁偏治幽门气结而致的便秘，柏子仁偏治血虚肠燥的便秘。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '膈间多痰及大便泄泻者，不宜用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -722,13 +722,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '有交通心肾的作用而安神益志，祛痰开窍',
+--	actions_and_indications = '心肾不交而致失眠、惊悸等症；心肾不足而致的记忆力减退、精力不集中等症；痰阻心窍而神志不清、惊痫、耳目不聪等症；支气管炎',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '失眠、惊悸等症：配茯苓、酸枣仁、地黄、党参、首乌藤、五味子等；记忆力减退、精力不集中等症：配菖蒲、龙骨、龟甲、麦冬、五味子、柏子仁等；神志不清、惊痫、耳目不聪等症：配天竺黄、郁金、菖蒲、胆南星等；支气管炎：配杏仁、紫菀、前胡、甘草等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	dosage_reference = '一般用量为3～9克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -737,16 +737,16 @@
 --	and name = '远志';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '真珠母',
+--	effects = '降心火、清肝热；潜肝阳、安心神；',
+--	actions_and_indications = '热入心包、热极生风而致神昏谵语、惊痫抽搐等症；心肝阴虚、肝阳亢躁、心神不宁而致眩晕、耳鸣、失眠、心悸、虚烦、多梦等症',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '神昏谵语、惊痫抽搐等：配郁金、黄连、天竺黄、胆南星、菖蒲、远志、水牛角、朱砂、钩藤、全蝎等；心肝阴虚、肝阳亢躁诸证：生白芍、生地、白蒺藜、远志、黄芩、香附、钩藤、生赭石等',
+--	similar_medicines = '珍珠母、远志、首乌藤、酸枣仁、柏子仁均能安神治失眠。其中，珍珠母偏用于心肝阴虚、心经有热的失眠，远志偏用于心肾不交、痰阻心窍的失眠，首乌藤偏用于肝肾不足、阴阳失调的失眠，酸枣仁偏用于肝胆血虚的失眠，柏子仁偏用于心血不足的失眠。珍珠母、石决明均有潜阳的作用，但珍珠母偏降心火，石决明偏降肝火，故心经神志病常用珍珠母，肝经阳亢病常用石决明。龙齿长于镇惊安神，珍珠母长于养心安神。',
+--	dosage_reference = '一般用量为9～30克',
+--	contraindications = '心经有寒、水饮凌心者，不宜用',
+--	remarks = '先煎'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -754,15 +754,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	effects = '重镇安神，清热解毒',
+--	actions_and_indications = '心火太盛或心经痰热所致的惊悸、癫狂、失眠等症；急性扁桃体炎、咽喉肿痛等',
+--	details = '降低大脑中枢神经兴奋性，有镇静作用',
+--	common_prescriptions = '朱砂安神丸、磁朱丸、玉钥匙散',
+--	common_partners = '惊悸、癫狂、失眠等：配黄连、生地、当归、甘草（朱砂安神丸）等，或配磁石、神曲（磁朱丸）；急性扁桃体炎、咽喉肿痛：配西瓜霜、西月石、飞朱砂、僵蚕、冰片（即玉钥匙散）',
+--	similar_medicines = '珍珠母安神主要是养心阴、降心火，朱砂安神主要是镇惊清热。生铁落重镇心肝，坠痰下气，偏治癫狂善怒；朱砂镇心降火，偏治心经邪热，神昏谵妄。',
+--	dosage_reference = '一般用量为0.3～0.9克，重症时可用1.5～2.5克',
+--	contraindications = '不可直接见火，以免分解出金属汞而致中毒；不可用过大剂量，不可长期服用，以免中毒',
+--	remarks = '不入汤药，常作为丸药用或作为细粉冲服'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -770,15 +770,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '镇惊安神，利水通淋，散瘀活血',
+--	actions_and_indications = '癫痫、惊痫；膀胱热结而致尿血、尿痛、排尿困难等症；产后腹中有瘀血，恶露不净',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '琥珀镇惊丸',
+--	common_partners = '癫痫、惊痫：配朱砂、胆南星、牛黄、全蝎、天竺黄等；膀胱热结诸证：配木通、萹蓄、滑石、茯苓、泽泻、矍麦等；产后腹中有瘀血，恶露不净：配当归、川芎、鳖甲、三棱、延胡索、没药、红花、桃仁、五灵脂等',
+--	similar_medicines = '朱砂重镇清热而安神，琥珀镇惊通窍而安神。珍珠母镇心平肝而安神，兼能去目翳、收疮口；琥珀兼能利水通淋',
+--	dosage_reference = '一般用量为0.3～2.5克，随汤药冲服',
+--	contraindications = '凡阴虚内热、津液不足而尿少、小便不利者，不可用本品',
+--	remarks = '随汤药冲服'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -786,15 +786,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '为重镇之品，主要功能为补肾纳气、平肝潜阳、定志安神',
+--	actions_and_indications = '肾虚而瞳孔扩散、视物不清，肝肾两虚而目睛昏暗，眼生黑花，白内障等；肾气亏虚而虚喘、气短等（即肾不纳气）；肝肾阴虚、虚阳上扰而致耳鸣、耳聋、眩晕、目花、头痛等；心神不安、惊恐失眠、心慌虚怯、癫痫等',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '磁朱丸',
+--	common_partners = '视物不清：配熟地、生地、枸杞子、菊花、石斛、白芍、当归、菟丝子、夜明砂、青葙子、羊肝、朱砂等；白内障：配朱砂、神曲（即磁朱丸，磁石使精水不外遗，朱砂使邪火不上侵）；虚喘、气短等：配熟地、山萸肉、山药、牡丹皮、茯苓、泽泻、肉桂、五味子、附片、沉香、苏子、可仁等；肝阳上扰诸证：配生地、白芍、生赭石、生石决明、蝉蜕、菊花、黄芩、桑寄生等；心神不安等：配远志、朱砂、珍珠母、当归、白芍、柏子仁、茯神、龙齿等',
+--	similar_medicines = '生赭石镇厥阴心包之气，除血脉中之热，养血镇逆，兼能镇降肝阳，偏入心肝；磁石镇纳少阴上浮之火，使心肾相交而定志安神，偏入肝肾。紫石英能补心肝血分而温暖子宫；磁石能补肾养肝而纳气归肾。黑铅纳肾气，是由上而下，镇降肾气之上逆；磁石纳肾气，是由下而上，引肺气下降，纳气以归肾。',
+--	dosage_reference = '一般用量为9～30克',
+--	contraindications = '本品是一种含铁的矿石，使用时最好配合神曲、鸡内金等助消化药物，既能帮助吸收，又可免于害胃。',
+--	remarks = '打碎、先煎'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -802,14 +802,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '生用有平肝潜阳、镇静安神的功能；煅用有固涩收敛、生肌长肉、收口敛疮的功能',
+--	actions_and_indications = '阴虚阳亢所致的烦躁、失眠、眩晕等症；受惊或心虚所致的心神不宁、失眠、易惊醒等；多汗、遗精、崩漏、白带过多、遗尿、久痢等；煅龙骨也常用于外科收口、生肌的外用药中',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '阴虚阳亢诸证：生用，配生地、白芍、玄参、白蒺藜、黄芩、远志、生牡蛎等；心神不宁、失眠等：生用，配远志、茯神、琥珀、龙齿、当归、熟地、珍珠母等，并可在辨证论治的基础上，选用于治疗失眠、头痛、烦躁等症的方剂中；多汗、遗精遗尿、崩漏等：煅用，配麻黄根、浮小麦、生黄芪、白术（治自汗）、麦冬、五味子、生地、牡蛎（治盗汗）、金樱子、锁阳、黄柏、远志、莲子心（治遗精）、桑寄生、续断炭、煅牡蛎、棕榈炭、阿胶（治崩漏）、樗根白皮、苍术、薏米、茯苓（治白带）、桑螵蛸、覆盆子、益智仁、乌药、山萸肉（治遗尿）、赤石脂、木香、乌梅（治久痢）等；',
+--	similar_medicines = '龙齿作用与龙骨大致相同，但龙齿安神镇惊作用大于龙骨，龙骨固涩下焦精气作用大于龙齿。牡蛎、龙骨均有平肝潜阳的作用，但牡蛎兼有软坚散结、降痰除癥的作用，龙骨兼有止痢、止血的作用。',
+--	dosage_reference = '一般用量为9～15克，生龙骨有时可用20～30克，煅龙骨则不宜用量太大',
+--	contraindications = '火盛而遗精者忌用，误用可致尿赤涩痛',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -818,8 +818,8 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '与龙骨大致相同，详见龙骨一节',
+--	actions_and_indications = '与龙骨大致相同，详见龙骨一节',
 --	details = '',
 --	common_prescriptions = '',
 --	common_partners = '',
@@ -833,14 +833,14 @@
 --	and name = '龙齿';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '生蚝',
+--	effects = '生用有益肾阴潜阳、清热解渴、软坚散结的功能；煅用有缩小便、止带下的功能',
+--	actions_and_indications = '阴虚阳亢而致的烦躁、失眠、盗汗等；阴虚而致的夜间口渴、虚热烦躁等；瘰疬、痰核（颈淋巴结核、甲状腺瘤 、颈淋巴肉芽肿等）；腹中癥癖、疟母（肝脾肿大）等；白带、崩漏、遗精、遗尿等；小儿钙质缺乏而致的佝偻病',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '阴虚阳亢而致的烦躁、失眠、盗汗等：配生龙骨、生地、白芍、黄芩、香附、远志、首乌藤等；阴虚而致的夜间口渴、虚热烦躁等：配玄参、生地、天花粉、白芍、石斛等；瘰疬、痰核：生用，配玄参、川贝母，为末，蜜丸服之；腹中癥癖、疟母等：生用，配鳖甲、红花、桃仁、三棱、莪术、郁金、柴胡、神曲、山楂核、射干、白术等；白带、崩漏、遗精、遗尿等：煅用，配白术、苍术、山萸肉、山药、莲子心、桑螵蛸、益智仁、覆盆子等；佝偻病：配苍术等',
+--	similar_medicines = '海蛤粉咸而化痰，偏用于治咳嗽，痰黏不易咯出者；牡蛎咸而化痰，偏用于软坚散结，治瘰疬、痰核，散癥癖。',
+--	dosage_reference = '一般用量为9～30克，煅用时用量要小些',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -850,15 +850,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '常用的止汗药',
+--	actions_and_indications = '阳虚自汗；阴虚盗汗；久病大病、津液精血消耗太多而出现心烦盗汗、下午潮热、消瘦等',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '阳虚自汗：配生黄芪、麻黄根、牡蛎等；阴虚盗汗：配柏子仁、麦冬、五味子、白芍、生地等；心烦潮热等：配沙参、麦冬、五味子、白芍、生地、地骨皮、玄参、秦艽、鳖甲等',
+--	similar_medicines = '小麦有时也入药，其性味甘平，能养心除烦（但无止汗作用）。可用于脏躁病的悲伤、喜哭、忧郁等，也可随症配用一些疏肝、解郁、养心、安神之品。麻黄根固腠理而止汗，浮小麦去心经虚热而止汗。',
+--	dosage_reference = '一般用量为9～30克，小麦用量相同',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '若要小麦，则应写成“淮小麦”或“净小麦”，以便与浮小麦区分开来'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -866,13 +866,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '常用的止汗药，能引补气药到达卫分，固腠理而止汗',
+--	actions_and_indications = '阳虚、卫气不固而致的自汗症；阴虚内热、虚烦不眠，潮热盗汗症；产后虚汗',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '自汗：配生黄芪、煅牡蛎、浮小麦、党参、白术等；烦热盗汗：配地黄、山萸肉、五味子、柏子仁、麦冬、生牡蛎等；产后虚汗：配黄芪、当归等养血固表药同用',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	dosage_reference = '一般用量为6～9克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -882,14 +882,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	effects = '补肾秘气，涩固精关，固涩大肠而止泄，止带下，摄小便',
+--	actions_and_indications = '肾虚滑精、遗精；遗尿；白带过多；慢性泄泻',
+--	details = '可使肠壁黏膜收缩，分泌减少，故有止泻作用，可用于慢性肠炎',
+--	common_prescriptions = '四神丸、附子理中汤、金樱子膏（成品）',
+--	common_partners = '肾虚滑精、遗精：配芡实、龙骨、牡蛎、锁阳等；遗尿：配桑螵蛸、覆盆子、山药、莲须等；白带过多：配山药、芡实、莲子肉、苍术、茯苓等；慢性泄泻：配补骨脂、山药、芡实、茯苓、五味子、肉豆蔻、党参、白术等',
+--	similar_medicines = '莲须清心固精而治遗精，金樱子秘肾气固精而治遗精。有梦而遗精者选用莲须，无梦而滑精、遗精者选用金樱子。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '心肾有实火邪热而致遗精、尿痛、尿频者，忌用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -897,31 +897,31 @@
 --	and name = '金樱子';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '莲子肉',
+--	effects = '养心、健脾、补肾',
+--	actions_and_indications = '心虚或心肾不交而心神不安、失眠多梦等症；脾虚泄泻、消化不良、便溏少食、面黄白消瘦等脾虚证；心肾虚而遗精；脾肾两虚湿邪下注而致久泄、白带过多、白浊等',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '心神不安、失眠多梦：配茯神、远志、柏子仁、珍珠母、龙齿等；脾虚诸证：配白术、山药、扁豆、茯苓、党参、芡实、木香等；心肾虚遗精：配生地、山萸肉、五味子、远志、金樱子、锁阳等；久泄、白带过多、白浊等：配肉豆蔻、芡实、白鸡冠花、炒山药、炒薏米、诃子、白术、茯苓、白石脂等',
+--	similar_medicines = '莲子肉养心健脾，莲子心清泄心热，莲房炭止血，莲须涩精固肾。芡实、莲子均为甘平固涩之品，但芡实偏用于固肾涩精，莲子偏用于养心健脾',
+--	dosage_reference = '一般用量为2～10克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '入药时须摘去皮、心，故又称莲子肉'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '莲子';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--set alias = '乌贼骨',
+--	effects = '入肝肾血分，有通血脉、活经络、补肝血、祛寒湿的功能，并能止血、止带、固精、制酸',
+--	actions_and_indications = '女子伤肝、血枯经闭之证；脐周腹痛、胃痛泛酸等症；溃疡病出血；妇女血崩（子宫大出血）；赤白带下',
+--	details = '含有钙质和胶质，是良好的制酸剂和止血剂，既可内服（内服时，散剂比汤剂疗效好），又可外用',
+--	common_prescriptions = '固冲汤',
+--	common_partners = '女子伤肝、血枯经闭之证：配茜草为末，以雀卵为丸，用鲍鱼汤送服；脐周腹痛、胃痛泛酸等症：配高良姜、香附、五灵脂、丹参、白芍、当归、乌药等；溃疡病出血：配白及、贝母、甘草等，为粉末冲服；妇女血崩（子宫大出血）：配白术、黄芪、煅龙骨、煅牡蛎、山萸肉、五味子、菟丝子、续断炭、莲房炭、棕榈炭等；赤白带下：配山药、龙骨、牡蛎等',
+--	similar_medicines = '龙骨、乌贼骨均有收敛作用，但龙骨收涩呆滞，乌贼骨则收敛之中兼有活瘀之力。桑螵蛸偏于补肾气，常用于固肾精、缩小便；海螵蛸偏于补肝血，常用于止崩带、疗腹痛。',
+--	dosage_reference = '一般用量为3～9克，作散剂吞服时可用0.3～2克',
+--	contraindications = '内有热邪及有表证者，不宜用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -930,15 +930,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '生用则软坚散结、消痰祛瘀；煅用则止胃酸过多',
+--	actions_and_indications = '腹中癥瘕癖痞、老痰积块；胃脘疼痛、胃酸过多',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '腹中癥瘕癖痞、老痰积块：配枳实、白术、生牡蛎、山楂核、莱菔子、红花、赤芍、当归、桂枝、穿山甲、莪术等，注意随证加减；胃脘疼痛、胃酸过多：配高良姜、香附、吴茱萸、黄连、草豆蔻、木香、半夏、茯苓、延胡索等，注意煅瓦楞子可使大便干燥，故对于胃痛泛酸又有大便干秘者，要配合生大黄、番泻叶等同用',
+--	similar_medicines = '乌贼骨通血脉、祛寒湿而治腹痛，瓦楞子软坚散结、消痰积而治胃痛。延胡索治胃痛由于活血行气的作用，瓦楞子治胃痛由于制酸去瘀的作用。',
+--	dosage_reference = '一般用量为6～9克，重症时可用12～18克',
+--	contraindications = '经常大便干结者，不宜用本品',
+--	remarks = '生用时须打碎、先煎'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -946,15 +946,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	effects = '常用为收涩药，有固涩收湿、敛脱止泻、止血止带的作用，外用则用于疮疽久不收口',
+--	actions_and_indications = '久泻、久痢、大肠虚寒滑脱不禁；妇女崩漏；',
+--	details = '对发炎的胃肠黏膜有保护作用，对胃肠出血有止血作用，还能吸附消化道的毒物，故在磷、汞中毒时可用本品防止毒物吸收',
+--	common_prescriptions = '桃花汤、赤石脂禹粮汤',
+--	common_partners = '久泻、久痢、滑脱不禁：配干姜、粳米，或配禹余粮，或配车前子、茯苓等；妇女崩漏：配生地、当归、白芍、白术、酒炒黄芩、续断炭、棕榈炭、艾炭、阿胶、桑寄生、炙黄芪等',
+--	similar_medicines = '禹余粮、赤石脂均能涩肠止痢、止血，但禹余粮甘咸性寒，赤石脂甘酸性温。花蕊石、赤石脂都能酸涩止血，但花蕊石偏治咳血、吐血，赤石脂偏治崩漏、便血。白石脂与赤石脂主治略同，但赤石脂偏入血分。',
+--	dosage_reference = '一般用量为9～15克，重症时可用30克',
+--	contraindications = '大肠有实邪者禁用本品。连续服用有使食欲减退的弊害。由于本品重坠，故孕妇慎用。',
+--	remarks = '是天然产的一种红色的多水高岭土，主产于山西、河南、江苏等地，除去杂质，研成细末入药。常煅用，以增加其涩性'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -962,8 +962,8 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '与赤石脂略同，详见赤石脂一节',
+--	actions_and_indications = '与赤石脂略同，详见赤石脂一节',
 --	details = '',
 --	common_prescriptions = '',
 --	common_partners = '',
@@ -978,14 +978,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '与赤石脂类似，同为涩固下元的药物，但本品性微寒，兼有清热作用',
+--	actions_and_indications = '久痢、久泄、赤白带下、子宫出血、大便下血等症',
 --	details = '',
 --	common_prescriptions = '',
 --	common_partners = '',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '同赤石脂',
+--	contraindications = '同赤石脂',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
