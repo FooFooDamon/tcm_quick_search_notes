@@ -266,10 +266,10 @@ public final class R {
         public static final int lsv_content_medicine_details=0x7f090030;
         public static final int lsv_content_medicine_effects=0x7f09002c;
         public static final int lsv_content_medicine_name=0x7f09001c;
-        public static final int lsv_content_medicine_nature=0x7f090022;
+        public static final int lsv_content_medicine_nature=0x7f090024;
         public static final int lsv_content_medicine_reference_material=0x7f09003c;
         public static final int lsv_content_medicine_remarks=0x7f09003e;
-        public static final int lsv_content_medicine_tastes=0x7f090024;
+        public static final int lsv_content_medicine_tastes=0x7f090022;
         public static final int lsv_content_method_of_taking_prescription=0x7f090058;
         public static final int lsv_content_misc_item_name=0x7f09000a;
         public static final int lsv_content_misc_item_remarks=0x7f09000e;
@@ -310,10 +310,10 @@ public final class R {
         public static final int lsv_title_medicine_details=0x7f09002f;
         public static final int lsv_title_medicine_effects=0x7f09002b;
         public static final int lsv_title_medicine_name=0x7f09001b;
-        public static final int lsv_title_medicine_nature=0x7f090021;
+        public static final int lsv_title_medicine_nature=0x7f090023;
         public static final int lsv_title_medicine_reference_material=0x7f09003b;
         public static final int lsv_title_medicine_remarks=0x7f09003d;
-        public static final int lsv_title_medicine_tastes=0x7f090023;
+        public static final int lsv_title_medicine_tastes=0x7f090021;
         public static final int lsv_title_method_of_taking_prescription=0x7f090057;
         public static final int lsv_title_misc_item_name=0x7f090009;
         public static final int lsv_title_misc_item_remarks=0x7f09000d;
@@ -413,6 +413,9 @@ public final class R {
         public static final int abort=0x7f06008f;
         public static final int about=0x7f06002f;
         public static final int about_this_app=0x7f060032;
+        /**  <string name="life_fundamental_diplay_name">作用于</string>
+         */
+        public static final int action_on=0x7f060190;
         public static final int action_verb=0x7f0601bd;
         public static final int add=0x7f0600d1;
         public static final int add_category=0x7f060171;
@@ -773,7 +776,6 @@ public final class R {
         public static final int less_than=0x7f060015;
         public static final int level_word=0x7f060184;
         public static final int life_fundamental=0x7f06018f;
-        public static final int life_fundamental_diplay_name=0x7f060190;
         public static final int main_item_medicine=0x7f060150;
         public static final int main_item_misc_management=0x7f06016f;
         public static final int main_item_prescription=0x7f060167;

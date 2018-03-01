@@ -46,8 +46,8 @@ public class DbHelper {
         "name",
         "alias",
         "category",
-        "nature",
         "tastes",
+        "nature",
         "channel_tropism",
         "relations_with_life_fundamentals",
         "motion_form_of_action",
@@ -66,8 +66,8 @@ public class DbHelper {
     public static final int MEDICINE_COLUMN_INDEX_NAME = 0;
     public static final int MEDICINE_COLUMN_INDEX_ALIASES = 1;
     public static final int MEDICINE_COLUMN_INDEX_CATEGORY = 2;
-    public static final int MEDICINE_COLUMN_INDEX_NATURE = 3;
-    public static final int MEDICINE_COLUMN_INDEX_TASTES = 4;
+    public static final int MEDICINE_COLUMN_INDEX_TASTES = 3;
+    public static final int MEDICINE_COLUMN_INDEX_NATURE = 4;
     public static final int MEDICINE_COLUMN_INDEX_CHANNEL_TROPISM = 5;
     public static final int MEDICINE_COLUMN_INDEX_LIFE_FUNDAMENTALS = 6;
     public static final int MEDICINE_COLUMN_INDEX_MOTION_FORMS_OF_ACTION = 7;
@@ -213,12 +213,19 @@ public class DbHelper {
         mDbDir = dir;
     }
 
-    public void initData() throws Exception {
+    public boolean exists() {
         String dbPath = getDatabaseDirectory() + "/" + getDatabaseName();
         File dbFile = new File(dbPath);
         boolean dbExits = dbFile.exists();
 
         if (dbExits)
+            return true;
+
+        return false;
+    }
+
+    public void initData() throws Exception {
+        if (exists())
             return;
 
         Hint.shortToast(mContext, R.string.hint_db_creating);
@@ -226,7 +233,7 @@ public class DbHelper {
         prepareMedicationData();
 
         Hint.longToast(mContext, mContext.getResources().getString(R.string.hint_db_created)
-            + "\n" + dbPath);
+            + "\n" + getDatabaseDirectory() + "/" + getDatabaseName());
     }
 
     public void prepareMedicationData() throws Exception {

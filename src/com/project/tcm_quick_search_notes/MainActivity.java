@@ -38,7 +38,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.database.sqlite.SQLiteException;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -136,9 +135,13 @@ public class MainActivity extends Activity
         inflatePageListView(EXIT_ITEMS, R.id.lsv_exit_group);
 
         DbHelper dbHelper = new DbHelper(this);
+        boolean isDbFirstInitialized = false;
 
         try {
-            dbHelper.initData();
+            if (!dbHelper.exists()) {
+                isDbFirstInitialized = true;
+                dbHelper.initData();
+            }
         } catch (Exception e) {
             Hint.alert(this, getString(R.string.data_init_error), e.getMessage(), mExitActivity);
         }
@@ -146,13 +149,22 @@ public class MainActivity extends Activity
         UpgradeManager upgradeManager = new UpgradeManager(this, dbHelper, App.getAppName(this) + ".db", null);
 
         try {
-            upgradeManager.getWritableDatabase(); // triggers operations such as
-                                                 // creating or altering tables.
-            upgradeManager.close();
+            if (isDbFirstInitialized) {
+                /*
+                 * manual upgrade
+                 */
+                dbHelper.upgradeV10111();
+                dbHelper.upgradeV10112();
+            }
+            else {
+                // automatic upgrade: triggers operations such as creating or altering tables.
+                upgradeManager.getWritableDatabase();
+                upgradeManager.close();
+            }
 
             if (upgradeManager.hasException())
                 Hint.alert(this, R.string.db_error, upgradeManager.getExceptionMessage(), mExitActivity);
-        } catch (SQLiteException e) {
+        } catch (Exception e) {
             e.printStackTrace();
 
             String eMsg = ((null != e.getCause()) ? e.getCause().getMessage()

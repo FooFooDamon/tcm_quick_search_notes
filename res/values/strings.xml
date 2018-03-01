@@ -559,6 +559,11 @@
     </string>
 
     <string name="version_log_contents">
+        ---- V1.01.13 2018/03/01\n
+        1、完善数据库初始化逻辑：当数据库文件被用户删除，下次启动程序自动
+        创建数据库时，也把各个版本的升级操作做一遍，以确保数据库结构正确。\n
+        2、药物详情页进行以下调整：“有利于”标题改成“作用于”以使意义更贴切；
+        “药味”放在“药性”的上面，更符合传统性味的表述习惯。\n\n
         ---- V1.01.12 2018/02/16\n
         1、查询页面的每条记录开头加上序号。\n
         2、杂项管理增加自定义笔记。\n
@@ -807,7 +812,8 @@
 
     <string name="attr_table_prefix_life_fundamental">life_fundamental</string>
     <string name="life_fundamental">基础生命物质</string>
-    <string name="life_fundamental_diplay_name">有利于</string>
+    <!-- <string name="life_fundamental_diplay_name">作用于</string>-->
+    <string name="action_on">作用于</string>
 
     <string name="attr_table_prefix_motion_form">motion_form</string>
     <string name="motion_form">药力作用运动形式</string>
@@ -1058,8 +1064,8 @@
 
     <string name="sql_query_medicine_details_by_id">
         select name, alias,
-            category, nature,
-            tastes, channel_tropism,
+            category, tastes,
+            nature, channel_tropism,
             relations_with_life_fundamentals, motion_form_of_action,
             effects, actions_and_indications,
             details, common_prescriptions,
@@ -1073,8 +1079,8 @@
     <string name="sql_update_medicine_item_by_id">
         update `medicine_items`
         set `name` = ?, `alias` = ?,
-            `category` = ?, `nature` = ?,
-            `tastes` = ?, `channel_tropism` = ?,
+            `category` = ?, `tastes` = ?,
+            `nature` = ?, `channel_tropism` = ?,
             `relations_with_life_fundamentals` = ?,
             `effects` = ?, `actions_and_indications` = ?,
             `details` = ?, `common_prescriptions` = ?,

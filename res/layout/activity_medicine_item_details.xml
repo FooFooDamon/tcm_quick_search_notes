@@ -170,26 +170,6 @@
 
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                 nature
-
-                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_title_medicine_nature"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </com.android_assistant.EnhancedListView>
-
-            <com.android_assistant.EnhancedListView
-                android:id="@+id/lsv_content_medicine_nature"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin" >
-            </com.android_assistant.EnhancedListView>
-
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
                  tastes
 
                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
@@ -202,6 +182,26 @@
 
             <com.android_assistant.EnhancedListView
                 android:id="@+id/lsv_content_medicine_tastes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin" >
+            </com.android_assistant.EnhancedListView>
+
+            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+                 nature
+
+                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+            <com.android_assistant.EnhancedListView
+                android:id="@+id/lsv_title_medicine_nature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </com.android_assistant.EnhancedListView>
+
+            <com.android_assistant.EnhancedListView
+                android:id="@+id/lsv_content_medicine_nature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/activity_horizontal_margin"

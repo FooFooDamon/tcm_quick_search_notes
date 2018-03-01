@@ -883,7 +883,7 @@
 --update medicine_items
 --set alias = '',
 --	effects = '补肾秘气，涩固精关，固涩大肠而止泄，止带下，摄小便',
---	actions_and_indications = '肾虚滑精、遗精；遗尿；白带过多；慢性泄泻',
+--	actions_and_indications = '肾虚滑精、遗精；遗尿；白带过多；慢性泄泻、大便频数',
 --	details = '可使肠壁黏膜收缩，分泌减少，故有止泻作用，可用于慢性肠炎',
 --	common_prescriptions = '四神丸、附子理中汤、金樱子膏（成品）',
 --	common_partners = '肾虚滑精、遗精：配芡实、龙骨、牡蛎、锁阳等；遗尿：配桑螵蛸、覆盆子、山药、莲须等；白带过多：配山药、芡实、莲子肉、苍术、茯苓等；慢性泄泻：配补骨脂、山药、芡实、茯苓、五味子、肉豆蔻、党参、白术等',
@@ -994,31 +994,31 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	effects = '固肠止泻、止血、止痢；敛肺止咳；生津止渴；驱蛔止痛；软坚、消胬肉',
+--	actions_and_indications = '脾虚久泻、大肠滑泄不止；大便下血、月经过多；肺气浮散而干咳难愈；消渴、烦热口渴等症；驱蛔，止虫痛；鸡眼',
+--	details = '对金黄色葡萄珠菌、绿脓杆菌、多种肠道致病菌、结核菌及皮肤真菌有抗菌作用，用于治疗肠炎、菌痢等有效；有使胆囊收缩、促进胆汁分泌的作用，对治疗胆道蛔虫、疟疾、钩虫病有效',
+--	common_prescriptions = '乌梅丸、安蛔汤',
+--	common_partners = '久泻滑泄：配党参、苍术、白术、茯苓、山药、木香、诃子、肉豆蔻、五味子等；大便下血、月经过多：配地榆炭、槐花炭、黄芩炭、艾叶炭、阿胶等；肺气浮散而干咳难愈：配百合、五味子、紫菀、诃子肉等；消渴、烦热口渴等症：配麦冬、石斛、沙参、玉竹、天花粉等，也可单味煎汤服；驱蛔，止虫痛：配川椒、吴茱萸、干姜、使君子、生大黄、黄连等，或用乌梅丸、安蛔汤，止虫痛则用本品单味煎水服下，确认为虫病后即可继续对症治疗；鸡眼：加盐水和醋研磨成软膏，外敷',
+--	similar_medicines = '山楂、乌梅均味酸，但山楂不涩不收，而能消积破气；乌梅则酸涩收敛，而能敛肺涩肠。',
+--	dosage_reference = '一般用量为1～4.5克，重症时可用6～9克',
+--	contraindications = '诸证尚有实邪者、病情须用发散药者忌用',
+--	remarks = '生津止渴、涩肠、敛肺时去核生用，止血时炒炭用'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '乌梅';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--set alias = '诃黎勒',
+--	effects = '涩肠、敛肺、下气、调中、化痰、开声音',
+--	actions_and_indications = '久泻、久痢；大便下血；妇女崩漏、带下、胎漏、胎动欲堕等证；肺气浮散、久咳无痰、气短声嗄；慢性咽喉炎、声音嘶哑',
+--	details = '对白喉杆菌、痢疾杆菌、肺炎球菌、绿脓杆菌、金黄色葡萄球菌、白色葡萄球菌、变形杆菌、溶血性链球菌等有抑制作用；诃子到肠的下部方有收敛作用，可用为治痢疾药；口含能治喉炎。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '久泻、久痢：配肉豆蔻、吴茱萸、芡实、木香、肉桂、五味子、补骨脂、茯苓、白术、赤石脂等；大便下血：配防风、槐花炭、地榆炭、黄柏炭、白术、续断炭等；妇女崩漏、带下、胎漏、胎动欲堕等证：配白术、山药、续断炭、黄芩炭、桑寄生、补骨脂、艾叶炭、苧麻根等；久咳声嗄：配百合、乌梅、五味子、麦冬、马兜铃等，但要注意确认无实邪方可使用，否则敛邪难出，使咳嗽更难痊愈；慢性咽喉炎、声音嘶哑：配乌梅、旋覆花、金果榄、五倍子、射干、蝉蜕等',
+--	similar_medicines = '五倍子、诃子皆能敛涩止血，但五倍子性寒，诃子性温。金樱子酸涩，主用于涩固精关；诃子主用于涩肠止泻痢。肉豆蔻暖脾燥湿而止泻，诃子涩肠固脱而止泻。乌梅止久痢、下血，兼能生津止渴、杀虫；诃子止久痢、下血，苦多酸少，故又能下气、降肺火。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '咳嗽、痢疾初起，及肺有实热、湿热泻痢、火冲气喘等症，均忌用本品',
+--	remarks = '生用行气、消胀、保肺、清痰，煨熟用则温胃固肠。诃子皮可用于久嗽、喘逆、久泄，涩性更为明显。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1026,15 +1026,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '燥脾、暖胃、涩肠、下气消胀',
+--	actions_and_indications = '脾胃虚寒所致的久泄、久痢；脾肾虚寒所致的五更泄；慢性肠炎、慢性痢疾、肠功能紊乱（表现为慢性泄泻）等；中焦虚寒所致的食物不化、食欲不振、胃脘胀痛等症；',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '四神丸',
+--	common_partners = '久泄、久痢：配党参、白术、茯苓、诃子、木香、芡实、砂仁等；五更泄：配吴茱萸、五味子、补骨脂等（即四神丸，是治五更泄最常用的药方）；慢性肠炎、慢性痢疾、肠功能紊乱等：配党参、白术、茯苓、诃子、山药、山萸肉、肉桂、附片、干姜、乌药、灶心土等；食物不化、食欲不振、胃脘胀痛等症：配木香、高良姜、砂仁、香附、半夏、厚朴、枳壳等',
+--	similar_medicines = '益智仁与肉豆蔻均能燥脾，但益智仁偏用于脾湿多涎，并能补肾缩小便而治遗尿；肉豆蔻偏用于脾虚泄泻，并能温胃行气。补骨脂与肉豆蔻均能治泄泻，但补骨脂温补肾阳而治肾虚寒所致的大便溏泄，肉豆蔻温脾燥湿而治脾虚寒所致的肠滑便泻。',
+--	dosage_reference = '一般用量为1.5～9克',
+--	contraindications = '有实热火邪者忌用',
+--	remarks = '本品所含之挥发油，能增进胃液分泌及胃肠蠕动而有开胃促进食欲、消胀止痛的功能，但用量大时反有抑制胃液分泌、胃肠蠕动的作用，故用于温胃行气、开胃进食时，用量宜轻（1.5～4.5克），用于温脾止泻时，用量宜重些（9～12克）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1042,14 +1042,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '补肾、固精、缩小便',
+--	actions_and_indications = '肾虚所致的遗精、早泄、遗尿或小便频数（尿道不疼的）',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '遗精、早泄：配龙骨、莲须、山药、地黄、金樱子等；遗尿或小便频数：配益智仁、乌药、山萸肉、山药、龙骨、党参、熟地、五味子、覆盆子、炒鸡内金、续断等',
+--	similar_medicines = '益智仁补脾肾、涩精而缩小便；覆盆子补肝肾、固精气、性味酸涩而缩小便；台乌药温膀胱肾冷气、顺膀胱肾逆气而治小便频数；桑螵蛸固肾而缩小便。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '阴虚火旺、膀胱有热者忌用；急性泌尿系感染所致的尿频数（多属湿热证）者，不宜用本品。',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1057,15 +1057,15 @@
 --	and name = '桑螵蛸';
 --
 --update medicine_items
---set alias = '覆盆子',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '覆盆子、覆盆、覆盆莓、悬钩子、树梅、树莓、野莓、木莓、乌藨子',
+--	effects = '补肝肾、固精、缩小便',
+--	actions_and_indications = '肝肾不足而两目昏花、视力减弱等症；肾虚不能摄固小便而致遗尿、小便余沥、小便频数等；肾虚精关不固而致遗精、滑精、早泄等症；',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '视力减弱等症：配枸杞子、车前子、菟丝子、五味子、地黄、沉香、磁石、夜明砂等；遗尿、小便余沥、小便频数等：配桑螵蛸、五味子、山萸肉、乌药、益智仁等；遗精、滑精、早泄等：配生地、熟地、山萸肉、五味子、锁阳、金樱子等；',
+--	similar_medicines = '金樱子、覆盆子均能治遗精、滑精，但金樱子兼能治泄泻、久痢、大便频数，覆盆子兼能治遗尿、小便频数。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '小便不利、尿道涩痛及性功能亢奋者忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1074,31 +1074,31 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '敛肺，补肾，养心敛汗，生津止渴',
+--	actions_and_indications = '久漱不愈、肺气浮散而致干咳失音、气短喘息、身倦无力、面色少华等症；肾虚而致的遗精、滑精、遗尿、久泄、久痢等症；心气不足而致失眠、心悸、易惊、多梦等；阳虚自汗、阴虚盗汗；阴津不足所致的口渴；肾虚消渴',
+--	details = '能提高大脑皮层的工作能力，兴奋呼吸中枢，调节心血管系统病态生理功能及改善血液循环，在血管运动中枢，特别是上述中枢受抑制时作用更为明显；对金黄色葡萄球菌、白色葡萄球菌、肺炎球菌、伤寒杆菌、霍乱弧菌、绿脓杆菌有抑制作用；能兴奋子宫平滑肌，故可增强产妇的分娩能力；对肝炎恢复期转氨酶高而久不恢复者，用本品降转氨酶有一定效果（研为粉末服用）',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '久漱不愈、肺气浮散：配百合、生地、山萸肉、紫菀、马兜玲、枇杷叶等，但要注意尚有实邪的咳嗽，不能用敛肺药；遗精、滑精、遗尿：配地黄、山萸肉、龙骨、牡蛎、金樱子、牡丹皮、泽泻、茯苓、远志等；久泄、久痢：配补骨脂、吴茱萸、肉豆蔻、炒白术、炒山药、茯苓、炮姜、党参、木香等；失眠、心悸、易惊、多梦：配柏子仁、远志、茯神、龙齿、珍珠母、龙眼肉、党参等；阳虚自汗：配浮小麦、生黄芪、麻黄根、酸枣仁等；阴虚盗汗：配麦冬、生地、玄参、山萸肉、龙骨、煅牡蛎、黄柏、乌梅等；阴津不足的口渴：配麦冬、生地、玄参、乌梅等；肾虚消渴：六味地黄丸药方加本品以及肉桂，水煎服',
+--	similar_medicines = '山萸肉、五味子均能止汗，但山萸肉偏于滋养肝肾之阴，五味子兼能收养心肺之气及肾中耗散欲脱之气。金樱子酸涩入肾固精，兼能涩肠止泄；五味子酸收入肾固精，兼能敛肺止嗽。',
+--	dosage_reference = '一般用量为1.5～9克',
+--	contraindications = '肾阳亢奋、肺有实热、蓄痰停饮、肝火妄动、痧疹初发等证者，皆禁用本品',
+--	remarks = '入补益药炒熟用，入治嗽药生用'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '五味子';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '银杏',
+--	effects = '收肺益气，定喘治嗽（用于久嗽，即肺中已无实邪者较合适），并能缩小便、止白带',
+--	actions_and_indications = '哮喘痰嗽；小便频数、遗尿；白带',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '白果定喘汤',
+--	common_partners = '哮喘痰嗽：配麻黄、苏子、冬花、半夏、桑白皮、杏仁、黄芩、甘草（白果定喘汤）等；小便频数、遗尿：配乌药、益智仁、覆盆子、鸡内金、熟地、山药、山萸肉等；白带：配白术、茯苓、炒薏米、白鸡冠花、椿根白皮等',
+--	similar_medicines = '五味子温收肺气、纳气归肾，偏用于久嗽兼喘者；白果收肺益气，偏用于痰喘兼咳者。',
+--	dosage_reference = '一般用量为1.5～9克，不可用量过大，以免引起胀闷或中毒。中毒时可出现头痛、呕吐、呼吸困难、抽筋等症。这时可用生甘草30～60克或白果壳30克煎水服',
+--	contraindications = '外感咳嗽初起时不宜用',
+--	remarks = '炒熟用益肺定喘，生用降痰'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1106,15 +1106,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '常用的理气药，能消胀止呕、理气开胃，并有燥湿化痰和止咳的功能，补药方剂中加上本品，能避免补药引起壅气胀满的副反应',
+--	actions_and_indications = '肺胃气滞而致的胸闷、上腹胀满、恶心呕吐、胸腹胀痛等症；中焦气滞、食欲不振等症；中焦湿痰上犯或外感风寒导致肺气不利而发生咳嗽、痰多、胸闷、不思食、舌苔白腻、脉滑等症',
+--	details = '《本草备要》对本品的记载是“辛能散，苦能燥能泻，温能补能和，同补药则补，同泻药则泻，同升药则升，同降药则降，为脾肺气分之药，调中快膈，导滞消痰，利水破癥，宣通五脏”，可说是极好地概括了它的功能。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '肺胃气滞诸证：配枳壳、半夏、紫苏梗、紫苏子等；中焦气滞、食欲不振等症：配麦芽、谷芽、蔻衣、神曲、山楂等；中焦湿痰上犯或外感风寒导致肺气不利：配半夏、茯苓、紫苏子、杏仁、炒莱菔子、金沸草（即旋覆花）、前胡等，外感证明显者，可再加荆芥、桔梗、麻黄',
+--	similar_medicines = '化橘红、广橘红、陈皮均有化痰作用，其中化橘红竞争力最大，对痰多、痰稠、痰白黏者适用；广橘红偏于轻清入肺，适用于外感咳嗽痰多胸闷者；陈皮理气消胀开胃的作用大于橘红，橘红化痰的作用大于陈皮。青皮偏入肝胆，破气散滞，兼能治疝；陈皮偏入脾肺，理气和胃，兼能化痰。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '本品性味香燥，过用、久用可耗散正气，无气滞者勿用',
+--	remarks = '本品就是橘子皮（不是橙子皮？），以存放时间长、陈久者为好，故称陈皮。广州产的橘子皮较好，又名广陈皮。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1122,15 +1122,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '化痰',
+--	actions_and_indications = '外感咳嗽痰多胸闷者',
 --	details = '',
 --	common_prescriptions = '',
 --	common_partners = '',
---	similar_medicines = '',
+--	similar_medicines = '橘络有化痰通络的作用，常用于咳嗽、胸胁闷痛以及手指麻木等。橘核可散结止痛，常用于治疝气痛。橘叶能疏肝解郁，常用于胸胁闷痛、乳房发胀等。',
 --	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '橘皮刮去里面的白东西，就叫橘红，又分广橘红、化橘红，后者为化州柚皮，化橘红化痰之力优于广橘红。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1138,14 +1138,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '破气消滞，舒肝降逆，并能治疝气疼痛',
+--	actions_and_indications = '由于肝气郁结而致的胸膈胀闷、气逆不食、胁肋痛胀、善怒、气滞胃痛等症；疝痛',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '天台乌药散',
+--	common_partners = '肝气郁结诸证：配枳壳、紫苏梗、香附、槟榔、厚朴、陈皮等；疝痛：乌药、川楝子、木香、小茴香、高良姜、槟榔（即天台乌药散）',
+--	similar_medicines = '香附能通十二经气分，行气开郁，兼能调经理血；青皮主入肝经，破气开郁，兼治疝痛。枳实破气，苦寒而降，偏用于快利胸膈，消导肠胃积滞；青皮破气，辛温而散，苦温而降，偏用于胁肋疼痛，破肝经气结。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '气虚者慎用。无气滞及多汗者不用。不可过用、久用，恐伤伐正气。',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1154,14 +1154,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	effects = '破气、消积、导滞、除痞',
+--	actions_and_indications = '胃肠气结而致心下痞痛、胃脘硬胀、食滞腹胀腹痛、大便不畅等症；胃肠有积滞而大便秘结不通之症；胸中积聚痞满、按之硬痛等症',
+--	details = '本品破气结的作用很强，对气结而成的坚积，气行则积消；因气结而痰阻者，气行则痰行；因气结而胸脘痞闷、胸痛者，气行则痞闷自除。',
+--	common_prescriptions = '大承气汤、小承气汤、枳实导滞丸、枳术汤、芍枳实丸',
+--	common_partners = '胃肠气结：配枳壳、木香、槟榔、神曲、麦芽、山楂、大黄等；胃肠积滞而便秘：配大黄、厚朴、芒硝、玄明粉、瓜蒌、槟榔、火麻仁等；胸中积聚痞满：配白术、赤芍、陈皮、厚朴等',
+--	similar_medicines = '青皮破肝经气结，枳实破胃肠气结。木香行肠胃滞气，偏用于理气消胀；枳实破肠胃结气，偏用于除痞消积。',
+--	dosage_reference = '一般用量为1.5～9克',
+--	contraindications = '孕妇慎用。气虚中满、气陷便溏、胃虚不思食者，均禁用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1170,14 +1170,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '功效与枳实相似，详见相似药物对比部分，以及枳实一节',
+--	actions_and_indications = '胸腹胀满；胸中气结；肌肤麻痒；邪滞肝肺而胁痛',
+--	details = '枳实、枳壳的煎剂均可使胃肠和子宫平滑肌兴奋性增强，并可使胃肠蠕动规律化，对胃扩张、胃下垂、消化不良、脱肛、疝气、子宫脱垂等有治疗作用',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '胸腹胀满：配桔梗；胸中气结：配槟榔；肌肤麻痒：配荆芥、防风、红花、赤芍；邪滞肝肺而胁痛：配片姜黄、白蒺藜',
+--	similar_medicines = '枳实主入脾胃，枳壳主入脾肺；枳壳力缓，偏于理气消胀，枳实力强，偏于破气消积；枳实破降下行之力强，枳壳开胸宽肠之力强。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '脾胃虚、气虚者慎用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1186,15 +1186,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '主要用为降气药，能温中降气，兼能温肾平喘',
+--	actions_and_indications = '中气失其和降、气逆为害而出现胸脘胁肋闷胀、心腹疼痛、呕吐泄泻、胃冷、呃逆等症；肾虚寒所致的气喘、腰膝冷痛、阳痿滑精、腿软乏力等；肺气不降、痰浊壅阻的实喘咳嗽',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '黑锡丹、苏子降气汤',
+--	common_partners = '胸脘胁肋闷胀：配香附、枳壳、炒川楝子、青皮；心腹疼痛：配高良姜、吴茱萸、延胡索、蒲黄；呕吐泄泻：配半夏、藿香、竹茹、茯苓、木香、白术；胃冷、呃逆：紫苏、豆蔻、丁香、柿蒂；肾虚寒诸证：配补骨脂、胡芦巴、阳起石、黑锡、硫黄（后两味药不入汤药，只入丸药）、附子、小茴香、肉豆蔻、金铃子、木香、肉桂等；实喘咳嗽：配紫苏子、前胡、半夏、厚朴、陈皮等',
+--	similar_medicines = '旋覆花降肺脾痰气，沉香降脾肾逆气。槟榔降气，但偏于破泻下降，正气虚者忌用；沉香降气，无破泻的作用，不伤正气。降香降血中之气而止血，沉香降肾虚不纳之气而平喘。',
+--	dosage_reference = '一般用量为0.6～2.5克，常研为细粉，用汤药送服，既节省药品，又效果可靠，故一般不入汤药煎服。',
+--	contraindications = '气虚下陷者忌用',
+--	remarks = '前人经验认为本品“行气不伤气，温中不助火”'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1202,15 +1202,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '为理气开郁之品，主要功能为调脾肺、利胸膈，能引脾胃之气上升而增进饮食，能开发胸肺之气郁而宽畅胸膈',
+--	actions_and_indications = '脾肺之气失调而胸膈闷胀；心腹疼痛；饮食少进；冠心病心绞痛；胃脘痛（包括溃疡病）',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '胸膈闷胀：配紫苏梗、瓜蒌皮、枳壳；心腹疼痛：配丹参、砂仁、乌药、百合、高良姜；饮食少进：配陈皮、生麦芽、沙参、麦冬；冠心病心绞痛：配瓜蒌、薤白、桂枝、红花、赤芍、远志、五灵脂、蒲黄、槟榔等；胃脘痛：配丹参、砂仁、高良姜、香附、百合、乌药等',
+--	similar_medicines = '沉香降气，降中有升，但偏用于降气；檀香理气，升中有降，但偏用于宣散气郁。降香理气兼入血分，偏用于治疗折伤，止血活血，消肿定痛；檀香偏用于理气开郁，并能治心腹诸痛。',
+--	dosage_reference = '一般用量为1.5～9克，入汤药时要后下',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '檀香有紫、白两种，紫檀香性味咸寒，偏入血分，外用敷金疮（指金属利器造成的创伤，并包括因创作而化脓溃烂的疮），能消肿定痛。处方上只写檀香时，即给予白檀香，紫檀香则需写明确。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1218,13 +1218,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '降逆气，止呃逆',
+--	actions_and_indications = '呕哕；呃逆',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '呕哕：配半夏、竹茹、生姜、藿香、刀豆子、赭石等；呃逆：配丁香、沉香、旋覆花等，对虚证呃逆（重病、久病、老人体弱者）还可加党参、人参、附子、白术、陈皮等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	dosage_reference = '一般用量为3～9克，或3～7个',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -1233,16 +1233,16 @@
 --	and name = '柿蒂';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '旋覆花、金沸草（全草，即花、梗、叶全用）',
+--	effects = '降气、化痰、行水',
+--	actions_and_indications = '大汗或泻下后，胃气受伤，或湿痰阻滞不降而引致肺胃之气上逆，出现嗳气频频、脘部痞闷、胸胁胀满、食入即吐、食物与痰水俱出等症；肺气不降、痰浊水饮蓄积、胸膈滞塞所致的咳嗽、痰多黏稠、气逆作喘等症；梅核气（咽中似有痰核黏着，咯之不出，咽之不下，不妨碍饮食，但咽中常有异物感）；全草可用于风寒咳嗽',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '嗳气呕逆：配赭石、半夏、生姜、党参、竹茹、紫苏子、茯苓等，痰湿盛者，可加陈皮、炒莱菔子等；咳喘痰多：配陈皮、半夏、桑白皮、杏仁、紫菀、紫苏子、槟榔、炒莱菔子等；梅核气：配紫苏梗、厚朴、半夏、生牡蛎、茯苓、香附、黄芩、金果榄、乌梅炭等；风寒咳嗽：全草，配荆芥、前胡、半夏、细辛、茯苓、苏叶、桔梗、陈皮等',
+--	similar_medicines = '紫苏子降气，兼能开郁温中；旋覆花降气，兼能消痰行水。海浮石治痰结如硬块；旋覆花治唾黏、痰黏如胶漆。',
+--	dosage_reference = '一般用量为3～9克，因多绒毛，故须用纱布包煎',
+--	contraindications = '气虚、大肠寒冷泄利者忌用本品',
+--	remarks = '本品性下降，前人有“诸花皆升，惟旋覆花独降”的经验记载'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1250,15 +1250,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '降气平喘，化痰消积，理气除胀',
+--	actions_and_indications = '痰浊阻肺，肺失肃降而咳嗽、气喘、痰多、胸闷等症；饮食积滞而致的脘部堵闷、嗳气吞酸、腹部胀等症；',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '三子养亲汤',
+--	common_partners = '咳喘痰多胸闷：配紫苏子、白芥子（即三子养亲汤）；食积腹胀：配焦三仙、槟榔、枳实、木香等',
+--	similar_medicines = '山楂核偏用于助消化、磨积块；莱菔子偏用于消痰化滞，降气除胀。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '气虚无痰积者忌用本品',
+--	remarks = '生用性善上升，服量较大时，能致恶心呕吐（临床上较少生用，但对胃中食滞须吐出时，可以生用）；炒用则性善降，可用于降气化痰，消胀平喘'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1266,14 +1266,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '助胸阳，开心窍，散胸中与大肠气滞，兼能活血',
+--	actions_and_indications = '胸中阳气不振而产生胸痹刺痛、心痛血滞、肺气喘急等症；大肠气滞而产生的泄痢下重、大便涩滞等症；久病、气血瘀滞、肢体疼痛等症；',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '趁痛散（治疗产后气弱血滞，受风着凉，遍身疼痛的常用方）',
+--	common_partners = '胸阳不振诸证：配瓜蒌、白酒、桂枝、枳壳、五灵脂、蒲黄、檀香、红花、紫苏梗、紫苏子、槟榔、川芎等，这些经验也可用于治疗心绞痛等；大肠气滞：配白芍、木香、黄连、槟榔、枳实、枳壳等；气血瘀滞：配桂枝、当归、红花、羌活、片姜黄、松节等；',
+--	similar_medicines = '干姜温肺而助胸阳，偏用于祛心肺寒邪；薤白入心宣窍，行气活血而助胸阳，偏用于治胸痹刺痛。细辛虽能入心助阳，但以入肺肾为主，故水停心下咳喘吐涎沫时可用之；薤白虽能散大肠气滞，但主要入心助胸阳，故心阳不振而胸痹（心胸疼痛）时常用之。',
+--	dosage_reference = '一般用量为3～9克，重症时可用15克或更多',
+--	contraindications = '无气滞血瘀者，不宜用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1281,15 +1281,15 @@
 --	and name = '薤白';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '紫苏子',
+--	effects = '润心肺、下气平喘、消痰止嗽、利膈开郁',
+--	actions_and_indications = '肺失肃降、痰多气逆而咳喘、胸闷诸症；胃气上逆、痰浊上泛而致的呕恶、吐哕等症',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '三子养亲汤、苏子降气汤',
+--	common_partners = '痰多咳喘胸闷：配杏仁、炒莱菔子、炒白芥子、陈皮、紫菀、前胡、厚朴、当归、沉香等；呕恶吐哕：配半夏、藿香、茯苓、陈皮、丁香、焦三仙、枳实等',
+--	similar_medicines = '莱菔子、紫苏子均有降气平喘的功能，但莱菔子消痰破积之力优于紫苏子，紫苏子下气开郁之力优于莱菔子。莱菔子偏用于消腹胀，紫苏子偏用于利胸膈，二药常合用，以治胸腹胀闷。',
+--	dosage_reference = '一般用量为3～9克，炒熟打碎用',
+--	contraindications = '气虚下陷者忌用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1298,31 +1298,31 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '燥湿、温中、破气、开郁、“除瘴截疟”',
+--	actions_and_indications = '中焦寒湿不化所致的呕吐、反胃、噎膈、痞闷、泻痢、腹胀、舌苔白厚而腻、脘闷少食等症；因寒湿客于中焦使胃气滞而致胃脘疼痛、脘腹堵闷、舌苔白厚等症',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '三合汤（可代替原方中的砂仁）',
+--	common_partners = '中焦寒湿不化诸症：配藿香、陈皮、木香、砂仁、厚朴、紫苏梗、茯苓、旋覆花等；胃脘痛：配高良姜、香附、檀香、砂仁、紫苏梗、槟榔、乌药、丹参、百合等',
+--	similar_medicines = '白豆蔻与草豆蔻功能大致相同，但白豆蔻常偏用于行气宽膈，芳香燥湿的作用不如草豆蔻，草豆蔻则偏用于破气开郁、温中燥湿。白豆蔻偏入肺，草豆蔻偏入脾。肉豆蔻偏用于固涩大肠而止泄，草豆蔻偏用于燥湿破气而开郁。草果辛香燥烈之气更胜于草豆蔻，偏用于截疟消痰；草豆蔻长于温中调气而化湿。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '久服、过服可助脾热而耗散正气',
+--	remarks = '前人对于本品有“除瘴截疟”的记载，即可用于治疟疾的方中，供参考'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '草豆蔻';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '高良姜子',
+--	effects = '温肺散寒、醒脾燥湿、消食解酒，但无芳香行气的作用',
+--	actions_and_indications = '矽肺病，肺胃俱寒而咳嗽、吐白痰、胃脘痛',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '肺胃俱寒：配干姜、甘草、款冬花、紫菀、苏子、吴茱萸、杏仁、茯苓、香附、半夏等',
 --	similar_medicines = '',
 --	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '本品即高良姜之子'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1330,31 +1330,31 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	effects = '行气调中、醒脾开胃、散寒、助消化，并能引气归肾，兼有温肾、化湿的作用',
+--	actions_and_indications = '因气滞及脾胃寒湿而致的脘腹胀满、痰湿积滞、呕吐、泄泻、腹痛、消化不好等症；因脾胃虚寒而致的泄泻、冷痢；湿热痢的大便不爽；因妊娠而胃气上逆、胸闷呕吐等导致胎动不安',
+--	details = '现代药理研究表明，本品有芳香健胃作用，可促进胃的功能，促进消化液的分泌，并可排除消化管内的积气',
+--	common_prescriptions = '三合汤',
+--	common_partners = '气滞及脾胃寒湿诸证：配枳实、白术、木香、半夏、陈皮、葵花、藿香、焦神曲等；脾胃虚寒泄泻：配党参、白术、木香、炮姜、茯苓等；冷痢：配木香、草豆蔻、吴茱萸、槟榔、当归、炒白芍等；湿热痢的大便不爽：利用其行气作用而使大便通畅，但须配黄连、黄芩、马齿苋、白头翁等寒性药以监制其温性；妊娠胎动：配苏叶、藿香、黄芩、白术、木香、当归等，可和中安胎',
+--	similar_medicines = '蔻仁（白豆蔻去皮使用）与砂仁均有行气调中的作用，但蔻仁和胃止呕的作用胜于砂仁，砂仁暖胃燥湿的作用胜于蔻仁。肉桂与砂仁均能入肾，引火归元时用肉桂，引气归元时用砂仁。砂壳（砂仁的外壳）也有理气醒胃的作用，但缺乏砂仁温中散寒的效力，但因其气味薄、燥性小，肝旺胃弱者用之适宜',
+--	dosage_reference = '一般用量为1.5～4.5克，重症时可用6～9克。砂壳体轻，一般用0.9～1.5克或2～2.5克',
+--	contraindications = '本品有芳香温燥之性，阴虚有热者应慎用',
+--	remarks = '重用熟地等质地滋腻的补药时，配用一些砂仁，可避免滋补药妨害消化、降低食欲的副作用。前人有“砂拌熟地”（用砂仁拌粘熟地上）的用法，既免除了熟地滋腻碍胃之弊，又可引熟地归肾，可谓一举两得。入煎剂时，宜打碎、后下，因久煎会减小药效。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
---	and name = '砂仁';
+--	and name = '砂仁（附：砂壳）';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '豆蔻、白蔻仁（去皮使用）',
+--	effects = '常用的行气、化湿、健胃、止呕药，能宣散肺中滞气，温行胃中寒气，燥化脾经湿气',
+--	actions_and_indications = '脾胃虚寒、湿郁或气滞而导致的消化不良、呕吐反胃、胸脘满闷、腹部胀痛等症；夏秋之交的湿温病；食欲不振；胃寒疼痛',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '三仁汤',
+--	common_partners = '消化不良、呕吐反胃等：配藿香、半夏、陈皮、生姜、丁香等；湿温病：配杏仁、薏米、厚朴、半夏、滑石、通草、竹叶等；食欲不振：配陈皮、生麦芽、香稻芽等；胃寒疼痛：配高良姜、香附、干姜、吴茱萸等',
+--	similar_medicines = '白蔻衣（即白蔻皮）长于理气宽胸消胀，温性较白豆蔻小，可应证选用。',
+--	dosage_reference = '一般用量为1.5～6克',
+--	contraindications = '肺胃火盛及气虚者忌用',
+--	remarks = '入汤药时，后下'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1362,14 +1362,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '有行散滞气的功能',
+--	actions_and_indications = '适用于各种气滞作痛，最常用于治疗疝气疼痛、睾丸坠胀疼痛等症；妇女腹部血气凝滞而刺痛；胃脘痛；奔豚气',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	common_prescriptions = '奔豚丸',
+--	common_partners = '疝气疼痛：配小茴香、橘核、青皮、乌药、川楝子等；妇女腹部刺痛：配炒香附；胃脘痛：配高良姜、香附、五灵脂；奔豚气：配小茴香、木香、吴茱萸、肉桂等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '一般用量为6～12克',
+--	contraindications = '无寒湿滞气者慎用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1377,16 +1377,16 @@
 --	and name = '荔枝核';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '金铃子',
+--	effects = '疏肝气，引心包经火热下行，导小肠、膀胱湿热，故也能清利湿热',
+--	actions_and_indications = '肝气痛、肝气胀、胁痛、疝痛、胸脘满闷疼痛等症；热性胃痛；肝热胁痛；蛔虫腹痛',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '肝气胀痛、疝痛、胸脘痛闷等：配延胡索、木香、青皮、厚朴、香附等；导湿热下行：配川木通、竹叶、生地、泽泻等；热性胃痛：配延胡索；肝热胁痛：配枳壳、香附；蛔虫腹痛。',
+--	similar_medicines = '同为治疝气药物，荔枝核性温，川楝子性寒。苦楝子偏于杀虫，常用其根皮；川楝子偏于疏肝理气、治疝，其皮也可以杀虫。',
+--	dosage_reference = '一般用量为3～12克',
+--	contraindications = '脾胃虚寒者忌用',
+--	remarks = '前人经验认为川楝子“为疝气要药”，但其性寒凉，用于寒证时须配合小茴香、荔枝核、吴茱萸、肉桂、乌药、补骨脂等，炒用也可减少寒性。疏肝、治疝时炒用，清热时生用。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1394,15 +1394,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '其性宣畅，能通行十二经、八脉的气分，前人称它能“主一切气”，解六郁（气郁、血郁、痰郁、食郁、火郁、湿郁），疏肝解郁效果最明显，调月经',
+--	actions_and_indications = '肝气郁滞而致的脘腹胀满、胁肋胀痛、吃饭不香、胸闷喜长吁等症；气滞胃痛；妇女因情绪不畅、肝气郁滞而致月经不调、过期不潮、行经腹痛等症',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '肝气郁滞诸证：配柴胡、白芍、郁金、青皮、陈皮、木香、厚朴、紫苏梗等，兼有其余五郁的，可酌情加其它药物，详见原书内容；气滞胃痛：配高良姜、木香、白豆蔻、川楝子、延胡索、白芍、紫苏梗等；肝气郁滞而致的月经问题：配当归、白芍、熟地、红花、五灵脂、川楝子、小茴香、乌药、桃仁等；与诸补血活血、补气行气、清热、化痰药同用，可增强效果，详见原书内容',
+--	similar_medicines = '木香辛温，偏于行肠胃滞气，主入气分；香附辛平，偏于宣畅十二经气分，兼入血分。青皮入肝，破气散结，兼能治疝；香附入肝，理气开郁，兼能调经。厚朴行气，偏用于消胀除满；香附行气，偏用于疏肝解郁。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '气虚血燥者慎用',
+--	remarks = '最常用的理气开郁药；血中气药（能入血分的行气药）；还能引补血药至气分以生血，胎前、产后各症皆可使用，故前人又称其为女科要药。生用时，偏于上行胸膈，外达皮肤；制熟用则偏入肝肾而利腰足。用于通行经络时，宜酒浸炒；用于消积聚时，宜醋浸炒；用于消化痰饮时，宜姜汗浸炒；用于妇女崩漏、月经过多，宜炒黑用（名黑香附，兼有止血作用）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1410,15 +1410,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	effects = '行肠胃滞气，疏肝开郁，和胃健脾，芳香化湿，是常用的行气药',
+--	actions_and_indications = '气行则痛定，故可治一切冷气滞塞疼痛：配砂仁，可治脘腹痞满；配槟榔，可除里急后重；配莱菔子，可治腹胀；配小茴香，可治疝痛；配乌药，可治小腹部气逆作痛；其余详见常用药搭配部分。',
+--	details = '对副伤寒杆菌及一些致病性霉菌有抑制作用，并对胆绞痛时的脘腹胀痛、逆气攻痛等均有缓解作用。',
+--	common_prescriptions = '香连丸、香砂六君汤、归脾汤',
+--	common_partners = '肠胃气滞：配藿香、香附、高良姜、槟榔、砂仁、草豆蔻、丁香等，兼有胁痛的，可加炒川楝子、枳壳、青皮等；肠胃气滞加湿停不化所致的呕吐、腹痛、泄泻：配藿香、佩兰、竹茹、半夏、茯苓、灶心土、木瓜、黄柏、黄连等；痢疾：配黄连（即香连丸），兼有湿、热、寒、食滞、表证、痛、血者，可随证加减其它药；',
+--	similar_medicines = '砂仁行气，偏于和中消食除痞闷，兼能引气归肾；木香行气，偏于行肠胃滞气而消腹胀，兼能燥湿治泄、实大肠。槟榔破气去滞消食，其性降，兼治脚气；木香行气消胀和肠胃，其性燥，兼能治痢。乌药偏用于顺膀胱肾脏逆气，木香可用于治冲脉逆气里急（从小腹两侧至脐旁的部位逆气攻冲作痛）',
+--	dosage_reference = '一般用量为0.9～9克，重症时可用12克',
+--	contraindications = '肺虚有热、血分燥热、虚火上冲者，均忌用本品',
+--	remarks = '入行气方时，宜用生木香；入治泄、实大肠方时，宜用煨木香（用纸裹煨过）。补药中，少佐一些木香，可以免除滋腻、呆滞的弊病而增强治疗效果，例如香砂六君汤、归脾汤'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1426,15 +1426,16 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '下气、除满、燥湿、消胀',
+--	actions_and_indications = '中焦运化失常、寒湿停滞而致的胸腹满闷、呕吐、腹痛胀满等症；外感寒邪入里化热、热结肠胃而腹部胀满、痞硬不喜按、大便秘结、下午身热加重、谵语等症；气上逆而喘咳',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '大承气汤、小承气汤、桂枝加厚朴杏仁汤、苏子降气汤',
+--	common_partners = '胸腹满闷、呕吐、腹痛胀满等：配木香、干姜、草豆蔻、陈皮、茯苓、半夏、藿香等；外感寒邪入里化热、热结肠胃：配枳实、生大黄、芒硝等；外感风寒、自汗的咳喘：桂枝加厚朴杏仁汤；痰多气逆、胸满咳喘：苏子降气汤；久泻：配党参、白术、茯苓、肉豆蔻、五味子等；肝胃气滞而痛：配青皮、川楝子',
+--	similar_medicines = '枳实破气，偏用于消积滞、除痞硬，兼能泻火；厚朴下气，偏用于消腹胀、除胃满，兼能燥湿。大腹皮下气消胀，兼能利水，偏 用于腹部水肿；厚朴下气消胀，兼能燥湿除满，偏用于腹胀便结。大腹皮利水之力优于厚朴；厚朴下气之力优于大腹皮。苍术燥湿，能除脾湿、升清阳；厚朴燥湿，能除胃满、降积滞。一升一降，各有不同。青皮破肝气郁结，治因怒胁痛；厚朴下胃肠结气，治胀满腹痛。厚朴花性味功能与厚朴大致相同，但药力较小，兼能理肝气，治肝胃气滞、胃脘闷痛等，且偏用于上、中二焦，而厚朴则偏用于中、下二焦',
+--	dosage_reference = '一般用量为2～6克，重症时可用9～12克或更多',
+--	contraindications = '本品为温燥下气之品，虚人及孕妇慎用',
+--	remarks = '本品生用，偏于下气；姜汁炒用，偏于止呕。',
+--	name = '厚朴（附：厚朴花）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1442,14 +1443,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '行气宽胀，顺逆止痛，温散肝肾冷气，疏达腹部逆气，是常用的温性行气药，兼能温肾缩小便',
+--	actions_and_indications = '擅长治下焦寒性气痛，临床上最常用为温肾治疝的要药。可治：肾间冷气波及肝经而致的少腹攻痛、疝气疼痛、睾丸冷痛坠胀等症；寒邪侵犯脾胃，中焦寒冷，气行不畅而致消化不好，胸腹胀痛，绵绵不休，甚则呕吐，胃部喜暖，进稍凉的饮食则上述症状加重等症；妇女受寒而行经腹痛；因肾经虚冷而致小便次数多者（尿色不甚黄、尿道无疼痛、遇寒加重）',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '天台乌药散',
+--	common_partners = '少腹攻痛、疝气疼痛、睾丸冷痛坠胀等：配吴茱萸、木香、青皮、炒小茴香、炒橘核、荔枝核、肉桂、川楝子等；中焦寒冷，气行不畅诸证：配香附、高良姜、陈皮、半夏、神曲、生姜、吴茱萸等；妇女受寒而行经腹痛：配当归、吴茱萸、香附、炒小茴香、川芎、炒白芍、肉桂、炮姜等；肾经虚冷而致小便频数：配桑螵蛸、益智仁、山药、五味子等',
+--	similar_medicines = '小茴香暖下焦、散寒邪而定疝痛；乌药温肝肾、散冷气、顺逆气而治疝痛。香附行十二经滞气，开郁散结，偏入肝胆，长于治少腹气滞；乌药顺膀胱肾脏逆气，治疝、缩尿，偏入肾经，长于治小腹气逆。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '气虚有内热者，慎用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1458,15 +1459,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '擅长降气破滞，兼能行痰下水、消积杀虫',
+--	actions_and_indications = '因气逆、气滞所造成的胸腹胀闷、嗳气呕逆、腹满便难、痢疾后重、脚气水肿等症；气滞不运而致痰食积聚、痃癖癥瘕（肝脾大及良性肿物、囊肿以及某条肌肉紧张等）、虫积疳积、腹水胀满等症',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '胸腹胀闷：配枳壳、紫苏梗、藿香梗、厚朴花等；嗳气呕逆：配生赭石（先下）、旋覆花（布包）、紫苏子、丁香、半夏、竹茹等；腹满便难：配厚朴、枳实、生大黄等；痢疾后重：配木香、厚朴等；脚气水肿：配紫苏、陈皮、木瓜、防己等；痰食积聚、痃癖癥瘕：配焦三仙、莱菔子、黑白丑、桃仁、红花、三棱、莪术、生牡蛎、香附、郁金、皂角子、山楂核、苍术、白术、枳实等；虫积疳积：配使君子、乌梅、榧子、雷丸、南瓜子、胡黄连、川椒、细辛、焦三仙、炒鸡内金等；腹水胀满：配茯苓、猪苓、泽泻、大腹皮、桂枝、陈皮、冬瓜皮等',
+--	similar_medicines = '枳实消导积滞，除痞满的功能大于槟榔；槟榔降气下行的效力大于枳实，兼能杀虫。大腹皮（即槟榔的皮）散无形的气滞，消胀而利水；槟榔消有形的坚积，降气而行痰。使君子杀蛔虫、健运化；槟榔驱绦虫、消疳积。',
+--	dosage_reference = '一般用量为4.5～9克，驱绦虫时可用60～90克或更多些',
+--	contraindications = '气虚及大便溏泄者不宜用本品',
+--	remarks = '前人经验认为“性如铁石之降”，能把人体最高部位之滞气，降泻至极下之处'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1474,14 +1475,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '调气、宽胸、化痰',
+--	actions_and_indications = '肝气郁滞而致的胁痛、胃脘痛、脘腹满闷、嗳气、呕吐等症；痰气逆满而致的咳嗽胸闷、痰多气喘',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '肝气郁滞诸证：配半夏、生姜、木香、砂仁、白蔻仁、香附、紫苏梗、厚朴花等；咳嗽胸闷、痰多气喘：配紫苏子、杏仁、瓜蒌、紫菀、莱菔子等',
+--	similar_medicines = '玫瑰花疏肝和胃，兼能活血通络；香橼醒脾畅肺，兼能化痰。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '妊娠初期使用本品能增进食欲',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1490,15 +1491,16 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '理气和中，疏肝解郁',
+--	actions_and_indications = '肝胃不和、气滞胃痛所致的胸闷胁胀、食欲不振、呕吐等症；肝气郁结的胃脘痛；妊娠呕吐',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '胸闷胁胀、食欲不振、呕吐：配香橼、香附、紫苏梗、厚朴、半夏、陈皮、藿香等；胃脘痛：配青皮、川楝子；妊娠呕吐：配竹茹、黄芩',
+--	similar_medicines = '香橼化痰的作用大于佛手，佛手治呕的作用大于香橼。陈皮化痰燥湿的作用大于佛手，佛手疏肝解郁的作用胜于陈皮。佛手花偏用于胸胁气滞作痛，并能开胃醒脾；佛手偏用于中焦气滞、胃痛、作呕。',
+--	dosage_reference = '一般用量为4.5～9克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '佛手与香橼虽均为理气药，但其药力缓和，药性平和，适用于较轻之症。遇有气郁、气滞重症，须配合其他理气药同用。',
+--	name = '佛手（附：佛手花）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1506,15 +1508,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '行气活血、搜风、开郁等',
+--	actions_and_indications = '血中气滞而致月经不调、行经腹痛、经闭、难产、胞衣不下等；内科因血瘀气滞而造成各种位置固定不移的疼痛；血中风寒湿凝阻，血滞而运行失畅引致肢体关节疼痛、麻木不仁、手足拘挛等症；偏头痛；肝郁而致的胸闷、胁痛、偏头胀痛、月经失调等症',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '三痹汤、川芎茶调散、四物汤',
+--	common_partners = '上述妇科诸证：配当归、芍药、红花、益母草、熟地、香附、艾叶等；血瘀气滞疼痛：配红花、桃仁、五灵脂、乳香、没药等；风湿关节痛等：三痹汤；偏头痛：配白芍、羌活、防风、细辛、薄荷等；肝郁诸证：配香附、柴胡、白芍、川楝子、当归、苏梗、枳壳等',
+--	similar_medicines = '白芷偏于治阳明经（前头部）风湿头痛；川芎偏于治少阳（头两侧）血郁气滞头痛。',
+--	dosage_reference = '一般用量为1.5～9克',
+--	contraindications = '阴虚火旺者不宜用',
+--	remarks = '本品辛温走窜，为血中气药，上行头目，下行血海，一往直前，走而不守，性味燥烈，故前人不主张单用或单味久服，认为久服会对人有损'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1522,15 +1524,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	effects = '活瘀血，生新血，凉血，安神',
+--	actions_and_indications = '气血瘀滞所致的月经不调或经闭、癥瘕积聚（包括肝脾肿大、腹部囊肿、包块等）、瘀血腹痛、关节肿痛、丹毒痈肿；血虚贫血；血热心烦、昼静夜躁或出斑疹、烦躁不眠等症',
+--	details = '动物实验观察丹参有降血压的作用，亦有报道称其对晚期肝炎和血吸虫病的肝脾肿大，有促进肝脏生理功能好转，并使肿大的肝脾缩小变软的作用；含有碘，故对缺碘引起的甲状腺肿大有一定的疗效。',
+--	common_prescriptions = '丹参散',
+--	common_partners = '月经不调或经闭：配当归、赤芍、熟地、川芎、桃仁、红花、香附、生蒲黄、牛膝、茜草等；癥瘕积聚：配炙鳖甲、生牡蛎、枳实、当归尾、桃仁、红花、白术、茯苓、三棱、莪术、山楂核、苍术、香附、桂枝等；瘀血腹痛：配当归、赤芍、白芍、红花、桃仁、木香、乌药、吴茱萸、五灵脂、生蒲黄、刘寄奴等；关节肿痛：配忍冬藤、秦艽、威灵仙、薏米、红花、赤芍、黄柏、羌活、独活、桑枝、蚕砂等；丹毒痈肿：配牡丹皮、赤芍、天花粉、金银花、连翘、蒲公英；血虚贫血：配当归、生地、白芍、川芎、党参、白术、茯苓等；血热斑疹：配生地、玄参、赤芍、牡丹皮、地骨皮等；烦躁不眠：配生地、黄连、郁金、远志、酸枣仁、珍珠母、麦冬等',
+--	similar_medicines = '当归性温，补血的作用大于祛瘀；丹参性微寒，祛瘀的力量大于补血，但能祛瘀生新，故也有生新血的作用，但补力不如当归。紫丹参破血通经而通九窍、利二便，偏入肝经；丹参祛瘀生新而养血安神，偏入心经。',
+--	dosage_reference = '一般用量为9～30克',
+--	contraindications = '月经过多及咳血、尿血者，慎用本品',
+--	remarks = '本品专走血分，有祛瘀生新的作用。前人有“一味丹参饮，功同四物汤”的经验。对血虚而微有热象者，最为合适。若无热象，可炒用，能改善其微寒之性。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1538,14 +1540,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '主要功能是破血化瘀、行气止痛，善破肝脾二经的血瘀气结',
+--	actions_and_indications = '血瘀气滞的胸胁疼痛、胃脘痛、腹痛、月经痛；肝炎患者肝区痛',
+--	details = '对肝炎病毒有抑制作用，有改善肝脏实质病损的作用。有兴奋子宫平滑肌的作用，使子宫阵发性收缩；能促进麻醉犬的胆汁分泌，但作用较弱而持久',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '胸胁疼痛：配枳壳、苏梗、桔梗、川楝子、香附、延胡索、桂心等；胃脘痛、腹痛：配高良姜、香附、砂仁、木香、干姜、乌药、延胡索等；月经痛：配当归、白芍、艾叶、香附、五灵脂等；肝炎患者肝区痛：配枳壳、白蒺藜、川楝子',
+--	similar_medicines = '片姜黄功效与姜黄大致相同，但有入肩背手臂等处活血祛风而治风湿痹痛的特点，详见原书内容。郁金、姜黄均能破血活瘀，但郁金苦寒入心，偏于活血；姜黄辛温入肝脾，兼理血中之气。莪术苦温，偏入肝经气分，兼破气中之血；姜黄辛温，偏入肝经血分，兼行血中之气。',
+--	dosage_reference = '一般用量为2.5～9克',
+--	contraindications = '无瘀血及身体虚弱者慎用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1554,15 +1556,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	effects = '活瘀、凉血、行气、解郁、健胃利胆',
+--	actions_and_indications = '肝气郁结而吐血、衄血；血热神昏、癫狂惊痫；胁肋胀闷、胸腹疼痛；胆热黄疸',
+--	details = '本品含有挥发油，能溶解胆固醇，促进胆汁分泌和胆囊收缩，可用于治胆结石、胆囊炎及黄疸等。',
+--	common_prescriptions = '白金丸',
+--	common_partners = '肝气郁结而吐血、衄血：配生地、丹参、牡丹皮、炒栀子、三七、藕节、牛膝、泽兰等；血热神昏、癫狂惊痫：配朱砂、黄连、天竺黄、牛黄、远志、菖蒲等；胁肋胀闷、胸腹疼痛：配柴胡、赤芍、香附、枳壳、青皮、陈皮（治胸胁胀痛）、当归、白芍、延胡索、桃仁、木香（治腹痛）等；胆热黄疸：配茵陈蒿、栀子、生大黄、车前子、黄柏、泽泻、焦三仙、枳实等',
+--	similar_medicines = '香附行气之中兼能理血，郁金破血之中兼能理气。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '血虚无瘀滞者及孕妇均忌用本品',
+--	remarks = '川郁金活血化瘀的作用优于理气，广郁金行气解郁的作用优于活血。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1570,15 +1572,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '常用的行气破血消积药，兼能助消化',
+--	actions_and_indications = '痃痞癥癖；因饮食偏嗜、食伤脾胃而致脾胃功能失调，出现脘腹胀痛、消化不良、饮食积滞不化等症',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '痃痞癥癖：配桃仁、红花、三棱、赤芍、槟榔、山楂核、炙穿山甲、当归等，还须结合辨证论治随证加减其它药，注意扶正与祛邪的辩证关系，不可单纯地攻伐积块，应全面考虑；饮食积滞：配谷芽、槟榔、枳实、木香、炒山楂、砂仁、香附、大腹皮等',
+--	similar_medicines = '三棱苦平，破血中之气，破血的力量大于破气；莪术辛温，破气血效果与三棱相反，二药常合用，散一切血瘀气结。香附行气而活血，通行十二经，以行气为主，力缓；莪术行气破血，主入肝经，以散肝经气滞血结为主，力峻。延胡索、郁金、姜黄皆为血中气药（活血行气）；莪术为气中血药（行气破血）。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '气血虚弱者及孕妇忌用',
+--	remarks = '本品有一定抗癌作用，近年来有的用为抗癌药，供参考'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1586,15 +1588,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '散血行气，软坚消积',
+--	actions_and_indications = '因血瘀气滞而引致的腹中硬块（包括肝脾肿大等）、食积、痰滞以及妇女血瘀经闭等',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '腹中硬块：配莪术、生牡蛎、炙鳖甲、炙穿山甲、焦山楂、神曲、牵牛子、红花、桃仁、当归等；食积痰积、消化不好：配木香、砂仁、麦芽、谷芽、半夏、莱菔子、陈皮、茯苓等；血瘀经闭：配当归、赤芍、桃仁、红花、牛膝、香附、茜草等',
+--	similar_medicines = '莪术行气破血、散瘀消积的功力优于三棱；三棱软坚散结、削除老块坚积的功力优于莪术。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '脾胃虚弱者及孕妇忌用本品',
+--	remarks = '常与莪术同用，用来消积除癥时，须用于实证。对中气不运而成积块者，应健运中焦佐以消磨积块之品，使积渐消，切勿不顾正气而一味攻伐。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1602,15 +1604,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '气香能香窜调气，味辛能散瘀活血，性温能通经络。',
+--	actions_and_indications = '凡因气滞血瘀、凝涩不通而致的心腹痛、跌打肿痛、痈肿疼痛等，皆可随证选用；风寒湿痹或中风偏枯等病由于气血不通畅而致的肢体筋脉拘挛难伸等症；癫狂',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	common_prescriptions = '手拈散（意为很快止痛）',
+--	common_partners = '心腹痛：配延胡索、五灵脂、草豆蔻、没药（即手拈散）；跌打损伤：配当归尾、红花、川芎、牛膝、续断、骨碎补、没药等；痈疽疮毒初起：配金银花、连翘、赤芍、红花、天花粉、皂角刺、炙穿山甲、白芷、防风等（原书有注意事项）；肢体筋脉拘挛难伸：配羌活、独活、防风、川芎、当归、没药、红花、地龙、炙穿山甲、薏米等；癫狂：配辰砂、酸枣仁、远志等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	dosage_reference = '一般用量为1.5～9克',
+--	contraindications = '无气血瘀滞者及孕妇忌用本品。痈疮破溃后，则不宜作内服用。',
+--	remarks = '本品有托里护心，使毒气外出而不致内攻的作用，是外科常用药'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1618,14 +1620,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '散瘀血、通结滞、消肿定痛',
+--	actions_and_indications = '痈疡初起；跌打损伤；经闭癥瘕、产后腹痛；风湿痹痛',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '痈疡初起：配金银花、连翘、赤芍、红花、防风、白芷、当归尾、炙穿山甲、皂角刺等；跌打损伤：配当归、川芎、牛膝、红花、续断、骨碎补、乳香；经闭癥瘕：配当归、桃仁、红花、川芎、三棱、莪术、乳香、延胡索、水蛭、虻虫、生大黄等；产后腹痛：配当归、红花、川芎、延胡索、炮姜、益母草等；风湿痹痛：配羌活、独活、防风、桑寄生、威灵仙、细辛、当归、赤芍、红花、炙穿山甲、制附片等',
+--	similar_medicines = '乳香、没药皆能活血止痛，其中乳香是行气以活血兼能伸筋、通经舒络而止痛；没药是散瘀而活血，消肿定痛；二药一偏于气，一偏于血，故临床多是二药使用，但须详审疼痛的病因，且疮疡破溃后不宜内服。效果方面，用醋制后可加强疗效。',
+--	dosage_reference = '一般用量为1.5～9克',
+--	contraindications = '因本品有活血散瘀的作用，故孕妇不宜用。',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1633,16 +1635,16 @@
 --	and name = '没药';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '有南红花（草红花）、西藏红花的分别',
+--	effects = '活瘀血、生新血。少用有活血养血作用，多用可有破血行瘀的作用。是最常用的活血化瘀药，妇科使用尤多。',
+--	actions_and_indications = '血瘀经闭，或月经量少，行经有血块，或经期后延等症；胎死腹中；因瘀血阻滞而胃脘痛、腹痛、腹中积块等；瘀血不去、新血不生而致气血两虚者；血瘀气滞或气血不通畅而致胸痹心痛；中风半身不遂',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '月经问题：配当归、川芎、白芍、熟地、桃仁、茜草、香附、牛膝等；胎死腹中：配当归、川芎、牛膝、肉桂、车前子、生大黄、芒硝、桂枝、桃仁等；胃脘痛：配高良姜、香附、五灵脂、蒲黄、砂仁等；腹痛：配当归、白芍、丹参、延胡索、桂枝、吴茱萸、木香等，腹中有积块者，还可选加三棱、莪术、炙鳖甲、生牡蛎、桃仁、炙穿山甲、海藻等；气血两虚：配当归、丹参、白芍、生地、熟地、白术、党参、茯苓、陈皮、炙甘草等；胸痹心痛：配瓜蒌、薤白、桂枝、五灵脂、枳壳、苏梗、檀香等；中风半身不遂：配桑枝、当归、赤芍、川芎、桃仁、炙穿山甲、地龙、黄芪、牛膝、片姜黄、竹沥等',
+--	similar_medicines = '桃仁治瘀血，偏于局部有形、或在下腹部者；红花治瘀血，偏于散在全身无定处者。二者常同用，有协同作用。',
+--	dosage_reference = '一般用量为2.5～9克',
+--	contraindications = '无瘀血者及孕妇忌用',
+--	remarks = '南红花和藏红花功用近似，但南红花祛瘀活血的作用较强，而养血作用较差。藏红花性质较润，养血的作用大于祛瘀。处方上只写红花时，药方即给南红花。藏红花价较贵，多不入汤药同煎，常用0.9～1.5克放入酒杯中，再放酒半杯多，隔杯用开水炖化，兑入汤药内服用。前人有“过用能使血行不止”的经验记载，故不可过用'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1650,14 +1652,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '破血散瘀，润燥滑肠',
+--	actions_and_indications = '妇女血瘀经闭；膀胱蓄血；肺痈；肠痈（相当于急性阑尾炎）；跌打损伤；痈肿毒疮初起；血虚津亏而导致肠燥便秘',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '桃红四物汤、桃仁承气汤、千金苇茎汤、大黄牡丹皮汤、五仁丸',
+--	common_partners = '妇女血瘀经闭：桃红四物汤（本品配红花、当归、川芎、熟地、赤芍）随证加减；膀胱蓄血：桃仁承气汤（本品配大黄、芒硝、甘草、桂枝）随证加减；肺痈：千金苇茎汤（本品配冬瓜仁、生薏米、芦根）随证加减；肠痈：大黄牡丹皮汤（本品配大黄、牡丹皮、冬瓜仁、芒硝）随证加减；跌打损伤：配当归尾、赤芍、苏木、姜黄、红花、乳香、没药等；痈肿毒疮初起：配金银花、连翘、赤芍、红花、天花粉、炙穿山甲、乳香、没药等；肠燥便秘：本品捣碎，配杏仁泥、火麻仁、郁李仁、柏子仁（即五仁丸）、当归、瓜蒌、地黄等',
+--	similar_medicines = '杏仁入气分，用于大肠气秘；桃仁泥入血分，用于大肠血秘。二药也常同用',
+--	dosage_reference = '一般用量为2.5～9克',
+--	contraindications = '无瘀血者及孕妇忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1666,14 +1668,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '活血散瘀，通利血脉，炒炭用也可以止血，主入肝经血分，前人经验认为“血闭能通，经多能止”，能治“男女一切心腹肋胁诸痛”，但要注意并无生血的作用',
+--	actions_and_indications = '瘀血所致的各种疼痛，例如胃脘痛、腹痛、胁肋痛、关节痛、痛经及产后腹痛；炒炭用，可治兼有瘀血引起的出血过多，如妇女崩漏下血、痔疮出血等',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '胃脘痛：配蒲黄、乳香、延胡索、高良姜、香附等；腹痛：配当归、白芍、川芎、桂枝、吴茱萸、丹参、炮姜等，少腹痛可加川楝子、小茴香、胡芦巴等；胁肋痛：配柴胡、枳壳、青皮、白蒺藜、片姜黄、皂角刺、赤芍等；关节痛：配鸡血藤、桑枝、桂枝、附子、松节、威灵仙、当归、红花、羌活、独活、炙穿山甲等；痛经：配当归、川芎、熟地、白芍、桃仁、红花、蒲黄、香附、川楝子等；产后腹痛：配蒲黄、泽兰、牛膝、益母草、延胡索、炮姜、川芎、红花、桃仁、当归等',
+--	similar_medicines = '丹参、当归尾、红花等药既能活血也能生新血，本品无生血作用。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '本品不要与人参同用（相畏）。血虚无瘀滞者不用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1682,15 +1684,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '生用性滑，有活血祛瘀、凉血、利小便的作用；炒用性涩，有止血作用',
+--	actions_and_indications = '凡因血瘀化热而致的各种出血，例如：吐血、衄血、尿血、便血，皆可用；小便涩痛不利、尿中带血；瘀血疼痛，例如：月经痛、产后腹部攻痛且按之有瘀块（儿枕痛）、心腹痛',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '吐血：配生地、阿胶、侧柏叶、白及等；衄血：配大蓟、小蓟、芦根、玄参、青袋、生地等；尿血：配白茅根、生地、冬葵子、黄柏炭等；便血：配槐花炭、防风、地榆炭、槐角等；小便涩痛带血：配滑石、猪苓、黄柏、车前子、泽泻、萹蓄、矍麦、大蓟、小蓟、白茅根等；月经痛：配当归、川芎、五灵脂、红花、白芍、香附、延胡索等；儿枕痛：配当归、川芎、红花、炮姜、桃仁、五灵脂等；心腹痛：配五灵脂、高良姜、香附、延胡索、乳香、没药等',
+--	similar_medicines = '五灵脂活血散瘀，偏于温散；蒲黄活血化瘀，兼能凉血、止血。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '血虚无瘀滞者慎用本品',
+--	remarks = '本品为黄色粉末状，外伤出血时可用此粉掺于伤口，可止血。对口舌生疮、皮肤湿疹，可用炼过的猪油或蜜调和本品如膏状，敷患处，有滋润、凉血、消肿作用。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1698,15 +1700,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '通经络，活瘀血，消痈肿，下乳汁。性善走窜，能直达病所',
+--	actions_and_indications = '血瘀气滞引致的胁肋疼痛、月经闭止；风寒湿痹导致的手足麻木、四肢疼痛、拘挛等症；痈肿毒疮初起（已溃破者不适用）；妇女产后因气血瘀滞而乳房胀硬、乳汁不下（几种情况用药，详见原书内容）；病程较久、病情较重的风湿性关节炎、中风半身不逐、类风湿性关节炎等疾病中，可用本品加强通活血脉作用，还能做药引，引诸药直达病所',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '仙方活命饮',
+--	common_partners = '胁肋疼痛：配白蒺藜、片姜黄、延胡索、香附、川楝子等；月经闭止：配桃仁、红花、当归、白芍、川芎、茜草、牛膝、泽兰等；风寒湿痹诸证：配羌活、防风、天麻、川芎、当归、独活、桂枝、伸筋草、威灵仙、络石藤等；痈肿毒疮初起：配皂角刺、当归尾、赤芍、红花、乳香、没药、金银花、天花粉、贝母、防风、白芷、陈皮（即仙方活命饮）；',
+--	similar_medicines = '地龙通经活络，性偏下行，长于治腰、膝、腿、脚之疾；穿山甲通经活络，力达全身，可用于身体任何部位的不通和疼痛。王不留行偏于治由于血脉不通的乳汁不下；穿山甲偏于治由于经络阻滞的乳汁不下。皂角刺与穿山甲均能破溃痈肿疮疡，但皂角刺兼能搜风、消痰结，穿山甲偏于通经活络、消肿排脓。',
+--	dosage_reference = '一般用量为1.5～9克',
+--	contraindications = '无经络瘀滞及痈疡已破溃者，不宜用。使用不当可引起腹胀、食欲不振、肝功能异常、黄疸、肝损害及一些过敏症状如皮疹、面肿等。一般不会单用本品',
+--	remarks = '中药意义的穿山甲，一般指穿山甲的鳞甲，是名贵药材'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1714,14 +1716,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '性走而不停，故名“不留”，功能通血脉、除风痹、下乳汁',
+--	actions_and_indications = '血脉不通、气血闭塞而致的月经闭止、痈疡肿痛等；风寒湿瘀血引致的肢体关节痹痛；产后乳汁不下',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '月经闭止：配桃仁、红花、当归、川芎、熟地、白芍、茜草、牛膝、泽兰、香附等；痈肿：配当归尾、赤芍、连翘、皂角刺、炙穿山甲、红花、白芷等；风湿关节痛：配羌活、独活、防风、桂枝、红花、威灵仙、赤芍、炙穿山甲、鸡血藤等；产后乳汁不下：配穿山甲、路路通、沙参、麦冬、通草等（详见穿山甲一节）',
+--	similar_medicines = '通草味淡体轻，能使阳明经精气升发上达而下乳汁；王不留行入阳明、冲、任经血分，通血脉而下乳。',
+--	dosage_reference = '一般用量为1.5～9克，重症时可用15～30克',
+--	contraindications = '孕妇及无血脉瘀滞者忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1730,13 +1732,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '行血、利水。补而不滞，行而不峻，性质平和',
+--	actions_and_indications = '月经不调；产后腹痛；产后水肿；前人有牛膝配泽兰可利腰膝间死血的经验，可用于治疗强直性脊柱炎；肝腹水',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '月经不调：配当归、川芎、牛膝、赤芍、红花、桃仁、香附等；产后腹痛：配当归、川芎、桃仁、炮姜、红花、益母草等；产后水肿：配防己、茯苓、泽泻、车前子、川芎等；肝腹水：配水红花子、防己、抽葫芦等',
+--	similar_medicines = '益母草、泽兰皆能行血利水，但益母草行血调月经的作用较优；泽兰除行血通经外，还有消水的作用，尤其是对与血分有关的水肿，效果较好，如血臌的大肚腹水常随证选用。',
+--	dosage_reference = '一般用量为3～9克，重症时可再加多些',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -1745,16 +1747,17 @@
 --	and name = '泽兰';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--set alias = '益母蒿、益母艾、红花艾、坤草、野天麻、玉米草、灯笼草、铁麻干',
+--	effects = '专入血分，行瘀血而新血不伤，生新血而瘀血不滞，兼能利水消肿，且为妇产科最常用之品，胎前产后均可随证选用，前人称其为“经产良药”。其子名茺蔚子，作用与益母草近似，但兼能明目益精，行中有补。',
+--	actions_and_indications = '月经不调；难产或胞衣不下；肾虚气化不利而小便少，引致慢性消肿；急、慢性肾炎水肿；益母草子（即茺蔚子）则常用于肝热而致的目赤肿痛、目昏和眩晕、头痛、心烦等症',
+--	details = '有增强子宫收缩力的作用，其作用与脑垂体后叶素、麦角相近似。益母草与益母草子有降血压作用；益母草子含有维生素A类物质。',
+--	common_prescriptions = '益母胜金丹（调月经）、益母草膏（和血顺气、养肝益心、调月经，药房有成品）',
+--	common_partners = '月经不调：配川芎、当归、白芍、丹参、白术、香附、茺蔚子（益母胜金丹）等；难产或胞衣不下：配麝香、当归、川芎、乳香、没药、黑荆芥等；慢性水肿：配茯苓皮、冬瓜皮、车前子、茯苓、泽泻、桂枝、淫羊藿等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	dosage_reference = '益母草一般用量为6～9克，重症时可用30～60克；益母草子用量一般为3～9克，瞳孔散大者忌用。',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '',
+--	name = '益母草（附：茺蔚子）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1762,14 +1765,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '活血、止血，补肾接骨，兼能祛骨风、治牙痛。',
+--	actions_and_indications = '外伤骨折、肾虚久泻、骨痛、牙痛、类风湿、强直性脊术炎等',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '外伤骨折：配当归、红花、桃仁、苏木、续断、自然铜、土鳖虫、乳香、没药等；肾虚久泻：配补骨脂、肉豆蔻、吴茱萸、五味子、炒山药、茯苓、赤石脂、制附片等；肾虚牙痛：配地黄、山茱萸、山药、茯苓、泽泻、牡丹皮、牛膝、细辛、独活等',
+--	similar_medicines = '补骨脂、骨碎补皆能补肾，但补骨脂偏用于温补肾阳，治五更泄；骨碎补偏用于祛骨中毒风，治痿躄骨折，并能坚肾固齿。续断疗折伤，主治在筋；骨碎补疗折伤，主治在骨。寻骨风治风寒湿痹之骨痛；骨碎补治毒风瘀血之骨痛。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '胃火盛而牙痛者忌用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1778,14 +1781,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '专入血分，通行走散，主要功能是破血通经',
+--	actions_and_indications = '内服可用于血瘀经闭、产后瘀血作痛、跌打损伤等；外用可敷治跌打损伤或金刃破伤，对外伤又有活瘀止血作用',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '瘀血作痛、跌打损伤等：配当归、川芎、桃仁、红花、牛膝、泽兰、乳香、没药、延胡索等',
+--	similar_medicines = '骨碎补破血，尚能补肾，长于治骨折；刘寄奴破血，通行走散，无补力，但外用能活瘀止血，长于治金疮破伤。',
+--	dosage_reference = '一般用量为3～9克，重症时可加大',
+--	contraindications = '无瘀血者慎用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1794,13 +1797,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '活血化瘀，行血祛风',
+--	actions_and_indications = '中风失语或半身不遂；瘀血心腹痛；产后腹痛、胀闷；跌仆损伤',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '中风：配防风、桑枝、红花、赤芍、桃仁、地龙、片姜黄、胆南星、茯苓、半夏、竹沥等；瘀血胃脘痛：配五灵脂、蒲黄、香附、高良姜、苏梗等；瘀血腹部绞痛、刺痛：配当归、赤芍、白芍、丹参、延胡索、吴茱萸、五灵脂、乌药、木香等；产后腹痛、胀闷：配当归、红花、桃仁、炮姜、川芎、益母草、延胡索、紫苏等；跌仆损伤：配乳香、没药、骨碎补、续断、当归、红花、牛膝等',
+--	similar_medicines = '红花行血，长于破瘀，多用破血，少用养血；苏木行血，长于祛风，多用破血，少用和血，并能祛风。茜草行血通经，兼能止血（炒用）；苏木行血通经，兼能消肿止痛。',
+--	dosage_reference = '一般用量为3～9克，重症时可用15～30克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -1809,15 +1812,15 @@
 --	and name = '苏木';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '红茜草、蒨草、血见愁、地苏木、活血丹',
+--	effects = '生用能行血活血，消瘀通经；炒炭用可以止血。',
+--	actions_and_indications = '月经闭止；跌打损伤、血瘀肿痛；血热或血瘀而致的吐血、咳血、衄血；妇女崩漏；风痹（关节炎的关节疼痛）、黄疸（黄疸型传染性肝炎的黄疸和胆道不畅通而致的黄疸）',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '跌打损伤、血瘀肿痛：配红花、赤芍、苏木、乳香、没药、骨碎补等；吐血、咳血、衄血：炒炭用，并配生地、阿胶、三七、藕节、白及等；妇女崩漏：配桑寄生、川断炭、炒白术、阿胶珠、棕榈炭、艾叶炭、当归、益母草、菟丝子、赤石脂等；风痹：配羌活、独活、防风、威灵仙、穿山龙等；黄疸：配茵陈、栀子、黄柏、车前子、泽泻等',
+--	similar_medicines = '紫草、茜草均能行血活血，但紫草偏用于透发斑疹，兼通二便；茜草偏用于通经活血，兼治崩漏、便血，炒炭后止血作用优于紫草。',
+--	dosage_reference = '一般用量为6～9克，重症时可用至30克',
+--	contraindications = '血虚、血少者不宜用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1842,30 +1845,30 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '内服有活血散瘀、止痛的功能；外用有去腐生肌、收疮口的功能',
+--	actions_and_indications = '凡一切血瘀、血聚而致的疼痛、瘀肿等都可选用，例如：瘀血心痛、瘀血积滞腹痛、跌伤骨折疼痛',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	common_prescriptions = '七厘散',
+--	common_partners = '瘀血心痛：配瓜蒌、薤白、五灵脂、红花、细辛、桂枝等；瘀血积滞腹痛：配当归、红花、延胡索、炮姜等；跌伤骨折疼痛：配苏木、续断、乳香、没药、骨碎补等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	dosage_reference = '内服用量一般为0.6～2.5克，每日2次，为丸剂或装胶囊中吞服。外用适量即可。',
+--	contraindications = '本品入血分，专活血，单用、多用会引起气血失调，故不可多用、久用',
+--	remarks = '外科多外用本品，常配入生肌散类药物中。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '血竭';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--set alias = '蚂蟥',
+--	effects = '破血活瘀、散结',
+--	actions_and_indications = '血瘀所致的经闭、癥瘕；蓄血证',
+--	details = '水蛭含有水蛭素，能延缓和阻碍血液凝固，从而有抗凝血作用',
+--	common_prescriptions = '抵当汤',
+--	common_partners = '经闭、癥瘕：配当归、桃仁、红花、三棱、莪术、黄芪、知母、泽兰、牛膝等；蓄血证：抵当汤',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '一般用量为1.5～3克，水煎服；或0.6～1.8克，为细粉，装胶囊服用',
+--	contraindications = '本品破血力猛峻，孕妇及无严重瘀血者忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1874,14 +1877,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '破血逐瘀，消癥通经，“能攻真气运行不到之血”，常与水蛭同用',
+--	actions_and_indications = '腹中有瘀血积块（癥块），月经闭止不来；跌打损伤、瘀血肿痛',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '癥块经闭：配水蛭、桃仁、红花、川芎、三棱、莪术、当归、赤芍等；跌打损伤、瘀血肿痛：配牡丹皮、骨碎补、续断、乳香、没药等',
+--	similar_medicines = '水蛭与蛀虫虽都有破血逐瘀作用，但水蛭药力较缓而作用持久，偏入肝经、膀胱经，逐瘀效果较好；虻虫破血力更猛峻，遍行经络，通利血脉，服后即可致泻（药力过后即止），逐瘀效果不如水蛭稳。二药常配合使用，则相得益彰',
+--	dosage_reference = '一般用量为1～3克，水煎服或研末服',
+--	contraindications = '孕妇及无瘀血者忌用，体弱者慎用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1890,15 +1893,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '发汗散寒；宣肺平喘；行水消肿；散阴疽、消癥结；临床上最常用为辛温发汗药，故一般归在发散风寒药中',
+--	actions_and_indications = '风寒外侵、毛窍束闭而致肺气不得宣通的外感咳喘；上半身水肿明显的，或头面四肢水肿，或急性水肿兼有表证；阴疽、癥结',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '麻杏石甘汤、定喘汤、越婢加术汤',
+--	common_partners = '咳喘：配杏仁；阴疽、癥结：配熟地、白芥子、当归等，其中与熟地的搭配，前人有“麻黄得熟地则通络而不发表，熟地得麻黄则补血而不腻膈”的经验；配干姜，还可祛除深入肌腠中的风寒之邪，可治风寒痹证的肢体疼痛',
+--	similar_medicines = '用麻黄治咳喘，最好配上杏仁。麻黄宣通肺气以平喘止咳；杏仁降气化痰以平喘止咳；麻黄性刚烈；杏仁性柔润；二药合用，可增强平喘止咳的效果，所以临床上有“麻黄以杏仁为臂助”的说法。',
+--	dosage_reference = '一般用量为2～9克，治疗水肿时常比一般用量要大，可由10克渐加至15克，个别情况还可用20～25克，这时要配用生石膏25～45克（与麻黄之比约为3:1），以减少麻黄的发汗作用而达到宣肺利尿的作用',
+--	contraindications = '肺虚作喘、外感风热、单臌胀、痈、疖等证，均不可用本品',
+--	remarks = '若风寒外感的表证已解但仍咳喘的，也可以继续用麻黄治疗，但要改用炙麻黄，因生麻黄发汗解表的效力大，而炙麻黄发汗力小但平喘止咳的效果较好。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1906,14 +1909,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '散寒解表；温经、活血通络；助心阳，温化水饮；有横通肢节的特点，能用做上肢病的引经药',
+--	actions_and_indications = '风寒感冒；月经后期、经闭不潮、行经腹痛、腹部癥块；风寒阻络、气血不畅所致的肩臂疼痛、骨节拘挛难伸、风湿性关节炎等；水饮凌心的心悸、怔忡、浮肿；心阳不振而致的胸痹心痛',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '无汗的风寒感冒：配麻黄，有助麻黄发汗解表的作用；有汗的风寒感冒：配白芍，有调和营卫、解肌止汗的作用；上述月经问题：配当归、赤芍、白芍、红花、桃仁等；肩臂疼痛：配片姜黄、防风；骨节拘挛难伸：配赤芍、红花、伸筋草等；风湿性关节炎：配羌活、独活、防风、威灵仙、当归、附片等；心悸、怔忡、浮肿：配茯苓、猪苓、白术、泽泻、紫苏子、桑白皮、炙甘草；胸痹心痛：配瓜蒌、薤白、红花、五灵脂',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '一般用量为3～9克，重症时可用15～30克',
+--	contraindications = '阴血虚乏，素有出血，身无寒邪，阳气内盛者，皆不宜使用桂枝',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1922,15 +1925,16 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '发汗解表，且与其他辛温解表药不同，风寒、风热的表证都可以应用；透疹、止痒、治皮肤病；清血分伏热，有理血止血的作用，用于止血时须炒炭用，因其能祛血中之风，故为风病、血病、疮病、产后病的常用药',
+--	actions_and_indications = '产后受风；麻疹不易透出；风疹、湿疹、疥、癣；便血、衄血、月经过多、崩漏、产后失血；',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '辛温解表：配防风、紫苏叶；辛凉解表：配薄荷、金银花、桑叶；产后受风：配防风、当归、川芎、紫苏梗；麻疹不易透出：配蝉蜕、葛根、薄荷等；风疹、湿疹、疥、癣：配赤芍、苍术、黄柏、白鲜皮、苦参等；便血：配地榆、槐花炭；衄血：配藕节、焦栀子、白茅根；月经过多、崩漏、产后失血：配当归、益母草、棕榈炭、川续断炭；行恶血：配红花',
+--	similar_medicines = '荆芥善治皮里膜外及血脉之风邪；防风善治骨肉之风邪。',
+--	dosage_reference = '一般用量为3～9克，治产后失血而血晕时，可用芥穗炭30克，单味水煎服',
+--	contraindications = '服用荆芥时，不要食鱼、蟹、河豚、驴肉',
+--	remarks = '本品茎、穗同切生用，称荆芥；只用其穗称荆芥穗；炒炭用时，称荆芥炭、芥穗炭。荆芥适用于散全身的风邪；荆芥穗适用于散头部的风邪，能入药入脑，常用于治疗脑血管病；荆芥炭和芥穗炭适用于止血，并可治疗失血过多和血晕症。需要用哪一种，处方上要写清楚。',
+--	name = '荆芥（附：荆芥穗、荆芥炭、芥穗炭）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1938,14 +1942,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '最常用的辛温发汗剂，为风中之润剂，风寒风热表证均可应用，还能祛经络筋骨中的风湿',
+--	actions_and_indications = '风寒感冒表证；风寒湿痹、周身骨节疼痛、脊痛项强、四肢挛急等症；肝风内动、风痰上扰、破伤风等引起的咬牙、吊眼、四肢抽搐、角弓反张等症；肝郁伤脾而致腹痛、腹泻；肠风便血',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '痛泻要方',
+--	common_partners = '风寒感冒表证：配荆芥、紫苏叶；风寒湿痹诸证：配羌活、独活、当归、薏米、威灵仙、伸筋草、鸡血藤等；内风外风诸证：配全蝎，防风能增强全蝎祛风止痉的作用，还可随证配用钩藤、蜈蚣、僵蚕等；肝郁伤脾：配白术、白芍等；肠风便血：配地榆、槐角炭、炒槐花等；配附子能减小附子的毒性，配黄芪能增强黄芪的作用。',
+--	similar_medicines = '防风祛风解表治全身疼痛的效果比荆芥好，荆芥祛风解表发汗的作用比防风明显，临床上常常是两者同用。',
+--	dosage_reference = '一般用量为6～9克，有时可用至12克',
+--	contraindications = '阴虚火动头痛患者不宜用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1954,15 +1958,16 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '主要用于解表散寒，兼有芳香理气、和胃止呕的功能，还能芳香辟秽、祛暑化浊、解鱼蟹毒',
+--	actions_and_indications = '兼有胸闷、呕吐、胃部不适的风寒感冒（即俗话说的停食着凉）；急性胃肠炎；脚气病；口臭病',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	common_prescriptions = '藿香正气散',
+--	common_partners = '停食着凉：配藿香、荆芥、防风、陈皮、神曲等；脚气病：配独活、苍术、槟榔、牛膝；口臭病：配生石膏、白芷；发汗解表：配香附、麻黄',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	dosage_reference = '一般用量为6～9克，用紫苏叶时，要后下',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '梗、叶同用叫紫苏，用于和胃止呕；紫苏叶用于解表散寒；紫苏梗用于行气宽中，还有理气安胎的作用，常用于妊娠呕吐、妊娠腹胀等；紫苏子（要略炒捣碎用）用于降气消痰，善治肺气喘逆、痰嗽等症，但脾胃气虚常有泄泻者忌用。',
+--	name = '紫苏（附：紫苏梗、紫苏子）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -1970,14 +1975,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '辛温解表；祛风胜湿；升太阳经和督脉经的阳气；还常用为治疗上半身疼痛和后头部疼痛的引经药',
+--	actions_and_indications = '常用于治疗风寒感冒表证，对身冷无汗、头痛明显者有显效；由于胜湿的作用，故对夹有湿邪的感冒（恶寒、发热、身体沉重、骨节疼痛、嗜卧等）也有特效；对风湿性关节炎、风湿热、类风湿性关节炎等也有一定效果',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '风湿性关节炎、风湿热、类风湿性关节炎：配独活、桂枝、赤芍、红花、威灵仙、防风、附子、知母、薏米、松节等；肩、臂、手等部位的风湿疼痛：配姜黄、桂枝；风寒感冒、头痛（尤其后头部）、无汗：配荆芥、防风；头痛如裹：配苍术；受风目赤：配菊花、白蒺藜、蔓荆子',
+--	similar_medicines = '羌活偏于祛上半身的风湿，善治脊、项、头、背的疼痛；独活偏于祛下半身风湿，善治腰、腿、足、胫的疼痛。羌活善于祛散头项背部的风寒；桂枝则善于祛散肩臂手指的风寒。',
+--	dosage_reference = '一般用量为3～10克',
+--	contraindications = '本品辛温燥烈，由于血虚而致全身空痛、虚弱乏力者禁用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -1986,14 +1991,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '辛温发散，祛风胜湿',
+--	actions_and_indications = '风寒感冒引起的头痛、恶寒、发热、身体疼痛、腰腿酸痛等症；风湿痹痛',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '风湿性关节炎偏于虚寒性者：配桑寄生、川断、补骨脂、威灵仙、牛膝、泽兰、红花、附片等，尤其对腰痛、腿痛的效果更为明显；少阴头痛（头痛、目眩、痛连齿颊部，或见风即痛）：配细辛；两脚风湿疼痛、软弱、难于行走：配牛膝、木瓜、苍术、地龙、五加皮、川续断；子宫出血：配黄柏炭、川断炭、桑寄生',
+--	similar_medicines = '上半身疼痛明显者用羌活；下半身疼痛明显者用独活；全身疼痛者，二者同用；此外，独活发散解表的力量不如羌活。',
+--	dosage_reference = '一般用量为6～9克；个别体壮而病重者，可用12克；外用于风湿痛、骨节痛的熏洗剂时，可用15～30克，并常与桂枝、透骨草、乌头、当归、红花、防风、生艾叶等配合使用。',
+--	contraindications = '血虚头痛、肾虚腰痛、阴津不足等证，均不宜用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2002,14 +2007,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '散风；除湿；通窍；排脓；止痛',
+--	actions_and_indications = '风寒感冒，尤其是头痛重的；风疹瘙痒；寒湿下注所致的白带；脾虚湿盛的久泻；鼻塞不通、鼻流腥臭脓涕（鼻渊）、急慢性鼻窦炎、鼻炎等；肠痈（包括急性阑尾炎）、乳痈、疮疡；各种头痛（尤其前头痛和眉棱骨处疼痛）、牙痛、胃痛、疮疡痛',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '仙方活命饮',
+--	common_partners = '寒湿下注所致的白带：配苍术、炒薏米、茯苓、樗白皮；白鸡冠花等；脾虚湿盛的久泻：配肉豆蔻、诃子、茯苓、芡实等；鼻塞流涕、鼻炎等：配细辛、苍耳子、辛夷、薄荷等；肠痈：配牡丹皮、冬瓜仁、败酱草、红藤、生大黄等；乳痈：配瓜蒌；疮疡：配赤芍、红花、蒲公英、紫花地丁、野菊花、金银花等',
+--	similar_medicines = '细辛偏治齿髓疼痛或夜间牙痛；白芷偏治齿龈连面颊部肿痛的牙痛。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '血虚有热或阴虚火旺者忌用本品；痈疽已溃者也宜少用，以免耗伤气血。',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2018,13 +2023,13 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '发表散寒，祛风胜湿，也可作为治头顶部疾病的引经药',
+--	actions_and_indications = '风寒感冒引起的头顶疼痛（利用其散督脉经风寒的作用），因督脉经与肾经相连，故也能治风寒侵入腰部而致的腰脊冷痛',
 --	details = '',
 --	common_prescriptions = '',
 --	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	similar_medicines = '藁本善治头顶痛；羌活散太阳经风寒，善治后头痛；白芷散阳明经风寒，善治前头痛；川芎搜少阳经风邪，解少阳经血郁，善治两侧头痛。',
+--	dosage_reference = '一般用量为1.5～10克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -2034,15 +2039,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '发表散寒，温肺祛痰，窜透开滞，祛风止痛',
+--	actions_and_indications = '风寒感冒的头痛、恶寒、发热、全身骨节疼痛；头面部诸风百疾；咳逆上气，寒痰喘嗽，见风流泪，鼻塞，风寒痹痛等证',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '风寒感冒的头痛、恶寒、发热、全身骨节疼痛：配荆芥、防风、羌活、紫苏叶等；因入心、肾、肺、肝四经，故与桂枝、薤白、当归、丹参同用，可治胸痹心痛；与独活、桑寄生、川断、乌药、当归同用，可治腰、膝、腹部疼痛；与干姜、五味子、半夏、麻黄、杏仁同用，可治寒饮犯肺的咳喘；与当归、赤芍、川芎、红花、白芷、瓜蒌同用，可治妇女乳结痛胀、经血不行；与草决明、石决明、羊肝、木贼草、夏枯草同用，可治目痛、目痒、流泪等',
+--	similar_medicines = '蚕砂也能通凝滞，但偏用于祛风湿滞于肌肉而致的肌肉疼痛；细辛主要是搜风湿寒邪滞于肝肾而致的筋骨疼痛。独活善搜肾经气分伏风；细辛善搜肝肾血分风寒。',
+--	dosage_reference = '一般用量为1～3克，不超过3.2克。前人有“细辛不过钱”的说法，但这是指单服细辛而言，在与其他药物配伍使用时，可视具体情况而定，临床上也有在处方中用1.5、6甚至9克，但须仔细分析，根据病情而定，不可贸然大量使用。',
+--	contraindications = '凡病内热及火性炎上、上盛下虚、气虚有汗、血虚头痛、阴虚咳嗽者忌用。味厚性烈，有小毒，老年体弱者慎用',
+--	remarks = '生用温散力强，发表散寒；蜜炙温散力弱，润肺止咳。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2050,29 +2055,29 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '祛风通窍，尤善于通鼻，为治鼻病的要药',
+--	actions_and_indications = '风寒感冒的鼻塞不通、鼻炎、鼻窦炎、鼻渊、鼻鼽、鼻窒、鼻疮、流涕等；',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '鼻塞不通：配细辛、荆芥、防风、苍耳子；上述鼻炎等：配白芷、细辛、苍耳子、川芎、菊花、金银花、薄荷、梅片、鹅不食草等；',
+--	similar_medicines = '苍耳子也能治鼻病，但偏于散头部风湿，兼治头风头痛；辛夷则偏于散上焦风寒，开宣肺窍。细辛也有辛通走窜的作用，可通全身之气，但偏入心肾；辛夷则以通上焦之气为主，但配合桑枝、桂枝、松节、红花等也可通利关节。白芷也能芳香通窍，但主要散头面的风寒而治前头痛、鼻塞；辛夷则善于散上焦风寒，宣肺而通鼻窍。',
+--	dosage_reference = '一般用量为6～10克',
+--	contraindications = '阴虚火旺者忌用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
---	and name = '辛荑';
+--	and name = '辛夷';
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '祛风、通窍、散结',
+--	actions_and_indications = '风湿所致的周痹（全身疼痛）、头痛、四肢拘挛；鼻塞不通、鼻炎、鼻窦炎、流涕不止等；各种癣、疥、痒疹及麻风等；小儿疳疾、肚大黄瘦、两目少神、消化不良；瘰疬、肿块（如淋巴结核等）、疮毒',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '风湿痹痛拘挛：配羌活、透骨草、威灵仙、薏米等；鼻塞鼻炎等：配辛夷、白芷、细辛、川芎、菊花等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	dosage_reference = '一般用量为6～9克，有小毒，不宜使用太大量',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -2082,14 +2087,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '祛暑化湿，利水消肿',
+--	actions_and_indications = '夏季感冒暑湿的表证，症见恶寒发热、头痛、无汗、身痛或腹痛、吐泻等；水湿浮肿、小便不利',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '感冒暑湿表证：配荷叶、扁豆、佩兰、藿香等；水湿浮肿、小便不利：配白术',
+--	similar_medicines = '扁豆健脾化湿而消暑；荷叶升达清气而消暑；香薷散风利湿浊而祛暑。冬季伤寒的表证，解表用麻黄；夏季伤暑的表证，解表用香薷。',
+--	dosage_reference = '一般用量为3～6克，体壮病重者也可用9克',
+--	contraindications = '体弱易出虚汗者忌用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2098,15 +2103,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '发汗解表，温中止呕，温肺化痰止咳，并可解半夏毒和南星毒',
+--	actions_and_indications = '风寒感冒；风痰口噤不证、风痰阻滞经络半身不遂等证',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '风寒感冒：配麻黄、荆芥、桂枝、紫苏叶等，也可单用生姜一味，切碎，加红糖适量煮汤饮服；和胃止呕：配半夏；与大枣同用，能益脾胃元气，温中祛湿；与白芍同用，能制白芍之寒而温经止痛；上述风痰证：竹沥汁31克兑入生姜汁六七滴，分两次服',
+--	similar_medicines = '生姜皮有行水气、消浮肿的作用，可配冬瓜皮、大腹皮、桑白皮、猪苓、茯苓等',
+--	dosage_reference = '一般用量为二三片，或3～9克；干姜、煨姜、炮姜一般用量为1.5～6克，特殊情况可用9～12克；生姜皮用量一般为1～4.5克。生姜用量不宜过大，否则可刺激肾脏发炎。',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '干姜温中祛寒，温肺化饮；炮姜温经止血；生姜发散风寒，并能止呕；炮姜治胃寒腹痛，和中止呕，比干姜而不燥，比生姜而不散。要注意根据病情，分别选用。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2114,15 +2119,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '辛凉发汗、发散风热、清肝明目、消食下气、消胀、除霍乱吐泻',
+--	actions_and_indications = '风热感冒、头晕头痛、咽喉肿痛等；风热引起的风疹、皮肤痒疹、麻疹等；肝郁化火之目赤肿痛、视物模糊等；骨蒸痨热；肺热',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '逍遥散（用薄荷的散郁调气之力）',
+--	common_partners = '风热感冒、头晕头痛、咽喉肿痛等：配荆芥、金银花、桑叶、菊花等；疹痒：配连翘、赤芍、白鲜皮、苦参、蝉蜕等；赤肿痛、视物模糊：配菊花、霜桑叶等；消胀、霍乱吐泻：配木香、槟榔、大腹皮、焦三仙、草豆蔻等；骨蒸痨热：配地骨皮、银柴胡、秦艽；肺热：配桑白皮',
+--	similar_medicines = '桑叶、薄荷都常用为疏风清热药，但桑叶偏于凉血清热，疏风明目；薄荷则偏入气分，富有辛凉解散的作用。',
+--	dosage_reference = '一般用量为1.5～6克，重症时可用9克',
+--	contraindications = '久病、大病后，不可用薄荷，以免汗出不止',
+--	remarks = '入汤药时，要后下'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2130,15 +2135,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '疏风散热、养肝明目、清热解毒',
+--	actions_and_indications = '风温初起之风热感冒、头痛、目赤等；肝经风热、目赤肿痛、两目昏花、见风流泪、目生云翳；肝阳上亢、肝风上扰所致的头晕、头痛；疔肿疮毒（为外科常用药）',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_prescriptions = '枸杞菊花茶、桑菊饮、杞菊地黄丸、羚羊钩藤汤',
+--	common_partners = '肝经风热：配黄芩、密蒙花、草决明、青葙子、木贼草、桑叶、蝉蜕等；肝阳上亢：配生石决明、白蒺藜、生地、白芍、蔓荆子等；疔肿疮毒：配金银花、连翘、蒲公英、紫花地丁等，这种情况下常用野菊花',
+--	similar_medicines = '菊花、薄荷都能散风热、清头目，但薄荷偏于发散，辛凉发汗的力量大于菊花，没有养肝之效，不能久服；菊花则偏于清肝热、祛肝风，并有养肝明目的作用，可以常用。',
+--	dosage_reference = '一般用量为6～9克，重症时可用12～15克',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '外感风热多用黄菊，清肝明目、平肝多用白菊'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2146,14 +2151,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '疏散风热，利咽散结，解毒透疹，“利腰膝凝滞之气”',
+--	actions_and_indications = '风热感冒及温病初起的表证，对兼有咳嗽、喉痛、咽痒的，尤为有效；麻疹出不透；咽喉肿痛，如急性扁桃体炎、喉炎、咽炎等；疮疡肿毒；腰膝气滞窜走疼痛',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '风热感冒及温病初起的表证：配桑叶、菊花、金银花、薄荷；麻疹出不透：配荆芥、芦根、黄芩、蝉蜕、葛根、桔梗、薄荷等；咽喉肿痛：配山豆根、玄参、桔梗、甘草、黄芩等；疮疡肿毒：配金银花、连翘、苦参、当归尾、赤芍等；腰膝气滞窜走疼痛：配川断、牛膝等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '脾胃虚寒、经常泄泻的人，不可用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2162,14 +2167,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '疏散风热，清利头目',
+--	actions_and_indications = '风热所致的头痛（尤其近太阳穴处的部位）、目痛；慢性头痛；头风头痛',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '头痛、目痛：配荆芥、薄荷、菊花、牛蒡子、桑叶、草决明、青葙子、防风、白蒺藜等；慢性头痛：泡酒饮；头风头痛：配当归、川芎、白芍、熟地、羌活、防风等',
+--	similar_medicines = '藁本常用于治风寒头痛；白芷常用于治风湿头痛；蔓荆子常用于治风热头痛。白蒺藜偏用于肝风上扰而致的眩晕头痛；蔓荆子偏用于风热上攻而致的头沉昏闷、头痛。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '对于血虚而致的头痛、目痛，均忌用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2178,15 +2183,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '发汗解表，行水消肿',
+--	actions_and_indications = '风热表证，症见发热、头痛、无汗、口渴、咽痛、脉浮数等，用一般辛凉解表剂不能发汗者；热邪郁于肌表而致麻疹不透；风热瘾疹（荨麻疹）；全身消肿而兼发热者（如急性肾炎水肿等）',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '风热表证：配薄荷、黄芩、荆芥、杏仁、淡豆豉等；麻疹不透、荨麻疹：配牛蒡子、蝉蜕、薄荷、葛根等；',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	dosage_reference = '一般用量为1.5～6克，重症时可用9克，鲜品可用9～15克',
+--	contraindications = '体虚自汗者忌用',
+--	remarks = '煎煮时，后下'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2194,14 +2199,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '疏散风热，透发麻疹，退翳明目，祛风解痉，“止小儿夜啼”',
+--	actions_and_indications = '外感风热、温病初起等证；小儿麻疹发热而疹出不透者；风疹（荨麻疹）；破伤风、高热惊厥、面部神经麻痹等；中风失音；风热攻目之目赤目昏、目生云翳之证；',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '外感风热、温病初起等证：配金银花、连翘、薄荷、菊花等，兼有音哑、咽痛者，效果更好，常与桔梗、胖大海、射干等同用；小儿麻疹发热而疹出不透者：配牛蒡子、金银花、薄荷、芦根、葛根等；荨麻疹：配防风、荆芥、浮萍、白鲜皮、赤芍等；破伤风、高热惊厥、面部神经麻痹：配全蝎、钩藤、蜈蚣、僵蚕等；风热攻目：配菊花、木贼草、桑叶、草决明、蔓荆子等；小儿夜啼不止：在和胃、消食、清热的汤药中加本品1.5～6克',
+--	similar_medicines = '蝉蜕善于散风热、退翳、透疹、祛风解痉；蛇蜕有小毒，善于除风邪，亦善退翳膜，多用于治疗皮肤疥癣、瘙痒等皮肤病。',
+--	dosage_reference = '一般用量为2.5～6克，体壮邪盛者可用于10克，治破伤风时可用25～30克，或更多些',
+--	contraindications = '虚证、孕妇及无风热者，不用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2210,15 +2215,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '泻血分实热，下肠胃积滞，推陈致新，临床上常用于通便泻热，消痈散肿，清热燥湿，活血通经，但最常用于泻下',
+--	actions_and_indications = '急性热性病且多日不排便、腹部胀满且痞硬拒按；胃火炽盛而口舌生疮、口渴咽燥、齿龈肿痛、便秘、衄血吐血；热痢初起，由于肠胃湿热而里急后重、大便不爽；痈肿（包括头背部痈毒、阑尾炎等）热痛不消；黄疸（阳黄）；水疮、湿疹等（研成粉末外撒）；妇女因血瘀而经闭；',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '急性热性病且多日不排便：生用，配芒硝、厚朴、枳实；热痢初起肠胃湿热证：配黄连、木香、槟榔等；头背部痈毒：配白芍；肠痈（阑尾炎）：配牡丹皮、桃仁、芒硝、冬瓜子、赤芍等；黄疸：配茵陈、栀子、车前子、黄柏等；配芒硝，可使泻下之力增强且快速；配黄芩、栀子泻肺火；配黄连泻心火；配龙胆草泻肝火；配生石膏泻胃火',
+--	similar_medicines = '黑白丑泻下，有小毒，主要是攻逐腹部积水；大黄泻下，主要是推荡肠胃积滞、热结。巴豆、大黄均为峻泻药，但巴豆性热，大黄性寒。',
+--	dosage_reference = '一般用量为1.5～9克，重症时可用12～15克',
+--	contraindications = '元气不足，胃虚血弱，病在气分及阴虚便燥者，均不宜用',
+--	remarks = '生用则泻下的力量猛烈，故攻下的方剂中，常生用且后下；蒸熟则泻力和缓，适用于老年人及体弱者；酒炒（或酒浸、酒洗）则能达身体上部而驱热下行，并能助其泻力，用于热毒上炎所致的目赤、牙痛、口疮、头痛、胸中焚热者，兼能散瘀；醋制则能破肝郁血热；炒炭能止血，可用于大肠有积滞的大便下血。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2242,14 +2247,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '泻热通便，助消化，行水消肿，寒热性质介于大黄与巴豆之间，是一种使用方便的泻下药，可直接泡水饮用，也可入汤药煎服',
+--	actions_and_indications = '火热内结的便秘；食积腹满；肝硬化腹水',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '便秘腹满：配枳实，或单味服用；肝硬化腹水：配牵牛子、二丑、大腹皮等，也可单味泡茶饮；',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '入煎剂3～6克，或1～2克泡茶饮，过量服用会引起恶心，甚至呕吐',
+--	contraindications = '哺乳者、孕妇、月经期妇女、痔疮者不适用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2258,14 +2263,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '泻热导积，凉肝明目，杀虫，前人经验认为本品引药入肝的效力最快',
+--	actions_and_indications = '血热目昏；经闭；小儿疳积、虫积所致的面黄消瘦、肚大青筋、下午低热等症；慢性肝炎、儿童肝炎的肝功能长期不恢复者；',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '血热目昏：配草决明、青葙子、生地、白芍、夜明砂、石斛等；经闭：配当归、川芎、熟地、茜草、红花等；小儿疳积、虫积：配胡黄连、焦三仙、使君子、苍术、白术、鸡内金、茯苓、槟榔、黄芩、党参等，为丸剂服用；慢性肝炎：为末且入胶囊，随汤药（柴胡、黄芩、半夏、焦三仙、槟榔、白蒺藜、皂角刺、红花、草豆蔻、炒莱菔子）吞服；儿童肝炎的肝功能长期不恢复者：配胡黄连、柴胡、黄芩、黄连、焦三仙、苍术、槟榔、炒鸡内金、红花、茜草、半夏、枳实等，制成蜜丸服用；',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '一般用量为3～6克，通常研成粉末冲服，不入煎剂。作为泻下剂治疗热结肠胃时，用0.6～1.5克即可致泻，个人别0.3克即泻，须视具体情况而定；作为通经、凉血、消疳、杀虫剂时，用0.2克即可。小儿用量更要酌减',
+--	contraindications = '因有破血作用，为刺激性峻下药，可致肠壁及盆腔充血，故孕妇、月经来潮、妊娠、腹泻、便血和脾胃功能虚弱者忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2322,31 +2327,31 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '补中益气，缓急止痛，润肺止咳，润肠通便',
+--	actions_and_indications = '中气下陷而致的脱肛、胃下垂、子宫脱垂等；脾胃气虚所致的食少纳呆、食后脘腹撑胀、大便溏稀、少气懒言等；一切痛证；虚劳久咳；老年体虚津亏液燥而大便干结',
+--	details = '生用性凉，能清热；熟则性温，可补中益气，可用于病后调养；甘而平和，能解毒；柔而濡泽，能润燥；缓可去急，故能止心腹肌肉疮疡之痛；和可致中，故能调和百药而与甘草同功。可药食两用。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '中气下陷诸证：可单用，亦可配力参、黄芪、升麻、柴胡等；脾胃气虚诸证：可少量频服，亦可配茯苓、白术、山药、麦芽、大曲；肺虚久咳、肺燥干咳：配生姜；肺气失宣、上逆咳喘兼便秘：配杏仁',
+--	similar_medicines = '饴糖、蜂蜜、大枣均味甘补中，但饴糖性微温主入脾，能缓急止腹痛，滋润滑肠之力不如蜂蜜；蜂蜜兼能润肺治疗肺燥咳嗽；大枣甘温补中，但专补脾胃，无润肠通便之力。',
+--	dosage_reference = '内服时一般用量为10～30克，冲服或入丸；外用则适量搽涂',
+--	contraindications = '不能与生葱同用；痰湿内阻、中满痞胀及肠滑泄泻者忌用',
+--	remarks = '生、熟蜜的取法见参考资料内容'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '蜂蜜';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '川木通',
+--	effects = '利水通淋、导热下行、通经下乳、宣通血脉、利关节、强心，临床上最常用为利尿治淋药。不仅能通利小便，还能通大便，这也是木通与其他利尿药不同的特点',
+--	actions_and_indications = '心火盛、湿热下注所引起的小便不利、尿道作痛、舌尖红等症；膀胱结热而致的热淋、血淋、急性泌尿系感染等；经闭；产后少乳；关节不利、筋骨疼痛；心功能不全所致的小便不利、两足或全身浮肿、烦闷喘促等症',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '导赤散',
+--	common_partners = '心火盛、湿热下注：配生地、竹叶、生甘草梢（即导赤散）；膀胱结热：配车前子、栀子、瞿麦、萹蓄、滑石、大黄等；经闭：配川芎、当归、红花、赤芍、桃仁等；产后少乳：与猪蹄熬汤饮服；关节不利、筋骨疼痛：配桑枝、防己、松节、威灵仙、羌活、独活等；心功能不全诸证：配茯苓、猪苓、桑白皮、紫苏子、泽泻等',
+--	similar_medicines = '木通与泽泻都是利尿祛湿药，但泽泻偏于泻利肝肾经之湿热，木通偏于泻利心与小肠经之湿热。木通与通草均有清利湿热及通乳作用，但木通味苦，泄降力强，主清，入血分，又可通利血脉关节而通经下乳；通草甘淡，泄降力缓，主清肺热，入气分，又可入胃经，通气上达而下乳汗。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '内无湿热、滑精、气弱者及孕妇均忌用',
+--	remarks = '处方上应写明川木通，否则药房可能给关木通，而且关木通含有马兜铃酸类有毒物质，能伤肾。另外，古代木通与通草混淆，古书之通草即今之木通，古书之通脱木即今之通草，当知区别。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2370,15 +2375,16 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	effects = '利水除湿，宁心安神，益脾止泄',
+--	actions_and_indications = '身体各部出现水湿停留的证候皆可用茯苓治疗；脾虚湿盛引起的水泻；脾弱气弱；肠功能紊乱（出现脾虚、中焦水湿不化而消化不良、大便不整者）；心脾两虚、心神不宁、失眠健忘；',
+--	details = '茯苓一般指白茯苓而言。应用时有茯苓皮、白茯苓、赤茯苓、茯神、茯神木之分：茯苓皮走表，长于利肌表之水肿；白茯苓偏入气分，偏补；其色淡红者，称赤茯苓，偏入血分，偏利；补脾益心则白茯苓优于赤茯苓，分利水湿、行血消瘀则赤茯苓胜于白茯苓；抱松根而生者，称茯神，偏于宁心安神；茯神中之松根称茯神木，偏于舒筋止挛，可治心掣痛、神惊、健忘，并可平肝祛风。',
+--	common_prescriptions = '茯苓饮、苓桂术甘汤、六味地黄丸',
+--	common_partners = '脾虚湿停而全身浮肿：配党参、白术、半夏、陈皮、猪苓、泽泻、桑白皮、冬瓜皮等；胃和胸部有停痰宿水而致满闷不食：配党参、白术、枳实、橘皮、生姜（即茯苓饮）；胸胁部停水（悬饮）：配瓜蒌、川椒目、桑白皮、紫苏子、葶苈子、橘红、桂枝、猪苓、泽泻、白蒺藜等；脾虚湿盛：配党参、白术、猪苓、泽泻、藿香、车前子、炒芡实、伏龙肝等；脾弱气弱：配党参、白术、甘草；肠功能紊乱：苓桂术甘汤，再加炒白芍、木香、吴茱萸、肉豆蔻等；心脾两虚、心神不宁、失眠健忘：配当归、白术、柏子仁、远志、酸枣仁、朱砂等',
+--	similar_medicines = '猪苓利水之力大于茯苓，但无补益之性，多用于祛邪，不用于补正；茯苓淡渗利湿、益脾宁心，兼有补益之性，祛邪、扶正均可使用，多用于补益剂中。',
+--	dosage_reference = '一般用量为9～12克，茯苓皮及茯神木可用15～30克',
+--	contraindications = '阴虚津液枯乏者不宜用本品，滑精者亦须慎用',
+--	remarks = '',
+--	name = '茯苓（附：茯苓皮、茯神、茯神木）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2386,14 +2392,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '利水渗湿，与泽泻合用能增强利水的效果',
+--	actions_and_indications = '各种水肿、尿少、湿盛泄泻、淋浊、黄疸等症',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '猪苓汤',
+--	common_partners = '水泻尿少：配白术、茯苓；脾湿肿满、中脘闷胀等：配苍术、白术、厚朴、砂仁、陈皮、茯苓；热淋、小便疼痛不利：配萹蓄、瞿麦、川木通、黄柏、滑石等；黄疸（阳黄）：配茵陈、车前子、黄柏、栀子、大黄等；发热口渴、小便不利、脉浮等：配泽泻、滑石、阿胶（即猪苓汤）',
+--	similar_medicines = '车前子利水而不伤阴，兼能清热；猪苓专主利水。猪苓与茯苓的相似和区别见茯苓一节。',
+--	dosage_reference = '一般用量为6～12克，重症时可用25～25克或30克',
+--	contraindications = '阴虚目昏或无湿而渴者，皆忌用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2402,15 +2408,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '泻肝、肾二经之火，逐膀胱、三焦之水，临床上主要用为利尿祛湿清热药',
+--	actions_and_indications = '水肿胀满、小便不利；小便浑浊如膏；热淋尿痛；妊娠水肿；泌尿系结石；肝胆湿热而目赤、胁痛、呕恶少食、黄疸、尿赤等症；支饮及胃内停饮而致的头目眩晕',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '六味地黄丸、泽泻汤',
+--	common_partners = '水肿胀满、小便不利：配车前子、通草、桑白皮、猪苓等；小便浑浊：配茯苓、海金沙、滑石、萆薢等；热淋尿痛：配生地、川木通、猪苓、黄柏、石韦等；妊娠水肿：配桑白皮、枳壳、桑寄生、茯苓、大腹皮等；泌尿系结石：配海金沙、金钱草、牛膝、泽兰、冬葵子、猪苓、茯苓、赤芍等；上述肝胆湿热诸证：配龙胆草、黄芩、柴胡、茵陈、青黛、车前子等；支饮及胃内停饮：配白术（即泽泻汤）',
+--	similar_medicines = '泽泻利尿消水，适用于消水臌之腹水；泽兰行血消水，适用于消血臌之腹水。',
+--	dosage_reference = '一般用量为6～9克，重症时可用15～18克或30克',
+--	contraindications = '阴虚无湿热及肾虚目昏滑精者忌用',
+--	remarks = '临床上常在补肾药中，佐用一些泽泻，以防补药生热而致产生肾火。治疗肾、膀胱、肾有火邪、湿热时，泽泻时首选药物。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2418,15 +2424,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	effects = '利水清热，通淋，止泻，益肝肾，明目',
+--	actions_and_indications = '各种水肿；湿热下注、热结于膀胱、小肠而致的小便淋涩不畅、欲尿不出、不尿自滴、尿道疼痛甚至癃闭、点滴难下；肝火上升所致的目红、目肿、目痛等急性眼病；肝肾阴虚而致的两目昏暗、视力减退；因湿盛引起的水泄',
+--	details = '现代研究表明也有一定降血压作用，可用于高血压兼目昏、目赤、尿黄、尿少者。',
+--	common_prescriptions = '车前散（治眼疾）',
+--	common_partners = '各种水肿：配茯苓、泽泻、冬瓜皮等；热结于膀胱、小肠的小便问题：配茯苓、泽泻、滑石、川木通、瞿麦、黄柏、萹蓄等；肝火上升的急性眼病：常与清火、散风热的药同用，如菊花、桑叶、草决明、黄连、黄芩、蔓荆子、金银花、密蒙花等；肝肾阴虚的视力减退：配生地、熟地、菟丝子、石斛、枸杞子等；湿盛水泄：配猪苓、茯苓、薏米、竹叶、白术、炒扁豆、炒山药等',
+--	similar_medicines = '车前子利水清热、明目止泻；车前草利湿清热兼能凉血止血，可用于尿血、吐血、衄血。滑石与车前子均能利水，但滑石兼能祛暑，车前子兼能益肝肾明目。',
+--	dosage_reference = '一般用量为3～9克，重症时可用15～30克',
+--	contraindications = '凡内伤劳倦、阳气下陷、肾虚滑精及无湿热者慎用，肾气虚脱者忌用',
+--	remarks = '本品多入汤药煎服，因其含有多量的黏液质，故须用纱布包后入煎'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2514,14 +2520,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '利水排石，清热利尿，利湿退黄',
+--	actions_and_indications = '肝、胆、膀胱、肾经湿热，石淋，胆结石、肾结石、输尿管结石、膀胱结石',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '胆结石：配柴胡、黄芩、半夏、枳实、槟榔、大黄、玄明粉、茵陈等；泌尿系结石：配猪苓、茯苓、冬葵子、滑石、牛膝、槟榔、海金沙、泽兰、泽泻等，但要注意辨证论治，根据证候的虚实寒热，随证加减其他药物，详见原书内容',
+--	similar_medicines = '金钱草与海金沙均利水通淋，治疗砂淋、石淋之尿道涩痛，常相须为用，但金钱草除长于化石外，还有良好的利湿退黄作用，故湿热黄疸及胆道结石、胆囊炎症也为常用；海金沙清热通淋，又入血分凉血，故血淋之用也好。',
+--	dosage_reference = '一般用量为30克，单味使用时可用60～90克',
+--	contraindications = '凡阴疽诸毒、脾虚泄泻者忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2545,15 +2551,15 @@
 --	and name = '冬葵子';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '薏苡仁',
+--	effects = '生用利湿、排脓、舒筋，炒用健脾',
+--	actions_and_indications = '水肿、小便不利；足膝肿痛、湿脚气；脾虚泄泻；肺痈（肺脓肿）、急性阑尾炎；风湿痹痛、筋急拘挛、肢体不能屈伸症；',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '水肿、小便不利：配车前子、猪苓、茯苓、泽泻；足膝肿痛、湿脚气：配木瓜、牛膝、防己、紫苏、槟榔等；脾虚泄泻：常生熟同用，且常配白术、茯苓、炒山药、炒扁豆、芡实米；肺痈：配冬瓜子、桃仁、芦根等；肺痈已溃、吐大量脓血者：配桔梗、白及等；急性阑尾炎：配金银花、当归、生地、玄参、生地榆、黄芩、甘草、生大黄、牡丹皮等；阑尾炎已化脓穿孔形成脓肿多日不愈者：配附子、败酱草等；上述风湿诸证：配威灵仙、防己、羌活、独活、桑枝、赤芍、当归、附片等，对于风湿已久、肢体变形者，除重用上述药物，还可同时选配骨碎补、伸筋草、炙穿山甲、红花、地龙、续断、木瓜等活血通络、舒筋壮骨之品',
+--	similar_medicines = '木瓜、薏米均能舒筋，但木瓜偏于治湿寒所致的筋脉拘急和腿肝转筋；薏米偏于治湿热所致的筋急拘挛、肢体难伸。扁豆、薏米均能健脾，但扁豆偏于消暑除湿以健脾；薏米偏于淡渗利湿以健脾。',
+--	dosage_reference = '一般用量为10～20克，但本品味淡力缓，病重者常须重用（30～60克）和久服。',
+--	contraindications = '滑精及小便多者不宜用本品，孕妇忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2562,31 +2568,31 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '利水退肿、祛风，通行经络，泻下焦血分湿热，治各种神经痛，可用于肋间神经痛、结核胸痛、各种肌肉痛、肩周炎、闪挫、胃痛、月经痛等',
+--	actions_and_indications = '风水（头面、四肢浮肿，兼有恶风、骨节疼痛，脉浮）、皮水（四肢消肿明显）证；风湿痹证的关节肿痛、肢体挛急等症；湿热郁滞而致的下肢浮肿、疼痛、脚肿、湿脚气等症；膀胱湿热、小便不利等症',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '防己黄芪汤、防己茯苓汤',
+--	common_partners = '风水、皮水证：配黄芪、桂枝、白术、茯苓等；风湿痹证：配威灵仙、薏米、羌活、独活、红花、赤芍等；上述湿热郁滞诸证：配木瓜、薏米、地龙、牛膝、槟榔、茯苓等；膀胱湿热、小便不利等症：配川木通、泽泻、猪苓等',
+--	similar_medicines = '通草甘淡，祛气分之湿热；防己苦寒，泻血分之湿热。木瓜酸温，化湿兼能舒筋活络，善治筋挛、足痿；防己苦寒，利水兼能通络泻热，善治水肿、脚气。',
+--	dosage_reference = '一般用量为3～9克。本品大苦大寒，不宜大量使用，恐害胃伤中。小剂量可使尿量增加，大剂量反使尿量减少。',
+--	contraindications = '本品性善行，阴虚及无湿热实邪者忌用；热在气分者也不宜用。',
+--	remarks = '防己有汉防己和木防己两种，作用大致相同，但汉防己偏于祛湿利水，治下焦湿热、下半身水肿、湿脚气时适用；木防己偏于祛风通络、止痛，治上半身水肿及风湿疼痛时适用。若处方上只写防己，药店一般给汉防己'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '防己';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '宣木瓜',
+--	effects = '利湿理脾，舒筋活络',
+--	actions_and_indications = '中焦湿盛所致的吐泻、腹胀；湿邪流注于小腿、足跗而致的湿脚气（两脚浮肿胀痛、沉重麻木）；霍乱转筋；湿痹',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '中焦湿盛所致的吐泻、腹胀：配紫苏、吴茱萸、茴香、佩兰、甘草等；湿脚气：配紫苏、吴茱萸、桔梗、槟榔、橘皮、生姜等；霍乱转筋：配藿香、佩兰、扁豆、党参、吴茱萸、白芍、甘草等；湿痹：配牛膝、五加皮、当归、川芎、川乌、威灵仙、海风藤等',
+--	similar_medicines = '白芍治筋病，主要是柔肝缓急而养筋；木瓜治筋病，主要是利湿温肝而舒筋。',
+--	dosage_reference = '一般用量为6～12克',
+--	contraindications = '本品味酸，单独使用，可有收涩作用，故筋骨关节不利而兼有小便不畅者，不宜单用，须配合利水之品同用。',
+--	remarks = '注：不是水果木瓜（番木瓜）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3073,15 +3079,15 @@
 --	and name = '石膏';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--set alias = '因四川产的效力较好，故又名川黄连',
+--	effects = '清泻心胃火热，凉肝胆，解热毒，燥湿',
+--	actions_and_indications = '心胃火热而致口舌生疮、目赤牙痛、尿赤便秘等症；血分热毒郁积而生疮疡疖肿等症；温病热邪入心而见神昏谵证、烦躁不宁、汗出口渴、身热、舌红等症；心热亢盛而致心烦失眠、口干舌红、尿黄脉数等症；热邪结滞于胃脘而见心下痞满、脘腹热痛等症；目赤目痛、暴发火眼（包括急性结膜炎，即红眼病）；湿热积滞而致的痢疾；肝火旺、肝胃不和而致的胃痛嘈杂、泛吐酸水；心肾不交；腹中寒痛下痢；大便下血',
+--	details = '有广泛的抗菌作用，其中对痢疾杆菌作用最强，主要有效成分为小檗碱。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '上述心胃火热诸证：配生地、川木通、竹叶、黄芩、生大黄等；血热的疮疡疖肿等症：配黄芩、栀子、黄柏、赤芍、紫花地丁、金银花、连翘等；上述温病热邪入心诸证：配天竺黄、郁金、菖蒲、远志、连翘、水牛角、生地、玄参等；心热亢盛：配栀子、生地、当归、甘草、辰砂、豆豉等；热邪结滞于胃脘：配厚朴、枳实、半夏、瓜蒌、陈皮、茯苓、生大黄等；目赤目痛、暴发火眼：煎水洗目；湿热积滞而致的痢疾：配木香、白芍、当归、黄芩、白头翁、茯苓、厚朴、枳实等；肝胃不和：配吴茱萸；心肾不交：配木香；腹中寒痛下痢：配干姜；大便下血：配大蒜',
+--	similar_medicines = '黄柏偏用于清下焦湿热，并能坚肾；黄连偏用于清中焦湿热，并能泻心火。胡黄连偏用于骨蒸劳热，五心烦热，并用于小儿疳积惊痫；川黄连偏用于中焦湿热，并用于各种疮疡肿毒。',
+--	dosage_reference = '一般用量为0.9～6克或9克',
+--	contraindications = '阴虚烦热、脾肾虚泄、气虚作泄等证者，皆忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -3122,31 +3128,31 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	effects = '清热燥湿，泻火解毒，坚肾益阴',
+--	actions_and_indications = '湿热痢；湿热泄泻；湿热淋；湿热郁蒸而致的黄疸；痔疮便血；湿热伤筋而出现下肢痿弱甚至麻木、瘫痪等症；阴虚火旺所致的骨蒸劳热、盗汗、梦遗、口干、经闭、下午颧红等症',
+--	details = '抗菌作用与黄连差不多；对阿米巴、利什漫 原虫也有抑制作用；能降血压、降血糖',
+--	common_prescriptions = '知柏地黄丸、大补阴丸',
+--	common_partners = '湿热痢：配黄连、木香、马齿苋、白头翁等；湿热泄泻：配木香、藿香、茯苓、白术等；湿热淋：配木通、生地、竹叶、滑石、萹蓄、猪苓等；湿热黄疸：配茵陈、栀子、车前子、生大黄等；痔疮便血：配槐角、槐花炭、地榆、防风等；湿热伤筋：配苍术、牛膝、木瓜、薏米等；上述阴虚火旺诸证：配滋阴药用于清虚火，如知柏地黄丸（熟地、山萸肉、山药、茯苓、丹皮、泽泻、知母、黄柏）、大补阴丸（地黄、龟甲、知母、黄柏、猪脊髓）等',
+--	similar_medicines = '黄连、黄芩、黄柏均具有清热、泻火、燥湿、解毒的功效，皆可用治因湿热或热毒火盛所致之证，临床上常相须为用，以起协同作用，但在共性之中又各有所长：黄连长于泻心火、胃热（中焦），多用于心烦不眠、痞满呕逆诸症；黄芩长于泻肺（上焦），又有安胎之功效，多用于肺热咳嗽、痰黄黏稠之证以及胎动不安；黄柏主泻肾火，长于除下焦湿热，多用于阴虚阳亢、湿热下注之证',
+--	dosage_reference = '一般用量为3～9克，重症时可用12～18克',
+--	contraindications = '无实热者慎用，脾胃虚寒者忌用',
+--	remarks = '清热燥湿用生黄柏；坚肾、清虚热用盐水炒黄柏；治尿血、便血用黄柏炭'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '黄柏';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '生地',
+--	effects = '清热凉血，滋阴补肾，生血益精，止血，降血糖',
+--	actions_and_indications = '温热病，热邪侵入营分（高热、神志恍惚、口不渴、舌质红绛、斑疹隐隐、脉象数而略细）或血分（高热、谵证、舌质紫绛少津、班疹透露，或吐血、衄血、昼静夜躁、脉象细数）；阴虚有热而骨蒸劳热、干咳、咽喉燥痛、痰中带血、手中心热、盗汗等；温热病后期，因热邪伤耗津液而口渴、食欲不振、下午烦热、暮热早凉等症；阴虚不能胜热而致消渴；',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '清营汤、化斑汤、犀角地黄汤、益胃汤',
+--	common_partners = '热邪侵入营分或血分：配玄参、连翘、栀子、郁金、竹叶心、丹皮、赤芍、生石膏、犀角（水牛角代替）等，如清营汤、化斑汤、犀角地黄汤等；阴虚有热：配地骨皮、炙鳖甲、丹皮、秦艽、知母、白薇、玄参、天冬等；温热病后期阴津不足诸证：配麦冬、玉竹、沙参、梨汁、冰糖、藕汁、生麦芽、炒谷芽、香稻芽等；消渴证：配山萸肉、山药、茯苓、丹皮、泽泻、五味子、天花粉等',
+--	similar_medicines = '生地与熟地都属于地黄，但外观不同（生地泥黄色，熟地黑色且柔软粘手），功效作用出有区别，《本草纲目》的总结是“地黄生则大寒，而凉血，血热者需用之，熟则微温，而补肾，血衰者需用之。男子多阴虚，宜用熟地黄，女子多血热，宜用生地黄”，临床上二药也常配合使用，适用于血虚兼血热者及阴亏津亡者。',
+--	dosage_reference = '一般用量为9～15克，重症时可用30克或更多，鲜生地则常用30～60克',
+--	contraindications = '脾胃虚寒、大便溏软者，暑湿盛、胸闷不食者，均禁用本品',
+--	remarks = '生地刚从土中挖出洗净即为鲜生地，苦重于甘，性大寒，偏于清热凉血，多用于热病大热时期、热邪深入营血之证；制成干地黄后，甘重于苦，偏于滋阴养血，多用于阴虚阳亢、血虚化燥、心烦内热以及热病后期；炒炭称生地炭，主用于止血；用黄酒蒸制则变成熟地黄，主用于补肾滋阴、养血，详见熟地黄一节；制成细生地（或叫小生地）则养阴而滋腻碍胃的副作用大减，适用于温热病后期、阴津不足而食纳不好、大量服用或久服的情况，但现在药店不一定有，所以可以配用砂仁或用姜汁炒用的办法来降低'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3218,15 +3224,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '清热除烦，滋阴降火，泻肺滋肾',
+--	actions_and_indications = '热病高热烦躁；肺热咳嗽；阴虚所致的发热、骨蒸盗汗、五心烦热、消渴等症；',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '知柏地黄丸',
+--	common_partners = '热病高热烦躁：配生石膏；肺热咳嗽：配贝母；滋肾：配黄柏；阴虚发热盗汗消渴等症：配地骨皮、秦艽、生地、白芍、炙鳖甲、玄参、黄柏、白薇、麦冬等；',
+--	similar_medicines = '黄柏坚肾清热，偏用于肾经湿热、淋浊、膝软，清下焦有形湿热；知母滋肾降火，偏用于肾经虚热、骨蒸、消渴，泻下焦无根之火；二药常合用，可增强其滋肾、坚肾、清热、降火的作用。天花粉、知母均能清阳明胃热，但天花粉兼能益胃生津；知母兼能滋阴降火；有人认为知母苦寒滑降，多用可伤胃肠引起泄泻，主张在白虎汤中的知母轻用，或加用甚至改用天花粉以降低对胃肠的伤害',
+--	dosage_reference = '一般用量为6～9克',
+--	contraindications = '肾阳虚、两尺脉微弱及大便溏泄者，忌用本品',
+--	remarks = '用盐水炒可下行入肾，用黄酒炒可上行入肺。一般苦寒药，如黄连、黄芩、黄柏、栀子等，虽能清热但都有化燥伤阴的缺点，知母则无此缺点，其质润还能滋阴。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3266,14 +3272,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '清热凉血，解毒利咽',
+--	actions_and_indications = '大头瘟（风热瘟毒侵入血分而致头部红肿、发热、咽喉肿痛，甚至神昏谵语）；时疫（流行性、传染性、季节性热病）；腮腺炎、咽喉红肿热痛、扁桃体肿大等；急性黄疸型肝炎；流行性腮腺炎、乙型脑炎、流感、麻疹、无黄疸性肝炎、慢性肝炎',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '大头瘟：配黄连、牛蒡子、玄参、连翘、黄芩、柴胡、马勃等；时疫：配金银花、连翘、薄荷、牛蒡子、玄参、生地、丹皮、生石膏等；流行性腮腺炎：配大青叶、夏枯草、连翘等；咽喉红肿热痛、扁桃体肿大等：配黄芩、栀子、生地、玄参、薄荷、牛蒡子、射干、锦灯笼、连翘、金银花、生大黄等；急性黄疸型肝炎：配茵陈、栀子、丹参、白术等',
+--	similar_medicines = '大青叶、板蓝根均能清热、凉血、解毒，其中，大青叶凉血、解毒、化斑的作用胜于板蓝根；板蓝根利咽喉、治大头瘟的作用胜于大青叶。',
+--	dosage_reference = '一般用量为4.5～9克或12克',
+--	contraindications = '脾胃虚寒者不宜用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -3329,16 +3335,17 @@
 --	and name = '射干';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--set alias = '忍冬花',
+--	effects = '清热解毒，止痢',
+--	actions_and_indications = '风热感冒；温病初起，邪在卫分，热在上焦，症见身热头痛、口渴、咳嗽咽干、脉浮数等；血分毒热壅滞而生痈肿疮疡；热毒停滞于中焦而致发热腹痛、大便带脓血、里急后重等症；大叶性肺炎初起、肺热咳喘症',
+--	details = '本品甘寒清热不伤胃，芳香透达不遏邪，既能宣散风热，又善清解血毒，故凡温病发热、疮疔肿毒、斑疹喉痛及热毒血痢之证，皆为要药',
+--	common_prescriptions = '银翘散',
+--	common_partners = '风热感冒：与其他辛凉解表药同用，方剂如银翘散；温病初起，邪在卫分，热在上焦：配连翘、牛蒡子、荆芥、薄荷、淡豆豉等；痈肿疮疡：配连翘、赤芍、当归尾、菊花、没药、乳香、天花粉、甘草等；热毒停滞于中焦：配当归、白芍、葛根、黄连、木香、白头翁、赤芍、甘草等；大叶性肺炎初起：配杏仁、连翘、牛蒡子、桔梗、薄荷等；肺热咳喘症：配麻黄、生石膏、杏仁、生甘草、连翘、黄芩、知母、薄荷等',
+--	similar_medicines = '与其他辛凉解表药如葛根、薄荷相比，解表之功稍逊，清热之功则过之。',
+--	dosage_reference = '一般用量为6～12克，重症时可用30～60克',
+--	contraindications = '虚寒泄泻及疮流清脓无热毒者，不宜用本品',
+--	remarks = '忍冬藤的性味、功能都与金银花相似，一时找不到花时，可用藤代替，不过作用比花稍小，故用量要大些，一般15～30克。忍冬藤还有通经活络、消经络中风热的作用，可用于急性关节炎表现为关节热肿疼痛者。',
+--	name = '金银花（附：忍冬藤）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3346,14 +3353,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '清热解毒，消痈散结，利尿',
+--	actions_and_indications = '清心火：温热病热邪入心而出现的高热神昏、谵证、烦躁等症，或心火移热于小肠而致小便热痛、淋浊不清、尿频、尿痛等症，或心火上炎而目赤肿痛、咽喉肿痛、口舌生疮等症；解疮毒：有清热散结、解毒排脓的作用，可用于因毒热结聚而致的各种疮毒、痈肿，前人认为它是“疮家要药”；散温邪：温热病初起，温热毒邪尚在卫分，热在上焦，症见身热头痛、口渴、微恶寒或不恶寒，微咳，咽喉痛，脉浮数等',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '银翘散、桑菊饮',
+--	common_partners = '温热病热邪入心：配玄参、麦冬、竹叶卷心、莲子心、天竺黄、郁金、黄连、水牛角等；心火移热于小肠：配生地、木通、猪苓、泽泻、萹蓄、茯苓、滑石等；心火上炎：配金银花、赤芍、黄芩、生石膏、生地、玄参等；各种疮毒、痈肿：配金银花、菊花、赤芍、红花、紫花地丁、蒲公英等；温热病初起：配金银花、桔梗、薄荷、竹叶、荆芥穗、淡豆豉、牛蒡子、芦根、甘草等，如咳嗽较多者，可配桑叶、菊花、杏仁、薄荷、桔梗、甘草、芦根等；与莲子心同用，可入心经；与金银花同用，清热解毒兼散风热；与赤小豆同用，可清利湿热；与荆芥、薄荷同用，可辛凉解表。',
+--	similar_medicines = '金银花兼能散风热，升散透达的作用大于连翘；连翘兼散血中郁火壅结，消肿散结的作用大于金银花。蒲公英消疔毒的作用大于连翘；连翘清上焦心肺火热的作用大于蒲公英。',
+--	dosage_reference = '一般用量为6～9克，重症时可用15～30克',
+--	contraindications = '大肠有寒、大便溏泄者及阴疽不红不痛者，均不宜用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -3394,14 +3401,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '清泻肝胆火热，除下焦湿热，促进食欲（要小量，例如0.6～1克，大量使用反而苦胃而恶心呕吐等）',
+--	actions_and_indications = '清泻肝胆火热、湿热：肝胆二经有实热火邪而致的头晕、头胀痛、胁痛、口苦、耳聋、耳肿、口渴、尿黄、尿少、黄疸等症；清除下焦湿热：肝经湿热所致的阴部湿痒热痛、阴部湿疹、尿道疼痛、小便频数而尿热、尿少、尿血等症，或湿热下注而致膝红肿、脚气肿而流水等症；清肝明目：肝胆火热上犯于目而致目赤肿胀、瘀肉高起、羞明多眵等症',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	common_prescriptions = '龙胆泻肝汤',
+--	common_partners = '肝胆实热火邪诸证：配黄芩、栀子、泽泻、木通、车前子、当归、柴胡、生地、甘草（龙胆泻肝汤）；肝经湿热诸证：配黄柏、泽泻、石韦、萹蓄、木通、苦参、竹叶、茯苓等；湿热下注：配牛膝、木瓜、黄柏、苍术、槟榔、防己、忍冬藤、赤芍等；肝胆火热上犯于目：配木贼草、菊花、决明子、荆芥、蔓荆子、黄芩等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '一般用量为0.6～6克',
+--	contraindications = '脾胃虚弱、大便溏泄者忌用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -3649,15 +3656,31 @@
 --	and name = '夜明砂';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '牡丹皮',
+--	effects = '清热凉血，活血行瘀，清肝降血压',
+--	actions_and_indications = '凉血止血：用于血分有热而致的吐血、衄血、咳血、尿血、月经过多、出疹发斑等症；凉血除蒸：因阴虚血热而致骨蒸劳热、无汗、口渴、经闭等症；活血化瘀：用于血瘀停滞而致经闭、腹中癥块等症；活血消痈：肠痈（急性阑尾炎）初起尚未化脓而出现发热、呕吐、右下腹疼痛等；肝郁火旺、身热暮甚、头痛目涩',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '牡丹皮散、大黄牡丹皮汤',
+--	common_partners = '血分有热而出血发斑：配生地、玄参、水牛角、赤芍、知母、生石膏、大青叶、白茅根、仙鹤草、地榆炭、棕榈炭等；阴虚血热而津少经闭等：配青蒿、鳖甲、地骨皮、桑白皮、玄参、秦艽等；血瘀而经闭、腹中癥块等：配当归尾、赤芍、延胡索、牛膝、三棱、莪术、桂心、红花等；肠痈初起：配大黄、芒硝、桃仁、冬瓜子、赤芍等；肝郁火旺之证：配夏枯草、天麻、菊花等',
+--	similar_medicines = '地骨皮偏治有汗的骨蒸劳热，兼能泻肺中伏火；牡丹皮偏治无汗的骨蒸劳热，主泻血中伏火。黄柏与牡丹皮皆能除肾热，但黄柏苦而坚肾，降肾中邪火；牡丹皮辛润而凉，清肾中燥火。牡丹皮与生地均可用于阴虚发热证，但生地重在甘寒滋阴，能使阴生而热退；丹皮清芳透散，使热散退而有利于阴复，故临床上二药常相须为用。',
+--	dosage_reference = '一般用量为4.5～9克',
+--	contraindications = '脾胃虚寒泄泻者忌用本品',
+--	remarks = '凉血止血时炒炭用；凉血清热、活血化瘀时生用'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '丹皮';
+--
+--update medicine_items
+--set alias = '',
+--	effects = '泻肺火，清虚热，凉血，也稍有降血糖、降血压的作用',
+--	actions_and_indications = '肺热咳嗽（肺热郁而化火而致咳嗽、痰黄，甚至咳淡带血及身热鼻衄、舌红脉数等）；骨蒸劳热（由于阴虚火旺、血虚内热而致下午潮热、两颧发红、盗汗、口渴、手中心热、烦躁、干咳甚或痰带血丝、舌质红瘦、脉细数等症）；消渴烦热；血热出血（血分有热而咳血、衄血、尿血等症）',
+--	details = '',
+--	common_prescriptions = '钱乙泻白散（治小儿肺热咳嗽有效）',
+--	common_partners = '肺热咳嗽：配桑白皮、生甘草、黄芩、生石膏、贝母、知母等，大便干秘者，可加生大黄、瓜蒌、杏仁泥；骨蒸劳热：配生地、鳖甲、天冬、麦冬、阿胶、银柴胡、沙参、玄参、知母等；消渴烦热：配生地、天花粉、知母、生石膏、生山药、五味子、枸杞子、泽泻、麦冬、玉竹、生黄芪等，在辩证论治的基础上，有时也可用于糖尿病表现为消渴者，或高血压表现为血热肝旺者；血热出血：配生地、丹皮、白茅根、藕节、侧柏叶、大蓟、小蓟、黄芩炭等',
+--	similar_medicines = '桑白皮清肺热、泻肺火，偏入气分；地骨皮清血热、泻肺火，主入血分，二药常同用，以气血双清。丹皮与地骨皮均能退骨蒸，但丹皮清散力强，善治无汗之骨蒸；地骨皮清中有补，善治有汗之骨蒸。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '凡无血分热证者、中焦虚寒者、虽血分有热但又兼外感者，均不宜用本品',
 --	remarks = '即枸杞的根皮'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -3921,16 +3944,17 @@
 --	and name = '石决明';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '苦杏仁',
+--	effects = '降气行痰，止咳平喘，除风散寒，润肠通便',
+--	actions_and_indications = '风寒咳嗽；风热咳嗽；无风寒外感的肺气上逆而致的咳嗽；外感、内伤之邪（风寒、风热、痰、饮、火、热等）所致的气喘；肺气不降而致大便气秘、干结',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '杏苏散、桑菊饮、三拗汤、麻可石甘汤、定喘汤',
+--	common_partners = '风寒咳嗽：配桔梗、前胡、紫苏叶、陈皮、半夏、炙甘草（如杏苏散）；风热咳嗽：配桑叶、菊花、桔梗、薄荷、牛蒡子（桑菊饮）；肺气上逆咳嗽：配旋覆花、紫苏子、白前、炒莱菔子、枇杷叶等；风寒喘：配麻黄、甘草（三拗汤）；肺有郁热且外受风寒的气喘：配麻黄、生石膏、甘草（麻杏石甘汤）；肺虚感寒、气逆膈热而作哮喘：配麻黄、白果、款冬花、桑白皮、紫苏子、黄芩、半夏、甘草、生姜（定喘汤）；大便气秘、干结：配瓜蒌、桃仁泥、槟榔、枳实等',
+--	similar_medicines = '麻黄与杏仁均归肺经，但麻黄偏于发散风寒以宣肺定喘；杏仁偏于降气定喘止咳；一宣一降使肺气宣降正常，则咳喘自平；并且，麻黄有利水以消肿满之作用，为治风水所常用；杏仁疏导开通，为湿温证所常用；所以，临床上二药常合用，并且前人还有“杏仁是麻黄的臂助”的说法。桃仁泥（打碎的叫泥）偏治大肠血秘；杏仁泥偏治大肠气秘，并且它们都应佐少许陈皮以行气。',
+--	dosage_reference = '一般用量为3～9克，儿童用量要小心。若中毒时，轻者可用杏树皮60克煎汤服用，重者须急送医院抢救。',
+--	contraindications = '久咳肺气虚者慎用，阴虚咳嗽及大便溏泄者忌用',
+--	remarks = '治咳喘时用杏仁，兼大便秘结者用杏仁泥。杏仁有苦杏仁、甜杏仁之分，若处方上只写杏仁，药房只给苦杏仁。苦杏仁力较急，适用于壮人、实证；甜杏仁味甘、性平滋养、力较缓，适用于老人、体虚及虚劳咳喘（即虚证）。在润肠通便方面，两者功能是相同的。另外，甜杏仁多单用。',
+--	name = '杏仁（附：甜杏仁）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3938,15 +3962,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '宣通肺气，疏风解表，祛痰排脓，利咽，升提肺气而利尿、消水肿，升阳气而治中气下陷、胃下垂、子宫脱垂、脱肛等症，还常用于引药入肺的引经药',
+--	actions_and_indications = '外感风寒而咳嗽、恶寒、发热、头痛、鼻塞、胸闷吐白痰等；风热咳嗽（发热多、恶寒少或不恶寒、头痛、口渴、脉数、黄痰）；肝气郁滞而影响肺气失宣（胸闷、胁胀、喜长吁、性急躁、生气则咳嗽加多等）；肺失宣畅而有痰阻；风寒束肺兼有内热，邪郁化热壅滞不散，发生肺痈（咳嗽声重、胸胁隐痛，或中府穴处疼痛，咯吐脓、血状痰，或脓痰如米粥，其味腥臭）；肺有火热而致咽喉红肿疼痛、口渴、喜冷饮等症，或阴虚火旺、虚火上炎而致咽喉疼痛（无明显红肿）、夜晚口渴',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '鸡鸣散',
+--	common_partners = '外感风寒：配苦杏仁、紫苏叶、前胡、陈皮、荆芥、防风、炙甘草等；风热咳嗽：配桑叶、菊花、苦杏仁、牛蒡子、芦根、荆芥、薄荷等；肝气郁滞而影响肺气失宣：配厚朴、苦杏仁、枳壳、苏梗、香附等；肺失宣畅而有痰阻：配半夏、橘红、茯苓、紫苏子、瓜蒌、苦杏仁等；风寒束肺化热成肺痈：配生甘草、生薏米、冬瓜子、金银花、贝母、桃仁、芦根等；实热咽喉痛：配生甘草、山豆根、薄荷、射干、牛蒡子等；虚热咽喉痛：配麦冬、生地、玄参、炙鳖甲等',
+--	similar_medicines = '苦杏仁降肺气而化痰浊，桔梗升宣肺气而祛痰排脓。生薏米利湿排脓而治肺痈；桔梗宣肺、祛痰、排脓而治肺痈。',
+--	dosage_reference = '一般用量为3～6克，肺痈破溃用于排脓时，用量可稍大，但太大可引起呕吐。',
+--	contraindications = '虚证咳嗽及干咳无痰者不用本品',
+--	remarks = '生用化痰，兼散风邪；炒用祛痰，又可降气。苦桔梗，有心，宣开力强；甜桔梗，无心，宣开力弱。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3969,16 +3993,17 @@
 --	and name = '白前';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--set alias = '有川贝母与浙贝母之分，以川贝母为主进行介绍',
+--	effects = '润肺化痰，清热散结，开郁宁心（还能引药入心）',
+--	actions_and_indications = '阴虚劳热所致的咳嗽；肺痈溃后，脓已吐尽，尚有咳嗽、吐痰、气短、午后烦热、口燥咽干者；心胸气机郁结而致的胸闷、胸痛、心悸、少眠、善忘、郁郁不乐等症；',
+--	details = '本品善润肺化痰，又能清泄胸中郁结之火，适用于肺热燥咳、痰热咳嗽、劳嗽吐血以及痈肿疮毒、瘰疬痰核等证。浙贝母与川贝母不同，小者为川贝，大者为浙贝，又称大贝、象贝。虽都能止咳化痰，但其作用又有不同：川贝苦甘微寒，滋润性强，用于肺热燥咳，多用于虚证；浙贝苦寒，开泄之力胜，用于治外感及痰热郁肺引起的咳嗽，多用于表邪之实证。土贝母与川贝、浙贝不是一类，其能解毒消肿，只用于外科痈疮肿毒。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '虚热咳嗽：配百合、沙参、麦冬、玄参、蜜紫菀、石斛、蜜枇杷叶等；肺痈溃后尚有咳痰烦热等：配桔梗、当归、生黄芪、甘草、麦冬、天花粉等；心胸气机郁结诸证：配远志、茯苓、香附、红花、郁金、石菖蒲、瓜蒌、枳壳等',
+--	similar_medicines = '半夏性温燥，主用于脾经湿痰；贝母性凉润，主用于肺经燥痰。',
+--	dosage_reference = '一般用量为3～9克，川贝可研为细分，随汤药冲服，每次0.9～1.5克',
+--	contraindications = '川贝反乌头，且脾胃虚寒、有痰湿者不宜用',
+--	remarks = '浙贝母味辛、苦，性微寒，辛散、清热之力大于川贝母，故适用于外感咳嗽；而川贝偏补，多用于燥咳及内伤久咳咯血。浙贝的配伍详见原书内容。',
+--	name = '贝母（附：土贝母）'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -4066,14 +4091,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '泻肺降火，清热化痰，和胃降气，降逆止呕',
+--	actions_and_indications = '肺热而致痰热咳嗽（咳逆上气、痰黏稠难出或痰黄、口渴、脉滑数、舌苔黄腻）；胃气失和或胃热火逆而致干哕或吐物热臭酸腐、口渴等',
+--	details = '本品味苦性凉善降，既能清肃肺气以化痰止咳，又能和胃降逆，为清肃肺胃之良药，故适用于肺热咳嗽及气逆呕哕，由于气降则痰降火亦降，所以又能润燥止渴除烦。止咳宜蜜炙用，止呕宜生用。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '痰热咳嗽：配黄芩、栀子、沙参、瓜蒌、知母、苦杏仁等；胃热哕呕：配竹茹、茯苓、槟榔、生姜、半夏、佩兰、紫苏子等',
+--	similar_medicines = '桑白皮与枇杷叶均能治肺热咳嗽，但桑白皮兼能泻肺行水，枇杷叶兼能降气和胃。马兜铃与枇杷叶都能清肺热，但马兜铃兼能清大肠热而治痔疮，枇杷叶兼能清胃热而降逆止呕。枇杷叶与旋覆花皆有化痰平喘、降逆止呕之功，但枇杷叶苦、微寒，用于偏热证；旋覆花辛、微温，多用于偏寒者。',
+--	dosage_reference = '一般用量为6～12克，鲜者可用15～30克，用时刷净绒毛',
+--	contraindications = '胃寒呕吐及肺感风寒咳嗽忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -4098,14 +4123,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	effects = '祛风利湿，退骨蒸劳热',
+--	actions_and_indications = '风寒湿痹、周身及关节拘挛疼痛；阴虚而引起的骨蒸劳热（下午潮热、两颧发红、肌肉消瘦、盗汗、晚间口干渴、舌红、脉细数）；湿邪郁蒸而致发黄者',
+--	details = '本品润而不燥，为风中之润剂，既能祛风除湿，又能通络舒筋，因其味苦有降泄之功，故又能清热除蒸，治虚劳骨蒸潮热，兼能利二便、导湿热外出，可治湿热黄疸。',
+--	common_prescriptions = '秦艽鳖甲散',
+--	common_partners = '风湿痹痛：配独活、桑寄生、威灵仙、当归、红花、防己、牛膝、薏米等，寒重者可加制附片、桂枝，湿重者可加苍术、白术，风盛者可加防风、羌活，筋脉拘挛重者可加木瓜、白芍、伸筋草、炙穿山甲等；阴虚劳热：配银柴胡、地骨皮、白薇、青蒿等；湿热黄疸：配茵陈、黄柏、车前子、栀子、茯苓等',
+--	similar_medicines = '银柴胡治虚劳，偏用于寒热交作的；秦艽治虚劳，偏用于潮热骨蒸的。独活与秦艽都能治身体下部风湿疼痛，但独活用于风湿寒痛；秦艽用于风湿热痛。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '脾胃虚寒、大便泄泻者勿用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -4370,14 +4395,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '平肝潜阳，熄风止痉，通络止痛，祛痰，且一般祛风、化痰药均有燥性，惟天麻辛润不燥，通和血脉，有益筋骨，故前人称天麻是“风药中之润剂”',
+--	actions_and_indications = '肝风内动、风痰上扰而致头痛、眩晕、眼黑、走路不稳、手足麻木等症；中风半身不遂、言语不利、半身麻木等；小儿惊风、大人癫痫而致的抽搐、牙关紧闭、眼吊、烦躁不安等症；通络止痛：用于风湿痹痛（包括风湿性关节炎、风湿痛等）；平肝潜阳：用于高血压性头痛、眩晕',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '肝风内动诸证：配钩藤、蒺藜、菊花、川芎、赤芍、胆南星、桑叶、生地、泽泻等；中风：配桑枝、半夏、制南星、红花、防风、桃仁、赤芍、地龙、蒺藜、钩藤、鸡血藤、川芎等；惊风、癫痫：配全蝎、蜈蚣、钩藤、天竺黄、黄连、黄芩、郁金、石菖蒲、远志、香附、陈皮等；风湿痹痛：配羌活、独活、防风、秦艽、威灵仙、桑枝、当归、陈皮等；用于高血压性头痛、眩晕：配夏枯草、草决明、钩藤、生龙牡、枸杞子、桑寄生、生白芍、菊花等',
+--	similar_medicines = '天麻与钩藤均平肝风内动，两者常相须为用，但天麻甘平滋润，养液缓急，利腰膝，通血脉，故治风证范围更广，内风、外风均可应用；钩藤苦寒，偏清肝熄风，主要用于肝热所致之动风及眩晕、头痛、目赤等症。苍耳子发汗散风湿，治头痛、头晕，善搜外风；天麻祛痰熄风、定惊痫，治眩晕、头痛，偏治内风。蔓荆子散上部风热，偏治外感实邪的头痛，内伤虚性头痛慎用；天麻偏治头痛眩晕属于内风夹痰者，外风头痛较少用。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '血虚者慎用本品',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -4497,16 +4522,16 @@
 --	and name = '棕榈炭';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--set alias = '田七、金不换、参三七',
+--	effects = '止血化瘀，消肿止痛',
+--	actions_and_indications = '各种出血；踢打损伤、瘀血青肿等症；痈肿疮疡的肿痛',
+--	details = '本品具有止血、化瘀、消肿、止痛四种功能，其中尤以止血为优，适用于人体内外各部位的出血，内服外用均有特效。对于跌打损伤、痈疽肿痛，其消散之功亦速。至于止痛不论气滞血阻风湿诸痛，效果也很好。本品一般不作煎剂用，常作为粉末用温开水送服或随汤药冲服，外用则捣碎或研末撒于患处，既可单用也可随证配其他药同用。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--	common_partners = '咳血：配沙参、炒栀子、黄芩、白及、苦杏仁、生藕节、枇杷叶等；吐血：配生赭石、竹茹、黄芩炭、白及、焦神曲、乌贼骨、仙鹤草、灶心土等；鼻衄血：配白茅根、大蓟、小蓟、炒栀子、荷叶炭、血余炭、金银花炭等；尿血：配黄柏炭、瞿麦、白茅根炭、小蓟炭、灯心草炭、生地等；便血：配防风、地榆炭、赤石脂、槐花炭等；子宫出血或月经过多：配阿胶、艾叶炭、棕榈炭、莲房炭、当归炭、续断炭、桑寄生等；踢打损伤、瘀血青肿等症：配乳香、没药、骨碎补、续断、血竭等，既可内服，又可外用；痈肿疮疡的肿痛：配金银花、连翘、赤芍、红花、当归尾、天花粉、乳香、没药等',
+--	similar_medicines = '白及、三七都能止血，但白及偏用于肺胃出血，如咳血、吐血；三七则可用于一切出血。乌贼骨为末外掺于伤口处，也能止血，但其作用是敛涩而止血；三七为末外掺（或捣烂外涂），能粘合伤口、散瘀消肿而止血，同时有很好的止痛作用。',
+--	dosage_reference = '一般用量为0.6～3克（止血）或3～6克（治外伤、筋骨折伤等），前人有用小量或中等量能止血、活瘀，大量则破血的经验，供参考。',
 --	contraindications = '',
---	remarks = ''
+--	remarks = '文山出产的三七最好。清朝药学著作《本草纲目拾遗》中记载：“人参补气第一，三七补血第一，味同而功亦等，故称人参三七，为中药中之最珍贵者。”'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -4530,14 +4555,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '收涩止血，凉血养血，兼活瘀血',
+--	actions_and_indications = '各种出血（例如咳血、吐血、衄血、尿血、便血、崩漏等证）',
+--	details = '鲜者可捣汁用以凉血、养血，晒干生用可收涩止血，炒炭则止血力更强。热证出血宜生用鲜用，虚寒证出血宜炒炭用。本品味甘涩偏凉，甘可补中，涩能固精，又可开膈，补腰肾，和血脉，散瘀血，生新血，故可凉血养血，既可药用，亦可食疗。然而因其止血力稍薄弱，故多作辅助用品。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '各种出血：可捣汁服用，也可炒炭配生地、侧柏叶、白及、大蓟、茜草炭、棕榈炭等',
+--	similar_medicines = '血余炭止血化瘀，兼能利尿；藕节收敛止血，兼能利水；二药合伍，相须相使，能止血利尿以通淋、化瘀消滞以缓痛。棕榈炭为收涩止血之品，专为治标济急时使用，早用、多用、单用有引起血瘀涩滞的弊害，故同时加用活血化瘀药较妥。藕节则兼有活血化瘀的作用，故不但可单用，而且还可以与棕榈炭同用以免除棕榈炭产生留瘀的弊害。',
+--	dosage_reference = '一般用量为9～15克，鲜用时可用30～60克',
+--	contraindications = '忌铁器',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -4577,14 +4602,14 @@
 --	and name = '冰片';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
+--set alias = '六神曲、六曲',
+--	effects = '开胃健脾，化食消积，主要用为帮助消化药',
+--	actions_and_indications = '饮食积滞而致胃胀、腹痛、食欲不振等症；饮食久积、痰食互结而生癖块癥瘕等；脾胃虚弱、消化不良等症',
+--	details = '本品炒焦用，消食的效力可增强，故消导药中常用焦神曲。生用除健脾开胃外，兼有些发散之力，故停食兼有外感发热者，宜生用。另外，还有帮助金石药品消化、吸收的作用，故使用磁石、赭石等金石药品时，可佐用一些神曲，既能助运化吸收，又能保护消化功能，例如磁朱丸',
+--	common_prescriptions = '磁朱丸',
+--	common_partners = '胃胀、腹痛、食欲不振：配麦芽、山楂、炒莱菔子、藿香、陈皮、枳实等；癖块癥瘕：配山楂核、白术、三棱、莪术、麦芽、红花、桃仁、生牡蛎、炙鳖甲等；脾胃虚弱、消化不良：配党参、白术、茯苓、炙甘草、陈皮、谷芽、麦芽等',
+--	similar_medicines = '焦麦芽能很好地消化果实淀粉类食物；焦山楂善于治疗肉类或油腻过多所致的食滞；焦神曲则利于消化米面食物；临床上常将这三者合用并称为焦三仙，也有将神曲换成谷芽而称焦三仙的。焦三仙加入炒焦的槟榔称为焦四仙，增强下气、破积的功效。',
+--	dosage_reference = '一般用量为3～9克',
 --	contraindications = '',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
@@ -4594,14 +4619,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '消食开胃，能化一切米面果实积滞，能助胃气上行而资脾健运，能使浊气下降而除胀宽肠，用量大时兼能回乳（断乳）',
+--	actions_and_indications = '饮食积滞（对米面果实、薯类积滞较好）；断乳；肝气不舒、脘胁胀闷、暧气等证；',
+--	details = '生用有鼓舞胃气助消化开胃的作用，可用于胃呆少食或食滞兼有胃热者，并有些舒肝调气的作用；炒后偏用于食滞兼有胃寒者；炒焦用消食化积的作用最大。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '饮食积滞：配神曲、半夏、炒莱菔子、炒鸡内金、焦山楂、槟榔、枳实、苍术等；断乳：60克单用、炒用，煎水服；肝气不舒：配川楝子、青皮等',
+--	similar_medicines = '焦麦芽、焦神曲、焦山楂合称焦三仙，三者的鉴别运用详见神曲一节',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '授乳期妇女不宜用，妊娠期慎用，无积者久服反伤正气',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -4609,15 +4634,15 @@
 --	and name = '麦芽';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--set alias = '山查',
+--	effects = '消积化痰，行气活瘀，止泻痢，降血压，兼能发小儿痘疹',
+--	actions_and_indications = '肉食积滞；中焦痰湿阻滞，久生积块者；产后下腹瘀血疼痛（俗称儿枕痛）、恶露不尽等症；高血压头痛头晕',
+--	details = '本品对肉食积滞的效果最好。生用，适于开胃消食、活血化瘀；炒用：消食导滞力强，并具收敛止泻作用；炒焦，适于消食导滞，并能抑制痢疾杆菌、绿脓杆菌；炒成炭适用于消食止泻，善入血分，具有化瘀止血之功。有报道称用50%的山楂酒，每次服10～20毫升，可止心绞痛。山楂核消食磨积，兼能治疝气疼痛（指腹股沟及少腹部疝气攻窜作痛或睾丸肿痛）。',
+--	common_prescriptions = '保和丸',
+--	common_partners = '肉食积滞：配炒鸡内金、神曲、麦芽、炒槟榔、莱菔子等；中焦痰湿生积：配白术、枳实、半夏、陈皮、神曲、麦芽、三棱、莪术、红花、桃仁、炙穿山甲等；产后下腹瘀血疼痛、恶露不尽：配桃仁、红花、炮姜、川芎、当归等；高血压头痛头晕：配桑叶、菊花、黄芩等；止泻痢：可单味炒炭研粉，与红糖冲服',
+--	similar_medicines = '焦麦芽、焦神曲、焦山楂合称焦三仙，三者的鉴别运用详见神曲一节。乌梅、山楂皆有酸味，但乌梅酸而收涩，敛肺涩肺；山楂酸而破泄，消积散瘀。',
+--	dosage_reference = '一般用量为3～15克',
+--	contraindications = '本品多服、久服反伐脾胃生发之气，故脾胃虚弱无积者慎用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -4626,14 +4651,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '消食开胃，兼有通淋化石和止小儿遗尿的作用',
+--	actions_and_indications = '消化力差而致饮食停滞、脘腹发胀、呕吐、泄泻、食不消化等症；小儿疳积；小便淋漓疼痛、尿中有砂石者（泌尿系结石）；胆结石疼痛；遗尿、小便频数',
+--	details = '本品善于消食磨积，为一味强有力的消导药，功能助消化以治食积，又可健脾运而止泻痢，因其健运力强，对脾胃虚弱证，宜与健脾药同用，其功尤捷。用治遗尿、小便频数等证，用醋炒、研末冲服，亦可用以治肝胆肾等内脏结石。生用时适于通淋化石，炒用时适于消食开胃。',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '消化力差、呕吐泄泻：配藿香、紫苏、焦三仙、枳实、半夏、陈皮等；小儿疳积：前述配伍去掉藿香，加胡黄连、银柴胡、使君子、焦槟榔等；小便痛、有砂石：配冬葵子、车前子、瞿麦、萹蓄、茯苓、猪苓、牛膝、泽兰、金钱草、川木通等；胆结石疼痛：配枳实、半夏、川楝子、柴胡、白芍、郁金、川木通、生大黄、金钱草等；遗尿、小便频数：配桑螵蛸、黄芪、煅龙骨、煅牡蛎等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '脾弱无积者慎用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -4673,15 +4698,15 @@
 --	and name = '草果';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '留求子、五棱子、山羊屎、使君子根',
+--	effects = '健脾胃，除虚热，消积杀虫',
+--	actions_and_indications = '常用于小儿由于脾胃不健而引起的各种疾病：停乳、食滞、湿热郁阻、消化不良而致疳疾、虫积、痞疾等，一般表现为：面黄肌瘦、毛发枯脆、消化不良、便泄、腹大青筋、低热、食欲不振、爱吃泥土、肝脾大、倦怠、易哭啼等；蛔虫、钩虫、蛲虫',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	common_prescriptions = '肥儿丸、健脾肥儿散',
+--	common_partners = '小儿由于脾胃不健而引起的各种疾病：配胡黄连、焦三仙、鸡内金、槟榔、白术、茯苓等；蛔虫：本品单用，或配苦楝子、芜荑、甘草、猪胆汁等；钩虫：配榧子等；蛲虫：配百部、大黄',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '大量服用可引起呃逆、腹胀、头晕、恶心等副作用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -4770,14 +4795,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	effects = '清热解毒，消痈散结',
+--	actions_and_indications = '疔痈恶疮、瘰疬结核、蝎螫虫咬等',
+--	details = '本品能散坚、消结、化痰、解毒，前人用来治疔痈肿疮汤、瘰疬、结核等证，皆用醋磨涂敷，今人多制成锭剂内服，常用于治疗皮肤癌、血管瘤、脂肪瘤等，但很少入汤煎，且不宜长期服用。',
+--	common_prescriptions = '紫金锭、玉枢丹',
+--	common_partners = '疔痈恶疮、瘰疬结核、蝎螫虫咬等：配金银花、连翘、蒲公英、紫花地丁、苍耳子（或茎叶）、五倍子、朱砂等，或用紫金锭、玉枢丹',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '有小毒，久服对肝脏有损害，故不宜久服',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -4785,16 +4810,16 @@
 --	and name = '山慈菇';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--set alias = '松叶牡丹、龙须牡丹、太阳花',
+--	effects = '清热解毒，散瘀止血，利水消肿',
+--	actions_and_indications = '各种肿瘤、癌症',
+--	details = '辛能行散，苦寒清泄，既清解热毒与蛇毒，又散瘀凉血而止血，还清热利水而通淋消肿，尤善治毒蛇咬伤、疮肿与癌肿，现代多作抗癌药使用',
+--	common_prescriptions = '复方半枝莲抗癌注射液',
+--	common_partners = '肿瘤：配山豆根、露蜂房、山慈菇；直肠癌、胃癌、食管癌、宫颈癌等：配白花蛇舌草、半边莲、猪殃殃、白英、龙葵（即复方半枝莲抗癌注射液）',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	dosage_reference = '一般用量为15～30克',
+--	contraindications = '体虚及孕妇慎用',
+--	remarks = '即叶子呈肉条状的太阳花，还能作装饰，路边也可见。名称上不要与半边莲混淆。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -4802,52 +4827,111 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '清热解毒，活血消肿，利湿通淋',
+--	actions_and_indications = '肠痈；湿热淋（包括急性泌尿系感染）；咽喉肿痛、急性扁桃体炎等；各种癌肿、疔疮、痈疖；急性阑尾炎；蛇咬伤或毒虫蜇伤；',
+--	details = '本品善清热解毒，用于各种邪热、毒邪、虫蛇之邪所引起的各种疾病，同时又能散瘀、化湿，用于治瘰疬、结核、癌肿及慢性肾病等。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_partners = '肠痈：配紫花地丁、野菊花、蒲公英等；湿热淋：配白茅根、海金沙、川黄柏等；咽喉肿痛、急性扁桃体炎：配玄参、锦灯笼、金银花、黄芩、射干等；各种癌肿、疔疮、痈疖：配半边莲、半枝莲、蒲公英等；急性阑尾炎：可单用，也可配大黄、丹皮、桃仁等；蛇虫伤：本品15～30克，白酒250克，加水煎服，或用鲜者外敷；',
+--	similar_medicines = '本品与半边莲、半枝莲，均有清热解毒之功，治疗各种癌症。半边莲、半枝莲的散瘀多用于肝硬化腹水，通过散瘀恢复肝功能；本品多用于尿路感染，特别是肾炎水肿。',
+--	dosage_reference = '一般用量为20～50克',
+--	contraindications = '孕妇慎用',
+--	remarks = '其他常见的具有抗癌作用的中药：山慈菇、半枝莲、半边莲、莪术、山豆根、瓜蒌、射干、猪苓、夏枯草、黄药子、土鳖虫、全蝎、蜈蚣、水蛭、蟾酥、丹参、赤芍、三七、大蓟、小蓟、鸦胆子、紫草、补骨脂、白术、雄黄、山茱萸、淫羊藿、皂角刺、苦杏仁、浙贝母、莱菔子、海藻、昆布 、麝香、威灵仙、乌头等。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
 --	and name = '白花蛇舌草';
 --
---update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
---where (effects is null or length(effects) = 0)
---	and (actions_and_indications is null or length(actions_and_indications) = 0)
---	and (alias is null or length(alias) = 0)
---	and name = '新药物2';
---
---update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
---where (effects is null or length(effects) = 0)
---	and (actions_and_indications is null or length(actions_and_indications) = 0)
---	and (alias is null or length(alias) = 0)
---	and name = '新药物';
---
 --======================== 2018-01-29 13:34:15 end ========================--
+--
+--
+--======================== 2018-02-21 11:37:02 begin ========================--
+--
+--update medicine_items
+--set alias = '',
+--	effects = '健脾养胃，消暑祛湿，常用于调补脾胃的方剂中',
+--	actions_and_indications = '脾虚泄泻；消渴多饮；夏季感受暑湿之邪而致呕吐、泻利、烦渴、头晕、胸闷',
+--	details = '本品补脾不腻，化湿不燥，对脾胃虚弱或大病后，初用补剂时，先用扁豆，最为合适，能调养正气而无饱闷之弊',
+--	common_prescriptions = '',
+--	common_partners = '脾虚泄泻：配炒山药、白术、党参、茯苓、炒芡实等；消渴多饮：配天花粉；受暑湿之邪侵扰诸证：配藿香、佩兰、荷叶、赤小豆、厚朴、白蔻仁等',
+--	similar_medicines = '扁豆花解散暑邪之力大于扁豆；扁豆健脾祛湿之力大于扁豆花。扁豆衣清暑热、利暑湿之力优于扁豆，但健脾扶正之力则大不如扁豆。绿豆性凉，能消心胃之暑，兼能利湿、解毒；扁豆性微温，能消脾胃之暑，并能健脾扶正。荷叶升清气而消暑，扁豆降湿浊而消暑。',
+--	dosage_reference = '一般用量为4.5～12克，扁豆花、扁豆衣质轻，可适当减少些。',
+--	contraindications = '',
+--	remarks = '生用消暑祛湿，炒用健脾养胃'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '白扁豆';
+--
+--update medicine_items
+--set alias = '黑枣',
+--	effects = '补脾和胃，强健脾胃，有止泻、生津、补养强壮等作用，并能缓和药性、解毒、保护脾胃（例如用在十枣汤、葶苈大枣泻肺汤等），枣核炒焦泡水有安眠作用',
+--	actions_and_indications = '妇女脏躁（抑郁不乐、悲伤欲哭等）；失眠',
+--	details = '',
+--	common_prescriptions = '甘麦大枣汤、十枣汤、葶苈大枣泻肺汤',
+--	common_partners = '妇女脏躁：配甘草、小麦（即甘麦大枣汤），并可随证加减香附、柴胡、生龙骨、生牡蛎、白芍、郁金、胆南星等；失眠：枣核炒焦泡水',
+--	similar_medicines = '龙眼肉、大枣都能益脾，但龙眼肉偏于养心补血、治心虚，大枣偏于补脾和胃、治脾虚。饴糖味甘益脾，偏于缓急和中，治中虚作痛；大枣味甘益脾，偏于益气养血，兼能养心，治脾虚心慌如悬。',
+--	dosage_reference = '一般用量为3～10枚',
+--	contraindications = '胃胀满、有痰热者，不宜用本品。',
+--	remarks = ''
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '大枣';
+--
+--update medicine_items
+--set alias = '首乌藤',
+--	effects = '常用为安神药，能使身体阴阳协调的作用，也有通经络、祛风湿、除痹痛的功能',
+--	actions_and_indications = '肝肾阴虚而阳旺所致的虚烦不眠、多梦等症；风寒湿痹、全身窜痛等症',
+--	details = '',
+--	common_prescriptions = '',
+--	common_partners = '虚烦不眠、多梦：配生地、白芍、龙骨、牡蛎、远志、玄参等；风寒湿痹：配桑寄生、桑枝、独活、羌活、桂枝、当归、红花、附子等',
+--	similar_medicines = '',
+--	dosage_reference = '一般用量为9～30克',
+--	contraindications = '',
+--	remarks = '可内服也可外用：水煎内服，能治失眠，祛风湿，舒经络，除痹痛；煎水外洗有解毒、和血、祛风的作用，可用于风疮、疥癣作痒。'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '夜交藤';
+--
+--======================== 2018-02-21 11:37:02 end ========================--
+--
+--
+--======================== 2018-02-23 13:55:28 begin ========================--
+--
+--update medicine_items
+--set alias = '延胡索',
+--	effects = '活血行气，前人认为它能“行血中气滞，气中血滞”，从而能治一身上下、心腹、腰膝、内外各种疼痛',
+--	actions_and_indications = '治诸痛，例如热性胃脘痛、腹中冷痛、气滞作痛、瘀血作痛、睾丸偏坠疼痛或痛引少腹的疝痛、痛经、上下肢疼痛、跌打损伤疼痛等；癥瘕',
+--	details = '延胡索含有延胡索素，有镇痛作用，兼有镇静、镇吐、催眠等作用；对治疗胃肠系统疾病引起的钝痛以及周围神经痛、肢体痛等有效；对暂时性的失眠，也有一定效果',
+--	common_prescriptions = '',
+--	common_partners = '治诸痛药物搭配见原书内容；癥瘕：配当归、赤芍、红花、桃仁、牛膝、泽兰、炙穿山甲、莪术、三棱、大黄、乌药、青皮等',
+--	similar_medicines = '胡芦巴偏用于腹痛喜热、喜按者；延胡索偏用于腹痛筋急拒按者。香附与延胡索均为气血药，香附主入气分，善理十二经八脉诸气，兼行气中血滞；延胡索主入血分，善理一身内外上下诸痛，兼行血中气滞。小茴香治疝瘕疼痛，偏重于理气；延胡索治疝瘕疼痛，偏重于活血',
+--	dosage_reference = '一般用量为2.5～9克。目前常研为细分，随汤药冲服，每次0.9～2.5克，每日2次',
+--	contraindications = '血热气虚者勿用本品，孕妇忌用本品',
+--	remarks = '生用活血效力大，醋炒也可用于止血'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '元胡';
+--
+--update medicine_items
+--set alias = '土鳖虫、土元',
+--	effects = '破瘀血，消癥瘕，续筋接骨',
+--	actions_and_indications = '血瘀不通引起的经期不准、经闭不通、积聚痞块、腹痛、身体瘦弱、午后发烧、肌肤甲错（高度的干燥不润）、干血痨症；急性热病导致舌头部分或全部肿大、发硬，疼痛剧烈，流口水，咀嚼、下咽均感困难（即木舌）；跌打损伤、骨折筋断等；闪腰岔气',
+--	details = '',
+--	common_prescriptions = '大黄䗪虫丸',
+--	common_partners = '血瘀不通诸证：大黄䗪虫丸（配大黄、干漆、蛴螬、赤芍、甘草、桃仁、生地、虻虫、水蛭、黄芩、杏仁，市面有成药出售）；木舌：配食盐，研末或煎汤服或含漱；跌打损伤、骨折筋断等：配乳香、没药、龙骨、自然铜、三七、海风藤、骨碎补、川续断等为细末，加入麝香少许，温酒服用；闪腰岔气：配牛膝、泽兰、续断、狗脊、桃仁、赤芍等',
+--	similar_medicines = '虻虫破血，遍行经络，能祛除真气运行难到之处的瘀血；土鳖虫破血，搜剔血积，接补筋骨折伤又为其专能。',
+--	dosage_reference = '一般用量为1.5～4.5克，入汤剂可稍多，入丸散可稍减',
+--	contraindications = '孕妇及无瘀血者忌用',
+--	remarks = '过去市场上曾将龙虱当做䗪虫，而将土鳖虫另外分开；现在土鳖虫即䗪虫，龙虱不再叫䗪虫。'
+--where (effects is null or length(effects) = 0)
+--	and (actions_and_indications is null or length(actions_and_indications) = 0)
+--	and (alias is null or length(alias) = 0)
+--	and name = '䗪虫';
+--
+--
+--======================== 2018-02-23 13:55:28 end ========================--
 --
 

@@ -96,6 +96,9 @@ public class UpgradeManager extends SQLiteOpenHelper {
                 Log.v(TAG, "Making data of version " + 10112 + " ...");
                 mBusinessDbHelper.upgradeV10112();
 
+            case 10112:
+                ;
+
             default:
                 ; // nothing
             }

@@ -912,10 +912,10 @@ public class DetailContentActivity extends Activity {
             { R.string.name, R.id.lsv_title_medicine_name, R.id.lsv_content_medicine_name },
             { R.string.alias, R.id.lsv_title_medicine_aliases, R.id.lsv_content_medicine_aliases },
             { R.string.category, R.id.lsv_title_medicine_category, R.id.lsv_content_medicine_category },
-            { R.string.medicine_nature, R.id.lsv_title_medicine_nature, R.id.lsv_content_medicine_nature },
             { R.string.medicine_taste, R.id.lsv_title_medicine_tastes, R.id.lsv_content_medicine_tastes },
+            { R.string.medicine_nature, R.id.lsv_title_medicine_nature, R.id.lsv_content_medicine_nature },
             { R.string.channel_tropism, R.id.lsv_title_channel_tropism, R.id.lsv_content_channel_tropism },
-            { R.string.life_fundamental_diplay_name, R.id.lsv_title_relations_with_life_fundamentals, R.id.lsv_content_relations_with_life_fundamentals },
+            { R.string.action_on, R.id.lsv_title_relations_with_life_fundamentals, R.id.lsv_content_relations_with_life_fundamentals },
             { R.string.motion_form, R.id.lsv_title_motion_form, R.id.lsv_content_motion_form },
             { R.string.medicine_effect, R.id.lsv_title_medicine_effects, R.id.lsv_content_medicine_effects },
             { R.string.medicine_action_and_indication, R.id.lsv_title_medicine_actions_and_indications, R.id.lsv_content_medicine_actions_and_indications },
@@ -1181,9 +1181,9 @@ public class DetailContentActivity extends Activity {
                     new String[] { null, null, null, null, null, null, null } )
             },
 
-            natureData,
-
             tastesData,
+
+            natureData,
 
             channelTropismData,
 
