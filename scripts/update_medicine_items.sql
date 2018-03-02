@@ -2600,15 +2600,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '祛风除湿，活血祛瘀，利水消肿，补肝肾，强腰膝，壮筋骨',
+--	actions_and_indications = '各类风湿性关节炎；肝肾亏损引起的腰膝酸软、筋骨软痛；急性肾炎腰痛消肿、心功能不齐所致的下肢浮肿；阴囊湿痒、皮肤湿疹等病',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	common_prescriptions = '五加皮散、五加皮丸',
+--	common_partners = '各类风湿性关节炎：配木瓜、松节、牛膝等；腰膝酸软、筋骨软痛：配杜仲、巴戟天、川断等，也可单品泡酒（五加皮酒）饮，或配杜仲、川断、当归等泡酒；急性肾炎腰痛消肿：配茯苓皮、桑白皮、冬瓜皮、陈皮、麻黄等；心功能不齐所致的下肢浮肿：配茯苓、猪苓、泽泻、桂枝；阴囊湿痒、皮肤湿疹等病：配黄柏、蛇床子、防风、苦参等，煎水外洗',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '阴虚火旺者慎用。用北五加皮时，如发现脉搏减慢（一分钟低于60次），则需停用',
+--	remarks = '南五加无毒，补肝肾、强筋骨作用较好；北五加有强心利尿作用，多用于利湿治消肿，有毒，不宜多用。'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2791,16 +2791,16 @@
 --	and name = '附子';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--set alias = '肉桂是通称。质量好药力足的叫紫油桂；刮去外面粗皮及里面薄皮的叫桂心；幼桂树皮叫官桂',
+--	effects = '温补肾阳，温中逐寒，宣导血脉，引火归原',
+--	actions_and_indications = '肾阳不足引起的男子阳痿、精冷、妇女久不生育等；肾阳虚所致的小便不利甚至水肿；因受寒而致心腹疼痛、腹胀、少腹冷痛、寒疝、痛经等；脾肾阳虚影响中焦运化失调而产生虚寒性泄泻、大便清稀甚至完谷不化等症；气血运行不畅而生阴疽，或手指脚趾发凉疼痛甚至导致脱骨疽（闭塞性脉管炎）；肾阳虚衰而致虚阳上越，出现真寒假热的戴阳证；肾火上浮而出现上热（口干、喉痛、牙痛，不红不肿、夜间加重、痛连齿颊）、下寒（腰痛、腿足发凉、便溏、尺脉弱）',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '济生肾气丸、金匮肾气丸、右归丸',
+--	common_partners = '男子阳痿、精冷：配鹿茸、熟地、菟丝子、枸杞子、沙苑子、山茱萸、附子、肉苁蓉、巴戟天、山药、茯苓、泽泻等；妇女久不生育等：配当归、熟地、白芍、川芎、香附、生艾叶、附子、紫石英、吴茱萸、乌药等；小便不利甚至水肿：配熟地、山药、牛膝、山茱萸、茯苓、丹皮、泽泻、附子、车前子（济生肾气丸）；受寒疼痛：配高良姜、香附、吴茱萸、小茴香、乌药、丁香、沉香等；中焦运化失调：配党参、白术、茯苓、炙甘草、干姜、附子、补骨脂、肉豆蔻、诃子、五味子等；气血运行不畅：配熟地、麻黄（同捣）、白芥子、鹿角胶、附片、红花、干姜、细辛、桂枝尖等；戴阳证：配熟地、山茱萸、五味子、人参、附子、煅龙骨、煅牡蛎等，引火归原、纳气归肾；肾火上浮而上热下寒：配玄参、川断、牛膝、熟地、知母、细辛、桑寄生等',
+--	similar_medicines = '本品与桂枝，同生于桂树，肉桂为桂树皮，桂枝为桂枝嫩枝，二者皆有温营血、助气化、散寒凝的作用，但肉桂长于温里止痛，入下焦而补肾阳、归命火；桂枝长于发表散寒、振奋气血，主上行而助阳化气、温通经脉。附子作用迅速急烈，走而不守，能回阴寒证中几欲散失的阳气（回阳救逆），故前人称其能“救阴中之阳”；肉桂的作用和缓浑厚，能守能走，能补下焦肾中不足的真火（温补肾阳），更能引火归原，以息无根之火，故前人称其能“救阳中之阳”。救急药中多用附子，补益药中多用肉桂。干姜温中逐寒，偏入脾经气分，回阳通脉，兼能心阳；肉桂温中逐寒，偏入肾经血分，抑肝扶脾，兼交心肾。',
+--	dosage_reference = '一般用量为0.6～4.5克，重症时可用9～15克',
+--	contraindications = '阴虚火旺或热病伤津者忌用，孕妇禁用，忌生葱、石脂，恶菊花',
+--	remarks = '桂心性不太燥，适用于助心阳、交心肾；官桂力弱性燥，适用于温中燥湿'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -2808,14 +2808,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '温中散寒，回阳通脉，温肺化痰，温经止血。能引血分药入血中气分而生血，引附子入肾而祛寒回阳，并能温助心肺阳气。',
+--	actions_and_indications = '脾胃虚寒或寒邪影响脾胃运化而致的脘腹冷痛、喜热喜按、或吐或泻、吐泻清稀等症；亡阳虚脱；寒痰咳喘',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_prescriptions = '大建中汤、四逆汤、小青龙汤',
+--	common_partners = '脾胃虚寒的腹痛腹泻：配党参、白术、炙甘草、藿香、吴茱萸、茯苓、陈皮等；亡阳虚脱：配附子、甘草（四逆汤），虚人、老人还可再加党参（或人参），冷汗不止者还可加麦冬、五味子、山茱萸肉等；寒痰咳喘：配细辛、五味子；配麻黄：可祛除伏于肌腠中的寒邪 ',
+--	similar_medicines = '生姜辛散之力较强，能散寒解表、温中止呕；干姜辛散之性减弱，长于温中回阳，为脾阳衰微、吐利腹痛之要药；炮姜已无辛散作用，能温中摄血，专治中焦虚寒、脾不统血。故前人有生姜走而不守、干姜能走能守、炮姜守而不走之说。薤白辛苦温滑，入心经，通气滞，助胸阳而治胸痹（心、胸及背疼痛）；干姜辛温，入脾经，兼入心肺，助阳而补心气。',
+--	dosage_reference = '一般用量为0.9～6克，炮姜炭用0.6～3克',
+--	contraindications = '精血不足、阴虚内热、阴虚咳嗽吐血、表虚有热汗出、自汗盗汗、脏毒下血、因热呕恶、火热腹痛者忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2823,7 +2823,7 @@
 --	and name = '干姜';
 --
 --update medicine_items
---set alias = '',
+--set alias = '黑姜',
 --	effects = '',
 --	actions_and_indications = '',
 --	details = '',
@@ -2903,15 +2903,15 @@
 --	and name = '高良姜';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--set alias = '根据炮制不同可分为：鲜艾叶、炒艾叶、艾炭（艾叶炭）、艾绒',
+--	effects = '散寒除湿，温经止血，行气止痛，安胎',
+--	actions_and_indications = '腹中冷痛、子宫寒冷而久不受孕、虚寒性痛经等；下元虚寒而月经过多、崩漏，以及孕妇受寒、腹中疼痛、胎动不安等',
+--	details = '本品苦燥辛散、芳香而温，专入三阴经，以温气血、温经脉、逐寒湿而止冷，为妇科常用药，温经止血与炮姜同义，其温暖下焦气血，又与肉桂同功，既能行气血，又能止血安胎。鲜艾叶平温少燥，宁血和经，用于血热出血、便血衄血等证；炒艾叶偏温热，强于散寒，适用于宫寒不孕、腹冷痛经；艾叶炭善入血分，温经止血，宜用于崩漏下血、月经过多等证；将艾叶捣成绒状，名为艾绒功能与艾叶相同，但优于艾叶，多用烧灸，以温煦气血、疏经活络。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '冷痛、久不受孕等：配当归、干姜、炒白芍、肉桂、小茴香、吴茱萸、香附等；下元虚寒、胎动等：炒炭后，配当归、白芍、熟地、阿胶、棕榈炭、益母草、桑寄生、续断炭等',
+--	similar_medicines = '艾叶与炮姜均温经止血，但炮姜主中焦虚寒，艾叶主下焦虚寒。艾叶与肉桂皆能温暖下焦气血，然肉桂辛甘大热，能引血而不止血，能堕胎而不安胎；艾叶辛苦温煦，能温经脉以止血，行气以安胎，此皆同中有异。',
+--	dosage_reference = '一般用量为2.5～6克，止血时可用艾炭15～30克',
+--	contraindications = '阴虚有血热者不宜用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -2936,15 +2936,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '燥湿化痰，健脾胃，和中降逆，止呕吐，消痞散结',
+--	actions_and_indications = '湿盛痰多而咳嗽（痰白稀易出、量多而不太黏稠）、胸闷等；中焦虚寒、水饮不化而上犯于肺出现咳嗽（清稀水样或泡沫样痰）、胸背畏冷等；中焦湿浊太盛而致脘腹满闷、气逆呕吐；各种痰',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
+--	common_partners = '湿盛痰多：配橘红、茯苓、紫苏子、胆南星、炒莱菔子、杏仁等；中焦虚寒水饮不化：配苏子、橘红、桂枝、猪苓、茯苓、白术、干姜、细辛、五味子等；脘腹满闷、气逆呕吐：配竹茹、丁香、吴茱萸、藿香、生姜、陈皮、茯苓等；风痰：配皂角、天麻、天南星等；寒痰：配生姜、干姜、附子、苍术、橘红等；经络、四肢、皮里膜外之痰：配竹沥、白芥子等，用于中风、半身不遂；',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '反乌头；一切阴虚血少、津液不足、舌赤无苔者及妊娠后期均禁用',
+--	remarks = '姜半夏偏用于治呕吐；清半夏、法半夏偏用于化痰燥湿健脾胃；半夏曲化痰兼能助消化'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3096,15 +3096,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '清热燥湿（泻中上焦实火，燥肠胃湿热，清少阳邪热），止血安胎，解毒凉血，还有利尿、降血压作用',
+--	actions_and_indications = '胃火上壅而咽痛、牙痛、口腔溃疡、扁桃体肿痛、膈间闷热、大便干结、肺热咳嗽等症；肠胃湿热下注而致泄泻、痢疾、热淋等；中焦湿热郁蒸而致黄疸；病邪踞于少阳而出现寒热往来、口苦咽干、胸胁苦满、食欲不振、恶心欲呕等症；胎热不安而出现恶心呕吐、心中烦热、口中吐水、腹部不适、饥不欲食等症；肺及气管出血、鼻出血',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	common_prescriptions = '小柴胡汤',
+--	common_partners = '胃火上壅诸证：配生地、玄参、连翘、黄连、生大黄等；兼有外感表证的，可加荆芥、薄荷；咳嗽较重的，可加桔梗、瓜蒌、杏仁、枇杷叶等；肠胃湿热下注：配黄柏、茯苓、猪苓、炒扁豆、炒薏米（治湿热泻）、黄连、葛根、木香、槟榔（治湿热痢）、木通、萹蓄、滑石、泽泻（治湿热淋）等；黄疸：配黄柏、栀子、茵陈、猪苓、泽泻、车前子等；少阳邪热诸证：配柴胡、半夏、生姜、甘草、党参（小柴胡汤）等，随证加减其他药还可治黄疸型及无黄疸型传染性肝炎，详见原书内容；胎热不安诸证：配竹茹、橘皮、生姜、黄连、紫苏梗、茯苓等；肺及气管出血、鼻出血：配地骨皮、桑白皮等',
+--	similar_medicines = '桑白皮、地骨皮泻肺经气分之热，黄芩、栀子泻肺经血分之热。柴胡清热缘于“苦以发之”（发散之意），散火热之标；黄芩清热缘于“寒以胜之”（苦寒直折，以寒胜热之意），是直折火热之本。二药合用，为治少阳邪热的专剂。黄芩、黄连、黄柏均能清泄邪热、燥化湿浊，兼具解毒功能，然黄芩善除上焦湿热，主清肺火，并能清热安胎；黄连主治湿火郁结，主清心火，善解疔毒；黄柏主除下焦湿热，善泄肾经相火。',
+--	dosage_reference = '一般用量为3～9克',
+--	contraindications = '脾胃虚寒者禁用',
+--	remarks = '黄芩酒炒偏用于泻肺火，治上焦湿热；黄芩炭可用于各种热性出血；枯芩（又名片芩，中空而黑）偏于泻肺胃之火，清肌表之热；子芩（又名条芩，里外坚实，黄色微绿）偏于泻肠胃之火，并常用于清热安胎'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3577,14 +3577,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '清热散结，清肝明目，降血压，利尿',
+--	actions_and_indications = '肝阳上亢而致头部胀痛、眩晕、眼花等；肝气郁结、痰气凝聚而致颈部两旁产生瘰疬痰核（包括颈淋巴结核等）；乳房结块；腮腺炎；肝肾阴虚、肝阳亢盛而致眼珠疼痛（不红不肿似正常，惟下午或前半夜感到胀痛或抽痛）',
 --	details = '',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '肝阳头痛等：配菊花、白蒺藜、生赭石、黄芩、生牡蛎、白芍、生地、泽泻、地骨皮等，高血压患者出现肝阳上亢证者，也可用此方随证加减；颈部瘰疬痰核：配生牡蛎、玄参、黄芩、海藻、贝母、百部、柴胡、赤芍等；乳房结块：配瓜蒌、白芷、蒲公英、漏芦等；腮腺炎：配板蓝根、马勃、牛蒡子、大青叶等；肝阳亢盛而目珠夜痛：配草决明、生石决明、白蒺藜、石斛、地骨皮、黄芩、生地、玄参等，青光眼、高血压等出现目珠夜痛者也可用此方，痛久血虚者可加当归、白芍等',
+--	similar_medicines = '玄参治瘰疬，偏于滋阴降火，解毒散结；夏枯草治瘰疬，偏于平肝解郁，清热散结。菊花治头痛，偏于散风热；夏枯草治头痛，偏于平肝清热。',
+--	dosage_reference = '一般用量为9克，重症时可用15克',
+--	contraindications = '脾胃虚寒者慎用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -3592,15 +3592,15 @@
 --	and name = '夏枯草';
 --
 --update medicine_items
---set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
---	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--set alias = '决明子',
+--	effects = '常用的清肝明目药，也能降血压、润肠通便',
+--	actions_and_indications = '肝胆郁热所致的目赤肿痛、羞明流泪、头痛、眩晕等症；肝肾不足而致目昏、视力减退、目干涩发抽等症（包括视网膜炎、视神经萎缩等）',
+--	details = '本品甘能补益，苦可清降，寒能清热，咸入血分，既可清肝火又可补肝肾，虚实均可用。可久服，有明目作用。可单用泡水饮，也可配合其他药同用。',
+--	common_prescriptions = '决明子散、菊花决明散、石斛夜光丸',
+--	common_partners = '肝胆郁热诸证：配菊花、蔓荆子、黄芩、白蒺藜、青葙子、木贼草等；肝肾不足之目疾：配生地、石斛、当归、白芍、黄芩、沙苑蒺藜、地骨皮、菊花、枸杞子、生石决明、夜明砂等；',
+--	similar_medicines = '蔓荆子治两侧头痛，以疼痛近于颞颥部者效果较好，偏于散风明目；决明子治两侧头痛，以疼痛近于太阳穴处者疗效较好，偏于清肝明目。木贼草退目翳而明目，决明子清肝热而明目。',
+--	dosage_reference = '一般用量为3～9克，捣碎煎服',
+--	contraindications = '脾虚泄泻、血压低者忌用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
@@ -3801,15 +3801,15 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
+--	effects = '清热化痰，宽胸降气，润肠通便',
+--	actions_and_indications = '肺热痰多而咳嗽、痰多黄稠、黏不易出、胸闷气促口渴、苔黄腻等；肺热伤津或肺有燥热而致的干咳少痰、口渴唇燥、咽喉干呛、大便干燥、舌苔黄燥等症；痰浊结滞于胸中而致胸中憋闷疼痛、心痛彻背、背痛彻心等症；肺与大肠有热、伤耗津液或久病伤津，或老年津亏等而致大便干结者；乳痈；',
 --	details = '',
---	common_prescriptions = '',
---	common_partners = '',
+--	common_prescriptions = '小陷胸汤、千金牡丹皮散',
+--	common_partners = '肺热痰多而咳嗽、胸闷等：配知母、贝母、黄芩、桔梗、桑白皮、地骨皮、枇杷叶等；肺热干咳少痰、大便干燥等：配麦冬、沙参、知母、梨皮、枇杷叶、玄参、生地等；痰浊胸闷心背痛：配薤白、枳实、槟榔、红花、檀香、五灵脂、焦山楂、丹参等；乳痈：配白芷、当归、乳香、没药、漏芦、金银花、蒲公英、炙穿山甲等',
 --	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
---	remarks = ''
+--	dosage_reference = '一般用量为瓜蒌皮6～12克，瓜蒌仁6～15克，全瓜蒌9～30克',
+--	contraindications = '虚寒性泄泻者不宜用本品，不可与乌头、附子同用',
+--	remarks = '瓜蒌皮偏于宽胸降气；瓜蒌仁偏用于降痰及肠痈；全瓜蒌偏用于宽胸降气、润肠通便、消乳痈'
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
 --	and (alias is null or length(alias) = 0)
@@ -3929,14 +3929,14 @@
 --
 --update medicine_items
 --set alias = '',
---	effects = '',
---	actions_and_indications = '',
---	details = '',
+--	effects = '平肝潜阳，益阴明目，清肺祛热',
+--	actions_and_indications = '肝肾阴虚而致肝阳上亢出现头痛、偏头痛、头晕目眩、急躁易怒、失眠、轰然而热等症；肝经有热而致目赤肿痛、羞明或目生障翳等；肝肾阴虚而致头胀、目痛、视力减退，或目生内障、青光眼等；夜盲；肺结核骨蒸劳热',
+--	details = '本品能清肝热、补肝阴，可用于肝阳独亢或阴亏阳亢所致的眩晕、抽搐、目赤翳障、青盲雀目等证，是治疗肝阴不足、肝阳上亢最常用的药物，且能清虚热，用治肺结核之低热。根据炮制方法的不同，生石决明平肝潜阳、清热明目功效较强，善治肝火上炎所致的目赤肿痛、头目眩晕；煅石决明减咸寒之性，加强收涩之功，多能平肝敛肝，用于骨蒸劳热、青盲内障、外伤出血；盐石决明增咸寒滋阴之力，长于补肝益肾、滋阴清热。',
 --	common_prescriptions = '',
---	common_partners = '',
---	similar_medicines = '',
---	dosage_reference = '一般用量为X～X克，重症时可用X～X克',
---	contraindications = '',
+--	common_partners = '肝阳上亢而头晕头痛、失眠发热等：配生赭石、生地、白芍、黄芩、香附、夏枯草、菊花、天麻、钩藤、桑寄生、牛膝、泽泻、蒺藜等；肝热目疾：配桑叶、菊花、蔓荆子、黄芩、生地、木贼草、草决明等；肝肾阴虚之目疾：配生地、熟地、地骨皮、石斛、菟丝子、山萸肉、五味子、枸杞子、菊花、夜明砂、知母等同用；夜盲：可与猪肝、羊肝、苍术、草决明等同用；肺结核骨蒸劳热：配地骨皮、女贞子、青蒿等',
+--	similar_medicines = '草决明为种子，偏于清肝，且能补肝；石决明为介壳，长于平肝，兼能潜阳。二药配合，相须为用，无论肝火上炎还是血虚肝热、肝阳上亢所致的目疾，均有“决明”之功，常为最佳对药选用。牡蛎潜阳兼入肾经，主治浮阳外越，主收；石决明潜阳主入肝经，潜降肝阳上扰，主降。珍珠母潜阳，偏于养心安神；石决明潜阳，偏养肝潜降，降力大于珍珠母。',
+--	dosage_reference = '一般用量为生者9～45克，煅者9～20克',
+--	contraindications = '脾胃虚寒者禁用',
 --	remarks = ''
 --where (effects is null or length(effects) = 0)
 --	and (actions_and_indications is null or length(actions_and_indications) = 0)
