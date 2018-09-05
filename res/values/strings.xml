@@ -443,6 +443,10 @@
     <string name="cht_db_error">數據庫操作錯誤</string>
     <string name="en_db_error">Database Error</string>
 
+    <string name="db_file">数据库文件</string>
+    <string name="cht_db_file">數據庫文件</string>
+    <string name="en_db_file">Database File</string>
+
     <string name="data_init_error">数据初始化失败</string>
     <string name="cht_data_init_error">數據初始化失敗</string>
     <string name="en_data_init_error">Data Initialization Error</string>
@@ -559,6 +563,8 @@
     </string>
 
     <string name="version_log_contents">
+        ---- V1.01.14 2018/09/05\n
+        1、支持多个数据库文件，可随意切换。\n\n
         ---- V1.01.13 2018/03/01\n
         1、完善数据库初始化逻辑：当数据库文件被用户删除，下次启动程序自动
         创建数据库时，也把各个版本的升级操作做一遍，以确保数据库结构正确。\n
@@ -566,8 +572,7 @@
         “药味”放在“药性”的上面，更符合传统性味的表述习惯。\n\n
         ---- V1.01.12 2018/02/16\n
         1、查询页面的每条记录开头加上序号。\n
-        2、杂项管理增加自定义笔记。\n
-        3、各页面增加按下Home键时转到后台运行的功能。\n\n
+        2、杂项管理增加自定义笔记。\n\n
         ---- V1.01.11 2018/02/12\n
         1、杂项管理增加药性、药味、归经、药物角色、基础生命物质的展示
         及修改（仅能修改备注内容）。\n\n

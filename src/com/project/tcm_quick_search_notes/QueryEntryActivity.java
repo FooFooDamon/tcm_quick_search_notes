@@ -78,7 +78,6 @@ public class QueryEntryActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        App.allowHomeKeyListening(this);
         setContentView(R.layout.activity_query_entry);
 
         ActionBar actionBar = getActionBar();

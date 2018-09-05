@@ -134,44 +134,39 @@ public class MainActivity extends Activity
 
         inflatePageListView(EXIT_ITEMS, R.id.lsv_exit_group);
 
-        DbHelper dbHelper = new DbHelper(this);
-        boolean isDbFirstInitialized = false;
+        String dbNameFromSharedPreferences = DbHelper.getDatabaseNameFromSharedPreferences(this);
+        DbHelper dbHelper = null;
+        boolean isNewDb = false;
+        
+        if (dbNameFromSharedPreferences.isEmpty())
+        {
+            String[] existentDbNames = DbHelper.getExistentDatabaseNames(this);
+            String defaultDbName = DbHelper.getDefaultDatabaseName(this);
+            String targetName = (null != existentDbNames && existentDbNames.length > 0) ? existentDbNames[0] : defaultDbName;
+            
+            DbHelper.setDatabaseNameToSharedPreferences(this, targetName);
+        	
+        	dbNameFromSharedPreferences = DbHelper.getDatabaseNameFromSharedPreferences(this);
+        	
+        	if (!dbNameFromSharedPreferences.equals(targetName)) {
+        		Hint.alert(this, getString(R.string.data_init_error),
+        			"dbHelper.setDatabaseNameToSharedPreferences(" + targetName + ")", mExitActivity);
+        	}
+        	dbHelper = new DbHelper(this, null, targetName);
+        }
+        else
+        	dbHelper = new DbHelper(this, null, dbNameFromSharedPreferences);
 
         try {
             if (!dbHelper.exists()) {
-                isDbFirstInitialized = true;
+                isNewDb = true;
                 dbHelper.initData();
             }
         } catch (Exception e) {
             Hint.alert(this, getString(R.string.data_init_error), e.getMessage(), mExitActivity);
         }
 
-        UpgradeManager upgradeManager = new UpgradeManager(this, dbHelper, App.getAppName(this) + ".db", null);
-
-        try {
-            if (isDbFirstInitialized) {
-                /*
-                 * manual upgrade
-                 */
-                dbHelper.upgradeV10111();
-                dbHelper.upgradeV10112();
-            }
-            else {
-                // automatic upgrade: triggers operations such as creating or altering tables.
-                upgradeManager.getWritableDatabase();
-                upgradeManager.close();
-            }
-
-            if (upgradeManager.hasException())
-                Hint.alert(this, R.string.db_error, upgradeManager.getExceptionMessage(), mExitActivity);
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            String eMsg = ((null != e.getCause()) ? e.getCause().getMessage()
-                    : e.getMessage());
-
-            Hint.alert(this, R.string.db_error, eMsg, mExitActivity);
-        }
+        TcmCommon.upgradeDatabase(this, dbHelper, isNewDb);
 
         boolean isFirstRunning = (boolean) SharedPreferences.getValue(this, "isFirstRunning", SharedPreferences.ValueTypeEnum.BOOL, true);
 
@@ -277,11 +272,8 @@ public class MainActivity extends Activity
         }
 
         if (listView == findViewById(R.id.lsv_help_group)) {
-            if (SUB_LIST_ITEM_POS_SETTINGS == pos) {
-                Hint.alert(this, ResourceExports.getString(this, R.array.function_not_implemented),
-                    getString(R.string.settings_not_implemented));
-                // startActivity(new Intent(this, SettingsActivity.class));
-            }
+            if (SUB_LIST_ITEM_POS_SETTINGS == pos)
+                startActivity(new Intent(this, SettingsActivity.class));
             else if (SUB_LIST_ITEM_POS_ABOUT == pos)
                 startActivity(mIntentAbout);
             else if (SUB_LIST_ITEM_POS_HELP == pos)

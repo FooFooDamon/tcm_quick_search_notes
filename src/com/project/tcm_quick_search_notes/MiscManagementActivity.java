@@ -166,7 +166,6 @@ public class MiscManagementActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        App.allowHomeKeyListening(this);
         setContentView(R.layout.activity_misc_management);
         getActionBar().setBackgroundDrawable(
             getResources().getDrawable(R.drawable.default_action_bar_style));

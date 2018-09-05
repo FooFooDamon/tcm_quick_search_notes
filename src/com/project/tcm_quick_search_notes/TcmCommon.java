@@ -28,6 +28,12 @@
 
 package com.project.tcm_quick_search_notes;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+import com.android_assistant.Hint;
+
 public class TcmCommon {
 
     public static final String OP_TYPE_KEY = "op_type";
@@ -47,4 +53,40 @@ public class TcmCommon {
 
     public static final String INNER_FIELD_DELIM = "\b";
     public static final String LINE_DELIM = "\f";
+    
+    public static void upgradeDatabase(Context context, DbHelper businessDbHelper, boolean isNewDb) {
+    	UpgradeManager upgradeManager = new UpgradeManager(context, businessDbHelper, null);
+    	
+    	DialogInterface.OnClickListener exitOperation = new OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            	System.exit(1);
+            }
+        };
+
+        try {
+            if (isNewDb) {
+                /*
+                 * manual upgrade
+                 */
+                businessDbHelper.upgradeV10111();
+                businessDbHelper.upgradeV10112();
+            }
+            else {
+                // automatic upgrade: triggers operations such as creating or altering tables.
+                upgradeManager.getWritableDatabase();
+                upgradeManager.close();
+            }
+
+            if (upgradeManager.hasException())
+                Hint.alert(context, R.string.db_error, upgradeManager.getExceptionMessage(), exitOperation);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            String eMsg = ((null != e.getCause()) ? e.getCause().getMessage() : e.getMessage());
+
+            Hint.alert(context, R.string.db_error, eMsg, exitOperation);
+        }
+    }
 }

@@ -183,7 +183,7 @@ public class DetailContentActivity extends Activity {
 
         initResources();
 
-        App.allowHomeKeyListening(this);
+        //App.allowHomeKeyListening(this);
 
         if (TcmCommon.OP_TYPE_VALUE_MEDICINE == mOpType)
             setContentView(R.layout.activity_medicine_item_details);

@@ -45,7 +45,6 @@ public class AboutActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        App.allowHomeKeyListening(this);
         setContentView(R.layout.activity_about);
         getActionBar().setBackgroundDrawable(
             getResources().getDrawable(R.drawable.default_action_bar_style));
@@ -101,5 +100,10 @@ public class AboutActivity extends Activity {
         App.moveTaskToBack(this, App.getAppName(this), true, R.drawable.ic_launcher);
 
         return true;
+    }
+    
+    @Override
+    protected void onUserLeaveHint() {
+    	App.moveTaskToBack(this, App.getAppName(this), true, R.drawable.ic_launcher);
     }
 }

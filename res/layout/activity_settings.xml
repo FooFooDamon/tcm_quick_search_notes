@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context="com.project.tcm_quick_search_notes.SettingsActivity" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txv_db_file"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/db_file"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:textAppearance="@style/DefaultTextStyle" />
+
+            <Spinner
+                android:id="@+id/spn_db_file"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/txv_db_file"
+                android:layout_toEndOf="@+id/txv_db_file"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:spinnerMode="dialog" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.android_assistant.EnhancedListView
+            android:id="@+id/lsv_null_setting_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin" >
+        </com.android_assistant.EnhancedListView>
+
+    </ScrollView>
+
+</LinearLayout>
+

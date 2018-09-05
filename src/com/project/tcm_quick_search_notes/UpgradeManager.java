@@ -45,8 +45,8 @@ public class UpgradeManager extends SQLiteOpenHelper {
     private boolean mHasException = false;
     private String mExceptionMessage = null;
 
-    public UpgradeManager(Context context, DbHelper businessDbHelper, String managerDbName, CursorFactory factory) {
-        super(context, managerDbName, factory, App.getAppVersionNumber(context));
+    public UpgradeManager(Context context, DbHelper businessDbHelper, CursorFactory factory) {
+        super(context, businessDbHelper.getDatabaseName(), factory, App.getAppVersionNumber(context));
         mContext = context;
         mBusinessDbHelper = businessDbHelper;
     }
