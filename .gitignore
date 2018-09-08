@@ -1,0 +1,8 @@
+.*.swp
+.classpath
+.gitkeep
+.settings
+bin/AndroidManifest.xml
+bin/classes*
+bin/dexedLibs
+bin/res*
