@@ -59,33 +59,33 @@ public class SettingsActivity extends Activity {
         TextView txvDbFile = (TextView) findViewById(R.id.txv_db_file);
         Spinner spnDbFile = (Spinner) findViewById(R.id.spn_db_file);
         int currentDbNameIndex = 0;
-        
+
         com.android_assistant.TextView.setDefaultTextShadow(txvDbFile);
-        
+
         spnDbFile.setAdapter(new ArrayAdapter<String>(this, R.drawable.default_spinner_text, existentDbNames));
         if (null != existentDbNames && existentDbNames.length > 0) {
-	        for (int i = 0; i < existentDbNames.length; ++i) {
-	        	if (dbNameFromSharedPreferences.equals(existentDbNames[i])) {
-	        		currentDbNameIndex = i;
-	        		break;
-	        	}
-	        }
+            for (int i = 0; i < existentDbNames.length; ++i) {
+                if (dbNameFromSharedPreferences.equals(existentDbNames[i])) {
+                    currentDbNameIndex = i;
+                    break;
+                }
+            }
         }
-        
+
         // NOTE: MUST be called after setAdapter() and before setOnItemSelectedListener()
         //     with the argument animate = true to prevent onItemSelected() being called
         //     on initialization!
         spnDbFile.setSelection(currentDbNameIndex, true);
-        
+
         spnDbFile.setOnItemSelectedListener(new OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> adapter, View view,
                 int position, long id) {
-            	
-            	DbHelper.setDatabaseNameToSharedPreferences(SettingsActivity.this, existentDbNames[position]);
-            	TcmCommon.upgradeDatabase(SettingsActivity.this, dbHelper, false);
-            	Hint.alert(SettingsActivity.this, getString(R.string.config_successful), existentDbNames[position]);
+
+                DbHelper.setDatabaseNameToSharedPreferences(SettingsActivity.this, existentDbNames[position]);
+                TcmCommon.upgradeDatabase(SettingsActivity.this, dbHelper, false);
+                Hint.alert(SettingsActivity.this, getString(R.string.config_successful), existentDbNames[position]);
             }
 
             @Override
@@ -128,9 +128,9 @@ public class SettingsActivity extends Activity {
 
         return super.onKeyDown(keyCode, event);
     }
-    
+
     @Override
     protected void onUserLeaveHint() {
-    	App.moveTaskToBack(this, App.getAppName(this), true, R.drawable.ic_launcher);
+        App.moveTaskToBack(this, App.getAppName(this), true, R.drawable.ic_launcher);
     }
 }

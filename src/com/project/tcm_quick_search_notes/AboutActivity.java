@@ -101,9 +101,9 @@ public class AboutActivity extends Activity {
 
         return true;
     }
-    
+
     @Override
     protected void onUserLeaveHint() {
-    	App.moveTaskToBack(this, App.getAppName(this), true, R.drawable.ic_launcher);
+        App.moveTaskToBack(this, App.getAppName(this), true, R.drawable.ic_launcher);
     }
 }

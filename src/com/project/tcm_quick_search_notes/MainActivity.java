@@ -137,25 +137,25 @@ public class MainActivity extends Activity
         String dbNameFromSharedPreferences = DbHelper.getDatabaseNameFromSharedPreferences(this);
         DbHelper dbHelper = null;
         boolean isNewDb = false;
-        
+
         if (dbNameFromSharedPreferences.isEmpty())
         {
             String[] existentDbNames = DbHelper.getExistentDatabaseNames(this);
             String defaultDbName = DbHelper.getDefaultDatabaseName(this);
             String targetName = (null != existentDbNames && existentDbNames.length > 0) ? existentDbNames[0] : defaultDbName;
-            
+
             DbHelper.setDatabaseNameToSharedPreferences(this, targetName);
-        	
-        	dbNameFromSharedPreferences = DbHelper.getDatabaseNameFromSharedPreferences(this);
-        	
-        	if (!dbNameFromSharedPreferences.equals(targetName)) {
-        		Hint.alert(this, getString(R.string.data_init_error),
-        			"dbHelper.setDatabaseNameToSharedPreferences(" + targetName + ")", mExitActivity);
-        	}
-        	dbHelper = new DbHelper(this, null, targetName);
+
+            dbNameFromSharedPreferences = DbHelper.getDatabaseNameFromSharedPreferences(this);
+
+            if (!dbNameFromSharedPreferences.equals(targetName)) {
+                Hint.alert(this, getString(R.string.data_init_error),
+                    "dbHelper.setDatabaseNameToSharedPreferences(" + targetName + ")", mExitActivity);
+            }
+            dbHelper = new DbHelper(this, null, targetName);
         }
         else
-        	dbHelper = new DbHelper(this, null, dbNameFromSharedPreferences);
+            dbHelper = new DbHelper(this, null, dbNameFromSharedPreferences);
 
         try {
             if (!dbHelper.exists()) {

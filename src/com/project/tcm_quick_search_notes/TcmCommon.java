@@ -53,15 +53,15 @@ public class TcmCommon {
 
     public static final String INNER_FIELD_DELIM = "\b";
     public static final String LINE_DELIM = "\f";
-    
+
     public static void upgradeDatabase(Context context, DbHelper businessDbHelper, boolean isNewDb) {
-    	UpgradeManager upgradeManager = new UpgradeManager(context, businessDbHelper, null);
-    	
-    	DialogInterface.OnClickListener exitOperation = new OnClickListener() {
+        UpgradeManager upgradeManager = new UpgradeManager(context, businessDbHelper, null);
+
+        DialogInterface.OnClickListener exitOperation = new OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-            	System.exit(1);
+                System.exit(1);
             }
         };
 

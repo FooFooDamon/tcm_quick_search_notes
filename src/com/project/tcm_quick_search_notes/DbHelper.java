@@ -145,11 +145,11 @@ public class DbHelper {
     private SQLiteDatabase mDbInstance = null;
 
     public DbHelper(Context context) {
-    	_DbHelper(context, null, null);
+        _DbHelper(context, null, null);
     }
 
     public DbHelper(Context context, String dbDirectory, String dbName) {
-    	_DbHelper(context, dbDirectory, dbName);
+        _DbHelper(context, dbDirectory, dbName);
     }
 
     private void _DbHelper(Context context, String dbDirectory, String dbName) {
@@ -159,26 +159,26 @@ public class DbHelper {
         mContext = context;
 
         if (null == dbDirectory)
-        	mDbDir = getDefaultDatabaseDirectory();
+            mDbDir = getDefaultDatabaseDirectory();
         else {
-	        File dir = new File(dbDirectory);
-	
-	        if (!dir.exists())
-	            dir.mkdirs();
-	
-	        mDbDir = dbDirectory;
+            File dir = new File(dbDirectory);
+
+            if (!dir.exists())
+                dir.mkdirs();
+
+            mDbDir = dbDirectory;
         }
-        
+
         if (null == dbName) {
-        	String currentDb = getDatabaseNameFromSharedPreferences(mContext);
-        	
-        	if (currentDb.isEmpty())
-        		mDbName = getDefaultDatabaseName(mContext);
-        	else
-        		mDbName = currentDb;
+            String currentDb = getDatabaseNameFromSharedPreferences(mContext);
+
+            if (currentDb.isEmpty())
+                mDbName = getDefaultDatabaseName(mContext);
+            else
+                mDbName = currentDb;
         }
         else
-        	mDbName = dbName;
+            mDbName = dbName;
     }
 
     public static String[] getTableColumnsList(int opType, int positionAtFunctionalityList) {
@@ -214,44 +214,44 @@ public class DbHelper {
 
         return mDbInstance;
     }
-    
+
     public static String getDatabaseNameFromSharedPreferences(Context context) {
-    	return (String) SharedPreferences.getValue(context, "currentDb", SharedPreferences.ValueTypeEnum.STRING, "");
+        return (String) SharedPreferences.getValue(context, "currentDb", SharedPreferences.ValueTypeEnum.STRING, "");
     }
-    
+
     public static void setDatabaseNameToSharedPreferences(Context context, String name) {
-    	SharedPreferences.setValue(context, "currentDb", name);
+        SharedPreferences.setValue(context, "currentDb", name);
     }
 
     public static String getDefaultDatabaseName(Context context) {
-    	return App.getAppName(context) + ".db";
+        return App.getAppName(context) + ".db";
     }
-    
+
     public static String[] getExistentDatabaseNames(Context context) {
-    	File dbDir = new File(getDefaultDatabaseDirectory());
-    	File[] dbFiles = dbDir.listFiles();
-    	ArrayList<String> result = new ArrayList<String>();
-    	
-    	for (File file : dbFiles)
-    	{
-    		if (file.isDirectory())
-    			continue;
-    		
-    		String fileName = file.getName();
-    		
-    		if (fileName.matches(App.getAppName(context) + ".*\\.db"))
-    			result.add(fileName);
-    	}
-    	
-    	return result.toArray(new String[result.size()]);
+        File dbDir = new File(getDefaultDatabaseDirectory());
+        File[] dbFiles = dbDir.listFiles();
+        ArrayList<String> result = new ArrayList<String>();
+
+        for (File file : dbFiles)
+        {
+            if (file.isDirectory())
+                continue;
+
+            String fileName = file.getName();
+
+            if (fileName.matches(App.getAppName(context) + ".*\\.db"))
+                result.add(fileName);
+        }
+
+        return result.toArray(new String[result.size()]);
     }
 
     public String getDatabaseName() {
-    	return mDbName;
+        return mDbName;
     }
 
     public static String getDefaultDatabaseDirectory() {
-    	return android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        return android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
     }
 
     public String getDatabaseDirectory() {
