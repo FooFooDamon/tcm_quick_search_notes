@@ -33,17 +33,19 @@ please let me know, and I'll delete it as soon as possible!***
 
 ### 依赖组件 | Dependencies
 
+* `JDK`: >= 1.7
+
 * [`android_assistant`](https://github.com/FooFooDamon/android_assistant.git)
 if you'd like to compile this app from source code.
 
 ### 操作步骤 | Steps
 
-将`bin/tcm_quick_search_notes.apk`拷贝到你的安卓手机进行安装即可，或者下载该项目源码，
+将`products/tcm_quick_search_notes.apk`拷贝到你的安卓手机进行安装即可，或者下载该项目源码，
 利用配置好`ADT`的`Eclipse`编译出安装包，再拷贝进手机进行安装。
 
 卸载操作跟其它安卓软件的卸载操作一样。
 
-Copy `bin/tcm_quick_search_notes.apk` into your Android cellphone and install it, 
+Copy `products/tcm_quick_search_notes.apk` into your Android cellphone and install it, 
 or download source code of this project, and use `Eclipse` with `ADT` well configured 
 to compile the code and get the resulting installation package, and finally, install it.
 
